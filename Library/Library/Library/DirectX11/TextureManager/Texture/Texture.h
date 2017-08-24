@@ -18,64 +18,67 @@
 
 namespace Lib
 {
-	class GraphicsDevice;
-
-	/**
-	 * テクスチャクラス
-	 */
-	class Texture : public ITexture
+	namespace Dx11
 	{
-	public:
-		/**
-		 * コンストラクタ
-		 */
-		Texture();
+		class GraphicsDevice;
 
 		/**
-		 * コンストラクタ
-		 * @param[in] _pGraphicsDevice グラフィックデバイス
-		 * @param[in] _pTexturePath テクスチャのパス
+		 * テクスチャクラス
 		 */
-		Texture(GraphicsDevice* _pGraphicsDevice, LPCTSTR _pTexturePath);
+		class Texture : public ITexture
+		{
+		public:
+			/**
+			 * コンストラクタ
+			 */
+			Texture();
 
-		/**
-		 * デストラクタ
-		 */
-		virtual ~Texture();
+			/**
+			 * コンストラクタ
+			 * @param[in] _pGraphicsDevice グラフィックデバイス
+			 * @param[in] _pTexturePath テクスチャのパス
+			 */
+			Texture(GraphicsDevice* _pGraphicsDevice, LPCTSTR _pTexturePath);
 
-		/**
-		 * テクスチャの設定
-		 * @param[in] _pTexture テクスチャリソースビュー
-		 */
-		virtual void Set(ID3D11ShaderResourceView* _pTexture);
+			/**
+			 * デストラクタ
+			 */
+			virtual ~Texture();
 
-		/**
-		 * テクスチャの取得
-		 * @return テクスチャ
-		 */
-		virtual ID3D11ShaderResourceView* Get() const;
-		
+			/**
+			 * テクスチャの設定
+			 * @param[in] _pTexture テクスチャリソースビュー
+			 */
+			virtual void Set(ID3D11ShaderResourceView* _pTexture);
 
-	private:
-		/**
-		 * テクスチャの読み込み
-		 * @param[in] _pTexturePath テクスチャのパス
-		 */
-		void Load(LPCTSTR _pTexturePath);
-
-		/**
-		 * テクスチャの解放
-		 */
-		void Release();
-
-
-		GraphicsDevice*				m_pGraphicsDevice;	//!< グラフィックデバイス.
-		ID3D11ShaderResourceView*	m_pTexture;			//!< テクスチャのシェーダーリソースビュー.
+			/**
+			 * テクスチャの取得
+			 * @return テクスチャ
+			 */
+			virtual ID3D11ShaderResourceView* Get() const;
 
 
-		DISALLOW_COPY_AND_ASSIGN(Texture);
+		private:
+			/**
+			 * テクスチャの読み込み
+			 * @param[in] _pTexturePath テクスチャのパス
+			 */
+			void Load(LPCTSTR _pTexturePath);
 
-	};
+			/**
+			 * テクスチャの解放
+			 */
+			void Release();
+
+
+			GraphicsDevice*				m_pGraphicsDevice;	//!< グラフィックデバイス.
+			ID3D11ShaderResourceView*	m_pTexture;			//!< テクスチャのシェーダーリソースビュー.
+
+
+			DISALLOW_COPY_AND_ASSIGN(Texture);
+
+		};
+	}
 }
 
 

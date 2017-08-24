@@ -16,23 +16,26 @@
 
 namespace Lib
 {
-	/**
-	 * 頂点インターフェース
-	 */
-	interface IVertex
+	namespace Dx11
 	{
-	public:
 		/**
-		 * コンストラクタ
+		 * 頂点インターフェース
 		 */
-		IVertex();
+		interface IVertex
+		{
+		public:
+			/**
+			 * コンストラクタ
+			 */
+			IVertex();
 
-		/**
-		 * デストラクタ
-		 */
-		virtual ~IVertex();
+			/**
+			 * デストラクタ
+			 */
+			virtual ~IVertex();
 
-	};
+		};
+	}
 }
 
 

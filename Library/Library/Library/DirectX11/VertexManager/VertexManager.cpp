@@ -15,32 +15,35 @@
 
 namespace Lib
 {
-	//----------------------------------------------------------------------
-	// Constructor	Destructor
-	//----------------------------------------------------------------------
-	VertexManager::VertexManager()
+	namespace Dx11
 	{
-	}
-
-	VertexManager::~VertexManager()
-	{
-	}
-
-
-	//----------------------------------------------------------------------
-	// Public Functions
-	//----------------------------------------------------------------------
-	bool VertexManager::Initialize(GraphicsDevice* _pGraphicsDevice)
-	{
-		m_pGraphicDevice = _pGraphicsDevice;
-		return true;
-	}
-
-	void VertexManager::Finalize()
-	{
-		for (auto itr = m_pVertexs.begin(); itr != m_pVertexs.end(); itr++)
+		//----------------------------------------------------------------------
+		// Constructor	Destructor
+		//----------------------------------------------------------------------
+		VertexManager::VertexManager()
 		{
-			SafeDelete(*itr);
+		}
+
+		VertexManager::~VertexManager()
+		{
+		}
+
+
+		//----------------------------------------------------------------------
+		// Public Functions
+		//----------------------------------------------------------------------
+		bool VertexManager::Initialize(GraphicsDevice* _pGraphicsDevice)
+		{
+			m_pGraphicDevice = _pGraphicsDevice;
+			return true;
+		}
+
+		void VertexManager::Finalize()
+		{
+			for (auto itr = m_pVertexs.begin(); itr != m_pVertexs.end(); itr++)
+			{
+				SafeDelete(*itr);
+			}
 		}
 	}
 }

@@ -9,7 +9,7 @@
 //----------------------------------------------------------------------
 #include "Sound.h"
 
-#include "..\..\..\Debugger\Debugger.h"
+#include "..\..\Debugger\Debugger.h"
 #include "..\..\SoundDevice\SoundDevice.h"
 
 
@@ -72,7 +72,7 @@ namespace Lib
 
 		if (!WaveLoad(_pSoundPath, &WaveFormat, &pWaveData, &WaveSize))
 		{
-			OutputErrorLog("サウンドの読み込みに失敗しました"); 
+			OutputErrorLog("サウンドの読み込みに失敗しました");
 			return;
 		}
 
@@ -125,7 +125,7 @@ namespace Lib
 		HMMIO hMmio = nullptr;
 		MMIOINFO MmioInfo;
 		ZeroMemory(&MmioInfo, sizeof(MMIOINFO));
-		
+
 		hMmio = mmioOpen(_pFilePath, &MmioInfo, MMIO_READ);
 		if (hMmio == nullptr)
 		{
@@ -136,7 +136,7 @@ namespace Lib
 		MMCKINFO RiffChunk;
 		RiffChunk.fccType = mmioFOURCC('W', 'A', 'V', 'E');
 		MmResult = mmioDescend(hMmio, &RiffChunk, nullptr, MMIO_FINDRIFF);
-		if (MmResult != MMSYSERR_NOERROR) 
+		if (MmResult != MMSYSERR_NOERROR)
 		{
 			mmioClose(hMmio, 0);
 			return false;
@@ -145,12 +145,12 @@ namespace Lib
 		MMCKINFO FormatChunk;
 		FormatChunk.ckid = mmioFOURCC('f', 'm', 't', ' ');
 		MmResult = mmioDescend(hMmio, &FormatChunk, &RiffChunk, MMIO_FINDCHUNK);
-		if (MmResult != MMSYSERR_NOERROR) 
+		if (MmResult != MMSYSERR_NOERROR)
 		{
 			mmioClose(hMmio, 0);
 			return false;
 		}
-		
+
 		DWORD FormatSize = FormatChunk.cksize;
 		DWORD Size = mmioRead(hMmio, reinterpret_cast<HPSTR>(_pWaveFormat), FormatSize);
 		if (Size != FormatSize)
@@ -161,11 +161,11 @@ namespace Lib
 
 		mmioAscend(hMmio, &FormatChunk, 0);
 
-		
+
 		MMCKINFO DataChunk;
 		DataChunk.ckid = mmioFOURCC('d', 'a', 't', 'a');
 		MmResult = mmioDescend(hMmio, &DataChunk, &RiffChunk, MMIO_FINDCHUNK);
-		if (MmResult != MMSYSERR_NOERROR) 
+		if (MmResult != MMSYSERR_NOERROR)
 		{
 			mmioClose(hMmio, 0);
 			return false;
@@ -177,7 +177,7 @@ namespace Lib
 		if (Size != DataChunk.cksize)
 		{
 			mmioClose(hMmio, 0);
-			delete[] *_pWaveData;
+			delete[] * _pWaveData;
 			return false;
 		}
 

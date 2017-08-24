@@ -75,6 +75,5 @@ namespace Lib
 	{
 		SafeDelete(m_pSounds[_index]);
 	}
-
 }
 

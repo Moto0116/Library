@@ -11,7 +11,7 @@
 //----------------------------------------------------------------------
 #include <Windows.h>
 
-#include "..\..\..\Define\Define.h"
+#include "..\..\Define\Define.h"
 #include "..\SoundManager.h"
 
 
@@ -32,7 +32,7 @@ namespace Lib
 		 * デストラクタ
 		 */
 		virtual ~ISound() = 0;
-		
+
 		/**
 		 * サウンドの操作
 		 */

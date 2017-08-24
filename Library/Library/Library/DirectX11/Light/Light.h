@@ -15,63 +15,66 @@
 
 namespace Lib
 {
-	/**
-	 * ライト情報の管理クラス
-	 */
-	class Light
+	namespace Dx11
 	{
-	public:
 		/**
-		 * コンストラクタ
+		 * ライト情報の管理クラス
 		 */
-		Light();
-
-		/**
-		 * デストラクタ
-		 */
-		~Light();
-
-		/**
-		 * ライト座標の設定
-		 * @param[in] _pPos 設定する座標
-		 */
-		inline void SetPos(const D3DXVECTOR3* _pPos)
+		class Light
 		{
-			m_Pos = *_pPos;
-		}
+		public:
+			/**
+			 * コンストラクタ
+			 */
+			Light();
 
-		/**
-		 * ライトの向きの設定
-		 * @param[in] 設定する向き
-		 */
-		inline void SetDirectionPos(const D3DXVECTOR3* _pDirectionPos)
-		{
-			m_DirectionPos = *_pDirectionPos;
-		}
+			/**
+			 * デストラクタ
+			 */
+			~Light();
 
-		/**
-		 * ライト座標の取得
-		 * @return ライト座標
-		 */
-		inline D3DXVECTOR3 GetPos() const
-		{
-			return m_Pos;
-		}
-		
-		/**
-		 * ライトの向きの取得
-		 * @return ライトの向き
-		 */
-		inline D3DXVECTOR3 GetDirectionPos() const
-		{
-			return m_DirectionPos;
-		}
+			/**
+			 * ライト座標の設定
+			 * @param[in] _pPos 設定する座標
+			 */
+			inline void SetPos(const D3DXVECTOR3* _pPos)
+			{
+				m_Pos = *_pPos;
+			}
 
-	private:
-		D3DXVECTOR3 m_Pos;			//!< ライトの座標.
-		D3DXVECTOR3 m_DirectionPos;	//!< ライトが向いている座標.
+			/**
+			 * ライトの向きの設定
+			 * @param[in] 設定する向き
+			 */
+			inline void SetDirectionPos(const D3DXVECTOR3* _pDirectionPos)
+			{
+				m_DirectionPos = *_pDirectionPos;
+			}
 
-	};
+			/**
+			 * ライト座標の取得
+			 * @return ライト座標
+			 */
+			inline D3DXVECTOR3 GetPos() const
+			{
+				return m_Pos;
+			}
+
+			/**
+			 * ライトの向きの取得
+			 * @return ライトの向き
+			 */
+			inline D3DXVECTOR3 GetDirectionPos() const
+			{
+				return m_DirectionPos;
+			}
+
+		private:
+			D3DXVECTOR3 m_Pos;			//!< ライトの座標.
+			D3DXVECTOR3 m_DirectionPos;	//!< ライトが向いている座標.
+
+		};
+	}
 }
 
 

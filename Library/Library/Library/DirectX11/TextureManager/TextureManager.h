@@ -16,76 +16,79 @@
 
 namespace Lib
 {
-	class GraphicsDevice;
-	interface ITexture;
-
-	/**
-	 * テクスチャ管理クラス
-	 */
-	class TextureManager : public SingletonBase<TextureManager>
+	namespace Dx11
 	{
-	public:
-		friend SingletonBase<TextureManager>;
-
-		static const int m_InvalidIndex;	//!< TextureManagerクラスがとるインデックスエラー値.
+		class GraphicsDevice;
+		interface ITexture;
 
 		/**
-		 * 初期化処理
-		 * @param[in] _pGraphicsDevice グラフィックデバイス
-		 * @return 初期化に成功したらtrue 失敗したらfalse
+		 * テクスチャ管理クラス
 		 */
-		bool Initialize(GraphicsDevice* _pGraphicsDevice);
+		class TextureManager : public SingletonBase<TextureManager>
+		{
+		public:
+			friend SingletonBase<TextureManager>;
 
-		/**
-		 * 終了処理
-		 */
-		void Finalize();
+			static const int m_InvalidIndex;	//!< TextureManagerクラスがとるインデックスエラー値.
 
-		/**
-		 * テクスチャの読み込み
-		 * @param[in] _pTexturePath 読み込むテクスチャのパス
-		 * @param[out] _pIndex 読み込んだテクスチャ格納先インデックス
-		 * @return 成功したらtrue 失敗したらfalse
-		 */
-		bool LoadTexture(LPCTSTR _pTexturePath, int* _pIndex);
+			/**
+			 * 初期化処理
+			 * @param[in] _pGraphicsDevice グラフィックデバイス
+			 * @return 初期化に成功したらtrue 失敗したらfalse
+			 */
+			bool Initialize(GraphicsDevice* _pGraphicsDevice);
 
-		/**
-		 * テクスチャの解放
-		 * @param[in] _index 解放するテクスチャのインデックス
-		 */
-		void ReleaseTexture(int _index);
+			/**
+			 * 終了処理
+			 */
+			void Finalize();
 
-		/**
-		 * テクスチャの取得
-		 * @param[in] _index 取得するテクスチャのインデックス
-		 * @return 格納先のテクスチャ
-		 */
-		ITexture* GetTexture(int _index) const;
+			/**
+			 * テクスチャの読み込み
+			 * @param[in] _pTexturePath 読み込むテクスチャのパス
+			 * @param[out] _pIndex 読み込んだテクスチャ格納先インデックス
+			 * @return 成功したらtrue 失敗したらfalse
+			 */
+			bool LoadTexture(LPCTSTR _pTexturePath, int* _pIndex);
 
-		/**
-		 * テクスチャを格納しているバッファを解放する
-		 */
-		void ClearBuffer();
+			/**
+			 * テクスチャの解放
+			 * @param[in] _index 解放するテクスチャのインデックス
+			 */
+			void ReleaseTexture(int _index);
 
-	private:
-		/**
-		 * コンストラクタ
-		 */
-		TextureManager();
+			/**
+			 * テクスチャの取得
+			 * @param[in] _index 取得するテクスチャのインデックス
+			 * @return 格納先のテクスチャ
+			 */
+			ITexture* GetTexture(int _index) const;
 
-		/**
-		 * デストラクタ
-		 */
-		virtual ~TextureManager();
+			/**
+			 * テクスチャを格納しているバッファを解放する
+			 */
+			void ClearBuffer();
+
+		private:
+			/**
+			 * コンストラクタ
+			 */
+			TextureManager();
+
+			/**
+			 * デストラクタ
+			 */
+			virtual ~TextureManager();
 
 
-		GraphicsDevice*			m_pGraphicsDevice;	//!< グラフィックデバイス.
-		std::vector<ITexture*>	m_pTextures;		//!< テクスチャを格納するコンテナ.
+			GraphicsDevice*			m_pGraphicsDevice;	//!< グラフィックデバイス.
+			std::vector<ITexture*>	m_pTextures;		//!< テクスチャを格納するコンテナ.
 
 
-		DISALLOW_COPY_AND_ASSIGN(TextureManager);
+			DISALLOW_COPY_AND_ASSIGN(TextureManager);
 
-	};
+		};
+	}
 }
 
 

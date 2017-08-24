@@ -16,44 +16,46 @@
 
 namespace Lib
 {
-	class GraphicsDevice;
-	interface IVertex;
-
-	/**
-	 * 頂点管理クラス
-	 */
-	class VertexManager : public SingletonBase<VertexManager>
+	namespace Dx11
 	{
-	public:
-		friend SingletonBase<VertexManager>;
-
+		class GraphicsDevice;
+		interface IVertex;
 		/**
-		 * コンストラクタ
+		 * 頂点管理クラス
 		 */
-		VertexManager();
+		class VertexManager : public SingletonBase<VertexManager>
+		{
+		public:
+			friend SingletonBase<VertexManager>;
 
-		/**
-		 * デストラクタ
-		 */
-		virtual ~VertexManager();
+			/**
+			 * コンストラクタ
+			 */
+			VertexManager();
 
-		/**
-		 * 初期化処理
-		 * @param[in] _pGraphicsDevice グラフィックデバイス
-		 * @return 初期化に成功したらtrue 失敗したらfalse
-		 */
-		bool Initialize(GraphicsDevice* _pGraphicsDevice);
+			/**
+			 * デストラクタ
+			 */
+			virtual ~VertexManager();
 
-		/**
-		 * 終了処理
-		 */
-		void Finalize();
+			/**
+			 * 初期化処理
+			 * @param[in] _pGraphicsDevice グラフィックデバイス
+			 * @return 初期化に成功したらtrue 失敗したらfalse
+			 */
+			bool Initialize(GraphicsDevice* _pGraphicsDevice);
 
-	private:
-		GraphicsDevice*			m_pGraphicDevice;	//!< グラフィックデバイス.
-		std::vector<IVertex*>	m_pVertexs;			//!< 頂点オブジェクトを格納するコンテナ.
+			/**
+			 * 終了処理
+			 */
+			void Finalize();
 
-	};
+		private:
+			GraphicsDevice*			m_pGraphicDevice;	//!< グラフィックデバイス.
+			std::vector<IVertex*>	m_pVertexs;			//!< 頂点オブジェクトを格納するコンテナ.
+
+		};
+	}
 }
 
 

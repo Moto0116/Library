@@ -191,6 +191,9 @@
     <Filter Include="Library\EventManagerBase\EventListenerBase">
       <UniqueIdentifier>{e65f01cc-3869-4bce-8287-f549dc0049b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Library\DirectX12">
+      <UniqueIdentifier>{0d67f097-903b-494a-84d2-264d0c52e48e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Library\Debugger\Debugger.cpp">
@@ -252,18 +255,6 @@
     </ClCompile>
     <ClCompile Include="Library\DirectX11\AnimationManager\Animation\Animation.cpp">
       <Filter>Library\DirectX11\AnimationManager\Animation</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\SoundManager\SoundManager.cpp">
-      <Filter>Library\DirectX11\SoundManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\SoundManager\Sound\Sound.cpp">
-      <Filter>Library\DirectX11\SoundManager\Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\SoundManager\ISound\ISound.cpp">
-      <Filter>Library\DirectX11\SoundManager\ISound</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\SoundDevice\SoundDevice.cpp">
-      <Filter>Library\DirectX11\SoundDevice</Filter>
     </ClCompile>
     <ClCompile Include="Library\DirectX11\GraphicsDevice\GraphicsDevice.cpp">
       <Filter>Library\DirectX11\GraphicsDevice</Filter>
@@ -355,6 +346,18 @@
     <ClCompile Include="Library\EventManager\EventListenerBase\EventListenerBase.cpp">
       <Filter>Library\EventManagerBase\EventListenerBase</Filter>
     </ClCompile>
+    <ClCompile Include="Library\SoundDevice\SoundDevice.cpp">
+      <Filter>Library\DirectX11\SoundDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\SoundManager\ISound\ISound.cpp">
+      <Filter>Library\DirectX11\SoundManager\ISound</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\SoundManager\Sound\Sound.cpp">
+      <Filter>Library\DirectX11\SoundManager\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\SoundManager\SoundManager.cpp">
+      <Filter>Library\DirectX11\SoundManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Debugger\Debugger.h">
@@ -414,20 +417,8 @@
     <ClInclude Include="Library\DirectX11\AnimationManager\Animation\Animation.h">
       <Filter>Library\DirectX11\AnimationManager\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="Library\DirectX11\SoundManager\SoundManager.h">
-      <Filter>Library\DirectX11\SoundManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\SoundManager\Sound\Sound.h">
-      <Filter>Library\DirectX11\SoundManager\Sound</Filter>
-    </ClInclude>
     <ClInclude Include="Library\Define\Define.h">
       <Filter>Library\Define</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\SoundManager\ISound\ISound.h">
-      <Filter>Library\DirectX11\SoundManager\ISound</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\SoundDevice\SoundDevice.h">
-      <Filter>Library\DirectX11\SoundDevice</Filter>
     </ClInclude>
     <ClInclude Include="Library\DirectX11\Vertex2D\Vertex2D.h">
       <Filter>Library\DirectX11\Vertex2D</Filter>
@@ -524,6 +515,18 @@
     </ClInclude>
     <ClInclude Include="Library\EventManager\EventListenerBase\EventListenerBase.h">
       <Filter>Library\EventManagerBase\EventListenerBase</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\SoundDevice\SoundDevice.h">
+      <Filter>Library\DirectX11\SoundDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\SoundManager\ISound\ISound.h">
+      <Filter>Library\DirectX11\SoundManager\ISound</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\SoundManager\Sound\Sound.h">
+      <Filter>Library\DirectX11\SoundManager\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\SoundManager\SoundManager.h">
+      <Filter>Library\DirectX11\SoundManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

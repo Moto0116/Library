@@ -14,23 +14,26 @@
 
 namespace Lib
 {
-	/**
-	 * 頂点クラス
-	 */
-	class Vertex : public IVertex
+	namespace Dx11
 	{
-	public:
 		/**
-		 * コンストラクタ
+		 * 頂点クラス
 		 */
-		Vertex();
+		class Vertex : public IVertex
+		{
+		public:
+			/**
+			 * コンストラクタ
+			 */
+			Vertex();
 
-		/**
-		 * デストラクタ
-		 */
-		virtual ~Vertex();
+			/**
+			 * デストラクタ
+			 */
+			virtual ~Vertex();
 
-	};
+		};
+	}
 }
 
 

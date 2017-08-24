@@ -17,39 +17,42 @@
 
 namespace Lib
 {
-	/**
-	 * テクスチャインターフェース
-	 */
-	interface ITexture
+	namespace Dx11
 	{
-	public:
 		/**
-		 * コンストラクタ
+		 * テクスチャインターフェース
 		 */
-		ITexture();
+		interface ITexture
+		{
+		public:
+			/**
+			 * コンストラクタ
+			 */
+			ITexture();
 
-		/**
-		 * デストラクタ
-		 */
-		virtual ~ITexture() = 0;
+			/**
+			 * デストラクタ
+			 */
+			virtual ~ITexture() = 0;
 
-		/**
-		 * テクスチャの設定
-		 * @param[in] _pTexture テクスチャリソースビュー
-		 */
-		virtual void Set(ID3D11ShaderResourceView* _pTexture) = 0;
+			/**
+			 * テクスチャの設定
+			 * @param[in] _pTexture テクスチャリソースビュー
+			 */
+			virtual void Set(ID3D11ShaderResourceView* _pTexture) = 0;
 
-		/**
-		 * テクスチャの取得
-		 * @return テクスチャ
-		 */
-		virtual ID3D11ShaderResourceView* Get() const = 0;
+			/**
+			 * テクスチャの取得
+			 * @return テクスチャ
+			 */
+			virtual ID3D11ShaderResourceView* Get() const = 0;
 
 
-	private:
-		DISALLOW_COPY_AND_ASSIGN(ITexture);
+		private:
+			DISALLOW_COPY_AND_ASSIGN(ITexture);
 
-	};
+		};
+	}
 }
 
 

@@ -16,80 +16,83 @@
 
 namespace Lib
 {
-	interface IAnimation;
-
-	/**
-	 * アニメーションの管理クラス
-	 */
-	class AnimationManager : public SingletonBase<AnimationManager>
+	namespace Dx11
 	{
-	public:
-		friend SingletonBase<AnimationManager>;
-
-		static const int m_InvalidIndex;	//!< AnimationManagerクラスがとるインデックスのエラー値
+		interface IAnimation;
 
 		/**
-		 * 初期化処理
-		 * @return 初期化に成功したらtrue 失敗したらfalse
+		 * アニメーションの管理クラス
 		 */
-		bool Initialize();
-
-		/**
-		 * 終了処理
-		 */
-		void Finalize();
-
-		/**
-		 * アニメーションの読み込み
-		 * @param[in] _pAnimationPath 読み込むアニメーションのパス
-		 * @param[out] _pIndex 読み込んだアニメーション格納先インデックス
-		 * @return 成功したらtrue 失敗したらfalse
-		 */
-		bool LoadAnimation(LPCTSTR _pAnimationPath, int* _pIndex);
-
-		/**
-		 * アニメーションの解放
-		 * @param[in] _index 解放するアニメーションのインデックス
-		 */
-		void ReleaseAnimation(int _index);
-
-		/**
-		 * アニメーションの取得
-		 * @param[in] _index 取得するアニメーションのインデックス
-		 * @return 格納先のアニメーション
-		 */
-		inline IAnimation* GetAnimation(int _index) const
+		class AnimationManager : public SingletonBase<AnimationManager>
 		{
-			return m_pAnimation[_index];
-		}
+		public:
+			friend SingletonBase<AnimationManager>;
 
-		/**
-		 * アニメーションを格納しているバッファを解放する
-		 */
-		inline void ClearBuffer()
-		{
-			m_pAnimation.clear();
-		}
+			static const int m_InvalidIndex;	//!< AnimationManagerクラスがとるインデックスのエラー値
+
+			/**
+			 * 初期化処理
+			 * @return 初期化に成功したらtrue 失敗したらfalse
+			 */
+			bool Initialize();
+
+			/**
+			 * 終了処理
+			 */
+			void Finalize();
+
+			/**
+			 * アニメーションの読み込み
+			 * @param[in] _pAnimationPath 読み込むアニメーションのパス
+			 * @param[out] _pIndex 読み込んだアニメーション格納先インデックス
+			 * @return 成功したらtrue 失敗したらfalse
+			 */
+			bool LoadAnimation(LPCTSTR _pAnimationPath, int* _pIndex);
+
+			/**
+			 * アニメーションの解放
+			 * @param[in] _index 解放するアニメーションのインデックス
+			 */
+			void ReleaseAnimation(int _index);
+
+			/**
+			 * アニメーションの取得
+			 * @param[in] _index 取得するアニメーションのインデックス
+			 * @return 格納先のアニメーション
+			 */
+			inline IAnimation* GetAnimation(int _index) const
+			{
+				return m_pAnimation[_index];
+			}
+
+			/**
+			 * アニメーションを格納しているバッファを解放する
+			 */
+			inline void ClearBuffer()
+			{
+				m_pAnimation.clear();
+			}
 
 
-	private:
-		/**
-		 * コンストラクタ
-		 */
-		AnimationManager();
+		private:
+			/**
+			 * コンストラクタ
+			 */
+			AnimationManager();
 
-		/**
-		 * デストラクタ
-		 */
-		virtual ~AnimationManager();
-
-
-		std::vector<IAnimation*>	m_pAnimation;	//!< アニメーションを格納するコンテナ.
+			/**
+			 * デストラクタ
+			 */
+			virtual ~AnimationManager();
 
 
-		DISALLOW_COPY_AND_ASSIGN(AnimationManager);
+			std::vector<IAnimation*>	m_pAnimation;	//!< アニメーションを格納するコンテナ.
 
-	};
+
+			DISALLOW_COPY_AND_ASSIGN(AnimationManager);
+
+		};
+	}
 }
 
 

@@ -14,10 +14,11 @@
 
 namespace Lib
 {
+
 	//----------------------------------------------------------------------
 	// Constructor	Destructor
 	//----------------------------------------------------------------------
-	SoundDevice::SoundDevice() : 
+	SoundDevice::SoundDevice() :
 		m_pDSound8(nullptr),
 		m_hWnd(nullptr)
 	{
