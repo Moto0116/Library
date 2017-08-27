@@ -238,30 +238,6 @@
     <ClCompile Include="Library\InputDeviceManager\MouseDevice\MouseDevice.cpp">
       <Filter>Library\InputDeviceManager\MouseDevice</Filter>
     </ClCompile>
-    <ClCompile Include="Library\DirectX11\ShaderManager\ShaderManager.cpp">
-      <Filter>Library\DirectX11\ShaderManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\TextureManager\Texture\Texture.cpp">
-      <Filter>Library\DirectX11\TextureManager\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\TextureManager\TextureManager.cpp">
-      <Filter>Library\DirectX11\TextureManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\Vertex2D\Vertex2D.cpp">
-      <Filter>Library\DirectX11\Vertex2D</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\AnimationManager\AnimationManager.cpp">
-      <Filter>Library\DirectX11\AnimationManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\AnimationManager\Animation\Animation.cpp">
-      <Filter>Library\DirectX11\AnimationManager\Animation</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\GraphicsDevice\GraphicsDevice.cpp">
-      <Filter>Library\DirectX11\GraphicsDevice</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\TextureManager\ITexture\ITexture.cpp">
-      <Filter>Library\DirectX11\TextureManager\ITexture</Filter>
-    </ClCompile>
     <ClCompile Include="Library\ObjectManagerBase\ObjectBase\ObjectBase.cpp">
       <Filter>Library\ObjectBase</Filter>
     </ClCompile>
@@ -277,9 +253,6 @@
     <ClCompile Include="Library\CollisionManager\CollisionBase\CollisionQuad2D\CollisionQuad2D.cpp">
       <Filter>Library\CollisionManager\CollisionBase\CollisionQuad2D</Filter>
     </ClCompile>
-    <ClCompile Include="Library\DirectX11\Billboard2D\Billboard2D.cpp">
-      <Filter>Library\DirectX11\Billboard2D</Filter>
-    </ClCompile>
     <ClCompile Include="Library\SmartPointer\WeakPtr\WeakPtr.cpp">
       <Filter>Library\SmartPointer\WeakPtr</Filter>
     </ClCompile>
@@ -289,26 +262,8 @@
     <ClCompile Include="Library\SmartPointer\UniquePtr\UniquePtr.cpp">
       <Filter>Library\SmartPointer\UniquePtr</Filter>
     </ClCompile>
-    <ClCompile Include="Library\DirectX11\Font\Font.cpp">
-      <Filter>Library\DirectX11\Font</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\Light\Light.cpp">
-      <Filter>Library\DirectX11\Light</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\VertexManager\VertexManager.cpp">
-      <Filter>Library\DirectX11\VertexManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\VertexManager\IVertex\IVertex.cpp">
-      <Filter>Library\DirectX11\VertexManager\IVertex</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\VertexManager\Vertex\Vertex.cpp">
-      <Filter>Library\DirectX11\VertexManager\Vertex</Filter>
-    </ClCompile>
     <ClCompile Include="Library\Math\Math.cpp">
       <Filter>Library\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\Camera\Camera.cpp">
-      <Filter>Library\DirectX11\Camera</Filter>
     </ClCompile>
     <ClCompile Include="Library\Math\Vector2\Vector2.cpp">
       <Filter>Library\Math\Vector2</Filter>
@@ -322,20 +277,8 @@
     <ClCompile Include="Library\MemoryAllocator\TlsfAllocator\TlsfAllocator.cpp">
       <Filter>Library\MemoryAllocator\TlsfAllocator</Filter>
     </ClCompile>
-    <ClCompile Include="Library\DirectX11\AnimationManager\IAnimation\IAnimation.cpp">
-      <Filter>Library\DirectX11\AnimationManager\IAnimation</Filter>
-    </ClCompile>
     <ClCompile Include="Library\ObjectManagerBase\ObjectManagerBase.cpp">
       <Filter>Library\ObjectManagerBase</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\FbxFileManager\FbxFileManager.cpp">
-      <Filter>Library\DirectX11\FbxFileManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\FbxFileManager\FbxLoader\FbxLoader.cpp">
-      <Filter>Library\DirectX11\FbxFileManager\FbxLoader</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\FbxFileManager\FbxModel\FbxModel.cpp">
-      <Filter>Library\DirectX11\FbxFileManager\FbxModel</Filter>
     </ClCompile>
     <ClCompile Include="Library\EventManager\EventBase\EventBase.cpp">
       <Filter>Library\EventManagerBase\EventBase</Filter>
@@ -358,6 +301,67 @@
     <ClCompile Include="Library\SoundManager\SoundManager.cpp">
       <Filter>Library\DirectX11\SoundManager</Filter>
     </ClCompile>
+    <ClCompile Include="Library\DirectX11\AnimationManager\Animation\Dx11Animation.cpp">
+      <Filter>Library\DirectX11\AnimationManager\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\AnimationManager\IAnimation\Dx11IAnimation.cpp">
+      <Filter>Library\DirectX11\AnimationManager\IAnimation</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\AnimationManager\Dx11AnimationManager.cpp">
+      <Filter>Library\DirectX11\AnimationManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\Billboard2D\Dx11Billboard2D.cpp">
+      <Filter>Library\DirectX11\Billboard2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\Camera\Dx11Camera.cpp">
+      <Filter>Library\DirectX11\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\FbxFileManager\FbxLoader\Dx11FbxLoader.cpp">
+      <Filter>Library\DirectX11\FbxFileManager\FbxLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\FbxFileManager\FbxModel\Dx11FbxModel.cpp">
+      <Filter>Library\DirectX11\FbxFileManager\FbxModel</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\FbxFileManager\Dx11FbxFileManager.cpp">
+      <Filter>Library\DirectX11\FbxFileManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\Font\Dx11Font.cpp">
+      <Filter>Library\DirectX11\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\GraphicsDevice\Dx11GraphicsDevice.cpp">
+      <Filter>Library\DirectX11\GraphicsDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\Light\Dx11Light.cpp">
+      <Filter>Library\DirectX11\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\ShaderManager\Dx11ShaderManager.cpp">
+      <Filter>Library\DirectX11\ShaderManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\TextureManager\ITexture\Dx11ITexture.cpp">
+      <Filter>Library\DirectX11\TextureManager\ITexture</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\TextureManager\Texture\Dx11Texture.cpp">
+      <Filter>Library\DirectX11\TextureManager\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\TextureManager\Dx11TextureManager.cpp">
+      <Filter>Library\DirectX11\TextureManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\Vertex2D\Dx11Vertex2D.cpp">
+      <Filter>Library\DirectX11\Vertex2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\VertexManager\IVertex\Dx11IVertex.cpp">
+      <Filter>Library\DirectX11\VertexManager\IVertex</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\VertexManager\Vertex\Dx11Vertex.cpp">
+      <Filter>Library\DirectX11\VertexManager\Vertex</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\VertexManager\Dx11VertexManager.cpp">
+      <Filter>Library\DirectX11\VertexManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX12\GraphicsDevice\Dx12GraphicsDevice.cpp" />
+    <ClCompile Include="Library\DirectX12\CommandQueueManager\Dx12CommandQueueManager.cpp" />
+    <ClCompile Include="Library\DirectX12\SwapChain\Dx12SwapChain.cpp" />
+    <ClCompile Include="Library\DirectX12\CommandListManager\Dx12CommandListManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Debugger\Debugger.h">
@@ -402,32 +406,8 @@
     <ClInclude Include="Library\InputDeviceManager\MouseDevice\MouseDevice.h">
       <Filter>Library\InputDeviceManager\MouseDevice</Filter>
     </ClInclude>
-    <ClInclude Include="Library\DirectX11\ShaderManager\ShaderManager.h">
-      <Filter>Library\DirectX11\ShaderManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\TextureManager\Texture\Texture.h">
-      <Filter>Library\DirectX11\TextureManager\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\TextureManager\TextureManager.h">
-      <Filter>Library\DirectX11\TextureManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\AnimationManager\AnimationManager.h">
-      <Filter>Library\DirectX11\AnimationManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\AnimationManager\Animation\Animation.h">
-      <Filter>Library\DirectX11\AnimationManager\Animation</Filter>
-    </ClInclude>
     <ClInclude Include="Library\Define\Define.h">
       <Filter>Library\Define</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\Vertex2D\Vertex2D.h">
-      <Filter>Library\DirectX11\Vertex2D</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\GraphicsDevice\GraphicsDevice.h">
-      <Filter>Library\DirectX11\GraphicsDevice</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\TextureManager\ITexture\ITexture.h">
-      <Filter>Library\DirectX11\TextureManager\ITexture</Filter>
     </ClInclude>
     <ClInclude Include="Library\ObjectManagerBase\ObjectBase\ObjectBase.h">
       <Filter>Library\ObjectBase</Filter>
@@ -444,9 +424,6 @@
     <ClInclude Include="Library\CollisionManager\CollisionBase\CollisionQuad2D\CollisionQuad2D.h">
       <Filter>Library\CollisionManager\CollisionBase\CollisionQuad2D</Filter>
     </ClInclude>
-    <ClInclude Include="Library\DirectX11\Billboard2D\Billboard2D.h">
-      <Filter>Library\DirectX11\Billboard2D</Filter>
-    </ClInclude>
     <ClInclude Include="Library\SmartPointer\SmartPointer.h">
       <Filter>Library\SmartPointer</Filter>
     </ClInclude>
@@ -459,26 +436,8 @@
     <ClInclude Include="Library\SmartPointer\UniquePtr\UniquePtr.h">
       <Filter>Library\SmartPointer\UniquePtr</Filter>
     </ClInclude>
-    <ClInclude Include="Library\DirectX11\Font\Font.h">
-      <Filter>Library\DirectX11\Font</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\Light\Light.h">
-      <Filter>Library\DirectX11\Light</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\VertexManager\VertexManager.h">
-      <Filter>Library\DirectX11\VertexManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\VertexManager\IVertex\IVertex.h">
-      <Filter>Library\DirectX11\VertexManager\IVertex</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\VertexManager\Vertex\Vertex.h">
-      <Filter>Library\DirectX11\VertexManager\Vertex</Filter>
-    </ClInclude>
     <ClInclude Include="Library\Math\Math.h">
       <Filter>Library\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\Camera\Camera.h">
-      <Filter>Library\DirectX11\Camera</Filter>
     </ClInclude>
     <ClInclude Include="Library\Math\Vector2\Vector2.h">
       <Filter>Library\Math\Vector2</Filter>
@@ -492,20 +451,8 @@
     <ClInclude Include="Library\MemoryAllocator\TlsfAllocator\TlsfAllocator.h">
       <Filter>Library\MemoryAllocator\TlsfAllocator</Filter>
     </ClInclude>
-    <ClInclude Include="Library\DirectX11\AnimationManager\IAnimation\IAnimation.h">
-      <Filter>Library\DirectX11\AnimationManager\IAnimation</Filter>
-    </ClInclude>
     <ClInclude Include="Library\ObjectManagerBase\ObjectManagerBase.h">
       <Filter>Library\ObjectManagerBase</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\FbxFileManager\FbxFileManager.h">
-      <Filter>Library\DirectX11\FbxFileManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\FbxFileManager\FbxLoader\FbxLoader.h">
-      <Filter>Library\DirectX11\FbxFileManager\FbxLoader</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\FbxFileManager\FbxModel\FbxModel.h">
-      <Filter>Library\DirectX11\FbxFileManager\FbxModel</Filter>
     </ClInclude>
     <ClInclude Include="Library\EventManager\EventBase\EventBase.h">
       <Filter>Library\EventManagerBase\EventBase</Filter>
@@ -528,6 +475,67 @@
     <ClInclude Include="Library\SoundManager\SoundManager.h">
       <Filter>Library\DirectX11\SoundManager</Filter>
     </ClInclude>
+    <ClInclude Include="Library\DirectX11\AnimationManager\Animation\Dx11Animation.h">
+      <Filter>Library\DirectX11\AnimationManager\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\AnimationManager\IAnimation\Dx11IAnimation.h">
+      <Filter>Library\DirectX11\AnimationManager\IAnimation</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\AnimationManager\Dx11AnimationManager.h">
+      <Filter>Library\DirectX11\AnimationManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\Billboard2D\Dx11Billboard2D.h">
+      <Filter>Library\DirectX11\Billboard2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\Camera\Dx11Camera.h">
+      <Filter>Library\DirectX11\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\FbxFileManager\FbxLoader\Dx11FbxLoader.h">
+      <Filter>Library\DirectX11\FbxFileManager\FbxLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\FbxFileManager\FbxModel\Dx11FbxModel.h">
+      <Filter>Library\DirectX11\FbxFileManager\FbxModel</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\FbxFileManager\Dx11FbxFileManager.h">
+      <Filter>Library\DirectX11\FbxFileManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\Font\Dx11Font.h">
+      <Filter>Library\DirectX11\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\GraphicsDevice\Dx11GraphicsDevice.h">
+      <Filter>Library\DirectX11\GraphicsDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\Light\Dx11Light.h">
+      <Filter>Library\DirectX11\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\ShaderManager\Dx11ShaderManager.h">
+      <Filter>Library\DirectX11\ShaderManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\TextureManager\ITexture\Dx11ITexture.h">
+      <Filter>Library\DirectX11\TextureManager\ITexture</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\TextureManager\Texture\Dx11Texture.h">
+      <Filter>Library\DirectX11\TextureManager\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\TextureManager\Dx11TextureManager.h">
+      <Filter>Library\DirectX11\TextureManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\Vertex2D\Dx11Vertex2D.h">
+      <Filter>Library\DirectX11\Vertex2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\VertexManager\IVertex\Dx11IVertex.h">
+      <Filter>Library\DirectX11\VertexManager\IVertex</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\VertexManager\Vertex\Dx11Vertex.h">
+      <Filter>Library\DirectX11\VertexManager\Vertex</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\VertexManager\Dx11VertexManager.h">
+      <Filter>Library\DirectX11\VertexManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX12\GraphicsDevice\Dx12GraphicsDevice.h" />
+    <ClInclude Include="Library\DirectX12\CommandQueueManager\Dx12CommandQueueManager.h" />
+    <ClInclude Include="Library\DirectX12\SwapChain\Dx12SwapChain.h" />
+    <ClInclude Include="Library\DirectX12\CommandListManager\Dx12CommandListManager.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\DirectX11\Vertex2D\Effect\Vertex2D.fx">
