@@ -31,12 +31,12 @@ namespace Lib
 		w = _pf[3];
 	}
 
-	VECTOR4::VECTOR4(float _x, float _y, float _z, float _w)
+	VECTOR4::VECTOR4(float _x, float _y, float _z, float _w) : 
+		x(_x),
+		y(_y),
+		z(_z),
+		w(_w)
 	{
-		x = _x;
-		y = _y;
-		z = _z;
-		w = _w;
 	}
 
 

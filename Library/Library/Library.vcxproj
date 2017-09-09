@@ -121,6 +121,7 @@
     <ClInclude Include="Library\InputDeviceManager\InputDeviceManager.h" />
     <ClInclude Include="Library\Math\Math.h" />
     <ClInclude Include="Library\DirectX12\SwapChain\Dx12SwapChain.h" />
+    <ClInclude Include="Library\Math\Matrix\Matrix.h" />
     <None Include="Library\GameDataManager\GameDataManager_private.inl" />
     <ClInclude Include="Library\TaskManager\TaskBase\DrawTask\DrawTask.h" />
     <ClInclude Include="Library\ObjectManagerBase\ObjectBase\ObjectBase.h" />
@@ -210,6 +211,7 @@
     <ClCompile Include="Library\Math\Vector3\Vector3.cpp" />
     <ClCompile Include="Library\Math\Vector4\Vector4.cpp" />
     <ClCompile Include="Library\DirectX12\SwapChain\Dx12SwapChain.cpp" />
+    <ClCompile Include="Library\Math\Matrix\Matrix.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\DirectX11\Font\Effect\Font.fx">

@@ -29,11 +29,11 @@ namespace Lib
 		z = _pf[2];
 	}
 
-	VECTOR3::VECTOR3(float _x, float _y, float _z)
+	VECTOR3::VECTOR3(float _x, float _y, float _z) :
+		x(_x),
+		y(_y),
+		z(_z)
 	{
-		x = _x;
-		y = _y;
-		z = _z;
 	}
 
 

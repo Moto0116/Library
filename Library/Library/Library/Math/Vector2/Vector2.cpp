@@ -27,10 +27,10 @@ namespace Lib
 		y = _pf[1];
 	}
 
-	VECTOR2::VECTOR2(float _fx, float _fy)
+	VECTOR2::VECTOR2(float _x, float _y) :
+		x(_x),
+		y(_x)
 	{
-		x = _fx;
-		y = _fy;
 	}
 
 

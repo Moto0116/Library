@@ -262,9 +262,6 @@
     <ClCompile Include="Library\SmartPointer\UniquePtr\UniquePtr.cpp">
       <Filter>Library\SmartPointer\UniquePtr</Filter>
     </ClCompile>
-    <ClCompile Include="Library\Math\Math.cpp">
-      <Filter>Library\Math</Filter>
-    </ClCompile>
     <ClCompile Include="Library\Math\Vector2\Vector2.cpp">
       <Filter>Library\Math\Vector2</Filter>
     </ClCompile>
@@ -362,6 +359,10 @@
     <ClCompile Include="Library\DirectX12\CommandQueueManager\Dx12CommandQueueManager.cpp" />
     <ClCompile Include="Library\DirectX12\SwapChain\Dx12SwapChain.cpp" />
     <ClCompile Include="Library\DirectX12\CommandListManager\Dx12CommandListManager.cpp" />
+    <ClCompile Include="Library\Math\Math.cpp">
+      <Filter>Library\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\Math\Matrix\Matrix.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Debugger\Debugger.h">
@@ -435,9 +436,6 @@
     </ClInclude>
     <ClInclude Include="Library\SmartPointer\UniquePtr\UniquePtr.h">
       <Filter>Library\SmartPointer\UniquePtr</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\Math\Math.h">
-      <Filter>Library\Math</Filter>
     </ClInclude>
     <ClInclude Include="Library\Math\Vector2\Vector2.h">
       <Filter>Library\Math\Vector2</Filter>
@@ -536,6 +534,10 @@
     <ClInclude Include="Library\DirectX12\CommandQueueManager\Dx12CommandQueueManager.h" />
     <ClInclude Include="Library\DirectX12\SwapChain\Dx12SwapChain.h" />
     <ClInclude Include="Library\DirectX12\CommandListManager\Dx12CommandListManager.h" />
+    <ClInclude Include="Library\Math\Math.h">
+      <Filter>Library\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\Math\Matrix\Matrix.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\DirectX11\Vertex2D\Effect\Vertex2D.fx">
