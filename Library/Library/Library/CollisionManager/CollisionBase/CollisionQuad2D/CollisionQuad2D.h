@@ -3,8 +3,8 @@
  * @brief	CollisionQuad2D.h
  * @author	morimoto
  */
-#ifndef COLLISIONQUAD2D_H
-#define COLLISIONQUAD2D_H
+#ifndef LIB_COLLISIONQUAD2D_H
+#define LIB_COLLISIONQUAD2D_H
 
 //----------------------------------------------------------------------
 // Include
@@ -94,7 +94,7 @@ namespace Lib
 		 * あたり判定座標の取得
 		 * @return あたりの座標
 		 */
-		inline D3DXVECTOR2 GetPos()
+		inline const D3DXVECTOR2& GetPos()
 		{
 			return m_Pos;
 		}
@@ -112,7 +112,7 @@ namespace Lib
 		 * あたり判定サイズの取得
 		 * @return あたりのサイズ
 		 */
-		inline D3DXVECTOR2 GetSize()
+		inline const D3DXVECTOR2& GetSize()
 		{
 			return m_Size;
 		}
@@ -147,4 +147,4 @@ namespace Lib
 }
 
 
-#endif // !COLLISIONQUAD2D_H
+#endif // !LIB_COLLISIONQUAD2D_H

@@ -3,7 +3,7 @@
  * @brief	衝突判定管理クラス定義
  * @author	morimoto
  */
-#ifndef COLLISIONMANAGER_H
+#ifndef LIB_COLLISIONMANAGER_H
 #define COLLISIONMANAGER_H
 
 //----------------------------------------------------------------------
@@ -65,10 +65,10 @@ namespace Lib
 		 */
 		void CollisionCheck(CollisionQuad2D* _pCollision1, CollisionQuad2D* _pCollision2);
 
-		std::vector<CollisionQuad2D*> m_pQuadCollision;	//!< あたり判定を行うオブジェクトを格納するコンテナ
+		std::vector<CollisionQuad2D*> m_pQuadCollision;	//!< あたり判定を行うオブジェクトを格納するコンテナ.
 
 	};
 }
 
 
-#endif // !COLLISIONMANAGER_H
+#endif // !LIB_COLLISIONMANAGER_H

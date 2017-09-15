@@ -19,20 +19,14 @@
 
 
 //----------------------------------------------------------------------
-// Type
-//----------------------------------------------------------------------
-namespace Lib
-{
-	using NullType = decltype(nullptr);
-}
-
-
-//----------------------------------------------------------------------
 // Template Functions
 //----------------------------------------------------------------------
 template <typename Type>
 inline void SafeDelete(Type*& _type)
 {
+	typedef char TypeMustBeComplete[sizeof(Type) ? 1 : -1];
+	(void) sizeof(TypeMustBeComplete);
+
 	delete _type;
 	_type = nullptr;
 }
@@ -40,6 +34,9 @@ inline void SafeDelete(Type*& _type)
 template <typename Type>
 inline void SafeDeleteArray(Type*& _type)
 {
+	typedef char TypeMustBeComplete[sizeof(Type) ? 1 : -1];
+	(void) sizeof(TypeMustBeComplete);
+
 	delete[] _type;
 	_type = nullptr;
 }
@@ -94,8 +91,7 @@ struct DefaultDelete
 public:
 	void operator()(Type*& _type) const
 	{
-		delete _type;
-		_type = nullptr;
+		SafeDelete(type);
 	}
 };
 

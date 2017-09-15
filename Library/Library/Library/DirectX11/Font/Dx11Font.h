@@ -53,7 +53,9 @@ namespace Lib
 			 * @param[in] _pColor フォントのカラー値
 			 * @return 生成に成功したらtrue 失敗したらfalse
 			 */
-			bool CreateVertexBuffer(const D3DXVECTOR2* _pSize, const D3DXCOLOR* _pColor = &D3DXCOLOR(0xffffffff));
+			bool CreateVertexBuffer(
+				const D3DXVECTOR2* _pSize, 
+				const D3DXCOLOR* _pColor = &D3DXCOLOR(0xffffffff));
 
 			/**
 			 * 頂点バッファの解放

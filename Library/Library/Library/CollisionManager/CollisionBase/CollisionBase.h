@@ -3,8 +3,8 @@
  * @brief	衝突判定オブジェクト基底クラス定義
  * @author	morimoto
  */
-#ifndef COLLISIONBASE_H
-#define COLLISIONBASE_H
+#ifndef LIB_COLLISIONBASE_H
+#define LIB_COLLISIONBASE_H
 
 
 namespace Lib
@@ -20,9 +20,9 @@ namespace Lib
 		 */
 		enum COLLISION_FILTER
 		{
-			CHARACTER	= 1,	//!< キャラクターオブジェクト
-			STAGE		= 2,	//!< ステージオブジェクト
-			BACKGROUND  = 4		//!< バックグラウンドオブジェクト
+			CHARACTER	= 1,	//!< キャラクターオブジェクト.
+			STAGE		= 2,	//!< ステージオブジェクト.
+			BACKGROUND  = 4		//!< バックグラウンドオブジェクト.
 		};
 
 
@@ -56,14 +56,14 @@ namespace Lib
 
 
 	protected:
-		unsigned int	m_CollisionID;	//!< あたり判定オブジェクトのID
-		unsigned int	m_Filter;		//!< あたり判定を行うオブジェクトの判別するフィルタ
+		unsigned int	m_CollisionID;	//!< あたり判定オブジェクトのID.
+		unsigned int	m_Filter;		//!< あたり判定を行うオブジェクトの判別するフィルタ.
 
 	private:
-		static unsigned int m_CollisionBaseCount;	//!< あたり判定オブジェクトの生成数のカウンタ
+		static unsigned int m_CollisionBaseCount;	//!< あたり判定オブジェクトの生成数のカウンタ.
 
 	};
 }
 
 
-#endif // !COLLISIONBASE_H
+#endif // !LIB_COLLISIONBASE_H

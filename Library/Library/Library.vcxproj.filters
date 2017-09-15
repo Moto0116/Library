@@ -363,6 +363,9 @@
       <Filter>Library\Math</Filter>
     </ClCompile>
     <ClCompile Include="Library\Math\Matrix\Matrix.cpp" />
+    <ClCompile Include="Library\DirectX12\DescriptorManager\DescriptorManager.cpp" />
+    <ClCompile Include="Library\DirectX12\RootSignature\RootSignatureManager.cpp" />
+    <ClCompile Include="Library\DirectX12\PSOManager\PSOManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Debugger\Debugger.h">
@@ -538,6 +541,9 @@
       <Filter>Library\Math</Filter>
     </ClInclude>
     <ClInclude Include="Library\Math\Matrix\Matrix.h" />
+    <ClInclude Include="Library\DirectX12\DescriptorManager\DescriptorManager.h" />
+    <ClInclude Include="Library\DirectX12\RootSignature\RootSignatureManager.h" />
+    <ClInclude Include="Library\DirectX12\PSOManager\PSOManager.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\DirectX11\Vertex2D\Effect\Vertex2D.fx">

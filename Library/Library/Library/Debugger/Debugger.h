@@ -89,6 +89,13 @@ namespace Lib
 		}																	\
 	} while (0)
 
+// 静的アサートマクロ.
+#define StaticMyAssert(_expression, _str)									\
+	do																		\
+	{																		\
+		static_assert(!_expression, _str);									\
+	} while (0)
+
 // デバッグログ出力マクロ.
 #define OutputErrorLog(_str)														\
 	do																				\
@@ -103,6 +110,8 @@ namespace Lib
 #else
 
 #define MyAssert(_expression, _str) (void(0))
+
+#define StaticMyAssert(_expression, _str) (void(0))
 
 #define OutputErrorLog(_str) (void(0))
 

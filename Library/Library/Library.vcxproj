@@ -83,6 +83,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Library\DirectX12\DescriptorManager\DescriptorManager.h" />
     <ClInclude Include="Library\DirectX12\CommandListManager\Dx12CommandListManager.h" />
     <ClInclude Include="Library\DirectX12\CommandQueueManager\Dx12CommandQueueManager.h" />
     <ClInclude Include="Library\DirectX12\GraphicsDevice\Dx12GraphicsDevice.h" />
@@ -122,6 +123,8 @@
     <ClInclude Include="Library\Math\Math.h" />
     <ClInclude Include="Library\DirectX12\SwapChain\Dx12SwapChain.h" />
     <ClInclude Include="Library\Math\Matrix\Matrix.h" />
+    <ClInclude Include="Library\DirectX12\RootSignature\RootSignatureManager.h" />
+    <ClInclude Include="Library\DirectX12\PSOManager\PSOManager.h" />
     <None Include="Library\GameDataManager\GameDataManager_private.inl" />
     <ClInclude Include="Library\TaskManager\TaskBase\DrawTask\DrawTask.h" />
     <ClInclude Include="Library\ObjectManagerBase\ObjectBase\ObjectBase.h" />
@@ -153,6 +156,7 @@
     <None Include="Library\TaskManager\TaskManager_private.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Library\DirectX12\DescriptorManager\DescriptorManager.cpp" />
     <ClCompile Include="Library\DirectX12\CommandListManager\Dx12CommandListManager.cpp" />
     <ClCompile Include="Library\DirectX12\CommandQueueManager\Dx12CommandQueueManager.cpp" />
     <ClCompile Include="Library\DirectX12\GraphicsDevice\Dx12GraphicsDevice.cpp" />
@@ -212,6 +216,8 @@
     <ClCompile Include="Library\Math\Vector4\Vector4.cpp" />
     <ClCompile Include="Library\DirectX12\SwapChain\Dx12SwapChain.cpp" />
     <ClCompile Include="Library\Math\Matrix\Matrix.cpp" />
+    <ClCompile Include="Library\DirectX12\RootSignature\RootSignatureManager.cpp" />
+    <ClCompile Include="Library\DirectX12\PSOManager\PSOManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\DirectX11\Font\Effect\Font.fx">
