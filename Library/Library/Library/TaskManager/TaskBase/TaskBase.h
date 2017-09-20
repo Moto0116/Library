@@ -35,11 +35,11 @@ namespace Lib
 		/**
 		 * タスクの実行
 		 */
-		virtual void Run();
+		virtual void Run() = 0;
 	
 		/**
-		 * タスク実行の優先度設定
-		 * @param[in] _priority タスク優先度
+		 * タスク実行の優先度設定(低い値が優先される)
+		 * @param[in] _priority タスクの優先度
 		 */
 		void SetPriority(PriorityType _priority)
 		{
@@ -47,7 +47,7 @@ namespace Lib
 		}
 	
 		/**
-		 * タスクのIDを取得する
+		 * タスクのIDを取得
 		 * @return タスクのID
 		 */
 		unsigned int GetID()
@@ -58,7 +58,7 @@ namespace Lib
 		/**
 		 * タスクの比較用ファンクタ
 		 */
-		class TaskCmp
+		struct TaskCmp
 		{
 		public:
 			bool operator()(TaskBase<PriorityType>* _pTask1, TaskBase<PriorityType>* _pTask2) const
@@ -66,18 +66,19 @@ namespace Lib
 				return (_pTask1->m_Priority < _pTask2->m_Priority);
 			}
 
-			bool operator()(const TaskBase<PriorityType>& _task1, TaskBase<PriorityType>& _task2) const
+			bool operator()(const TaskBase<PriorityType>& _task1, const TaskBase<PriorityType>& _task2) const
 			{
 				return (_task1.m_Priority < _task2.m_Priority);
 			}
 		};
 	
 	protected:
-		static unsigned int m_TaskNum;	//!< タスクの作成数.
 		unsigned int		m_TaskID;	//!< タスクのID.
 		PriorityType		m_Priority;	//!< タスク実行の優先度.
 
 	private:
+		static unsigned int m_TaskNum;	//!< タスクの作成数.
+
 		DISALLOW_COPY_AND_ASSIGN(TaskBase);
 
 	};

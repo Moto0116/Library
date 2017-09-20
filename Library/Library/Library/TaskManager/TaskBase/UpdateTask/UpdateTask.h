@@ -9,14 +9,14 @@
 //----------------------------------------------------------------------
 // Include
 //----------------------------------------------------------------------
-#include "..\TaskBase.h"
+#include <Windows.h>
 #include "..\..\TaskManager.h"
+#include "..\UpdateStartUpTask\UpdateStartUpTask.h"
+#include "..\..\..\ObjectManagerBase\ObjectBase\ObjectBase.h"
 
 
 namespace Lib
 {
-	class ObjectBase;
-
 	/**
 	 * 更新のタスククラス
 	 */
@@ -31,7 +31,7 @@ namespace Lib
 		/**
 		 * デストラクタ
 		 */
-		~UpdateTask();
+		virtual ~UpdateTask();
 	
 		/**
 		 * 更新タスク実行
@@ -42,7 +42,7 @@ namespace Lib
 		 * 更新オブジェクトをセット
 		 * @param[in] _pObject 更新オブジェクト
 		 */
-		void SetUpdateObject(ObjectBase* _pObject);
+		void SetObject(ObjectBase* _pObject);
 	
 	private:
 		ObjectBase* m_pObject;	//!< 更新を行うオブジェクト.
@@ -53,6 +53,8 @@ namespace Lib
 	typedef TaskManager<UpdateTask> UpdateTaskManager;
 }
 
+
+#include "UpdateTask_private.inl"
 
 
 #endif // !LIB_UPDATETASK_H

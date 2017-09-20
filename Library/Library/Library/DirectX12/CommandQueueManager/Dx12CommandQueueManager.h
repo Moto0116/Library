@@ -21,6 +21,8 @@ namespace Lib
 {
 	namespace Dx12
 	{
+		class CommandQueue;
+
 		/**
 		 * コマンドキューの管理クラス
 		 */
@@ -28,6 +30,8 @@ namespace Lib
 		{
 		public:
 			friend SingletonBase<CommandQueueManager>;
+
+			static const int m_InvalidIndex;	//!< CommandQueueManagerクラスがとるインデックスエラー値.
 
 			/**
 			 * 初期化処理
@@ -49,9 +53,15 @@ namespace Lib
 			 * @return 成功したらtrue 失敗したらfalse
 			 */
 			bool CreateCommandQueue(
-				int* _pindex,
-				CommandListManager::COMMAND_LIST_TYPE _type = CommandListManager::COMMAND_LIST_TYPE_DIRECT,
+				int* _pIndex,
+				CommandList::COMMAND_LIST_TYPE _type = CommandList::COMMAND_LIST_TYPE_DIRECT,
 				int _priority = 0);
+
+			/**
+			 * コマンドキューの解放
+			 * @param[in] _index 解放するコマンドキューのインデックス
+			 */
+			void ReleaseCommandQueue(int _index);
 
 		private:
 			/**
@@ -65,8 +75,8 @@ namespace Lib
 			virtual ~CommandQueueManager();
 
 
-			GraphicsDevice*						m_pGraphicsDevice;	//!< グラフィックデバイス.
-			std::vector<ID3D12CommandQueue*>	m_pCommandQueues;	//!< コマンドキュー.
+			GraphicsDevice*				m_pGraphicsDevice;	//!< グラフィックデバイス.
+			std::vector<CommandQueue*>	m_pCommandQueues;	//!< コマンドキュー.
 
 		};
 	}

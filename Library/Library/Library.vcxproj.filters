@@ -363,9 +363,13 @@
       <Filter>Library\Math</Filter>
     </ClCompile>
     <ClCompile Include="Library\Math\Matrix\Matrix.cpp" />
-    <ClCompile Include="Library\DirectX12\DescriptorManager\DescriptorManager.cpp" />
     <ClCompile Include="Library\DirectX12\RootSignature\RootSignatureManager.cpp" />
     <ClCompile Include="Library\DirectX12\PSOManager\PSOManager.cpp" />
+    <ClCompile Include="Library\DirectX12\DescriptorManager\DescriptorManager.cpp" />
+    <ClCompile Include="Library\DirectX12\CommandQueueManager\CommandQueue\Dx12CommandQueue.cpp" />
+    <ClCompile Include="Library\DirectX12\CommandListManager\CommandList\Dx12CommandList.cpp" />
+    <ClCompile Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask.cpp" />
+    <ClCompile Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Debugger\Debugger.h">
@@ -541,9 +545,13 @@
       <Filter>Library\Math</Filter>
     </ClInclude>
     <ClInclude Include="Library\Math\Matrix\Matrix.h" />
-    <ClInclude Include="Library\DirectX12\DescriptorManager\DescriptorManager.h" />
     <ClInclude Include="Library\DirectX12\RootSignature\RootSignatureManager.h" />
     <ClInclude Include="Library\DirectX12\PSOManager\PSOManager.h" />
+    <ClInclude Include="Library\DirectX12\DescriptorManager\DescriptorManager.h" />
+    <ClInclude Include="Library\DirectX12\CommandQueueManager\CommandQueue\Dx12CommandQueue.h" />
+    <ClInclude Include="Library\DirectX12\CommandListManager\CommandList\Dx12CommandList.h" />
+    <ClInclude Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask.h" />
+    <ClInclude Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\DirectX11\Vertex2D\Effect\Vertex2D.fx">
@@ -575,5 +583,9 @@
     <None Include="Library\GameDataManager\GameDataManager_private.inl">
       <Filter>Library\GameDataManager</Filter>
     </None>
+    <None Include="Library\TaskManager\TaskBase\DrawTask\DrawTask_private.inl" />
+    <None Include="Library\TaskManager\TaskBase\UpdateTask\UpdateTask_private.inl" />
+    <None Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask_private.inl" />
+    <None Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask_private.inl" />
   </ItemGroup>
 </Project>

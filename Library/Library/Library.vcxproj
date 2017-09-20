@@ -83,6 +83,9 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask.h" />
+    <ClInclude Include="Library\DirectX12\CommandListManager\CommandList\Dx12CommandList.h" />
+    <ClInclude Include="Library\DirectX12\CommandQueueManager\CommandQueue\Dx12CommandQueue.h" />
     <ClInclude Include="Library\DirectX12\DescriptorManager\DescriptorManager.h" />
     <ClInclude Include="Library\DirectX12\CommandListManager\Dx12CommandListManager.h" />
     <ClInclude Include="Library\DirectX12\CommandQueueManager\Dx12CommandQueueManager.h" />
@@ -125,6 +128,7 @@
     <ClInclude Include="Library\Math\Matrix\Matrix.h" />
     <ClInclude Include="Library\DirectX12\RootSignature\RootSignatureManager.h" />
     <ClInclude Include="Library\DirectX12\PSOManager\PSOManager.h" />
+    <ClInclude Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask.h" />
     <None Include="Library\GameDataManager\GameDataManager_private.inl" />
     <ClInclude Include="Library\TaskManager\TaskBase\DrawTask\DrawTask.h" />
     <ClInclude Include="Library\ObjectManagerBase\ObjectBase\ObjectBase.h" />
@@ -138,6 +142,8 @@
     <None Include="Library\SmartPointer\SharedPtr\SharedPtr_private.inl" />
     <None Include="Library\SmartPointer\UniquePtr\UniquePtr_private.inl" />
     <None Include="Library\SmartPointer\WeakPtr\WeakPtr_private.inl" />
+    <None Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask_private.inl" />
+    <None Include="Library\TaskManager\TaskBase\DrawTask\DrawTask_private.inl" />
     <None Include="Library\TaskManager\TaskBase\TaskBase_private.inl" />
     <ClInclude Include="Library\Window\Window.h" />
     <ClInclude Include="Library\InputDeviceManager\MouseDevice\MouseDevice.h" />
@@ -153,9 +159,14 @@
     <ClInclude Include="Library\DirectX11\Light\Dx11Light.h" />
     <ClInclude Include="Library\ObjectManagerBase\ObjectManagerBase.h" />
     <ClInclude Include="Library\MemoryAllocator\TlsfAllocator\TlsfAllocator.h" />
+    <None Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask_private.inl" />
+    <None Include="Library\TaskManager\TaskBase\UpdateTask\UpdateTask_private.inl" />
     <None Include="Library\TaskManager\TaskManager_private.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask.cpp" />
+    <ClCompile Include="Library\DirectX12\CommandListManager\CommandList\Dx12CommandList.cpp" />
+    <ClCompile Include="Library\DirectX12\CommandQueueManager\CommandQueue\Dx12CommandQueue.cpp" />
     <ClCompile Include="Library\DirectX12\DescriptorManager\DescriptorManager.cpp" />
     <ClCompile Include="Library\DirectX12\CommandListManager\Dx12CommandListManager.cpp" />
     <ClCompile Include="Library\DirectX12\CommandQueueManager\Dx12CommandQueueManager.cpp" />
@@ -218,6 +229,7 @@
     <ClCompile Include="Library\Math\Matrix\Matrix.cpp" />
     <ClCompile Include="Library\DirectX12\RootSignature\RootSignatureManager.cpp" />
     <ClCompile Include="Library\DirectX12\PSOManager\PSOManager.cpp" />
+    <ClCompile Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\DirectX11\Font\Effect\Font.fx">

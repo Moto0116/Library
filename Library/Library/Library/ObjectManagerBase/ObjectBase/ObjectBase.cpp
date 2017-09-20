@@ -36,7 +36,15 @@ namespace Lib
 	{
 	}
 
+	void ObjectBase::UpdateStartUp()
+	{
+	}
+
 	void ObjectBase::Update()
+	{
+	}
+
+	void ObjectBase::DrawStartUp()
 	{
 	}
 

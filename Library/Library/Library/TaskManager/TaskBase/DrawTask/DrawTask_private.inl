@@ -1,6 +1,6 @@
 ﻿/**
- * @file	TaskBase_private.inl
- * @brief	タスクの基底クラス実装
+ * @file	DrawTask_private.inl
+ * @brief	描画のタスククラステンプレート実装
  * @author	morimoto
  */
 
@@ -8,25 +8,16 @@
 namespace Lib
 {
 	//----------------------------------------------------------------------
-	// Static Private Variables
-	//----------------------------------------------------------------------
-	template<typename PriorityType>
-	unsigned int TaskBase<PriorityType>::m_TaskNum = 0;
-
-
-	//----------------------------------------------------------------------
 	// Constructor	Destructor
 	//----------------------------------------------------------------------
 	template<typename PriorityType>
-	TaskBase<PriorityType>::TaskBase() :
-		m_Priority(0)
+	inline DrawTask<PriorityType>::DrawTask() :
+		m_pObject(nullptr)
 	{
-		m_TaskID = m_TaskNum;
-		m_TaskNum++;
 	}
 
 	template<typename PriorityType>
-	TaskBase<PriorityType>::~TaskBase()
+	inline DrawTask<PriorityType>::~DrawTask()
 	{
 	}
 
@@ -35,8 +26,15 @@ namespace Lib
 	// Public Functions
 	//----------------------------------------------------------------------
 	template<typename PriorityType>
-	void TaskBase<PriorityType>::Run()
+	inline void DrawTask<PriorityType>::Run()
 	{
+		m_pObject->Draw();
+	}
+
+	template<typename PriorityType>
+	inline void DrawTask<PriorityType>::SetObject(ObjectBase* _pObject)
+	{
+		m_pObject = _pObject;
 	}
 }
 

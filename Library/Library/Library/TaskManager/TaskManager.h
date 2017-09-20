@@ -20,56 +20,56 @@ namespace Lib
 	/**
 	 * タスク管理の基底クラス
 	 * @tparam Type 管理するタスクオブジェクト
-	 * @tparam BeginTask 最初に実行するタスクオブジェクト
+	 * @tparam StartUpTask Typeタスク実行前に処理を行うタスクオブジェクト
 	 */
-	template <typename Type, typename BeginTask = TaskBase<>>
-	class TaskManager : public SingletonBase<TaskManager<Type, BeginTask>>
+	template <typename Type, typename StartUpTask = TaskBase<>>
+	class TaskManager : public SingletonBase<TaskManager<Type, StartUpTask>>
 	{
 	public:
-		friend SingletonBase<TaskManager<Type, BeginTask>>;
+		friend SingletonBase<TaskManager<Type, StartUpTask>>;
 	
 		/**
 		 * タスクの実行
 		 */
-		inline void Run();
+		void Run();
 	
 		/**
 		 * タスクの追加
 		 * @param[in] _pTask 追加するタスク
 		 */
-		inline void AddTask(Type* _pTask);
+		void AddTask(Type* _pTask);
 
 		/**
 		 * タスクの削除
 		 * @param[in] _pTask 削除するタスク
 		 */
-		inline void RemoveTask(Type* _pTask);
+		void RemoveTask(Type* _pTask);
 	
 		/**
 		 * 開始タスクの追加
-		 * @param[in] _pBeginTask 追加するタスク
+		 * @param[in] _pStartUpTask 追加するタスク
 		 */
-		inline void AddBeginTask(BeginTask* _pBeginTask);
+		void AddStartUpTask(StartUpTask* _pStartUpTask);
 
 		/**
 		 * 開始タスクの削除
-		 * @param[in] _pBeginTask 削除するタスク
+		 * @param[in] _pStartUpTask 削除するタスク
 		 */
-		inline void RemoveBeginTask(BeginTask* _pBeginTask);
+		void RemoveStartUpTask(StartUpTask* _pStartUpTask);
 
 	private:
 		/**
 		 * コンストラクタ
 		 */
-		inline TaskManager();
+		TaskManager();
 	
 		/**
 		 * デストラクタ
 		 */
-		inline virtual ~TaskManager();
+		virtual ~TaskManager();
 
 
-		std::list<BeginTask*>	m_pBeginTaskList;	//!< 開始タスクオブジェクトを管理するコンテナ.
+		std::list<StartUpTask*>	m_pStartUpTaskList;	//!< 起動タスクオブジェクトを管理するコンテナ.
 		std::list<Type*>		m_pTaskList;		//!< タスクオブジェクトを管理するコンテナ.
 
 	};

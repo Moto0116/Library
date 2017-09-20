@@ -12,13 +12,13 @@ namespace Lib
 	//----------------------------------------------------------------------
 	// Constructor	Destructor
 	//----------------------------------------------------------------------
-	template <typename Type, typename BeginTask>
-	inline TaskManager<Type, BeginTask>::TaskManager()
+	template <typename Type, typename StartUpTask>
+	inline TaskManager<Type, StartUpTask>::TaskManager()
 	{
 	}
 
-	template <typename Type, typename BeginTask>
-	inline TaskManager<Type, BeginTask>::~TaskManager()
+	template <typename Type, typename StartUpTask>
+	inline TaskManager<Type, StartUpTask>::~TaskManager()
 	{
 	}
 
@@ -26,11 +26,11 @@ namespace Lib
 	//----------------------------------------------------------------------
 	// Public Functions
 	//----------------------------------------------------------------------
-	template <typename Type, typename BeginTask>
-	inline void TaskManager<Type, BeginTask>::Run()
+	template <typename Type, typename StartUpTask>
+	inline void TaskManager<Type, StartUpTask>::Run()
 	{
-		m_pBeginTaskList.sort(BeginTask::TaskCmp());
-		for (auto itr = m_pBeginTaskList.begin(); itr != m_pBeginTaskList.end(); itr++)
+		m_pStartUpTaskList.sort(StartUpTask::TaskCmp());
+		for (auto itr = m_pStartUpTaskList.begin(); itr != m_pStartUpTaskList.end(); itr++)
 		{
 			(*itr)->Run();
 		}
@@ -42,14 +42,14 @@ namespace Lib
 		}
 	}
 
-	template <typename Type, typename BeginTask>
-	inline void TaskManager<Type, BeginTask>::AddTask(Type* _pTask)
+	template <typename Type, typename StartUpTask>
+	inline void TaskManager<Type, StartUpTask>::AddTask(Type* _pTask)
 	{
 		m_pTaskList.push_back(_pTask);
 	}
 
-	template <typename Type, typename BeginTask>
-	inline void TaskManager<Type, BeginTask>::RemoveTask(Type* _pTask)
+	template <typename Type, typename StartUpTask>
+	inline void TaskManager<Type, StartUpTask>::RemoveTask(Type* _pTask)
 	{
 		for (auto itr = m_pTaskList.begin(); itr != m_pTaskList.end(); itr++)
 		{
@@ -61,25 +61,24 @@ namespace Lib
 		}
 	}
 
-	template <typename Type, typename BeginTask>
-	inline void TaskManager<Type, BeginTask>::AddBeginTask(BeginTask* _pBeginTask)
+	template <typename Type, typename StartUpTask>
+	inline void TaskManager<Type, StartUpTask>::AddStartUpTask(StartUpTask* _pStartUpTask)
 	{
-		m_pBeginTaskList.push_back(_pBeginTask);
+		m_pStartUpTaskList.push_back(_pStartUpTask);
 	}
 
-	template <typename Type, typename BeginTask>
-	inline void TaskManager<Type, BeginTask>::RemoveBeginTask(BeginTask* _pBeginTask)
+	template <typename Type, typename StartUpTask>
+	inline void TaskManager<Type, StartUpTask>::RemoveStartUpTask(StartUpTask* _pStartUpTask)
 	{
-		for (auto itr = m_pBeginTaskList.begin(); itr != m_pBeginTaskList.end(); itr++)
+		for (auto itr = m_pStartUpTaskList.begin(); itr != m_pStartUpTaskList.end(); itr++)
 		{
-			if (_pBeginTask->GetID() == (*itr)->GetID())
+			if (_pStartUpTask->GetID() == (*itr)->GetID())
 			{
-				m_pBeginTaskList.erase(itr);
+				m_pStartUpTaskList.erase(itr);
 				break;
 			}
 		}
 	}
-
 }
 
 

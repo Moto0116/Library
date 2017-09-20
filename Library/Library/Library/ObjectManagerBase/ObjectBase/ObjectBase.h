@@ -37,9 +37,19 @@ namespace Lib
 		virtual void Finalize();
 
 		/**
+		 * オブジェクトの更新前処理
+		 */
+		virtual void UpdateStartUp();
+
+		/**
 		 * オブジェクトの更新
 		 */
 		virtual void Update();
+
+		/**
+		 * オブジェクトの描画前処理
+		 */
+		virtual void DrawStartUp();
 
 		/**
 		 * オブジェクトの描画
