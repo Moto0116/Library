@@ -14,6 +14,8 @@
 #include <Windows.h>
 #include <DbgHelp.h>
 
+#include "DebugTimer\DebugTimer.h"
+
 
 namespace Lib
 {

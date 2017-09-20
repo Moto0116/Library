@@ -83,6 +83,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Library\Debugger\DebugTimer\DebugTimer.h" />
     <ClInclude Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask.h" />
     <ClInclude Include="Library\DirectX12\CommandListManager\CommandList\Dx12CommandList.h" />
     <ClInclude Include="Library\DirectX12\CommandQueueManager\CommandQueue\Dx12CommandQueue.h" />

@@ -9,7 +9,6 @@
 //----------------------------------------------------------------------
 // Include
 //----------------------------------------------------------------------
-#include <Windows.h>
 #include "..\TaskBase.h"
 #include "..\..\..\ObjectManagerBase\ObjectBase\ObjectBase.h"
 

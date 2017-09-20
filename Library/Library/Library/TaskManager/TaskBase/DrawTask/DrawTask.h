@@ -9,7 +9,6 @@
 //----------------------------------------------------------------------
 // Include
 //----------------------------------------------------------------------
-#include <Windows.h>
 #include "..\..\TaskManager.h"
 #include "..\DrawStartUpTask\DrawStartUpTask.h"
 #include "..\..\..\ObjectManagerBase\ObjectBase\ObjectBase.h"

@@ -552,6 +552,7 @@
     <ClInclude Include="Library\DirectX12\CommandListManager\CommandList\Dx12CommandList.h" />
     <ClInclude Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask.h" />
     <ClInclude Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask.h" />
+    <ClInclude Include="Library\Debugger\DebugTimer\DebugTimer.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\DirectX11\Vertex2D\Effect\Vertex2D.fx">
