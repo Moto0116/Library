@@ -18,6 +18,7 @@
 #include <typeinfo>
 #endif // _DEBUG
 
+#include "ConsoleWindow\ConsoleWindow.h"
 #include "DebugTimer\DebugTimer.h"
 
 

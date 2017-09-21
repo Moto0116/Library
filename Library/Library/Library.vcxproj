@@ -83,6 +83,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Library\Debugger\ConsoleWindow\ConsoleWindow.h" />
     <ClInclude Include="Library\Debugger\DebugTimer\DebugTimer.h" />
     <ClInclude Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask.h" />
     <ClInclude Include="Library\DirectX12\CommandListManager\CommandList\Dx12CommandList.h" />
@@ -165,6 +166,7 @@
     <None Include="Library\TaskManager\TaskManager_private.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Library\Debugger\ConsoleWindow\ConsoleWindow.cpp" />
     <ClCompile Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask.cpp" />
     <ClCompile Include="Library\DirectX12\CommandListManager\CommandList\Dx12CommandList.cpp" />
     <ClCompile Include="Library\DirectX12\CommandQueueManager\CommandQueue\Dx12CommandQueue.cpp" />

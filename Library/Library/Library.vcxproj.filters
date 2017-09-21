@@ -370,6 +370,7 @@
     <ClCompile Include="Library\DirectX12\CommandListManager\CommandList\Dx12CommandList.cpp" />
     <ClCompile Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask.cpp" />
     <ClCompile Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask.cpp" />
+    <ClCompile Include="Library\Debugger\ConsoleWindow\ConsoleWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Debugger\Debugger.h">
@@ -553,6 +554,7 @@
     <ClInclude Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask.h" />
     <ClInclude Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask.h" />
     <ClInclude Include="Library\Debugger\DebugTimer\DebugTimer.h" />
+    <ClInclude Include="Library\Debugger\ConsoleWindow\ConsoleWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\DirectX11\Vertex2D\Effect\Vertex2D.fx">
