@@ -52,7 +52,6 @@ namespace Lib
 	typedef TaskManager<UpdateTask> UpdateTaskManager;
 }
 
-
 #include "UpdateTask_private.inl"
 
 

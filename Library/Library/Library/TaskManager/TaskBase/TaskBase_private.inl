@@ -18,10 +18,11 @@ namespace Lib
 	// Constructor	Destructor
 	//----------------------------------------------------------------------
 	template<typename PriorityType>
-	TaskBase<PriorityType>::TaskBase() :
-		m_Priority(0)
+	TaskBase<PriorityType>::TaskBase(LPCTSTR _taskName) :
+		m_TaskID(m_TaskNum),
+		m_Priority(0),
+		m_TaskName(_taskName)
 	{
-		m_TaskID = m_TaskNum;
 		m_TaskNum++;
 	}
 

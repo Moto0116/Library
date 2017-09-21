@@ -11,6 +11,7 @@
 //----------------------------------------------------------------------
 #include <list>
 
+#include "Debugger\Debugger.h"
 #include "TaskBase\TaskBase.h"
 #include "..\SingletonBase\SingletonBase.h"
 
@@ -71,6 +72,11 @@ namespace Lib
 
 		std::list<StartUpTask*>	m_pStartUpTaskList;	//!< 起動タスクオブジェクトを管理するコンテナ.
 		std::list<Type*>		m_pTaskList;		//!< タスクオブジェクトを管理するコンテナ.
+
+#ifdef _DEBUG
+		Debugger::DebugTimer*	m_pDebugTimer;		//!< タスク一つの作業時間を計測するタイマクラス.
+		Debugger::DebugTimer*	m_pDebugTimer2;		//!< タスク全体の作業時間を計測するタイマクラス.
+#endif // _DEBUG
 
 	};
 }

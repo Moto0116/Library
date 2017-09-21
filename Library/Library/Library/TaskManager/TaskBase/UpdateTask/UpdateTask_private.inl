@@ -33,4 +33,3 @@ namespace Lib
 		m_pObject = _pObject;
 	}
 }
-

@@ -49,25 +49,44 @@ namespace Lib
 			void EndTimer()
 			{
 #ifdef _DEBUG
-				m_EndTime = std::chrono::system_clock::now();
-				auto Diff = m_EndTime - m_StartTime;
-				m_DiffTime = std::chrono::duration_cast<std::chrono::milliseconds>(Diff).count();
+				m_DiffTime = std::chrono::system_clock::now() - m_StartTime;
 #endif // _DEBUG
 			}
 
 			/**
 			 * 計測時間取得
-			 * @return 計測時間(msec単位)
+			 * @return 計測時間(Seconds)
 			 */
-			LONGLONG GetTime()
+			LONGLONG GetSecond()
 			{
-				return m_DiffTime;
+				return std::chrono::duration_cast<std::chrono::seconds>(m_DiffTime).count();
+			}
+
+			/**
+			 * 計測時間取得
+			 * @return 計測時間(MilliSeconds)
+			 */
+			LONGLONG GetMilliSecond()
+			{
+				return std::chrono::duration_cast<std::chrono::milliseconds>(m_DiffTime).count();
+			}
+
+			/**
+			 * 計測時間取得
+			 * @return 計測時間(MicroSeconds)
+			 */
+			LONGLONG GetMicroSecond()
+			{
+				return std::chrono::duration_cast<std::chrono::microseconds>(m_DiffTime).count();
 			}
 
 		private:
+			typedef std::chrono::duration<
+				std::chrono::system_clock::rep,
+				std::chrono::system_clock::period> DebugDiffTime;
+
 			std::chrono::system_clock::time_point	m_StartTime;	//!< 計測開始時間.
-			std::chrono::system_clock::time_point	m_EndTime;		//!< 計測終了時間.
-			LONGLONG								m_DiffTime;		//!< 計測時間(msec単位).
+			DebugDiffTime m_DiffTime;								//!< 計測時間.
 
 		};
 	}

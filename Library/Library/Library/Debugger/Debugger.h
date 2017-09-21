@@ -10,9 +10,13 @@
 // Include
 //----------------------------------------------------------------------
 #include <chrono>
-#include <crtdbg.h>
 #include <Windows.h>
+
+#ifdef _DEBUG
+#include <crtdbg.h>
 #include <DbgHelp.h>
+#include <typeinfo>
+#endif // _DEBUG
 
 #include "DebugTimer\DebugTimer.h"
 
@@ -49,25 +53,25 @@ namespace Lib
 		void CloseLogFile();
 
 		/**
-		 * 計測開始
-		 */
-		void StartTimer();
-
-		/**
-		* 計測終了
-		*/
-		void EndTimer();
-
-		/**
-		 * 計測時間取得
-		 * @return 計測時間(msec単位)
-		 */
-		LONGLONG GetTime();
-
-		/**
 		 * スタックフレーム情報を出力する
 		 */
 		void OutputStackFrame();
+
+		/**
+		 * 型名を文字列に変換して取得(型を直接受け取っているのでRTTIが無効でも問題ない)
+		 * @tparam Type 変換する型名
+		 * @return 型の文字列
+		 */
+		template <typename Type>
+		LPCTSTR TypeToString()
+		{
+#ifdef _DEBUG
+			return typeid(Type).name();
+#else // _DEBUG
+			return "";
+#endif // !_DEBUG
+
+		}
 
 	}
 }
@@ -118,8 +122,6 @@ namespace Lib
 #define OutputErrorLog(_str) (void(0))
 
 #endif // _DEBUG
-
-
 
 
 

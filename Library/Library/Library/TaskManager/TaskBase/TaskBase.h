@@ -24,8 +24,10 @@ namespace Lib
 	public:
 		/**
 		 * コンストラクタ
+		 * @param[in] _taskName タスクの名前
+		 * @todo できれば引数なしにしたいので何かしら修正する予定
 		 */
-		TaskBase();
+		TaskBase(LPCTSTR _taskName = "unknown");
 	
 		/**
 		 * デストラクタ
@@ -44,6 +46,24 @@ namespace Lib
 		void SetPriority(PriorityType _priority)
 		{
 			m_Priority = _priority;
+		}
+
+		/**
+		 * タスクの名前変更
+		 * @param[in] _taskName タスクの名前
+		 */
+		void SetName(LPCTSTR _taskName)
+		{
+			m_TaskName = _taskName;
+		}
+
+		/**
+		 * タスクの名前取得
+		 * @return タスクの名前
+		 */
+		LPCTSTR GetName()
+		{
+			return m_TaskName;
 		}
 	
 		/**
@@ -75,6 +95,7 @@ namespace Lib
 	protected:
 		unsigned int		m_TaskID;	//!< タスクのID.
 		PriorityType		m_Priority;	//!< タスク実行の優先度.
+		LPCTSTR				m_TaskName;	//!< タスクの名前.
 
 	private:
 		static unsigned int m_TaskNum;	//!< タスクの作成数.

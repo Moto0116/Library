@@ -24,9 +24,6 @@ namespace Lib
 		//----------------------------------------------------------------------
 		static const unsigned int						g_DebugLogMax = 512;	//!< デバッグログの最大文字数.
 		static FILE*									g_pLogFile = nullptr;	//!< デバッグ用ファイルポインタ.
-		static std::chrono::system_clock::time_point	g_StartTime;			//!< 計測開始時間.
-		static std::chrono::system_clock::time_point	g_EndTime;				//!< 計測終了時間.
-		static LONGLONG									g_DiffTime;				//!< 計測時間(msec単位).
 		static const int								g_StackMax = 100;		//!< 保持するスタックフレームの最大数.
 		static const int								g_SymbolNameMax = 256;	//!< シンボル名の最大文字数.
 
@@ -75,23 +72,6 @@ namespace Lib
 			fclose(g_pLogFile);
 		}
 
-		void StartTimer()
-		{
-			g_StartTime = std::chrono::system_clock::now();
-		}
-
-		void EndTimer()
-		{
-			g_EndTime = std::chrono::system_clock::now();
-			auto Diff = g_EndTime - g_StartTime;
-			g_DiffTime = std::chrono::duration_cast<std::chrono::milliseconds>(Diff).count();
-		}
-
-		LONGLONG GetTime()
-		{
-			return g_DiffTime;
-		}
-
 		void OutputStackFrame()
 		{
 			// 現在のプロセスの擬似ハンドルを取得して初期化.
@@ -123,7 +103,7 @@ namespace Lib
 			SymCleanup(Process); // プロセスの解放.
 		}
 
-#else
+#else // _DEBUG
 
 		//----------------------------------------------------------------------
 		// Functions
@@ -165,7 +145,7 @@ namespace Lib
 		{
 		}
 
-#endif // _DEBUG
+#endif // !_DEBUG
 	}
 }
 
