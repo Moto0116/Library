@@ -19,7 +19,7 @@ namespace Lib
 	/**
 	 * 更新のタスククラス
 	 */
-	class UpdateTask : public TaskBase<>
+	class UpdateTask final : public TaskBase<>
 	{
 	public:
 		/**

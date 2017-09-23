@@ -121,7 +121,7 @@ namespace Lib
 	{
 		for (auto itr = m_pTaskList.begin(); itr != m_pTaskList.end(); itr++)
 		{
-			if (_pTask->GetID() == (*itr)->GetID())
+			if (_pTask == (*itr))
 			{
 				m_pTaskList.erase(itr);
 				break;
@@ -140,7 +140,7 @@ namespace Lib
 	{
 		for (auto itr = m_pStartUpTaskList.begin(); itr != m_pStartUpTaskList.end(); itr++)
 		{
-			if (_pStartUpTask->GetID() == (*itr)->GetID())
+			if (_pStartUpTask == (*itr))
 			{
 				m_pStartUpTaskList.erase(itr);
 				break;

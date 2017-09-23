@@ -17,7 +17,7 @@
 namespace Lib
 {
 	class EventBase;
-	class EventListenerBase;
+	class EventListener;
 
 	/**
 	 * イベント管理基底クラス
@@ -32,13 +32,13 @@ namespace Lib
 		 * EventListenerを追加する
 		 * @param[in] _pEventListener 追加するEventListener
 		 */
-		void AddEventListener(EventListenerBase* _pEventListener);
+		void AddEventListener(EventListener* _pEventListener);
 
 		/**
 		 * EventListenerを削除する
 		 * @param[in] _pEventListener 削除するEventListener
 		 */
-		void RemoveEventListener(EventListenerBase* _pEventListener);
+		void RemoveEventListener(EventListener* _pEventListener);
 
 		/**
 		 * イベントを通知する
@@ -58,7 +58,7 @@ namespace Lib
 		virtual ~EventManager();
 
 
-		std::vector<EventListenerBase*> m_pEventListener;	//!< イベントリスナを格納するコンテナ.
+		std::vector<EventListener*> m_pEventListener;	//!< イベントリスナを格納するコンテナ.
 
 	};
 }

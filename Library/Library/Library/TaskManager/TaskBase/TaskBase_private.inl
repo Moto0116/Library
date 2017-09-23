@@ -11,7 +11,7 @@ namespace Lib
 	// Static Private Variables
 	//----------------------------------------------------------------------
 	template<typename PriorityType>
-	unsigned int TaskBase<PriorityType>::m_TaskNum = 0;
+	unsigned int TaskBase<PriorityType>::m_TaskCount = 0;
 
 
 	//----------------------------------------------------------------------
@@ -19,11 +19,11 @@ namespace Lib
 	//----------------------------------------------------------------------
 	template<typename PriorityType>
 	TaskBase<PriorityType>::TaskBase(LPCTSTR _taskName) :
-		m_TaskID(m_TaskNum),
+		m_TaskID(m_TaskCount),
 		m_Priority(0),
 		m_TaskName(_taskName)
 	{
-		m_TaskNum++;
+		m_TaskCount++;
 	}
 
 	template<typename PriorityType>

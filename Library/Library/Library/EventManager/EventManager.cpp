@@ -1,6 +1,6 @@
 ﻿/**
  * @file	EventManager.cpp
- * @brief	イベント管理基底クラス実装
+ * @brief	イベント管理クラス実装
  * @author	morimoto
  */
 
@@ -9,7 +9,7 @@
 //----------------------------------------------------------------------
 #include "EventManager\EventManager.h"
 
-#include "EventListenerBase\EventListenerBase.h"
+#include "EventListener\EventListener.h"
 
 
 namespace Lib
@@ -29,16 +29,16 @@ namespace Lib
 	//----------------------------------------------------------------------
 	// Public Functions
 	//----------------------------------------------------------------------
-	void EventManager::AddEventListener(EventListenerBase* _pEventListener)
+	void EventManager::AddEventListener(EventListener* _pEventListener)
 	{
 		m_pEventListener.push_back(_pEventListener);
 	}
 
-	void EventManager::RemoveEventListener(EventListenerBase* _pEventListener)
+	void EventManager::RemoveEventListener(EventListener* _pEventListener)
 	{
 		for (auto itr = m_pEventListener.begin(); itr != m_pEventListener.end(); itr++)
 		{
-			if ((*itr)->GetEventListenerID() == _pEventListener->GetEventListenerID())
+			if ((*itr) == _pEventListener)
 			{
 				m_pEventListener.erase(itr);	// IDが一致していればリストから削除.
 				break;

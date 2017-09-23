@@ -15,9 +15,8 @@ namespace Lib
 	//----------------------------------------------------------------------
 	// Constructor	Destructor
 	//----------------------------------------------------------------------
-	EventBase::EventBase(unsigned int _eventID)
+	EventBase::EventBase()
 	{
-		m_EventID = _eventID;
 	}
 
 	EventBase::~EventBase()

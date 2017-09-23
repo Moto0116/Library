@@ -23,6 +23,26 @@ namespace Lib
 	{
 	public:
 		/**
+		 * タスクの比較用ファンクタ
+		 */
+		struct TaskCmp
+		{
+		public:
+			bool operator()(TaskBase<PriorityType>* _pTask1, TaskBase<PriorityType>* _pTask2) const
+			{
+				return (_pTask1->m_Priority < _pTask2->m_Priority);
+			}
+
+			bool operator()(
+				const TaskBase<PriorityType>& _task1, 
+				const TaskBase<PriorityType>& _task2) const
+			{
+				return (_task1.m_Priority < _task2.m_Priority);
+			}
+		};
+
+
+		/**
 		 * コンストラクタ
 		 * @param[in] _taskName タスクの名前
 		 * @todo できれば引数なしにしたいので何かしら修正する予定
@@ -75,22 +95,11 @@ namespace Lib
 			return m_TaskID;
 		}
 
-		/**
-		 * タスクの比較用ファンクタ
-		 */
-		struct TaskCmp
+		// 比較演算子.
+		bool operator == (TaskBase* _pTask)
 		{
-		public:
-			bool operator()(TaskBase<PriorityType>* _pTask1, TaskBase<PriorityType>* _pTask2) const
-			{
-				return (_pTask1->m_Priority < _pTask2->m_Priority);
-			}
-
-			bool operator()(const TaskBase<PriorityType>& _task1, const TaskBase<PriorityType>& _task2) const
-			{
-				return (_task1.m_Priority < _task2.m_Priority);
-			}
-		};
+			return m_TaskID == _pTask->GetID();
+		}
 	
 	protected:
 		unsigned int		m_TaskID;	//!< タスクのID.
@@ -98,7 +107,7 @@ namespace Lib
 		LPCTSTR				m_TaskName;	//!< タスクの名前.
 
 	private:
-		static unsigned int m_TaskNum;	//!< タスクの作成数.
+		static unsigned int m_TaskCount;	//!< タスクの作成数.
 
 		DISALLOW_COPY_AND_ASSIGN(TaskBase);
 

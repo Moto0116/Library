@@ -18,24 +18,12 @@ namespace Lib
 		/**
 		 * コンストラクタ
 		 */
-		EventBase(unsigned int _eventID);
+		EventBase();
 
 		/**
 		 * デストラクタ
 		 */
-		virtual ~EventBase();
-
-		/**
-		 * EventのIDを取得する関数
-		 * @return EventのID
-		 */
-		inline unsigned int GetEventID() const
-		{
-			return m_EventID;
-		}
-
-	private:
-		unsigned int		m_EventID;			//!< イベントオブジェクトのユニークID.
+		virtual ~EventBase() = 0;
 
 	};
 }

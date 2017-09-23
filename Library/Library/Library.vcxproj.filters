@@ -283,9 +283,6 @@
     <ClCompile Include="Library\EventManager\EventManager.cpp">
       <Filter>Library\EventManagerBase</Filter>
     </ClCompile>
-    <ClCompile Include="Library\EventManager\EventListenerBase\EventListenerBase.cpp">
-      <Filter>Library\EventManagerBase\EventListenerBase</Filter>
-    </ClCompile>
     <ClCompile Include="Library\SoundDevice\SoundDevice.cpp">
       <Filter>Library\DirectX11\SoundDevice</Filter>
     </ClCompile>
@@ -371,6 +368,9 @@
     <ClCompile Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask.cpp" />
     <ClCompile Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask.cpp" />
     <ClCompile Include="Library\Debugger\ConsoleWindow\ConsoleWindow.cpp" />
+    <ClCompile Include="Library\EventManager\EventListener\EventListener.cpp">
+      <Filter>Library\EventManagerBase\EventListenerBase</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Debugger\Debugger.h">
@@ -466,9 +466,6 @@
     <ClInclude Include="Library\EventManager\EventManager.h">
       <Filter>Library\EventManagerBase</Filter>
     </ClInclude>
-    <ClInclude Include="Library\EventManager\EventListenerBase\EventListenerBase.h">
-      <Filter>Library\EventManagerBase\EventListenerBase</Filter>
-    </ClInclude>
     <ClInclude Include="Library\SoundDevice\SoundDevice.h">
       <Filter>Library\DirectX11\SoundDevice</Filter>
     </ClInclude>
@@ -555,6 +552,9 @@
     <ClInclude Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask.h" />
     <ClInclude Include="Library\Debugger\DebugTimer\DebugTimer.h" />
     <ClInclude Include="Library\Debugger\ConsoleWindow\ConsoleWindow.h" />
+    <ClInclude Include="Library\EventManager\EventListener\EventListener.h">
+      <Filter>Library\EventManagerBase\EventListenerBase</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\DirectX11\Vertex2D\Effect\Vertex2D.fx">
