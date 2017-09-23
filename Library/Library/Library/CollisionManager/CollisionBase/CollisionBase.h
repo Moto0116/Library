@@ -54,6 +54,11 @@ namespace Lib
 			return m_Filter;
 		}
 
+		// 比較演算子.
+		bool operator == (CollisionBase* _pCollision)
+		{
+			return m_CollisionID == _pCollision->GetID();
+		}
 
 	protected:
 		unsigned int	m_CollisionID;	//!< あたり判定オブジェクトのID.

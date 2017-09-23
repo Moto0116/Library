@@ -119,14 +119,7 @@ namespace Lib
 	template <typename Type, typename StartUpTask>
 	inline void TaskManager<Type, StartUpTask>::RemoveTask(Type* _pTask)
 	{
-		for (auto itr = m_pTaskList.begin(); itr != m_pTaskList.end(); itr++)
-		{
-			if (_pTask == (*itr))
-			{
-				m_pTaskList.erase(itr);
-				break;
-			}
-		}
+		m_pTaskList.remove(_pTask);
 	}
 
 	template <typename Type, typename StartUpTask>
@@ -138,14 +131,7 @@ namespace Lib
 	template <typename Type, typename StartUpTask>
 	inline void TaskManager<Type, StartUpTask>::RemoveStartUpTask(StartUpTask* _pStartUpTask)
 	{
-		for (auto itr = m_pStartUpTaskList.begin(); itr != m_pStartUpTaskList.end(); itr++)
-		{
-			if (_pStartUpTask == (*itr))
-			{
-				m_pStartUpTaskList.erase(itr);
-				break;
-			}
-		}
+		m_pStartUpTaskList.remove(_pStartUpTask);
 	}
 }
 

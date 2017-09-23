@@ -10,6 +10,7 @@
 // Include
 //----------------------------------------------------------------------
 #include <list>
+#include <algorithm>
 
 #include "Debugger\Debugger.h"
 #include "TaskBase\TaskBase.h"

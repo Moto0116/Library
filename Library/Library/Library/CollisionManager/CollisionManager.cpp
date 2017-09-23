@@ -11,6 +11,8 @@
 
 #include "CollisionBase\CollisionQuad2D\CollisionQuad2D.h"
 
+#include <algorithm>
+
 
 namespace Lib
 {
@@ -50,14 +52,9 @@ namespace Lib
 
 	void CollisionManager::RemoveCollision(CollisionQuad2D* _pCollision)
 	{
-		for (auto itr = m_pQuadCollision.begin(); itr != m_pQuadCollision.end(); itr++)
-		{
-			if ((*itr)->GetID() == _pCollision->GetID())
-			{
-				m_pQuadCollision.erase(itr);
-				break;
-			}
-		}
+		m_pQuadCollision.erase(
+			std::remove(m_pQuadCollision.begin(), m_pQuadCollision.end(), _pCollision),
+			m_pQuadCollision.end());
 	}
 
 

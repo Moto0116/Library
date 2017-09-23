@@ -11,6 +11,8 @@
 
 #include "EventListener\EventListener.h"
 
+#include <algorithm>
+
 
 namespace Lib
 {
@@ -36,14 +38,9 @@ namespace Lib
 
 	void EventManager::RemoveEventListener(EventListener* _pEventListener)
 	{
-		for (auto itr = m_pEventListener.begin(); itr != m_pEventListener.end(); itr++)
-		{
-			if ((*itr) == _pEventListener)
-			{
-				m_pEventListener.erase(itr);	// IDが一致していればリストから削除.
-				break;
-			}
-		}
+		m_pEventListener.erase(
+			std::remove(m_pEventListener.begin(), m_pEventListener.end(), _pEventListener),
+			m_pEventListener.end());
 	}
 
 	void EventManager::SendEventMessage(EventBase* _pEvent)

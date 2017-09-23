@@ -95,12 +95,6 @@ namespace Lib
 			return m_TaskID;
 		}
 
-		// 比較演算子.
-		bool operator == (TaskBase* _pTask)
-		{
-			return m_TaskID == _pTask->GetID();
-		}
-	
 	protected:
 		unsigned int		m_TaskID;	//!< タスクのID.
 		PriorityType		m_Priority;	//!< タスク実行の優先度.
