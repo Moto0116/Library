@@ -15,11 +15,8 @@
 //----------------------------------------------------------------------
 // Define
 //----------------------------------------------------------------------
-#define BUFFER_SIZE 4096
+#define BUFFER_SIZE 512
 
-
-///@todo コマンドが送られたらコンソールウィンドウをクリアするようにしたい.
-///@todo Ctrl+Cを無効化する.
 
 void StringInit(char* _str, size_t _size)
 {
@@ -33,16 +30,15 @@ int main(int _argc, char** _argv)
 {
 	HMENU Menu = GetSystemMenu(GetConsoleWindow(), FALSE);
 	RemoveMenu(Menu, SC_CLOSE, MF_BYCOMMAND);	// バツボタンの無効化.
-	SetConsoleTitle(_argv[0]);	// タイトルの変更.
+	SetConsoleTitle(_argv[0]);					// タイトルの変更.
 
 	std::string Buffer;
 	CHAR ReadBuffer[BUFFER_SIZE];
 	DWORD dwRead;
-	HANDLE InputHandle;
 	BOOL IsSuccess;
 
 	// 入力ハンドルの取得.
-	InputHandle = GetStdHandle(STD_INPUT_HANDLE);
+	HANDLE InputHandle = GetStdHandle(STD_INPUT_HANDLE);
 	if (InputHandle == INVALID_HANDLE_VALUE) return -1;
 
 	// 出力ハンドルの取得.

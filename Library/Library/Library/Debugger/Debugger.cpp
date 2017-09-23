@@ -22,10 +22,10 @@ namespace Lib
 		//----------------------------------------------------------------------
 		// Static Variables
 		//----------------------------------------------------------------------
-		static const unsigned int						g_DebugLogMax = 512;	//!< デバッグログの最大文字数.
-		static FILE*									g_pLogFile = nullptr;	//!< デバッグ用ファイルポインタ.
-		static const int								g_StackMax = 100;		//!< 保持するスタックフレームの最大数.
-		static const int								g_SymbolNameMax = 256;	//!< シンボル名の最大文字数.
+		static const unsigned int	g_DebugLogMax = 512;	//!< デバッグログの最大文字数.
+		static FILE*				g_pLogFile = nullptr;	//!< デバッグ用ファイルポインタ.
+		static const int			g_StackMax = 100;		//!< 保持するスタックフレームの最大数.
+		static const int			g_SymbolNameMax = 256;	//!< シンボル名の最大文字数.
 
 
 		//----------------------------------------------------------------------
@@ -87,15 +87,20 @@ namespace Lib
 			pSymbol->MaxNameLen = g_SymbolNameMax;
 			pSymbol->SizeOfStruct = sizeof(SYMBOL_INFO);
 
-			Lib::Debugger::OutputDebugLog("\n--------------------StackFrame--------------------\n\n");
+			OutputDebugLog("\n--------------------StackFrame--------------------\n\n");
 			for (int i = 0; i < Frames; i++)
 			{
-				SymFromAddr(Process, reinterpret_cast<DWORD64>(pStack[i]), nullptr, pSymbol);	// シンボル情報取得.
+				// シンボル情報取得.
+				SymFromAddr(
+					Process, 
+					reinterpret_cast<DWORD64>(pStack[i]), 
+					nullptr, 
+					pSymbol);
 
-				Lib::Debugger::OutputDebugLog("Frame  : %i\n", Frames - i - 1);			// フレーム番号.
-				Lib::Debugger::OutputDebugLog("Name   : %s\n", pSymbol->Name);			// フレーム名.
-				Lib::Debugger::OutputDebugLog("Addres : 0x%0X\n", pSymbol->Address);	// フレームアドレス.
-				Lib::Debugger::OutputDebugLog("Size   : %lu\n\n", pSymbol->Size);		// フレームサイズ.
+				OutputDebugLog("Frame  : %i\n", Frames - i - 1);		// フレーム番号.
+				OutputDebugLog("Name   : %s\n", pSymbol->Name);			// フレーム名.
+				OutputDebugLog("Addres : 0x%0X\n", pSymbol->Address);	// フレームアドレス.
+				OutputDebugLog("Size   : %lu\n\n", pSymbol->Size);		// フレームサイズ.
 			}
 
 			free(pSymbol);

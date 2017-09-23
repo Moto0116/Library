@@ -17,7 +17,7 @@ namespace Lib
 	{
 #ifdef _DEBUG
 		m_pConsoleWindow = new Debugger::ConsoleWindow();
-		m_pConsoleWindow->Initialize("TaskManager-Debug");
+		m_pConsoleWindow->Initialize(Debugger::TypeToString<Type>());
 
 		m_pDebugTimer = new Debugger::DebugTimer();
 		m_pDebugTimer2 = new Debugger::DebugTimer();
@@ -47,7 +47,7 @@ namespace Lib
 
 		m_pDebugTimer2->StartTimer();	// タスク全体の作業時間計測開始.
 
-		m_pConsoleWindow->Print("\n--------------------%s--------------------\n",
+		m_pConsoleWindow->Print("\n\n--------------------%s--------------------\n",
 			Debugger::TypeToString<StartUpTask>());
 
 		// 起動時実行タスクの処理.
@@ -60,9 +60,9 @@ namespace Lib
 			m_pDebugTimer->EndTimer();
 
 			m_pConsoleWindow->Print(
-				"Name : %s - Time : %d ms\n",
+				"Name : %s - Time : %d us\n",
 				(*itr)->GetName(),
-				m_pDebugTimer->GetMilliSecond());
+				m_pDebugTimer->GetMicroSecond());
 		}
 
 
@@ -79,15 +79,15 @@ namespace Lib
 			m_pDebugTimer->EndTimer();
 
 			m_pConsoleWindow->Print(
-				"Name : %s - Time : %d ms\n",
+				"Name : %s - Time : %d us\n",
 				(*itr)->GetName(),
-				m_pDebugTimer->GetMilliSecond());
+				m_pDebugTimer->GetMicroSecond());
 		}
 
 		m_pDebugTimer2->EndTimer();	// タスク全体の作業時間計測終了.
 		m_pConsoleWindow->Print(
-			"\nResult : %d ms\n",
-			m_pDebugTimer2->GetMilliSecond());
+			"\nResult : %d us\n",
+			m_pDebugTimer2->GetMicroSecond());
 
 #else // _DEBUG
 

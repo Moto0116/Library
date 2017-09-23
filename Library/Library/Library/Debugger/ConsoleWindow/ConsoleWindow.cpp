@@ -8,6 +8,7 @@
 // Include
 //----------------------------------------------------------------------
 #include "ConsoleWindow.h"
+#include "..\Debugger.h"
 #include <stdio.h>
 
 
@@ -40,10 +41,8 @@ namespace Lib
 		//----------------------------------------------------------------------
 		// Public Functions
 		//----------------------------------------------------------------------
-		bool ConsoleWindow::Initialize(LPCTSTR _windowParam)
+		bool ConsoleWindow::Initialize(LPCTSTR _name)
 		{
-			///@todo ウィンドウサイズなどもパラメータとして受け取る予定.
-
 #ifdef _DEBUG
 			// パイプの作成.
 			SECURITY_ATTRIBUTES SecurityAttribute;
@@ -52,6 +51,7 @@ namespace Lib
 			SecurityAttribute.lpSecurityDescriptor = 0;
 			if (!CreatePipe(&m_ReadHandle, &m_WriteHandle, &SecurityAttribute, 0))
 			{
+				OutputDebugLog("無名パイプの作成に失敗しました");
 				return false;
 			}
 
@@ -67,8 +67,14 @@ namespace Lib
 			StartUpInfo.hStdInput = m_ReadHandle;
 			StartUpInfo.dwFlags |= STARTF_USESTDHANDLES;
 			TCHAR Program[] = TEXT("Library\\Debugger\\DebugConsoleWindow.exe");
-			TCHAR Args[100];
-			sprintf_s(Args, "%s", _windowParam);
+			TCHAR Args[64];
+			sprintf_s(Args, "%s", _name);
+			for (int i = 0; i < _countof(Args); i++)
+			{
+				// スペースがあると別引数と認識されるので-に置き換え.
+				if (Args[i] == ' ')	Args[i] = '-';
+			}
+
 			if (!CreateProcess(
 				Program,
 				Args,
@@ -81,6 +87,7 @@ namespace Lib
 				&StartUpInfo,
 				&ProcessInfo))
 			{
+				OutputDebugLog("プロセスの作成に失敗しました");
 				return false;
 			}
 
@@ -97,6 +104,8 @@ namespace Lib
 		void ConsoleWindow::Finalize()
 		{
 #ifdef _DEBUG
+			if (!m_IsActive) return;
+
 			if (m_WriteHandle != INVALID_HANDLE_VALUE)
 			{
 				if (m_ProcessHandle != INVALID_HANDLE_VALUE)
@@ -117,6 +126,12 @@ namespace Lib
 		{
 #ifdef _DEBUG
 			if (!m_IsActive) return;
+
+			if (WaitForSingleObject(m_ProcessHandle, 0) == WAIT_OBJECT_0)
+			{
+				Finalize();
+				return;
+			}
 
 			TCHAR OutputStr[m_OutputBufferSize];
 			va_list ArgsList;

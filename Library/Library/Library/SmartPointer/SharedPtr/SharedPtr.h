@@ -69,8 +69,6 @@ namespace Lib
 		 */
 		SharedPtr(const SharedPtr<Type, ReleaseFunc>& _src);
 
-
-		///@todo 引数で受け取るオブジェクトにconstをつけれるようにする.
 		/**
 		 * コピーコンストラクタ
 		 * @param[in] _src コピー元
@@ -121,7 +119,6 @@ namespace Lib
 		}
 
 
-		///@todo 引数で受け取るオブジェクトにconstをつけれるようにする.
 		template <typename MoveType, typename MoveReleaseFunc>
 		SharedPtr<Type, ReleaseFunc>& operator = (SharedPtr<MoveType, MoveReleaseFunc>& _src)
 		{
