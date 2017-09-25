@@ -101,9 +101,9 @@ template <typename Type>
 struct DefaultDelete
 {
 public:
-	void operator()(Type*& _type) const
+	void operator()(Type*& _type)
 	{
-		SafeDelete(type);
+		SafeDelete(_type);
 	}
 };
 

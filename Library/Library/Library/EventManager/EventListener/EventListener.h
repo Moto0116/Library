@@ -24,8 +24,9 @@ namespace Lib
 	public:
 		/**
 		 * コンストラクタ
+		 * @param[in] _pFunc 設定する関数ポインタオブジェクト
 		 */
-		EventListener();
+		EventListener(std::function<void(EventBase*)>* _pFunc);
 
 		/**
 		 * デストラクタ

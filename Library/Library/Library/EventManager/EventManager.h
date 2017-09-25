@@ -10,6 +10,7 @@
 // Include
 //----------------------------------------------------------------------
 #include <vector>
+#include <map>
 
 #include "..\SingletonBase\SingletonBase.h"
 
@@ -31,22 +32,37 @@ namespace Lib
 		/**
 		 * EventListenerを追加する
 		 * @param[in] _pEventListener 追加するEventListener
+		 * @param[in] _groupName EvetListenerを追加するグループの名前
 		 */
-		void AddEventListener(EventListener* _pEventListener);
+		void AddEventListener(EventListener* _pEventListener, LPCTSTR _groupName);
 
 		/**
 		 * EventListenerを削除する
 		 * @param[in] _pEventListener 削除するEventListener
+		 * @param[in] _groupName EvetListenerを削除するグループの名前
 		 */
-		void RemoveEventListener(EventListener* _pEventListener);
+		void RemoveEventListener(EventListener* _pEventListener, LPCTSTR _groupName);
 
 		/**
 		 * イベントを通知する
 		 * @param[in] _pEvent 通知するイベント
+		 * @param[in] _groupName イベントを通知するグループ名
 		 */
-		void SendEventMessage(EventBase* _pEvent);
+		void SendEventMessage(EventBase* _pEvent, LPCTSTR _groupName);
 
 	private:
+		/**
+		 * LPCTSTR比較用のオブジェクト
+		 */
+		struct CompareStr
+		{
+		public:
+			bool operator()(LPCTSTR _str1, LPCTSTR _str2)
+			{
+				return strcmp(_str1, _str2) < 0;
+			}
+		};
+
 		/**
 		 * コンストラクタ
 		 */
@@ -58,7 +74,11 @@ namespace Lib
 		virtual ~EventManager();
 
 
-		std::vector<EventListener*> m_pEventListener;	//!< イベントリスナを格納するコンテナ.
+		std::map<
+			LPCTSTR, 
+			std::vector<EventListener*>,
+			CompareStr> 
+			m_pEventListeners;	//!< イベントリスナを格納するコンテナ.
 
 	};
 }

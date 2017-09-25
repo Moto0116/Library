@@ -17,13 +17,26 @@ namespace Lib
 	public:
 		/**
 		 * コンストラクタ
+		 * @param[in] _eventID イベントのID
 		 */
-		EventBase();
+		EventBase(unsigned int _eventID);
 
 		/**
 		 * デストラクタ
 		 */
-		virtual ~EventBase() = 0;
+		virtual ~EventBase();
+
+		/**
+		 * イベントのIDを取得
+		 * @return イベントID
+		 */
+		unsigned int GetEventID()
+		{
+			return m_EventID;
+		}
+
+	private:
+		unsigned int m_EventID;	//!< イベントID.
 
 	};
 }

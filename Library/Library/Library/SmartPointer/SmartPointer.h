@@ -16,7 +16,7 @@
 
 template <
 	typename Type,
-	typename ReleaseFunc = DefaultDelete<Type >>
+	typename ReleaseFunc = DefaultDelete<Type>>
 using SharedPtr = Lib::SharedPtr<Type, ReleaseFunc>;
 
 template <

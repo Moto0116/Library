@@ -31,21 +31,25 @@ namespace Lib
 	//----------------------------------------------------------------------
 	// Public Functions
 	//----------------------------------------------------------------------
-	void EventManager::AddEventListener(EventListener* _pEventListener)
+	void EventManager::AddEventListener(EventListener* _pEventListener, LPCTSTR _groupName)
 	{
-		m_pEventListener.push_back(_pEventListener);
+		m_pEventListeners[_groupName].push_back(_pEventListener);
 	}
 
-	void EventManager::RemoveEventListener(EventListener* _pEventListener)
+	void EventManager::RemoveEventListener(EventListener* _pEventListener, LPCTSTR _groupName)
 	{
-		m_pEventListener.erase(
-			std::remove(m_pEventListener.begin(), m_pEventListener.end(), _pEventListener),
-			m_pEventListener.end());
+		auto EventListener = m_pEventListeners[_groupName];
+
+		EventListener.erase(
+			std::remove(EventListener.begin(), EventListener.end(), _pEventListener),
+			EventListener.end());
 	}
 
-	void EventManager::SendEventMessage(EventBase* _pEvent)
+	void EventManager::SendEventMessage(EventBase* _pEvent, LPCTSTR _groupName)
 	{
-		for (auto itr = m_pEventListener.begin(); itr != m_pEventListener.end(); itr++)
+		auto EventListener = m_pEventListeners[_groupName];
+
+		for (auto itr = EventListener.begin(); itr != EventListener.end(); itr++)
 		{
 			(*itr)->EventMessage(_pEvent);
 		}
