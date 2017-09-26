@@ -16,11 +16,7 @@ namespace Lib
 	inline TaskManager<Type, StartUpTask>::TaskManager()
 	{
 #ifdef _DEBUG
-		m_pConsoleWindow = new Debugger::ConsoleWindow();
-		m_pConsoleWindow->Initialize(Debugger::TypeToString<Type>());
-
-		m_pDebugTimer = new Debugger::DebugTimer();
-		m_pDebugTimer2 = new Debugger::DebugTimer();
+		m_ConsoleWindow.Initialize(Debugger::TypeToString<Type>());
 #endif // _DEBUG
 	}
 
@@ -28,11 +24,7 @@ namespace Lib
 	inline TaskManager<Type, StartUpTask>::~TaskManager()
 	{
 #ifdef _DEBUG
-		SafeDelete(m_pDebugTimer2);
-		SafeDelete(m_pDebugTimer);
-
-		m_pConsoleWindow->Finalize();
-		SafeDelete(m_pConsoleWindow);
+		m_ConsoleWindow.Finalize();
 #endif // _DEBUG
 	}
 
@@ -45,9 +37,9 @@ namespace Lib
 	{
 #ifdef _DEBUG
 
-		m_pDebugTimer2->StartTimer();	// タスク全体の作業時間計測開始.
+		m_DebugTimer2.StartTimer();	// タスク全体の作業時間計測開始.
 
-		m_pConsoleWindow->Print("\n\n--------------------%s--------------------\n",
+		m_ConsoleWindow.Print("\n\n--------------------%s--------------------\n",
 			Debugger::TypeToString<StartUpTask>());
 
 		// 起動時実行タスクの処理.
@@ -55,18 +47,18 @@ namespace Lib
 		for (auto itr = m_pStartUpTaskList.begin(); itr != m_pStartUpTaskList.end(); itr++)
 		{
 			// タスクの作業時間計測.
-			m_pDebugTimer->StartTimer();
+			m_DebugTimer.StartTimer();
 			(*itr)->Run();
-			m_pDebugTimer->EndTimer();
+			m_DebugTimer.EndTimer();
 
-			m_pConsoleWindow->Print(
+			m_ConsoleWindow.Print(
 				"Name : %s - Time : %d us\n",
 				(*itr)->GetName(),
-				m_pDebugTimer->GetMicroSecond());
+				m_DebugTimer.GetMicroSecond());
 		}
 
 
-		m_pConsoleWindow->Print("\n--------------------%s--------------------\n",
+		m_ConsoleWindow.Print("\n--------------------%s--------------------\n",
 			Debugger::TypeToString<Type>());
 
 		// 実行タスクの処理.
@@ -74,20 +66,20 @@ namespace Lib
 		for (auto itr = m_pTaskList.begin(); itr != m_pTaskList.end(); itr++)
 		{
 			// タスクの作業時間計測.
-			m_pDebugTimer->StartTimer();
+			m_DebugTimer.StartTimer();
 			(*itr)->Run();
-			m_pDebugTimer->EndTimer();
+			m_DebugTimer.EndTimer();
 
-			m_pConsoleWindow->Print(
+			m_ConsoleWindow.Print(
 				"Name : %s - Time : %d us\n",
 				(*itr)->GetName(),
-				m_pDebugTimer->GetMicroSecond());
+				m_DebugTimer.GetMicroSecond());
 		}
 
-		m_pDebugTimer2->EndTimer();	// タスク全体の作業時間計測終了.
-		m_pConsoleWindow->Print(
+		m_DebugTimer2.EndTimer();	// タスク全体の作業時間計測終了.
+		m_ConsoleWindow.Print(
 			"\nResult : %d us\n",
-			m_pDebugTimer2->GetMicroSecond());
+			m_DebugTimer2.GetMicroSecond());
 
 #else // _DEBUG
 

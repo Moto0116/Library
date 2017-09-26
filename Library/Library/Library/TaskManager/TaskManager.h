@@ -75,9 +75,9 @@ namespace Lib
 		std::list<Type*>		m_pTaskList;		//!< タスクオブジェクトを管理するコンテナ.
 
 #ifdef _DEBUG
-		Debugger::ConsoleWindow*	m_pConsoleWindow;	//!< デバッグ情報を出力するウィンドウ.
-		Debugger::DebugTimer*		m_pDebugTimer;		//!< タスク一つの作業時間を計測するタイマクラス.
-		Debugger::DebugTimer*		m_pDebugTimer2;		//!< タスク全体の作業時間を計測するタイマクラス.
+		Debugger::ConsoleWindow		m_ConsoleWindow;	//!< デバッグ情報を出力するウィンドウ.
+		Debugger::DebugTimer		m_DebugTimer;		//!< タスク一つの作業時間を計測するタイマクラス.
+		Debugger::DebugTimer		m_DebugTimer2;		//!< タスク全体の作業時間を計測するタイマクラス.
 #endif // _DEBUG
 
 	};

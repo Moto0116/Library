@@ -50,7 +50,7 @@ namespace Lib
 			 * コンソール出力処理
 			 * @param[in] _pStr 出力する文字列
 			 */
-			void Print(TCHAR* _pStr, ...);
+			void Print(LPCTSTR _pStr, ...);
 
 			/**
 			 * コンソールウィンドウの状態を取得

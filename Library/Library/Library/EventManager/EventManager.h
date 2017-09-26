@@ -12,6 +12,7 @@
 #include <vector>
 #include <map>
 
+#include "Debugger\Debugger.h"
 #include "..\SingletonBase\SingletonBase.h"
 
 
@@ -80,6 +81,9 @@ namespace Lib
 			CompareStr> 
 			m_pEventListeners;	//!< イベントリスナを格納するコンテナ.
 
+#ifdef _DEBUG
+		Debugger::ConsoleWindow		m_ConsoleWindow;	//!< デバッグ情報を出力するウィンドウ.
+#endif // _DEBUG
 	};
 }
 

@@ -122,7 +122,7 @@ namespace Lib
 #endif // !_DEBUG
 		}
 
-		void ConsoleWindow::Print(TCHAR* _pStr, ...)
+		void ConsoleWindow::Print(LPCTSTR _pStr, ...)
 		{
 #ifdef _DEBUG
 			if (!m_IsActive) return;

@@ -71,7 +71,22 @@ namespace Lib
 #else // _DEBUG
 			return "";
 #endif // !_DEBUG
+		}
 
+		/**
+		 * 変数から型名を文字列に変換して取得(型を直接受け取っているのでRTTIが無効でも問題ない)
+		 * @tparam Type 変数の型
+		 * @param[in] _pType 型名を取得する変数 
+		 * @return 型の文字列
+		 */
+		template <typename Type>
+		LPCTSTR TypeToString(Type* _pType)
+		{
+#ifdef _DEBUG
+			return typeid(*_pType).name();
+#else // _DEBUG
+			return "";
+#endif // !_DEBUG
 		}
 
 	}

@@ -10,6 +10,7 @@
 #include "EventManager\EventManager.h"
 
 #include "EventListener\EventListener.h"
+#include "EventBase\EventBase.h"
 
 #include <algorithm>
 
@@ -21,10 +22,16 @@ namespace Lib
 	//----------------------------------------------------------------------
 	EventManager::EventManager()
 	{
+#ifdef _DEBUG
+		m_ConsoleWindow.Initialize(Debugger::TypeToString<EventManager>());
+#endif // _DEBUG
 	}
 
 	EventManager::~EventManager()
 	{
+#ifdef _DEBUG
+		m_ConsoleWindow.Finalize();
+#endif // _DEBUG
 	}
 
 
@@ -47,12 +54,28 @@ namespace Lib
 
 	void EventManager::SendEventMessage(EventBase* _pEvent, LPCTSTR _groupName)
 	{
+#ifdef _DEBUG
+		m_ConsoleWindow.Print("\n\n--------------------%s--------------------\n",
+			_groupName);
+		m_ConsoleWindow.Print("EventName : %s\nEventID : %d\n\n",
+			Debugger::TypeToString(_pEvent),
+			_pEvent->GetEventID());
+
+		auto EventListener = m_pEventListeners[_groupName];
+
+		for (auto itr = EventListener.begin(); itr != EventListener.end(); itr++)
+		{
+			(*itr)->EventMessage(_pEvent);
+			m_ConsoleWindow.Print("EventListenerID - %d\n", (*itr)->GetEventListenerID());
+		}
+#else // _DEBUG
 		auto EventListener = m_pEventListeners[_groupName];
 
 		for (auto itr = EventListener.begin(); itr != EventListener.end(); itr++)
 		{
 			(*itr)->EventMessage(_pEvent);
 		}
+#endif // !_DEBUG	
 	}
 }
 
