@@ -33,8 +33,8 @@ namespace Lib
 	}
 
 	template <typename Type, typename ReleaseFunc>
-	template <typename MoveType, typename MoveReleaseFunc>
-	SharedPtr<Type, ReleaseFunc>::SharedPtr(SharedPtr<MoveType, MoveReleaseFunc>& _src)
+	template <typename Type2, typename ReleaseFunc2>
+	SharedPtr<Type, ReleaseFunc>::SharedPtr(SharedPtr<Type2, ReleaseFunc2>& _src)
 	{
 		m_Ptr = GetPtr(_src);
 		m_pRefCount = GetCounterPtr(_src);
@@ -58,8 +58,8 @@ namespace Lib
 	}
 
 	template <typename Type, typename ReleaseFunc>
-	template <typename MoveType, typename MoveReleaseFunc>
-	SharedPtr<Type, ReleaseFunc>::SharedPtr(SharedPtr<MoveType, MoveReleaseFunc>&& _src)
+	template <typename Type2, typename ReleaseFunc2>
+	SharedPtr<Type, ReleaseFunc>::SharedPtr(SharedPtr<Type2, ReleaseFunc2>&& _src)
 	{
 		m_Ptr = GetPtr(_src);
 		m_pRefCount = GetCounterPtr(_src);
@@ -180,10 +180,6 @@ namespace Lib
 	SharedPtr<Type, ReleaseFunc> CreateSharedPtr(Args... _args)
 	{
 		// 生成ファンクタからオブジェクトを生成.
-		CreateFunc Functor;
-		Type* pType = Functor(_args...);
-		SharedPtr<Type, ReleaseFunc> pSmartPtr(pType);
-
-		return pSmartPtr;
+		return SharedPtr<Type, ReleaseFunc> pSmartPtr(CreateFunc(_args...));
 	}
 }

@@ -48,17 +48,17 @@ namespace Lib
 		UniquePtr(Type* _ptr = nullptr);
 
 		/**
-		 * ムーブコンストラクタ
+		 * ムーブコンストラクタ(同じポインタ)
 		 * @param[in] _src ムーブ元
 		 */
 		UniquePtr(UniquePtr<Type, ReleaseFunc>&& _src);
 
 		/**
-		 * ムーブコンストラクタ
+		 * ムーブコンストラクタ(異なるポインタ)
 		 * @param[in] _src ムーブ元
 		 */
-		template <typename MoveType, typename MoveReleaseFunc>
-		UniquePtr(UniquePtr<MoveType, MoveReleaseFunc>&& _src);
+		template <typename Type2, typename ReleaseFunc2>
+		UniquePtr(UniquePtr<Type2, ReleaseFunc2>&& _src);
 
 		/**
 		 * デストラクタ
@@ -70,6 +70,36 @@ namespace Lib
 		explicit operator bool()
 		{
 			return m_Ptr != nullptr;
+		}
+
+
+		// 右辺値の代入.
+		UniquePtr<Type, ReleaseFunc>& operator=(UniquePtr<Type, ReleaseFunc>&& _src)
+		{
+			// 同じポインタ同士のムーブは行わない.
+			if (m_Ptr == _src.m_Ptr) return (*this);
+
+			Release(); // 既に所有しているポインタは解放.
+
+			m_Ptr = _src.m_Ptr;
+			_src.m_Ptr = nullptr;	// 所有権を放棄.
+
+			return (*this);
+		}
+
+
+		template <typename Type2, typename ReleaseFunc2>
+		UniquePtr<Type, ReleaseFunc>& operator=(UniquePtr<Type2, ReleaseFunc2>&& _src)
+		{
+			// 同じポインタ同士のムーブは行わない.
+			if (m_Ptr == GetPtr(_src)) return (*this);
+
+			Release(); // 既に所有しているポインタは解放.
+
+			m_Ptr = GetPtr(_src);
+			*GetPtrPtr(_src) = nullptr;	// 所有権を放棄.
+
+			return (*this);
 		}
 
 

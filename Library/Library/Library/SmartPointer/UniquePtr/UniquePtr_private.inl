@@ -29,12 +29,12 @@ namespace Lib
 	}
 
 	template <typename Type, typename ReleaseFunc>
-	template <typename MoveType, typename MoveReleaseFunc>
-	UniquePtr<Type, ReleaseFunc>::UniquePtr(UniquePtr<MoveType, MoveReleaseFunc>&& _src)
+	template <typename Type2, typename ReleaseFunc2>
+	UniquePtr<Type, ReleaseFunc>::UniquePtr(UniquePtr<Type2, ReleaseFunc2>&& _src)
 	{
 		m_Ptr = GetPtr(_src);
 
-		(*GetPtrPtr(_src)) = nullptr;	// 所有権を放棄.
+		*GetPtrPtr(_src) = nullptr;	// 所有権を放棄.
 	}
 
 
@@ -103,10 +103,8 @@ namespace Lib
 	template <typename Type, typename CreateFunc, typename ReleaseFunc, typename... Args>
 	UniquePtr<Type, ReleaseFunc> CreateUniquePtr(Args... _args)
 	{
-		CreateFunc Functor;
-		Type* pType = Functor(_args...);
-
-		return UniquePtr<Type, ReleaseFunc>(pType);
+		// 生成ファンクタからオブジェクトを生成.
+		return UniquePtr<Type, ReleaseFunc>(CreateFunc(_args...));
 	}
 }
 

@@ -64,30 +64,30 @@ namespace Lib
 		SharedPtr(Type* _ptr = nullptr);
 
 		/**
-		 * コピーコンストラクタ
+		 * コピーコンストラクタ(同じポインタ)
 		 * @param[in] _src コピー元
 		 */
 		SharedPtr(const SharedPtr<Type, ReleaseFunc>& _src);
 
 		/**
-		 * コピーコンストラクタ
+		 * コピーコンストラクタ(異なるポインタ)
 		 * @param[in] _src コピー元
 		 */
-		template <typename MoveType, typename MoveReleaseFunc>
-		SharedPtr(SharedPtr<MoveType, MoveReleaseFunc>& _src);
+		template <typename Type2, typename ReleaseFunc2>
+		SharedPtr(SharedPtr<Type2, ReleaseFunc2>& _src);
 
 		/**
-		 * ムーブコンストラクタ
+		 * ムーブコンストラクタ(同じポインタ)
 		 * @param[in] _src ムーブ元
 		 */
 		SharedPtr(SharedPtr<Type, ReleaseFunc>&& _src);
 
 		/**
-		 * ムーブコンストラクタ
+		 * ムーブコンストラクタ(異なるポインタ)
 		 * @param[in] _src ムーブ元
 		 */
-		template <typename MoveType, typename MoveReleaseFunc>
-		SharedPtr(SharedPtr<MoveType, MoveReleaseFunc>&& _src);
+		template <typename Type2, typename ReleaseFunc2>
+		SharedPtr(SharedPtr<Type2, ReleaseFunc2>&& _src);
 
 		/**
 		 * デストラクタ
@@ -119,8 +119,8 @@ namespace Lib
 		}
 
 
-		template <typename MoveType, typename MoveReleaseFunc>
-		SharedPtr<Type, ReleaseFunc>& operator = (SharedPtr<MoveType, MoveReleaseFunc>& _src)
+		template <typename Type2, typename ReleaseFunc2>
+		SharedPtr<Type, ReleaseFunc>& operator = (SharedPtr<Type2, ReleaseFunc2>& _src)
 		{
 			// 同じポインタ同士のコピーは行わない.
 			if (m_Ptr == GetPtr(_src)) return (*this);
@@ -131,6 +131,44 @@ namespace Lib
 			m_pRefCount = GetCounterPtr(_src);
 
 			AddRef();
+
+			return (*this);
+		}
+
+
+		// 右辺値の代入.
+		SharedPtr<Type, ReleaseFunc>& operator=(SharedPtr<Type, ReleaseFunc>&& _src)
+		{
+			// 同じポインタ同士のムーブは行わない.
+			if (m_Ptr == _src.m_Ptr) return (*this);
+
+			Release(); // 既に所有しているポインタは解放.
+
+			m_Ptr = _src.m_Ptr;
+			m_pRefCount = _src.m_pRefCount;
+
+			AddRef();
+
+			Reset(_src);	// 所有権を放棄.
+
+			return (*this);
+		}
+
+
+		template <typename Type2, typename ReleaseFunc2>
+		SharedPtr<Type, ReleaseFunc>& operator=(SharedPtr<Type2, ReleaseFunc2>&& _src)
+		{
+			// 同じポインタ同士のムーブは行わない.
+			if (m_Ptr == GetPtr(_src)) return (*this);
+
+			Release(); // 既に所有しているポインタは解放.
+
+			m_Ptr = GetPtr(_src);
+			m_pRefCount = GetCounterPtr(_src);
+
+			AddRef();
+
+			Reset(_src);	// 所有権を放棄.
 
 			return (*this);
 		}
