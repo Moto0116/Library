@@ -32,9 +32,9 @@ namespace Lib
 	template <typename Type2, typename ReleaseFunc2>
 	UniquePtr<Type, ReleaseFunc>::UniquePtr(UniquePtr<Type2, ReleaseFunc2>&& _src)
 	{
-		m_Ptr = GetPtr(_src);
+		m_Ptr = _src.m_Ptr;
 
-		*GetPtrPtr(_src) = nullptr;	// 所有権を放棄.
+		_src.m_Ptr = nullptr;	// 所有権を放棄.
 	}
 
 

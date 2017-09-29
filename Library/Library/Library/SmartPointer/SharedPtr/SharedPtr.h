@@ -28,6 +28,9 @@ namespace Lib
 	class SharedPtr
 	{
 	public:
+		template <typename Type2, typename ReleaseFunc2>
+		friend class SharedPtr;
+
 		template <typename Type>
 		friend class WeakPtr;
 
@@ -74,7 +77,7 @@ namespace Lib
 		 * @param[in] _src コピー元
 		 */
 		template <typename Type2, typename ReleaseFunc2>
-		SharedPtr(SharedPtr<Type2, ReleaseFunc2>& _src);
+		SharedPtr(const SharedPtr<Type2, ReleaseFunc2>& _src);
 
 		/**
 		 * ムーブコンストラクタ(同じポインタ)
@@ -120,15 +123,15 @@ namespace Lib
 
 
 		template <typename Type2, typename ReleaseFunc2>
-		SharedPtr<Type, ReleaseFunc>& operator = (SharedPtr<Type2, ReleaseFunc2>& _src)
+		SharedPtr<Type, ReleaseFunc>& operator = (const SharedPtr<Type2, ReleaseFunc2>& _src)
 		{
 			// 同じポインタ同士のコピーは行わない.
-			if (m_Ptr == GetPtr(_src)) return (*this);
+			if (m_Ptr == _src.m_Ptr) return (*this);
 
 			Release(); // 既に所有しているポインタは解放.
 
-			m_Ptr = GetPtr(_src);
-			m_pRefCount = GetCounterPtr(_src);
+			m_Ptr = _src.m_Ptr;
+			m_pRefCount = _src.m_pRefCount;
 
 			AddRef();
 
@@ -159,12 +162,12 @@ namespace Lib
 		SharedPtr<Type, ReleaseFunc>& operator=(SharedPtr<Type2, ReleaseFunc2>&& _src)
 		{
 			// 同じポインタ同士のムーブは行わない.
-			if (m_Ptr == GetPtr(_src)) return (*this);
+			if (m_Ptr == _src.m_Ptr) return (*this);
 
 			Release(); // 既に所有しているポインタは解放.
 
-			m_Ptr = GetPtr(_src);
-			m_pRefCount = GetCounterPtr(_src);
+			m_Ptr = _src.m_Ptr;
+			m_pRefCount = _src.m_pRefCount;
 
 			AddRef();
 

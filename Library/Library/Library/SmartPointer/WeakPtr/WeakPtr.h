@@ -22,6 +22,9 @@ namespace Lib
 	class WeakPtr
 	{
 	public:
+		template <typename Type2>
+		friend class WeakPtr;
+
 		template <typename Type>
 		friend void Reset(WeakPtr<Type>& _ptr, Type* _src);
 

@@ -49,9 +49,9 @@ namespace Lib
 	template <typename MoveType>
 	WeakPtr<Type>::WeakPtr(WeakPtr<MoveType>&& _src)
 	{
-		m_Ptr = GetPtr(_src);
+		m_Ptr = _src->m_Ptr;
 
-		Reset(_src);
+		_src.m_Ptr = nullptr;	// 所有権を放棄.
 	}
 
 	//----------------------------------------------------------------------

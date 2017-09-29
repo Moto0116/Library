@@ -25,6 +25,9 @@ namespace Lib
 	class UniquePtr
 	{
 	public:
+		template <typename Type2, typename ReleaseFunc2>
+		friend class UniquePtr;
+
 		template <
 			typename Type,
 			typename ReleaseFunc>
@@ -92,12 +95,12 @@ namespace Lib
 		UniquePtr<Type, ReleaseFunc>& operator=(UniquePtr<Type2, ReleaseFunc2>&& _src)
 		{
 			// 同じポインタ同士のムーブは行わない.
-			if (m_Ptr == GetPtr(_src)) return (*this);
+			if (m_Ptr == _src.m_Ptr) return (*this);
 
 			Release(); // 既に所有しているポインタは解放.
 
-			m_Ptr = GetPtr(_src);
-			*GetPtrPtr(_src) = nullptr;	// 所有権を放棄.
+			m_Ptr = _src.m_Ptr;
+			_src.m_Ptr = nullptr;	// 所有権を放棄.
 
 			return (*this);
 		}

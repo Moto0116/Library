@@ -34,10 +34,10 @@ namespace Lib
 
 	template <typename Type, typename ReleaseFunc>
 	template <typename Type2, typename ReleaseFunc2>
-	SharedPtr<Type, ReleaseFunc>::SharedPtr(SharedPtr<Type2, ReleaseFunc2>& _src)
+	SharedPtr<Type, ReleaseFunc>::SharedPtr(const SharedPtr<Type2, ReleaseFunc2>& _src)
 	{
-		m_Ptr = GetPtr(_src);
-		m_pRefCount = GetCounterPtr(_src);
+		m_Ptr = _src.m_Ptr;
+		m_pRefCount = _src.m_pRefCount;
 
 		AddRef();
 	}
@@ -61,8 +61,8 @@ namespace Lib
 	template <typename Type2, typename ReleaseFunc2>
 	SharedPtr<Type, ReleaseFunc>::SharedPtr(SharedPtr<Type2, ReleaseFunc2>&& _src)
 	{
-		m_Ptr = GetPtr(_src);
-		m_pRefCount = GetCounterPtr(_src);
+		m_Ptr = _src.m_Ptr;
+		m_pRefCount = _src.m_pRefCount;
 
 		AddRef();
 

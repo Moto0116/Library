@@ -115,7 +115,7 @@ namespace Lib
 #define StaticMyAssert(_expression, _str)									\
 	do																		\
 	{																		\
-		static_assert(!_expression, _str);									\
+		static_assert(!(_expression), _str);								\
 	} while (0)
 
 // デバッグログ出力マクロ.
