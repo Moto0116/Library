@@ -36,6 +36,7 @@
 template <typename Type>
 inline void SafeDelete(Type*& _type)
 {
+	// 不完全型のチェック.
 	typedef char TypeMustBeComplete[sizeof(Type) ? 1 : -1];
 	(void) sizeof(TypeMustBeComplete);
 
@@ -46,6 +47,7 @@ inline void SafeDelete(Type*& _type)
 template <typename Type>
 inline void SafeDeleteArray(Type*& _type)
 {
+	// 不完全型のチェック.
 	typedef char TypeMustBeComplete[sizeof(Type) ? 1 : -1];
 	(void) sizeof(TypeMustBeComplete);
 
@@ -87,7 +89,7 @@ struct DefaultCreate
 {
 public:
 	template <typename... Args>
-	Type* operator()(Args... _args) const
+	Type* operator()(Args... _args)
 	{
 		return new Type(_args...);
 	}

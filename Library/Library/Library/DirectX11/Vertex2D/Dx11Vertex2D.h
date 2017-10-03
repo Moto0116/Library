@@ -126,7 +126,7 @@ namespace Lib
 			 * 描画するテクスチャをセットする
 			 * @param[in] _pTexture テクスチャオブジェクト
 			 */
-			inline void SetTexture(ITexture* _pTexture)
+			void SetTexture(ITexture* _pTexture)
 			{
 				m_pTexture = _pTexture;
 			}
@@ -135,7 +135,7 @@ namespace Lib
 			 * 描画時のアニメーションをセットする
 			 * @param[in] _pAnimation アニメーションオブジェクト
 			 */
-			inline void SetAnimation(IAnimation* _pAnimation)
+			void SetAnimation(IAnimation* _pAnimation)
 			{
 				m_pAnimation = _pAnimation;
 			}
@@ -144,7 +144,7 @@ namespace Lib
 			 * 画像が反転しているのか設定
 			 * @param[in] _isInverse 画像が反転しているか(アニメーション使用時にしか影響しない)
 			 */
-			inline void SetInverse(bool _isInverse)
+			void SetInverse(bool _isInverse)
 			{
 				m_IsInverse = _isInverse;
 			}
@@ -153,7 +153,7 @@ namespace Lib
 			 * 深度ステンシルステートの設定
 			 * @param[in] _pState 画像が設定するステート
 			 */
-			inline void SetDepthStencilState(ID3D11DepthStencilState* _pState)
+			void SetDepthStencilState(ID3D11DepthStencilState* _pState)
 			{
 				m_pUserDepthStencilState = _pState;
 			}
