@@ -28,14 +28,70 @@ namespace Lib
 	//----------------------------------------------------------------------
 	// Utility Functions
 	//----------------------------------------------------------------------
-	inline float ToRadian(float _degree)
+	/**
+	 * 角度をラジアンに変換
+	 * @param[in] _degree 角度 
+	 * @return ラジアンに変換した角度
+	 */
+	__forceinline float ToRadian(float _degree)
 	{
 		return _degree * (g_LibPI / 180.0f);
 	}
 
-	inline float ToDegree(float _radian)
+	/**
+	 * ラジアンから角度に変換
+	 * @param[in] _radian ラジアン 
+	 * @return 角度に変換したラジアン
+	 */
+	__forceinline float ToDegree(float _radian)
 	{
 		return _radian * (180.0f / g_LibPI);
+	}
+
+	/**
+	 * 32bit列の中で立っているbit数を取得
+	 * @param[in] _bits チェックするビット列
+	 * @return 立っているbit数
+	 */
+	__forceinline size_t BitCount(size_t _bits)
+	{
+		_bits = (_bits & 0x55555555) + (_bits >> 1 & 0x55555555);
+		_bits = (_bits & 0x33333333) + (_bits >> 2 & 0x33333333);
+		_bits = (_bits & 0x0f0f0f0f) + (_bits >> 4 & 0x0f0f0f0f);
+		_bits = (_bits & 0x00ff00ff) + (_bits >> 8 & 0x00ff00ff);
+		return (_bits & 0x0000ffff) + (_bits >> 16 & 0x0000ffff);
+	}
+
+	/**
+	 * 32bit列の中の最大有効bit(MSB)を取得
+	 * @param[in] _bits チェックするビット列
+	 * @return 最大有効bit
+	 */
+	__forceinline size_t BitMSB(size_t _bits)
+	{
+		if (_bits == 0) return 0;
+		_bits |= (_bits >> 1);
+		_bits |= (_bits >> 2);
+		_bits |= (_bits >> 4);
+		_bits |= (_bits >> 8);
+		_bits |= (_bits >> 16);
+		return BitCount(_bits) - 1;	// 0起点なので-1で調整.
+	}
+
+	/**
+	 * 32bit列の中の最小有効bit(LSB)を取得
+	 * @param[in] _bits チェックするビット列
+	 * @return 最小有効bit
+	 */
+	__forceinline size_t BitLSB(size_t _bits)
+	{
+		if (_bits == 0) return 0;
+		_bits |= (_bits << 1);
+		_bits |= (_bits << 2);
+		_bits |= (_bits << 4);
+		_bits |= (_bits << 8);
+		_bits |= (_bits << 16);
+		return 32 - BitCount(_bits);
 	}
 
 
