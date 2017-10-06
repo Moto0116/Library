@@ -58,7 +58,7 @@ namespace Lib
 			 * @param[in] _index 取得するモデルのインデックス
 			 * @return Fbxのデータを格納したFbxModelクラス
 			 */
-			inline FbxModel* GetFbxModel(int _index) const
+			FbxModel* GetFbxModel(int _index) const
 			{
 				return m_pFbxModel[_index];
 			}
@@ -75,7 +75,7 @@ namespace Lib
 			 * vectorを使用しているのでバッファ領域は解放されない。\n
 			 * バッファ領域はFbxFileManagerが破棄されたときに解放される。
 			 */
-			inline void ClearBuffer()
+			void ClearBuffer()
 			{
 				m_pFbxModel.clear();
 			}

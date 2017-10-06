@@ -54,7 +54,7 @@ namespace Lib
 			 * ビュー座標変換用行列の取得
 			 * @return ビュー座標変換用行列
 			 */
-			inline const D3DXMATRIX& GetViewMatrix() const
+			const D3DXMATRIX& GetViewMatrix() const
 			{
 				return m_MatView;
 			}
@@ -63,7 +63,7 @@ namespace Lib
 			 * プロジェクション座標変換用行列の取得
 			 * @return プロジェクション座標変換用行列
 			 */
-			inline const D3DXMATRIX& GetProjectionMatrix() const
+			const D3DXMATRIX& GetProjectionMatrix() const
 			{
 				return m_MatProj;
 			}

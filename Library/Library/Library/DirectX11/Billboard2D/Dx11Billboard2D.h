@@ -118,7 +118,7 @@ namespace Lib
 			* 描画するテクスチャをセットする
 			* @param[in] _pTexture テクスチャオブジェクト
 			*/
-			inline void SetTexture(ITexture* _pTexture)
+			void SetTexture(ITexture* _pTexture)
 			{
 				m_pTexture = _pTexture;
 			}

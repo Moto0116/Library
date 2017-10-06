@@ -43,7 +43,7 @@ namespace Lib
 			 * デバイスの取得
 			 * @return DirectX12デバイス
 			 */
-			inline ID3D12Device* GetDevice()
+			ID3D12Device* GetDevice()
 			{
 				return m_pDevice;
 			}

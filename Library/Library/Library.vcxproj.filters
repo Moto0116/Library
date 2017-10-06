@@ -247,26 +247,8 @@
     <ClCompile Include="Library\SceneManager\SceneManager.cpp">
       <Filter>Library\SceneManager</Filter>
     </ClCompile>
-    <ClCompile Include="Library\TaskManager\TaskManager.cpp">
-      <Filter>Library\TaskManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\TaskManager\TaskBase\DrawTask\DrawTask.cpp">
-      <Filter>Library\TaskManager\TaskBase\DrawTask</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\TaskManager\TaskBase\TaskBase.cpp">
-      <Filter>Library\TaskManager\TaskBase</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\TaskManager\TaskBase\UpdateTask\UpdateTask.cpp">
-      <Filter>Library\TaskManager\TaskBase\UpdateTask</Filter>
-    </ClCompile>
     <ClCompile Include="Library\InputDeviceManager\InputDeviceManager.cpp">
       <Filter>Library\InputDeviceManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\GameDataManager\GameDataManager.cpp">
-      <Filter>Library\GameDataManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\SingletonBase\SingletonBase.cpp">
-      <Filter>Library\SingletonBase</Filter>
     </ClCompile>
     <ClCompile Include="Library\Window\Window.cpp">
       <Filter>Library\Window</Filter>
@@ -295,15 +277,6 @@
     <ClCompile Include="Library\CollisionManager\CollisionBase\CollisionQuad2D\CollisionQuad2D.cpp">
       <Filter>Library\CollisionManager\CollisionBase\CollisionQuad2D</Filter>
     </ClCompile>
-    <ClCompile Include="Library\SmartPointer\WeakPtr\WeakPtr.cpp">
-      <Filter>Library\SmartPointer\WeakPtr</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\SmartPointer\SharedPtr\SharedPtr.cpp">
-      <Filter>Library\SmartPointer\SharedPtr</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\SmartPointer\UniquePtr\UniquePtr.cpp">
-      <Filter>Library\SmartPointer\UniquePtr</Filter>
-    </ClCompile>
     <ClCompile Include="Library\Math\Vector2\Vector2.cpp">
       <Filter>Library\Math\Vector2</Filter>
     </ClCompile>
@@ -312,9 +285,6 @@
     </ClCompile>
     <ClCompile Include="Library\Math\Vector4\Vector4.cpp">
       <Filter>Library\Math\Vector4</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\MemoryAllocator\TlsfAllocator\TlsfAllocator.cpp">
-      <Filter>Library\MemoryAllocator\TlsfAllocator</Filter>
     </ClCompile>
     <ClCompile Include="Library\ObjectManagerBase\ObjectManagerBase.cpp">
       <Filter>Library\ObjectManagerBase</Filter>
@@ -429,12 +399,6 @@
     </ClCompile>
     <ClCompile Include="Library\DirectX12\RootSignature\RootSignatureManager.cpp">
       <Filter>Library\DirectX12\RootSignatureManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask.cpp">
-      <Filter>Library\TaskManager\TaskBase\DrawStartUpTask</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask.cpp">
-      <Filter>Library\TaskManager\TaskBase\UpdateStartUpTask</Filter>
     </ClCompile>
     <ClCompile Include="Library\Math\Matrix\Matrix.cpp">
       <Filter>Library\Math\Matrix</Filter>

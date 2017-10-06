@@ -29,7 +29,7 @@ namespace Lib
 		/**
 		 * インスタンスの生成
 		 */
-		inline static void Create()
+		static void Create()
 		{
 			if (m_pInstance == nullptr)
 			{
@@ -41,7 +41,7 @@ namespace Lib
 		 * インスタンスの取得
 		 * @return インスタンス
 		 */
-		inline static Type* GetInstance()
+		static Type* GetInstance()
 		{
 			return m_pInstance;
 		}
@@ -49,7 +49,7 @@ namespace Lib
 		/**
 		 * インスタンスの破棄
 		 */
-		inline static void Delete()
+		static void Delete()
 		{
 			delete m_pInstance;
 			m_pInstance = nullptr;
@@ -61,12 +61,12 @@ namespace Lib
 		/**
 		 * コンストラクタ
 		 */
-		inline SingletonBase();
+		SingletonBase();
 	
 		/**
 		 * デストラクタ
 		 */
-		inline virtual ~SingletonBase();
+		virtual ~SingletonBase();
 	
 	private:
 		DISALLOW_COPY_AND_ASSIGN(SingletonBase<Type>);

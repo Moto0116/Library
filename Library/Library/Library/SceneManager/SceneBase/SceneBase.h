@@ -56,7 +56,7 @@ namespace Lib
 		 * シーンの状態を取得する
 		 * @return シーンの状態
 		 */
-		inline STATE GetState() const
+		STATE GetState() const
 		{
 			return m_State;
 		}
@@ -65,7 +65,7 @@ namespace Lib
 		 * シーンIDを取得する
 		 * @return シーンID
 		 */
-		inline int GetID() const 
+		int GetID() const 
 		{
 			return m_SceneID;
 		}
@@ -74,7 +74,7 @@ namespace Lib
 		 * 遷移先のシーンIDを取得する
 		 * @return 遷移先のシーンID
 		 */
-		inline int GetNextSceneID() const
+		int GetNextSceneID() const
 		{
 			return m_NextSceneID;
 		}

@@ -16,8 +16,6 @@
 
 namespace Lib
 {
-	class ObjectBase;
-
 	/**
 	 * 描画のタスククラス
 	 * @tparam PriorityType タスク実行の優先度を判断するオブジェクト

@@ -42,7 +42,7 @@ namespace Lib
 		 * バイナリデータの取得
 		 * @return バイナリデータ
 		 */
-		inline void* GetBinary() const
+		void* GetBinary() const
 		{
 			return m_pBinary;
 		}
@@ -51,7 +51,7 @@ namespace Lib
 		 * バイナリデータサイズの取得
 		 * @return バイナリデータサイズ
 		 */
-		inline size_t GetBinarySize() const
+		size_t GetBinarySize() const
 		{
 			return m_BinarySize;
 		}

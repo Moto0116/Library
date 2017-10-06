@@ -167,7 +167,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Library\Debugger\ConsoleWindow\ConsoleWindow.cpp" />
-    <ClCompile Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask.cpp" />
     <ClCompile Include="Library\DirectX12\CommandListManager\CommandList\Dx12CommandList.cpp" />
     <ClCompile Include="Library\DirectX12\CommandQueueManager\CommandQueue\Dx12CommandQueue.cpp" />
     <ClCompile Include="Library\DirectX12\DescriptorManager\DescriptorManager.cpp" />
@@ -193,21 +192,15 @@
     <ClCompile Include="Library\InputDeviceManager\GamePad\GamePad.cpp" />
     <ClCompile Include="Library\InputDeviceManager\KeyDevice\KeyDevice.cpp" />
     <ClCompile Include="Library\DirectX11\GraphicsDevice\Dx11GraphicsDevice.cpp" />
-    <ClCompile Include="Library\GameDataManager\GameDataManager.cpp" />
     <ClCompile Include="Library\EventManager\EventBase\EventBase.cpp" />
     <ClCompile Include="Library\EventManager\EventManager.cpp" />
     <ClCompile Include="Library\EventManager\EventListener\EventListener.cpp" />
     <ClCompile Include="Library\Debugger\Debugger.cpp" />
     <ClCompile Include="Library\InputDeviceManager\InputDeviceManager.cpp" />
     <ClCompile Include="Library\Math\Math.cpp" />
-    <ClCompile Include="Library\TaskManager\TaskBase\DrawTask\DrawTask.cpp" />
     <ClCompile Include="Library\ObjectManagerBase\ObjectBase\ObjectBase.cpp" />
-    <ClCompile Include="Library\TaskManager\TaskManager.cpp" />
-    <ClCompile Include="Library\TaskManager\TaskBase\TaskBase.cpp" />
-    <ClCompile Include="Library\TaskManager\TaskBase\UpdateTask\UpdateTask.cpp" />
     <ClCompile Include="Library\SceneManager\SceneManager.cpp" />
     <ClCompile Include="Library\SceneManager\SceneBase\SceneBase.cpp" />
-    <ClCompile Include="Library\SingletonBase\SingletonBase.cpp" />
     <ClCompile Include="Library\Window\Window.cpp" />
     <ClCompile Include="Library\InputDeviceManager\MouseDevice\MouseDevice.cpp" />
     <ClCompile Include="Library\DirectX11\TextureManager\Dx11TextureManager.cpp" />
@@ -221,10 +214,6 @@
     <ClCompile Include="Library\DirectX11\VertexManager\Vertex\Dx11Vertex.cpp" />
     <ClCompile Include="Library\DirectX11\Light\Dx11Light.cpp" />
     <ClCompile Include="Library\ObjectManagerBase\ObjectManagerBase.cpp" />
-    <ClCompile Include="Library\MemoryAllocator\TlsfAllocator\TlsfAllocator.cpp" />
-    <ClCompile Include="Library\SmartPointer\UniquePtr\UniquePtr.cpp" />
-    <ClCompile Include="Library\SmartPointer\SharedPtr\SharedPtr.cpp" />
-    <ClCompile Include="Library\SmartPointer\WeakPtr\WeakPtr.cpp" />
     <ClCompile Include="Library\Math\Vector2\Vector2.cpp" />
     <ClCompile Include="Library\Math\Vector3\Vector3.cpp" />
     <ClCompile Include="Library\Math\Vector4\Vector4.cpp" />
@@ -232,7 +221,6 @@
     <ClCompile Include="Library\Math\Matrix\Matrix.cpp" />
     <ClCompile Include="Library\DirectX12\RootSignature\RootSignatureManager.cpp" />
     <ClCompile Include="Library\DirectX12\PSOManager\PSOManager.cpp" />
-    <ClCompile Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\DirectX11\Font\Effect\Font.fx">

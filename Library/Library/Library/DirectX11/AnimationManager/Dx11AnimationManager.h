@@ -60,7 +60,7 @@ namespace Lib
 			 * @param[in] _index 取得するアニメーションのインデックス
 			 * @return 格納先のアニメーション
 			 */
-			inline IAnimation* GetAnimation(int _index) const
+			IAnimation* GetAnimation(int _index) const
 			{
 				return m_pAnimation[_index];
 			}
@@ -68,7 +68,7 @@ namespace Lib
 			/**
 			 * アニメーションを格納しているバッファを解放する
 			 */
-			inline void ClearBuffer()
+			void ClearBuffer()
 			{
 				m_pAnimation.clear();
 			}

@@ -85,7 +85,7 @@ namespace Lib
 		 * あたり判定座標の設定
 		 * @param[in] _pPos 設定する座標
 		 */
-		inline void SetPos(D3DXVECTOR2* _pPos)
+		void SetPos(D3DXVECTOR2* _pPos)
 		{
 			m_Pos = *_pPos;
 		}
@@ -94,7 +94,7 @@ namespace Lib
 		 * あたり判定座標の取得
 		 * @return あたりの座標
 		 */
-		inline const D3DXVECTOR2& GetPos()
+		const D3DXVECTOR2& GetPos()
 		{
 			return m_Pos;
 		}
@@ -103,7 +103,7 @@ namespace Lib
 		 * あたり判定サイズの設定
 		 * @param[in] _pSize 設定するサイズ
 		 */
-		inline void SetSize(D3DXVECTOR2* _pSize)
+		void SetSize(D3DXVECTOR2* _pSize)
 		{
 			m_Size = *_pSize;
 		}
@@ -112,7 +112,7 @@ namespace Lib
 		 * あたり判定サイズの取得
 		 * @return あたりのサイズ
 		 */
-		inline const D3DXVECTOR2& GetSize()
+		const D3DXVECTOR2& GetSize()
 		{
 			return m_Size;
 		}
@@ -121,7 +121,7 @@ namespace Lib
 		 * オブジェクトの名前を設定
 		 * @param[in] _pName 設定する名前
 		 */
-		inline void SetName(LPCTSTR _pName)
+		void SetName(LPCTSTR _pName)
 		{
 			m_Name = _pName;
 		}
@@ -130,11 +130,10 @@ namespace Lib
 		 * オブジェクトの名前を取得
 		 * @return オブジェクトの名前
 		 */
-		inline LPCTSTR GetName()
+		LPCTSTR GetName()
 		{
 			return m_Name.c_str();
 		}
-
 
 	private:
 		D3DXVECTOR2		m_Pos;	//!< あたり判定の座標.

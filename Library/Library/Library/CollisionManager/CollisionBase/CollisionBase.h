@@ -40,7 +40,7 @@ namespace Lib
 		 * IDを取得する
 		 * @return あたり判定オブジェクトのID
 		 */
-		inline unsigned int GetID() const
+		unsigned int GetID() const
 		{
 			return m_CollisionID;
 		}
@@ -49,7 +49,7 @@ namespace Lib
 		 * フィルタを取得する
 		 * @return あたり判定オブジェクトのフィルタ
 		 */
-		inline unsigned int GetFilter() const
+		unsigned int GetFilter() const
 		{
 			return m_Filter;
 		}

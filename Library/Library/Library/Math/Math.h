@@ -53,7 +53,7 @@ namespace Lib
 	 * @param[in] _bits チェックするビット列
 	 * @return 立っているbit数
 	 */
-	__forceinline size_t BitCount(size_t _bits)
+	__forceinline int BitCount(size_t _bits)
 	{
 		_bits = (_bits & 0x55555555) + (_bits >> 1 & 0x55555555);
 		_bits = (_bits & 0x33333333) + (_bits >> 2 & 0x33333333);
@@ -67,7 +67,7 @@ namespace Lib
 	 * @param[in] _bits チェックするビット列
 	 * @return 最大有効bit
 	 */
-	__forceinline size_t BitMSB(size_t _bits)
+	__forceinline int BitMSB(size_t _bits)
 	{
 		if (_bits == 0) return 0;
 		_bits |= (_bits >> 1);
@@ -83,7 +83,7 @@ namespace Lib
 	 * @param[in] _bits チェックするビット列
 	 * @return 最小有効bit
 	 */
-	__forceinline size_t BitLSB(size_t _bits)
+	__forceinline int BitLSB(size_t _bits)
 	{
 		if (_bits == 0) return 0;
 		_bits |= (_bits << 1);

@@ -110,7 +110,7 @@ namespace Lib
 			 * DirectXデバイスの取得
 			 * @return DirectXデバイス
 			 */
-			inline ID3D11Device* GetDevice() const
+			ID3D11Device* GetDevice() const
 			{
 				return m_pDevice;
 			}
@@ -119,7 +119,7 @@ namespace Lib
 			 * デバイスコンテキストの取得
 			 * @return デバイスコンテキスト
 			 */
-			inline ID3D11DeviceContext* GetDeviceContext() const
+			ID3D11DeviceContext* GetDeviceContext() const
 			{
 				return m_pDeviceContext;
 			}
@@ -128,7 +128,7 @@ namespace Lib
 			 * GraphicsDeviceに結びついているウィンドウのハンドルを取得する
 			 * @return ウィンドウハンドル
 			 */
-			inline HWND GetMainWindowHandle() const
+			HWND GetMainWindowHandle() const
 			{
 				return m_hWnd;
 			}
@@ -137,7 +137,7 @@ namespace Lib
 			 * GraphicsDeviceに結びついているウィンドウのサイズを取得する
 			 * @return ウィンドウサイズ
 			 */
-			inline const RECT* GetMainWindowRect() const
+			const RECT* GetMainWindowRect() const
 			{
 				return &m_WindowRect;
 			}
@@ -146,7 +146,7 @@ namespace Lib
 			 * バックバッファの取得
 			 * @return バックバッファ
 			 */
-			inline ID3D11Texture2D* GetBackBuffer() const
+			ID3D11Texture2D* GetBackBuffer() const
 			{
 				return m_pBackBuffer;
 			}
@@ -155,7 +155,7 @@ namespace Lib
 			 * 深度バッファの取得
 			 * @return 深度バッファ
 			 */
-			inline ID3D11Texture2D* GetDepthStencil() const
+			ID3D11Texture2D* GetDepthStencil() const
 			{
 				return m_pDepthStencilBuffer;
 			}
@@ -164,7 +164,7 @@ namespace Lib
 			 * フルスクリーン設定を行う
 			 * @param[in] _isFullScreenState フルスクリーンの設定
 			 */
-			inline void SetFullScreen(bool _isFullScreenState)
+			void SetFullScreen(bool _isFullScreenState)
 			{
 				m_pDXGISwapChain->SetFullscreenState(_isFullScreenState, nullptr);
 			}

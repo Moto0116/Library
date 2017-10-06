@@ -83,7 +83,7 @@ namespace Lib
 		 * マウスの状態を取得
 		 * @return マウスの状態
 		 */
-		inline const MOUSESTATE& GetMouseState() const 
+		const MOUSESTATE& GetMouseState() const 
 		{ 
 			return m_MouseState; 
 		}

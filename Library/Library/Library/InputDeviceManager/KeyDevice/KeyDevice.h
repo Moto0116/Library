@@ -84,7 +84,7 @@ namespace Lib
 		 * キーの状態が格納されている配列を取得する
 		 * @return キーの状態が格納されている配列
 		 */
-		inline const KEYSTATE* GetKeyState() const 
+		const KEYSTATE* GetKeyState() const 
 		{
 			return m_pKeyState;
 		}

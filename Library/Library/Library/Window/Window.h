@@ -61,7 +61,7 @@ namespace Lib
 		 * ウィンドウハンドルを取得
 		 * @return ウィンドウハンドル
 		 */
-		inline HWND GetWindowHandle() const
+		HWND GetWindowHandle() const
 		{
 			return m_hWnd;
 		}

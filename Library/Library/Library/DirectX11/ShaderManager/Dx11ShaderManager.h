@@ -33,7 +33,6 @@ namespace Lib
 
 			static const int m_InvalidIndex;	//!< ShaderManagerクラスがとるインデックスのエラー値.
 
-
 			/**
 			 * 初期化処理
 			 * @param[in] _pGraphicsDevice グラフィックデバイス
@@ -171,7 +170,7 @@ namespace Lib
 			 * @param[in] _index 取得したい頂点シェーダーのインデックス
 			 * @return 頂点シェーダー
 			 */
-			inline ID3D11VertexShader* GetVertexShader(int _index) const
+			ID3D11VertexShader* GetVertexShader(int _index) const
 			{
 				return m_pVertexShader[_index];
 			}
@@ -181,7 +180,7 @@ namespace Lib
 			 * @param[in] _index 取得したいコンパイルデータのインデックス
 			 * @return 頂点シェーダーのコンパイルデータ
 			 */
-			inline ID3DBlob* GetCompiledVertexShader(int _index) const
+			ID3DBlob* GetCompiledVertexShader(int _index) const
 			{
 				return m_pCompiledVertexShader[_index];
 			}
@@ -191,7 +190,7 @@ namespace Lib
 			 * @param[in] _index 取得したいピクセルシェーダーのインデックス
 			 * @return ピクセルシェーダー
 			 */
-			inline ID3D11PixelShader* GetPixelShader(int _index) const
+			ID3D11PixelShader* GetPixelShader(int _index) const
 			{
 				return m_pPixelShader[_index];
 			}
@@ -201,7 +200,7 @@ namespace Lib
 			 * @param[in] _index 取得したいコンパイルデータのインデックス
 			 * @return ピクセルシェーダーのコンパイルデータ
 			 */
-			inline ID3DBlob* GetCompiledPixelShader(int _index) const
+			ID3DBlob* GetCompiledPixelShader(int _index) const
 			{
 				return m_pCompiledPixelShader[_index];
 			}
@@ -211,7 +210,7 @@ namespace Lib
 			 * @param[in] _index 取得したいジオメトリシェーダーのインデックス
 			 * @return ジオメトリシェーダー
 			 */
-			inline ID3D11GeometryShader* GetGeometryShader(int _index) const
+			ID3D11GeometryShader* GetGeometryShader(int _index) const
 			{
 				return m_pGeometryShader[_index];
 			}
@@ -221,7 +220,7 @@ namespace Lib
 			 * @param[in] _index 取得したいコンパイルデータのインデックス
 			 * @return ジオメトリシェーダーのコンパイルデータ
 			 */
-			inline ID3DBlob* GetCompiledGeometryShader(int _index) const
+			ID3DBlob* GetCompiledGeometryShader(int _index) const
 			{
 				return m_pCompiledGeometryShader[_index];
 			}
@@ -231,7 +230,7 @@ namespace Lib
 			 * @param[in] _index 取得したいハルシェーダーのインデックス
 			 * @return ハルシェーダー
 			 */
-			inline ID3D11HullShader* GetHullShader(int _index) const
+			ID3D11HullShader* GetHullShader(int _index) const
 			{
 				return m_pHullShader[_index];
 			}
@@ -241,7 +240,7 @@ namespace Lib
 			 * @param[in] _index 取得したいコンパイルデータのインデックス
 			 * @return ハルシェーダーのコンパイルデータ
 			 */
-			inline ID3DBlob* GetCompiledHullShader(int _index) const
+			ID3DBlob* GetCompiledHullShader(int _index) const
 			{
 				return m_pCompiledHullShader[_index];
 			}
@@ -251,7 +250,7 @@ namespace Lib
 			 * @param[in] _index 取得したいドメインシェーダーのインデックス
 			 * @return ドメインシェーダー
 			 */
-			inline ID3D11DomainShader* GetDomainShader(int _index) const
+			ID3D11DomainShader* GetDomainShader(int _index) const
 			{
 				return m_pDomainShader[_index];
 			}
@@ -261,7 +260,7 @@ namespace Lib
 			 * @param[in] _index 取得したいコンパイルデータのインデックス
 			 * @return ドメインシェーダーのコンパイルデータ
 			 */
-			inline ID3DBlob* GetCompiledDomainShader(int _index) const
+			ID3DBlob* GetCompiledDomainShader(int _index) const
 			{
 				return m_pCompiledDomainShader[_index];
 			}
@@ -271,7 +270,7 @@ namespace Lib
 			 * @param[in] _index 取得したいコンピュートシェーダーのインデックス
 			 * @return コンピュートシェーダー
 			 */
-			inline ID3D11ComputeShader* GetComputeShader(int _index) const
+			ID3D11ComputeShader* GetComputeShader(int _index) const
 			{
 				return m_pComputeShader[_index];
 			}
@@ -281,7 +280,7 @@ namespace Lib
 			 * @param[in] _index 取得したいコンパイルデータのインデックス
 			 * @return コンピュートシェーダーのコンパイルデータ
 			 */
-			inline ID3DBlob* GetCompiledComputeShader(int _index) const
+			ID3DBlob* GetCompiledComputeShader(int _index) const
 			{
 				return m_pCompiledComputeShader[_index];
 			}
@@ -289,7 +288,7 @@ namespace Lib
 			/**
 			 * シェーダーのデータを確保しているバッファをクリア
 			 */
-			inline void ClearShaderBuffer()
+			void ClearShaderBuffer()
 			{
 				m_pVertexShader.clear();
 				m_pCompiledVertexShader.clear();
@@ -335,7 +334,6 @@ namespace Lib
 			std::vector<ID3DBlob*>				m_pCompiledHullShader;		//!< ハルシェーダーのコンパイル情報を格納するコンテナ.
 			std::vector<ID3DBlob*>				m_pCompiledDomainShader;	//!< ドメインシェーダーのコンパイル情報を格納するコンテナ.
 			std::vector<ID3DBlob*>				m_pCompiledComputeShader;	//!< コンピュートシェーダーのコンパイル情報を格納するコンテナ.
-
 
 			DISALLOW_COPY_AND_ASSIGN(ShaderManager);
 
