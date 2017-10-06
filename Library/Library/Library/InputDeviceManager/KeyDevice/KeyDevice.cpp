@@ -42,7 +42,6 @@ namespace Lib
 
 	KeyDevice::~KeyDevice()
 	{
-		Finalize();
 	}
 
 

@@ -33,7 +33,6 @@ namespace Lib
 
 		AnimationManager::~AnimationManager()
 		{
-			Finalize();
 		}
 
 

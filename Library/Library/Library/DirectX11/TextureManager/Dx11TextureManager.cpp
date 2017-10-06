@@ -35,7 +35,6 @@ namespace Lib
 
 		TextureManager::~TextureManager()
 		{
-			Finalize();
 		}
 
 

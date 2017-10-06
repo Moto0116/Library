@@ -38,7 +38,6 @@ namespace Lib
 
 		ShaderManager::~ShaderManager()
 		{
-			Finalize();
 		}
 
 		//----------------------------------------------------------------------

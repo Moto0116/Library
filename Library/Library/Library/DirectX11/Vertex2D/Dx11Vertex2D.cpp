@@ -44,7 +44,6 @@ namespace Lib
 
 		Vertex2D::~Vertex2D()
 		{
-			Finalize();
 		}
 
 

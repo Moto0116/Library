@@ -28,7 +28,6 @@ namespace Lib
 
 	InputDeviceManager::~InputDeviceManager()
 	{
-		Finalize();
 	}
 
 

@@ -27,7 +27,6 @@ namespace Lib
 
 	MouseDevice::~MouseDevice()
 	{
-		Finalize();
 	}
 
 

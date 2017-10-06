@@ -25,7 +25,6 @@ namespace Lib
 
 	BinaryFile::~BinaryFile()
 	{
-		Destroy();
 	}
 
 

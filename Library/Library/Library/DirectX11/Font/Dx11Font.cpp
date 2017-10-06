@@ -44,7 +44,6 @@ namespace Lib
 
 		Font::~Font()
 		{
-			Finalize();
 		}
 
 
