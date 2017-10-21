@@ -58,10 +58,10 @@ namespace Lib
 
 		bool CommandQueueManager::CreateCommandQueue(
 			int* _pIndex,
-			CommandList::COMMAND_LIST_TYPE _type,
+			D3D12_COMMAND_LIST_TYPE _type,
 			int _priority)
 		{
-			CommandQueue* pCommandQueue = new CommandQueue(_type, _priority);
+			CommandQueue* pCommandQueue = new CommandQueue(m_pGraphicsDevice, _type, _priority);
 
 			if (pCommandQueue->Get() == nullptr)
 			{

@@ -54,7 +54,7 @@ namespace Lib
 			 */
 			bool CreateCommandQueue(
 				int* _pIndex,
-				CommandList::COMMAND_LIST_TYPE _type = CommandList::COMMAND_LIST_TYPE_DIRECT,
+				D3D12_COMMAND_LIST_TYPE _type = D3D12_COMMAND_LIST_TYPE_DIRECT,
 				int _priority = 0);
 
 			/**

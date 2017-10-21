@@ -4,6 +4,7 @@
 //----------------------------------------------------------------------
 // Include
 //----------------------------------------------------------------------
+#include "..\..\GraphicsDevice\Dx12GraphicsDevice.h"
 #include "..\Dx12CommandListManager.h"
 
 
@@ -15,29 +16,46 @@ namespace Lib
 		{
 		public:
 			/**
-			 * コマンドリストの種類
-			 */
-			enum COMMAND_LIST_TYPE
-			{
-				COMMAND_LIST_TYPE_DIRECT = 0,	//!< 描画関係のコマンド.
-				COMMAND_LIST_TYPE_BUNDLE = 1,	//!< バンドル用コマンド.
-				COMMAND_LIST_TYPE_COMPUTE = 2,	//!< コンピュートシェーダー用コマンド.
-				COMMAND_LIST_TYPE_COPY = 3,		//!< リソースコピー用コマンド.
-				COMMAND_LIST_TYPE_MAX			//!< コマンド種類数.
-			};
-
-			/**
 			 * コンストラクタ
+			 * @param[in] _type コマンドの種類
+			 * @return 成功したらtrue 失敗したらfalse
 			 */
-			CommandList();
+			CommandList(
+				GraphicsDevice* _pDevice,
+				D3D12_COMMAND_LIST_TYPE _type = D3D12_COMMAND_LIST_TYPE_DIRECT);
 
 			/**
 			 * デストラクタ
 			 */
 			~CommandList();
 
-		private:
+			/**
+			 * コマンドリストの取得
+			 * @return コマンドリスト
+			 */
+			ID3D12GraphicsCommandList* GetCommandList() { return m_pCommandList; }
 
+			/**
+			 * コマンドアロケータの取得
+			 * @return コマンドアロケータ
+			 */
+			ID3D12CommandAllocator* GetCommandAllocator() { return m_pCommandAllocator; }
+
+		private:
+			/**
+			 * 初期化処理
+			 */
+			void Initialize();
+
+			/**
+			 * 終了処理
+			 */
+			void Finalize();
+
+			GraphicsDevice*				m_pGraphicsDevice;		//!< グラフィックスデバイス.
+			ID3D12CommandAllocator*		m_pCommandAllocator;	//!< コマンドアロケータ.
+			ID3D12GraphicsCommandList*	m_pCommandList;			//!< コマンドリスト.
+			D3D12_COMMAND_LIST_TYPE		m_CommandType;			//!< コマンドの種類.
 
 		};
 	}

@@ -12,6 +12,7 @@
 #include <D3D12.h>
 #include <DXGI1_4.h>
 
+#include "..\..\GraphicsDevice\Dx12GraphicsDevice.h"
 #include "..\Dx12CommandQueueManager.h"
 
 
@@ -25,19 +26,14 @@ namespace Lib
 		class CommandQueue
 		{
 		public:
-			enum PRIORITY_TYPE
-			{
-				PRIORITY_NORMAL = 1,	//!< 通常優先度.
-				PRIORITY_HIGH = 100		//!< 高優先度.
-			};
-
 			/**
 			 * コンストラクタ
 			 * @param[in] _type 作成するコマンドキューの種類
 			 * @param[in] _priority コマンドキューの優先度
 			 */
 			CommandQueue(
-				CommandList::COMMAND_LIST_TYPE _type = CommandList::COMMAND_LIST_TYPE_DIRECT,
+				GraphicsDevice*	_pDevice,
+				D3D12_COMMAND_LIST_TYPE _type = D3D12_COMMAND_LIST_TYPE_DIRECT,
 				int _priority = 0);
 
 			/**
@@ -49,25 +45,26 @@ namespace Lib
 			 * コマンドキューの取得
 			 * @return コマンドキュー
 			 */
-			ID3D12CommandQueue* Get() const;
+			ID3D12CommandQueue* Get() const { return m_pCommandQueue; }
 
 		private:
 			/**
-			 * コマンドキュー生成
+			 * 初期化処理
 			 */
-			void CreateCommandQueue();
+			void Initialize();
 
 			/**
-			 * コマンドキュー解放
+			 * 終了処理
 			 */
-			void ReleaseCommandQueue();
+			void Finalize();
 
 
+			GraphicsDevice*					m_pGraphicsDevice;	//!< グラフィックスデバイス.
 			ID3D12CommandQueue*				m_pCommandQueue;	//!< コマンドキュー.
-			//ID3D12Fence*					m_pFence;			//!< フェンス.
-			//int								m_FenceValue;		//!< フェンス値.
-			//HANDLE							m_FenceEventHandle;	//!< フェンスのイベントハンドル.
-			CommandList::COMMAND_LIST_TYPE	m_Type;				//!< コマンドキューの種類.
+			ID3D12Fence*					m_pFence;			//!< フェンス.
+			int								m_FenceValue;		//!< フェンス値.
+			HANDLE							m_FenceEventHandle;	//!< フェンスのイベントハンドル.
+			D3D12_COMMAND_LIST_TYPE			m_Type;				//!< コマンドキューの種類.
 			int								m_Priority;			//!< コマンドキューの優先度.
 
 		};
