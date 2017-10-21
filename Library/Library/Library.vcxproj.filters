@@ -188,9 +188,6 @@
     <Filter Include="Library\DirectX11\FbxFileManager\FbxModel">
       <UniqueIdentifier>{040d6c05-40fd-42da-9b25-abb3fa8ceee4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Library\EventManagerBase\EventListenerBase">
-      <UniqueIdentifier>{e65f01cc-3869-4bce-8287-f549dc0049b6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Library\DirectX12">
       <UniqueIdentifier>{0d67f097-903b-494a-84d2-264d0c52e48e}</UniqueIdentifier>
     </Filter>
@@ -235,6 +232,9 @@
     </Filter>
     <Filter Include="Library\Math\Matrix">
       <UniqueIdentifier>{dd738579-f1b6-41aa-b943-f10c515132b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\EventManagerBase\EventListener">
+      <UniqueIdentifier>{e65f01cc-3869-4bce-8287-f549dc0049b6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -359,7 +359,7 @@
       <Filter>Library\Math</Filter>
     </ClCompile>
     <ClCompile Include="Library\EventManager\EventListener\EventListener.cpp">
-      <Filter>Library\EventManagerBase\EventListenerBase</Filter>
+      <Filter>Library\EventManagerBase\EventListener</Filter>
     </ClCompile>
     <ClCompile Include="Library\DirectX11\FbxFileManager\Dx11FbxFileManager.cpp">
       <Filter>Library\DirectX11\FbxFileManager</Filter>
@@ -562,7 +562,7 @@
       <Filter>Library\Math</Filter>
     </ClInclude>
     <ClInclude Include="Library\EventManager\EventListener\EventListener.h">
-      <Filter>Library\EventManagerBase\EventListenerBase</Filter>
+      <Filter>Library\EventManagerBase\EventListener</Filter>
     </ClInclude>
     <ClInclude Include="Library\DirectX11\FbxFileManager\Dx11FbxFileManager.h">
       <Filter>Library\DirectX11\FbxFileManager</Filter>

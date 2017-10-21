@@ -75,27 +75,26 @@ namespace Lib
 			bool WriteVertexBuffer();
 
 			/**
-			 * 頂点座標をセットする
+			 * 頂点座標を直接指定する
+			 * @param[in] _pVertex 設定する頂点座標(指定順序は左上-右上-左下-右下)
+			 */
+			void SetVertexPos(const D3DXVECTOR2* _pVertex);
+
+			/**
+			 * 矩形情報から頂点座標を設定する
 			 * @param[in] _pSize 描画する2Dポリゴンの矩形サイズ
 			 */
 			void SetVertex(const D3DXVECTOR2* _pSize);
 
 			/**
-			 * 頂点座標をセットする(回転も行う)
-			 * @param[in] _pSize 描画する2Dポリゴンの矩形サイズ
-			 * @param[in] _angle 矩形の角度
-			 */
-			void SetVertex(const D3DXVECTOR2* _pSize, float _angle);
-
-			/**
-			 * テクスチャ座標をセットする
+			 * テクスチャ座標を設定する
 			 * @param[in] _pMinUV UVの最小値
 			 * @param[in] _pMaxUV UVの最大値
 			 */
 			void SetUV(const D3DXVECTOR2* _pMinUV, const D3DXVECTOR2* _pMaxUV);
 
 			/**
-			 * カラー情報をセットする
+			 * カラー情報を設定する
 			 * @param[in] _pColor 描画するポリゴンの色
 			 */
 			void SetColor(const D3DXCOLOR* _pColor);
@@ -104,13 +103,13 @@ namespace Lib
 			 * 定数バッファにデータを書き込む
 			 * @param[in] _pDrawPos 描画位置
 			 * @param[in] _pScale 2Dオブジェクトのスケーリング値
-			 * @param[in] _angle 2Dオブジェクトの角度
+			 * @param[in] _angle 2Dオブジェクトの回転値(X,Y,Zの順で回転が行われる)
 			 * @return 書き込みに成功したらtrue 失敗したらfalse
 			 */
 			bool WriteConstantBuffer(
 				const D3DXVECTOR2* _pDrawPos,
 				const D3DXVECTOR2* _pScale = &D3DXVECTOR2(1.f, 1.f),
-				float _angle = 0.f);
+				const D3DXVECTOR3* _pAngle = &D3DXVECTOR3(0.f, 0.f, 0.f));
 
 			/**
 			 * デフォルトのシェーダーを使用する準備

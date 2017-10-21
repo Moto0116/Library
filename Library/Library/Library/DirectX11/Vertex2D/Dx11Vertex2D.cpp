@@ -65,33 +65,10 @@ namespace Lib
 			m_WindowWidth = static_cast<float>(WindowRect.right - WindowRect.left);
 			m_WindowHeight = static_cast<float>(WindowRect.bottom - WindowRect.top);
 
-
-			if (!CreateVertexShader())
-			{
-				return false;
-			}
-
-			if (!CreateVertexLayout())
-			{
-				ReleaseVertexShader();
-				return false;
-			}
-
-			if (!CreatePixelShader())
-			{
-				ReleaseVertexLayout();
-				ReleaseVertexShader();
-				return false;
-			}
-
-			if (!CreateState())
-			{
-				ReleaseState();
-				ReleasePixelShader();
-				ReleaseVertexLayout();
-				ReleaseVertexShader();
-				return false;
-			}
+			if (!CreateVertexShader())	return false;
+			if (!CreateVertexLayout())	return false;
+			if (!CreatePixelShader())	return false;
+			if (!CreateState())			return false;
 
 			return true;
 		}
@@ -105,7 +82,11 @@ namespace Lib
 			ReleaseVertexShader();
 		}
 
-		bool Vertex2D::CreateVertexBuffer(const D3DXVECTOR2* _pSize, const D3DXVECTOR2* _pMinUV, const D3DXVECTOR2* _pMaxUV, const D3DXCOLOR* _pColor)
+		bool Vertex2D::CreateVertexBuffer(
+			const D3DXVECTOR2* _pSize,
+			const D3DXVECTOR2* _pMinUV,
+			const D3DXVECTOR2* _pMaxUV, 
+			const D3DXCOLOR* _pColor)
 		{
 			if (m_pVertexBuffer != nullptr)
 			{
@@ -175,6 +156,18 @@ namespace Lib
 			return false;
 		}
 
+		void Vertex2D::SetVertexPos(const D3DXVECTOR2* _pVertex)
+		{
+			m_pVertexData[0].Pos.x = _pVertex[0].x;
+			m_pVertexData[0].Pos.y = _pVertex[0].y;
+			m_pVertexData[1].Pos.x = _pVertex[1].x;
+			m_pVertexData[1].Pos.y = _pVertex[1].y;
+			m_pVertexData[2].Pos.x = _pVertex[2].x;
+			m_pVertexData[2].Pos.y = _pVertex[2].y;
+			m_pVertexData[3].Pos.x = _pVertex[3].x;
+			m_pVertexData[3].Pos.y = _pVertex[3].y;
+		}
+
 		void Vertex2D::SetVertex(const D3DXVECTOR2* _pSize)
 		{
 			m_pVertexData[0].Pos.x = -_pSize->x / 2;
@@ -185,28 +178,6 @@ namespace Lib
 			m_pVertexData[2].Pos.y = _pSize->y / 2;
 			m_pVertexData[3].Pos.x = _pSize->x / 2;
 			m_pVertexData[3].Pos.y = _pSize->y / 2;
-		}
-
-		void Vertex2D::SetVertex(const D3DXVECTOR2* _pSize, float _angle)
-		{
-			m_pVertexData[0].Pos.x = -_pSize->x / 2;
-			m_pVertexData[0].Pos.y = -_pSize->y / 2;
-			m_pVertexData[1].Pos.x = _pSize->x / 2;
-			m_pVertexData[1].Pos.y = -_pSize->y / 2;
-			m_pVertexData[2].Pos.x = -_pSize->x / 2;
-			m_pVertexData[2].Pos.y = _pSize->y / 2;
-			m_pVertexData[3].Pos.x = _pSize->x / 2;
-			m_pVertexData[3].Pos.y = _pSize->y / 2;
-
-			float rad = static_cast<float>(D3DXToRadian(_angle));
-			for (int i = 0; i < VERTEX_NUM; i++)
-			{
-				float X = m_pVertexData[i].Pos.x;
-				float Y = m_pVertexData[i].Pos.y;
-
-				m_pVertexData[i].Pos.x = static_cast<float>(X * cos(rad) - Y * sin(rad));
-				m_pVertexData[i].Pos.y = static_cast<float>(Y * cos(rad) + X * sin(rad));
-			}
 		}
 
 		void Vertex2D::SetUV(const D3DXVECTOR2* _pMinUV, const D3DXVECTOR2* _pMaxUV)
@@ -229,18 +200,34 @@ namespace Lib
 			}
 		}
 
-		bool Vertex2D::WriteConstantBuffer(const D3DXVECTOR2* _pDrawPos, const D3DXVECTOR2* _pScale, float _angle)
+		bool Vertex2D::WriteConstantBuffer(
+			const D3DXVECTOR2* _pDrawPos, 
+			const D3DXVECTOR2* _pScale, 
+			const D3DXVECTOR3* _pAngle)
 		{
 			D3DXMATRIX MatWorld, MatTranslate, MatRotate;
 			D3DXMatrixIdentity(&MatWorld);
 			D3DXMatrixScaling(&MatWorld, _pScale->x, _pScale->y, 1.0f);
-			D3DXMatrixRotationZ(&MatRotate, _angle);
+
+			D3DXMatrixRotationX(&MatRotate, static_cast<float>(D3DXToRadian(_pAngle->x)));
 			D3DXMatrixMultiply(&MatWorld, &MatWorld, &MatRotate);
+
+			D3DXMatrixRotationY(&MatRotate, static_cast<float>(D3DXToRadian(_pAngle->y)));
+			D3DXMatrixMultiply(&MatWorld, &MatWorld, &MatRotate);
+
+			D3DXMatrixRotationZ(&MatRotate, static_cast<float>(D3DXToRadian(_pAngle->z)));
+			D3DXMatrixMultiply(&MatWorld, &MatWorld, &MatRotate);
+
 			D3DXMatrixTranslation(&MatTranslate, _pDrawPos->x, _pDrawPos->y, 0.0f);
 			D3DXMatrixMultiply(&MatWorld, &MatWorld, &MatTranslate);
 
 			D3D11_MAPPED_SUBRESOURCE MappedResource;
-			if (SUCCEEDED(m_pGraphicsDevice->GetDeviceContext()->Map(m_pConstantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &MappedResource)))
+			if (SUCCEEDED(m_pGraphicsDevice->GetDeviceContext()->Map(
+				m_pConstantBuffer, 
+				0,
+				D3D11_MAP_WRITE_DISCARD,
+				0, 
+				&MappedResource)))
 			{
 				CONSTANT_BUFFER ConstantBuffer;
 				ConstantBuffer.MatWorld = MatWorld;
@@ -279,13 +266,13 @@ namespace Lib
 			{
 				Animation::ANIMATION_FRAME* pFrame = m_pAnimation->GetCurrentFrame();
 				if (m_IsInverse)
-				{
-					SetUV(&D3DXVECTOR2(pFrame->MaxTu, pFrame->MinTv), &D3DXVECTOR2(pFrame->MinTu, pFrame->MaxTv));
-				}
+					SetUV(
+					&D3DXVECTOR2(pFrame->MaxTu, pFrame->MinTv),
+					&D3DXVECTOR2(pFrame->MinTu, pFrame->MaxTv));
 				else
-				{
-					SetUV(&D3DXVECTOR2(pFrame->MinTu, pFrame->MinTv), &D3DXVECTOR2(pFrame->MaxTu, pFrame->MaxTv));
-				}
+					SetUV(
+					&D3DXVECTOR2(pFrame->MinTu, pFrame->MinTv),
+					&D3DXVECTOR2(pFrame->MaxTu, pFrame->MaxTv));
 
 				WriteVertexBuffer();
 			}
@@ -304,13 +291,9 @@ namespace Lib
 			}
 
 			if (m_pUserDepthStencilState == nullptr)
-			{
 				m_pGraphicsDevice->GetDeviceContext()->OMSetDepthStencilState(m_pDepthStencilState, 0);
-			}
 			else
-			{
 				m_pGraphicsDevice->GetDeviceContext()->OMSetDepthStencilState(m_pUserDepthStencilState, 0);
-			}
 
 			m_pGraphicsDevice->GetDeviceContext()->OMSetBlendState(m_pBlendState, nullptr, 0xffffffff);
 

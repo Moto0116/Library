@@ -23,11 +23,20 @@
 //----------------------------------------------------------------------
 
 // コピー禁止マクロ.
-#define DISALLOW_COPY_AND_ASSIGN(Type)	Type(const Type&);			\
-										void operator=(const Type&)
+#define DISALLOW_COPY_AND_ASSIGN(_type)	_type(const _type&);			\
+										void operator=(const _type&)
 
 // インターフェースマクロ.
 #define interface struct
+
+// 文字列変換マクロ.
+#define TO_STRING(_str) (#_str)
+
+// SUCCEEDEDマクロ.
+#define IS_SUCCEEDED (_expression) (_expression)
+
+// FAILEDマクロ.
+#define IS_FAILED(_expression) (!(_expression))
 
 
 //----------------------------------------------------------------------

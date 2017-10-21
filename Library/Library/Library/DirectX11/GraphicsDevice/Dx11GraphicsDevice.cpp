@@ -51,7 +51,6 @@ namespace Lib
 
 		GraphicsDevice::~GraphicsDevice()
 		{
-			Finalize();
 		}
 
 
@@ -62,20 +61,11 @@ namespace Lib
 		{
 			MyAssert(m_pDevice != nullptr, "GraphicsDeviceオブジェクトは既に初期化されています");
 
-
 			m_hWnd = _hWnd;
 			GetWindowRect(m_hWnd, &m_WindowRect);
 
-			if (!CreateDevice())
-			{
-				return false;
-			}
-
-			if (!CreateDisplay())
-			{
-				ReleaseDevice();
-				return false;
-			}
+			if (!CreateDevice())	return false;
+			if (!CreateDisplay())	return false;
 
 			return true;
 		}
@@ -107,67 +97,43 @@ namespace Lib
 
 		bool GraphicsDevice::SetRenderTarget(ID3D11RenderTargetView** _pRenderTarget, int _stage)
 		{
-			if (_stage > m_RenderTargetNum)
-			{
-				return false;
-			}
+			if (_stage > m_RenderTargetNum)	return false;
 
 			if (_pRenderTarget == nullptr)
-			{
 				m_pRenderTargetView[_stage] = nullptr;
-			}
 			else
-			{
 				m_pRenderTargetView[_stage] = *_pRenderTarget;
-			}
 
 			return true;
 		}
 
 		bool GraphicsDevice::SetDepthStencil(ID3D11DepthStencilView** _pDepthStencilView, int _stage)
 		{
-			if (_stage > m_RenderTargetNum)
-			{
-				return false;
-			}
+			if (_stage > m_RenderTargetNum)	return false;
 
 			if (_pDepthStencilView == nullptr)
-			{
 				m_pDepthStencilView[_stage] = nullptr;
-			}
 			else
-			{
 				m_pDepthStencilView[_stage] = *_pDepthStencilView;
-			}
 
 			return true;
 		}
 
 		bool GraphicsDevice::SetViewPort(const D3D11_VIEWPORT* _pViewPort, int _stage)
 		{
-			if (_stage > m_RenderTargetNum)
-			{
-				return false;
-			}
+			if (_stage > m_RenderTargetNum)	return false;
 
 			if (_pViewPort == nullptr)
-			{
 				m_ViewPort[_stage] = m_ViewPort[BACKBUFFER_TARGET];
-			}
 			else
-			{
 				m_ViewPort[_stage] = *_pViewPort;
-			}
 
 			return true;
 		}
 
 		bool GraphicsDevice::SetClearColor(D3DXCOLOR _clearColor, int _stage)
 		{
-			if (_stage > m_RenderTargetNum)
-			{
-				return false;
-			}
+			if (_stage > m_RenderTargetNum)	return false;
 
 			m_ClearColor[_stage][0] = _clearColor.r;
 			m_ClearColor[_stage][1] = _clearColor.g;
@@ -236,7 +202,6 @@ namespace Lib
 			}
 #endif // _DEBUG
 
-
 			return true;
 		}
 
@@ -253,7 +218,6 @@ namespace Lib
 			if (FAILED(m_pDXGI->GetAdapter(&m_pAdapter)))
 			{
 				OutputErrorLog("グラフィックインフラストラクチャアダプタの取得に失敗しました");
-				ReleaseDisplay();
 				return false;
 			}
 
@@ -261,7 +225,6 @@ namespace Lib
 			if (FAILED(m_pAdapter->GetParent(__uuidof(IDXGIFactory), reinterpret_cast<void**>(&m_pDXGIFactory))))
 			{
 				OutputErrorLog("グラフィックインフラストラクチャファクトリの取得に失敗しました");
-				ReleaseDisplay();
 				return false;
 			}
 
@@ -269,7 +232,6 @@ namespace Lib
 			if (FAILED(m_pDXGIFactory->MakeWindowAssociation(m_hWnd, 0)))
 			{
 				OutputErrorLog("ウィンドウメッセージキュー監視設定に失敗しました");
-				ReleaseDisplay();
 				return false;
 			}
 
@@ -296,7 +258,6 @@ namespace Lib
 			if (FAILED(m_pDXGIFactory->CreateSwapChain(m_pDevice, &SwapChainDesc, &m_pDXGISwapChain)))
 			{
 				OutputErrorLog("スワップチェインの作成に失敗しました");
-				ReleaseDisplay();
 				return false;
 			}
 
@@ -304,7 +265,6 @@ namespace Lib
 			if (FAILED(m_pDXGISwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(&m_pBackBuffer))))
 			{
 				OutputErrorLog("バックバッファの取得に失敗しました");
-				ReleaseDisplay();
 				return false;
 			}
 
@@ -315,7 +275,6 @@ namespace Lib
 			if (FAILED(m_pDevice->CreateRenderTargetView(m_pBackBuffer, nullptr, &m_pRenderTargetView[BACKBUFFER_TARGET])))
 			{
 				OutputErrorLog("レンダーターゲットビューの作成に失敗しました");
-				ReleaseDisplay();
 				return false;
 			}
 
@@ -337,7 +296,6 @@ namespace Lib
 			if (FAILED(m_pDevice->CreateTexture2D(&DepthDesc, nullptr, &m_pDepthStencilBuffer)))
 			{
 				OutputErrorLog("深度ステンシルバッファの作成に失敗しました");
-				ReleaseDisplay();
 				return false;
 			}
 
@@ -348,7 +306,6 @@ namespace Lib
 				&m_pDepthStencilView[BACKBUFFER_TARGET])))
 			{
 				OutputErrorLog("深度ステンシルビューの作成に失敗しました");
-				ReleaseDisplay();
 				return false;
 			}
 
@@ -386,7 +343,6 @@ namespace Lib
 			if (FAILED(m_pDevice->CreateRasterizerState(&RasterizerDesc, &m_pRasterizerState)))
 			{
 				OutputErrorLog("ラスタライザステートの作成に失敗しました");
-				ReleaseDisplay();
 				return false;
 			}
 
