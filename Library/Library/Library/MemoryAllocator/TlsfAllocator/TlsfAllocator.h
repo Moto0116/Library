@@ -16,6 +16,8 @@
 #include <math.h>
 #include <new>
 
+///@todo char型をDeAllocateするとAddToListでnullアクセスして停止する.
+// アラインメントを考慮してないから4byteより小さいと予想外なことが起きる?.
 
 namespace Lib
 {
@@ -65,26 +67,19 @@ namespace Lib
 		/**
 		 * デストラクタ
 		 */
-		~BoundaryTag()
-		{}
+		~BoundaryTag(){}
 
 		/**
 		 * 占有しているメモリのサイズ
 		 * @return 占有メモリサイズ
 		 */
-		size_t GetAllSize()
-		{
-			return *m_pEndTag;
-		}
+		size_t GetAllSize(){ return *m_pEndTag; }
 
 		/**
 		 * 管理しているメモリブロックサイズ
 		 * @return 管理しているメモリサイズ
 		 */
-		size_t GetBlockSize()
-		{
-			return m_Size;
-		}
+		size_t GetBlockSize(){ return m_Size; }
 
 		/**
 		 * 境界タグをリストに追加する
@@ -140,8 +135,7 @@ namespace Lib
 		/**
 		 * デストラクタ
 		 */
-		~TlsfAllocator()
-		{}
+		~TlsfAllocator(){}
 
 		/**
 		 * 初期化処理
@@ -161,7 +155,7 @@ namespace Lib
 			m_AllSize =
 				m_MemoryPoolSize +
 				m_AllTagSize * m_DivisionNum +
-				m_AllTagSize;
+				m_AllTagSize * 3;
 
 			// メモリ領域の生成と初期化.
 			m_pMemory = new BYTE[m_AllSize];
@@ -183,10 +177,22 @@ namespace Lib
 			m_pFreeListBit = new BYTE[BlockListNum];
 			ZeroMemory(m_pFreeListBit, sizeof(BYTE) * BlockListNum);
 
+			// 先頭ダミー.
+			BYTE* pBlock = reinterpret_cast<BYTE*>(m_pMemory);
+			BoundaryTag* pDummy = new(pBlock)BoundaryTag(pBlock + m_BoundaryTagSize, 0);
+			pDummy->m_IsUse = 1;
+
+			// 終端ダミー.
+			pDummy =
+				new(pBlock + m_AllSize - m_AllTagSize) 
+				BoundaryTag(pBlock + m_AllSize - m_AllTagSize + m_BoundaryTagSize, 0);
+			pDummy->m_IsUse = 1;
+
+
 			// 最初のメモリブロックタグ生成.
-			BoundaryTag* pTag = new(m_pMemory)BoundaryTag(
-				reinterpret_cast<BYTE*>(m_pMemory) + m_BoundaryTagSize,
-				m_MemoryPoolSize - m_BoundaryTagSize);
+			BoundaryTag* pTag = new(reinterpret_cast<BYTE*>(m_pMemory) + m_AllTagSize)BoundaryTag(
+				reinterpret_cast<BYTE*>(m_pMemory) + m_AllTagSize + m_BoundaryTagSize,	// ダミー考慮で+m_AllTagSize.
+				m_AllSize - m_AllTagSize * 3);											// ダミー2つと自身のタグサイズ1つ考慮で*3.
 			m_pFreeList[BlockListNum - 1].AddToList(pTag);
 			m_pFreeListBit[BlockListNum - 1] = 1;
 			m_FreeListBitFLI = 1 << FLI;
@@ -261,14 +267,18 @@ namespace Lib
 			BoundaryTag* pTag = m_pFreeList[FreeIndex].m_pNext;
 			MyAssert(sizeof(Type) + m_AllTagSize >= pTag->GetAllSize(), "フリーリストのサイズが小さいです");
 
-			///@todo ここが怪しい.
-			//// フリーリストのビット管理.
-			//if (m_pFreeList[FreeIndex].m_pNext == &m_pFreeList[FreeIndex])
-			//{
-			//	m_pFreeListBit[FreeIndex] = 0;
-			//	m_pFreeListBitSLI[FLI] &= ~(1 << SLI);
-			//	if (m_pFreeListBitSLI[FLI] == 0)	m_FreeListBitFLI &= ~(1 << FLI);
-			//}
+			// 使用されるのでフリーリストから外す.
+			pTag->RemoveFromList();
+
+			// フリーリストの使用フラグ管理.
+			if (m_pFreeList[FreeIndex].m_pNext == &m_pFreeList[FreeIndex])
+			{
+				// フリーリストの親一つだけならフラグを落とす.
+				m_pFreeListBit[FreeIndex] = 0;
+				m_pFreeListBitSLI[FLI] &= ~(1 << SLI);
+				if (m_pFreeListBitSLI[FLI] == 0)	
+					m_FreeListBitFLI &= ~(1 << FLI);
+			}
 
 			/// フリーブロックの分割チェック.
 			if ((pTag->GetAllSize() - (sizeof(Type) + m_AllTagSize)) > m_AllTagSize)
@@ -286,7 +296,7 @@ namespace Lib
 					pTag->m_pBlock + pTag->GetBlockSize());
 				*pTag->m_pEndTag = m_AllTagSize + pTag->GetBlockSize();
 				
-				MyAssert(pTag->GetBlockSize() > m_MemoryPoolSize, 
+				MyAssert(pTag->GetBlockSize() > m_AllSize, 
 					"境界タグが管理するメモリサイズがプールサイズを上回っています");
 
 				// 使用フラグを更新.
@@ -336,12 +346,88 @@ namespace Lib
 			size_t* pNextEndTag;
 
 			pData = reinterpret_cast<BYTE*>(_p);
-			pTag = reinterpret_cast<Lib::BoundaryTag*>(pData - m_BoundaryTagSize);
+			pTag = reinterpret_cast<BoundaryTag*>(pData - m_BoundaryTagSize);
 			pEndTag = reinterpret_cast<size_t*>(pData + sizeof(Type));
 
-			///@todo 前後関係のチェック.
-			///@todo メモリの整合性のチェック.
-			///@todo マージのチェック.
+			pPrevEndTag = reinterpret_cast<size_t*>(
+				reinterpret_cast<BYTE*>(pTag) - sizeof(size_t));
+			pPrevTag = reinterpret_cast<BoundaryTag*>(
+				reinterpret_cast<BYTE*>(pTag) - (*pPrevEndTag));
+			pPrevData = pPrevTag->m_pBlock;
+
+			pNextTag = reinterpret_cast<BoundaryTag*>(
+				reinterpret_cast<BYTE*>(pTag) + (*pEndTag));
+			pNextData = pNextTag->m_pBlock;
+			pNextEndTag = pNextTag->m_pEndTag;
+
+			// 範囲内にあるかどうか.
+			MyAssert((BYTE*)m_pMemory > (BYTE*)pPrevTag			|| (BYTE*)pPrevTag		> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
+			MyAssert((BYTE*)m_pMemory > (BYTE*)pTag				|| (BYTE*)pTag			> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
+			MyAssert((BYTE*)m_pMemory > (BYTE*)pNextTag			|| (BYTE*)pNextTag		> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
+			MyAssert((BYTE*)m_pMemory > (BYTE*)pPrevData		|| (BYTE*)pPrevData		> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
+			MyAssert((BYTE*)m_pMemory > (BYTE*)pData			|| (BYTE*)pData			> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
+			MyAssert((BYTE*)m_pMemory > (BYTE*)pNextData		|| (BYTE*)pNextData		> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
+			MyAssert((BYTE*)m_pMemory > (BYTE*)pPrevEndTag		|| (BYTE*)pPrevEndTag	> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
+			MyAssert((BYTE*)m_pMemory > (BYTE*)pEndTag			|| (BYTE*)pEndTag		> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
+			MyAssert((BYTE*)m_pMemory > (BYTE*)pNextEndTag		|| (BYTE*)pNextEndTag	> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
+
+
+			// 前のブロックが未使用状態ならマージ.
+			if (!pPrevTag->m_IsUse)
+			{
+				BYTE FLI = GetFLI(pPrevTag->GetAllSize());
+				BYTE SLI = GetSLI(pPrevTag->GetAllSize(), FLI);
+				size_t FreeIndex = GetFreeIndex(FLI, SLI);
+				pPrevTag->RemoveFromList();
+
+				if (m_pFreeList[FreeIndex].m_pNext == &m_pFreeList[FreeIndex])
+				{
+					// 最後のブロックであればフラグを落とす.
+					m_pFreeListBit[FreeIndex] = 0;
+					m_pFreeListBitSLI[FLI] &= ~(1 << SLI);
+					if (m_pFreeListBitSLI[FLI] == 0)
+						m_FreeListBitFLI &= ~(1 << FLI);
+				}
+
+				pPrevTag->m_Size += pTag->GetAllSize();
+				pPrevTag->m_pEndTag = pTag->m_pEndTag;
+				(*pPrevTag->m_pEndTag) = pPrevTag->m_Size + m_AllTagSize;
+
+				pTag = pPrevTag;
+			}
+
+			// 次のブロックが未使用状態ならマージ.
+			if (!pNextTag->m_IsUse)
+			{
+				BYTE FLI = GetFLI(pNextTag->GetAllSize());
+				BYTE SLI = GetSLI(pNextTag->GetAllSize(), FLI);
+				size_t FreeIndex = GetFreeIndex(FLI, SLI);
+				pNextTag->RemoveFromList();
+
+				if (m_pFreeList[FreeIndex].m_pNext == &m_pFreeList[FreeIndex])
+				{
+					// 最後のブロックであればフラグを落とす.
+					m_pFreeListBit[FreeIndex] = 0;
+					m_pFreeListBitSLI[FLI] &= ~(1 << SLI);
+					if (m_pFreeListBitSLI[FLI] == 0)
+						m_FreeListBitFLI &= ~(1 << FLI);
+				}
+
+				pTag->m_Size += pNextTag->GetAllSize();
+				pTag->m_pEndTag = pNextTag->m_pEndTag;
+				(*pTag->m_pEndTag) = pTag->m_Size + m_AllTagSize;
+			}
+
+			// 解放したブロックをフリーリストに登録.
+			BYTE FLI = GetFLI(pTag->GetBlockSize());
+			BYTE SLI = GetSLI(pTag->GetBlockSize(), FLI);
+			size_t FreeIndex = GetFreeIndex(FLI, SLI);
+			m_pFreeList[FreeIndex].AddToList(pTag);
+			m_pFreeListBit[FreeIndex] = 1;
+			m_pFreeListBitSLI[FLI] |= (1 << SLI);
+			m_FreeListBitFLI |= (1 << FLI);
+
+			pTag->m_IsUse = 0;	// 使用フラグを落とす.
 		}
 
 		/**
@@ -352,7 +438,7 @@ namespace Lib
 		__forceinline BYTE GetFLI(size_t _bits)
 		{
 			if (_bits == 0) return 0;
-			_bits -= 1;
+			_bits -= 1;///@todo -1の位置ってここでいいの？.
 			_bits |= (_bits >> 1);
 			_bits |= (_bits >> 2);
 			_bits |= (_bits >> 4);
