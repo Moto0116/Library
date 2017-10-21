@@ -14,12 +14,6 @@
     <Filter Include="Library\SceneManager\SceneBase">
       <UniqueIdentifier>{960be49e-19e9-451d-839d-14198bbce9cd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Library\ObjectBase">
-      <UniqueIdentifier>{a8c01cac-6670-4cce-aa13-2a27c5a7b1c0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Library\GameDataManager">
-      <UniqueIdentifier>{d894baee-f9e1-491e-ab87-c584f78e4055}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Library\Debugger">
       <UniqueIdentifier>{50473d05-7ffb-4d91-ad0f-2bcb5bbc4e55}</UniqueIdentifier>
     </Filter>
@@ -38,12 +32,6 @@
     <Filter Include="Library\InputDeviceManager">
       <UniqueIdentifier>{6f099fcd-1dd7-4e84-8d7d-c31698145c98}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Library\EventManagerBase">
-      <UniqueIdentifier>{99776e76-b5bc-45a4-9e2a-365d05cd1c2e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Library\EventManagerBase\EventBase">
-      <UniqueIdentifier>{7ec68a45-7e99-4618-9ab6-d5c870954323}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Library\SingletonBase">
       <UniqueIdentifier>{1c5dee1c-d05f-4bd1-a99f-f274fed46c65}</UniqueIdentifier>
     </Filter>
@@ -61,15 +49,6 @@
     </Filter>
     <Filter Include="Library\BinaryFile">
       <UniqueIdentifier>{64594f47-a427-4be9-a475-71edada53b0f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Library\CollisionManager">
-      <UniqueIdentifier>{be306b64-367c-41e6-a05f-c173a5433910}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Library\CollisionManager\CollisionBase">
-      <UniqueIdentifier>{9896dcea-6d84-4a19-b2a1-55d3a359eb49}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Library\CollisionManager\CollisionBase\CollisionQuad2D">
-      <UniqueIdentifier>{bd9a5d7b-364b-4736-8480-fbe5289c553a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Library\SmartPointer">
       <UniqueIdentifier>{b60db5b7-a09b-473c-bac0-2e90a1365c1e}</UniqueIdentifier>
@@ -98,18 +77,6 @@
     <Filter Include="Library\DirectX11\ShaderManager">
       <UniqueIdentifier>{281eb541-d106-4a42-b5e0-edce55c54ec3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Library\DirectX11\SoundDevice">
-      <UniqueIdentifier>{97b9760a-b2ab-4270-b45c-409f5a5dee12}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Library\DirectX11\SoundManager">
-      <UniqueIdentifier>{17418674-108e-41fd-b6d0-7e2d561041d5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Library\DirectX11\SoundManager\Sound">
-      <UniqueIdentifier>{01fece27-bcc3-476a-9483-17fe92d7a7e7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Library\DirectX11\SoundManager\ISound">
-      <UniqueIdentifier>{396220ba-4965-48d4-bc6d-1ecfeecccd8a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Library\DirectX11\TextureManager">
       <UniqueIdentifier>{833edbb2-022a-4100-876b-39be51fad27b}</UniqueIdentifier>
     </Filter>
@@ -124,9 +91,6 @@
     </Filter>
     <Filter Include="Library\DirectX11\Vertex2D\Effect">
       <UniqueIdentifier>{3ec8af42-8586-4d1e-bb74-9404211f8870}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Library\DirectX9">
-      <UniqueIdentifier>{acfdd94c-f2a8-4f8c-ac63-473a863d244c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Library\Define">
       <UniqueIdentifier>{048bba30-4807-4261-964b-007596e89332}</UniqueIdentifier>
@@ -233,8 +197,32 @@
     <Filter Include="Library\Math\Matrix">
       <UniqueIdentifier>{dd738579-f1b6-41aa-b943-f10c515132b1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Library\EventManagerBase\EventListener">
+    <Filter Include="Library\ObjectManagerBase\ObjectBase">
+      <UniqueIdentifier>{a8c01cac-6670-4cce-aa13-2a27c5a7b1c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\EventManager">
+      <UniqueIdentifier>{99776e76-b5bc-45a4-9e2a-365d05cd1c2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\EventManager\EventBase">
+      <UniqueIdentifier>{7ec68a45-7e99-4618-9ab6-d5c870954323}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\EventManager\EventListener">
       <UniqueIdentifier>{e65f01cc-3869-4bce-8287-f549dc0049b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Sound">
+      <UniqueIdentifier>{d4842e9d-e72c-4f11-b46b-1006b1acf255}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Sound\SoundDevice">
+      <UniqueIdentifier>{97b9760a-b2ab-4270-b45c-409f5a5dee12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Sound\SoundManager">
+      <UniqueIdentifier>{17418674-108e-41fd-b6d0-7e2d561041d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Sound\SoundManager\Sound">
+      <UniqueIdentifier>{01fece27-bcc3-476a-9483-17fe92d7a7e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Sound\SoundManager\ISound">
+      <UniqueIdentifier>{396220ba-4965-48d4-bc6d-1ecfeecccd8a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -263,19 +251,10 @@
       <Filter>Library\InputDeviceManager\MouseDevice</Filter>
     </ClCompile>
     <ClCompile Include="Library\ObjectManagerBase\ObjectBase\ObjectBase.cpp">
-      <Filter>Library\ObjectBase</Filter>
+      <Filter>Library\ObjectManagerBase\ObjectBase</Filter>
     </ClCompile>
     <ClCompile Include="Library\BinaryFile\BinaryFile.cpp">
       <Filter>Library\BinaryFile</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\CollisionManager\CollisionManager.cpp">
-      <Filter>Library\CollisionManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\CollisionManager\CollisionBase\CollisionBase.cpp">
-      <Filter>Library\CollisionManager\CollisionBase</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\CollisionManager\CollisionBase\CollisionQuad2D\CollisionQuad2D.cpp">
-      <Filter>Library\CollisionManager\CollisionBase\CollisionQuad2D</Filter>
     </ClCompile>
     <ClCompile Include="Library\Math\Vector2\Vector2.cpp">
       <Filter>Library\Math\Vector2</Filter>
@@ -290,22 +269,10 @@
       <Filter>Library\ObjectManagerBase</Filter>
     </ClCompile>
     <ClCompile Include="Library\EventManager\EventBase\EventBase.cpp">
-      <Filter>Library\EventManagerBase\EventBase</Filter>
+      <Filter>Library\EventManager\EventBase</Filter>
     </ClCompile>
     <ClCompile Include="Library\EventManager\EventManager.cpp">
-      <Filter>Library\EventManagerBase</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\SoundDevice\SoundDevice.cpp">
-      <Filter>Library\DirectX11\SoundDevice</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\SoundManager\ISound\ISound.cpp">
-      <Filter>Library\DirectX11\SoundManager\ISound</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\SoundManager\Sound\Sound.cpp">
-      <Filter>Library\DirectX11\SoundManager\Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\SoundManager\SoundManager.cpp">
-      <Filter>Library\DirectX11\SoundManager</Filter>
+      <Filter>Library\EventManager</Filter>
     </ClCompile>
     <ClCompile Include="Library\DirectX11\AnimationManager\Animation\Dx11Animation.cpp">
       <Filter>Library\DirectX11\AnimationManager\Animation</Filter>
@@ -359,7 +326,7 @@
       <Filter>Library\Math</Filter>
     </ClCompile>
     <ClCompile Include="Library\EventManager\EventListener\EventListener.cpp">
-      <Filter>Library\EventManagerBase\EventListener</Filter>
+      <Filter>Library\EventManager\EventListener</Filter>
     </ClCompile>
     <ClCompile Include="Library\DirectX11\FbxFileManager\Dx11FbxFileManager.cpp">
       <Filter>Library\DirectX11\FbxFileManager</Filter>
@@ -403,6 +370,18 @@
     <ClCompile Include="Library\Math\Matrix\Matrix.cpp">
       <Filter>Library\Math\Matrix</Filter>
     </ClCompile>
+    <ClCompile Include="Library\Sound\SoundDevice\SoundDevice.cpp">
+      <Filter>Library\Sound\SoundDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\Sound\SoundManager\ISound\ISound.cpp">
+      <Filter>Library\Sound\SoundManager\ISound</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\Sound\SoundManager\Sound\Sound.cpp">
+      <Filter>Library\Sound\SoundManager\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\Sound\SoundManager\SoundManager.cpp">
+      <Filter>Library\Sound\SoundManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Debugger\Debugger.h">
@@ -429,9 +408,6 @@
     <ClInclude Include="Library\InputDeviceManager\InputDeviceManager.h">
       <Filter>Library\InputDeviceManager</Filter>
     </ClInclude>
-    <ClInclude Include="Library\GameDataManager\GameDataManager.h">
-      <Filter>Library\GameDataManager</Filter>
-    </ClInclude>
     <ClInclude Include="Library\SingletonBase\SingletonBase.h">
       <Filter>Library\SingletonBase</Filter>
     </ClInclude>
@@ -451,19 +427,10 @@
       <Filter>Library\Define</Filter>
     </ClInclude>
     <ClInclude Include="Library\ObjectManagerBase\ObjectBase\ObjectBase.h">
-      <Filter>Library\ObjectBase</Filter>
+      <Filter>Library\ObjectManagerBase\ObjectBase</Filter>
     </ClInclude>
     <ClInclude Include="Library\BinaryFile\BinaryFile.h">
       <Filter>Library\BinaryFile</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\CollisionManager\CollisionManager.h">
-      <Filter>Library\CollisionManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\CollisionManager\CollisionBase\CollisionBase.h">
-      <Filter>Library\CollisionManager\CollisionBase</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\CollisionManager\CollisionBase\CollisionQuad2D\CollisionQuad2D.h">
-      <Filter>Library\CollisionManager\CollisionBase\CollisionQuad2D</Filter>
     </ClInclude>
     <ClInclude Include="Library\SmartPointer\SmartPointer.h">
       <Filter>Library\SmartPointer</Filter>
@@ -493,22 +460,10 @@
       <Filter>Library\ObjectManagerBase</Filter>
     </ClInclude>
     <ClInclude Include="Library\EventManager\EventBase\EventBase.h">
-      <Filter>Library\EventManagerBase\EventBase</Filter>
+      <Filter>Library\EventManager\EventBase</Filter>
     </ClInclude>
     <ClInclude Include="Library\EventManager\EventManager.h">
-      <Filter>Library\EventManagerBase</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\SoundDevice\SoundDevice.h">
-      <Filter>Library\DirectX11\SoundDevice</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\SoundManager\ISound\ISound.h">
-      <Filter>Library\DirectX11\SoundManager\ISound</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\SoundManager\Sound\Sound.h">
-      <Filter>Library\DirectX11\SoundManager\Sound</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\SoundManager\SoundManager.h">
-      <Filter>Library\DirectX11\SoundManager</Filter>
+      <Filter>Library\EventManager</Filter>
     </ClInclude>
     <ClInclude Include="Library\DirectX11\AnimationManager\Animation\Dx11Animation.h">
       <Filter>Library\DirectX11\AnimationManager\Animation</Filter>
@@ -562,7 +517,7 @@
       <Filter>Library\Math</Filter>
     </ClInclude>
     <ClInclude Include="Library\EventManager\EventListener\EventListener.h">
-      <Filter>Library\EventManagerBase\EventListener</Filter>
+      <Filter>Library\EventManager\EventListener</Filter>
     </ClInclude>
     <ClInclude Include="Library\DirectX11\FbxFileManager\Dx11FbxFileManager.h">
       <Filter>Library\DirectX11\FbxFileManager</Filter>
@@ -615,6 +570,18 @@
     <ClInclude Include="Library\Math\Matrix\Matrix.h">
       <Filter>Library\Math\Matrix</Filter>
     </ClInclude>
+    <ClInclude Include="Library\Sound\SoundDevice\SoundDevice.h">
+      <Filter>Library\Sound\SoundDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\Sound\SoundManager\ISound\ISound.h">
+      <Filter>Library\Sound\SoundManager\ISound</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\Sound\SoundManager\Sound\Sound.h">
+      <Filter>Library\Sound\SoundManager\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\Sound\SoundManager\SoundManager.h">
+      <Filter>Library\Sound\SoundManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\DirectX11\Vertex2D\Effect\Vertex2D.fx">
@@ -642,9 +609,6 @@
     </None>
     <None Include="Library\TaskManager\TaskBase\TaskBase_private.inl">
       <Filter>Library\TaskManager\TaskBase</Filter>
-    </None>
-    <None Include="Library\GameDataManager\GameDataManager_private.inl">
-      <Filter>Library\GameDataManager</Filter>
     </None>
     <None Include="Library\TaskManager\TaskBase\DrawTask\DrawTask_private.inl">
       <Filter>Library\TaskManager\TaskBase\DrawTask</Filter>

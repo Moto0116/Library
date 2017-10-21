@@ -11,7 +11,7 @@
 //----------------------------------------------------------------------
 #include <Windows.h>
 
-#include "..\..\Define\Define.h"
+#include "..\..\..\Define\Define.h"
 #include "..\SoundManager.h"
 
 

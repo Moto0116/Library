@@ -11,7 +11,7 @@
 //----------------------------------------------------------------------
 #include <dsound.h>
 
-#include "..\..\Define\Define.h"
+#include "..\..\..\Define\Define.h"
 #include "..\SoundManager.h"
 #include "..\ISound\ISound.h"
 

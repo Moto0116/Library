@@ -9,7 +9,7 @@
 //----------------------------------------------------------------------
 #include "Sound.h"
 
-#include "..\..\Debugger\Debugger.h"
+#include "..\..\..\Debugger\Debugger.h"
 #include "..\..\SoundDevice\SoundDevice.h"
 
 
@@ -120,17 +120,18 @@ namespace Lib
 	//----------------------------------------------------------------------
 	// Public Functions
 	//----------------------------------------------------------------------
-	bool Sound::WaveLoad(LPSTR _pFilePath, WAVEFORMATEX* _pWaveFormat, char** _pWaveData, DWORD* _pDataSize)
+	bool Sound::WaveLoad(
+		LPSTR _pFilePath,
+		WAVEFORMATEX* _pWaveFormat,
+		char** _pWaveData, 
+		DWORD* _pDataSize)
 	{
 		HMMIO hMmio = nullptr;
 		MMIOINFO MmioInfo;
 		ZeroMemory(&MmioInfo, sizeof(MMIOINFO));
 
 		hMmio = mmioOpen(_pFilePath, &MmioInfo, MMIO_READ);
-		if (hMmio == nullptr)
-		{
-			return false;
-		}
+		if (hMmio == nullptr)	return false;
 
 		MMRESULT MmResult;
 		MMCKINFO RiffChunk;

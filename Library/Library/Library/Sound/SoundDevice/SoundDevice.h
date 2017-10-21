@@ -11,7 +11,7 @@
 //----------------------------------------------------------------------
 #include <dsound.h>
 
-#include "..\SingletonBase\SingletonBase.h"
+#include "..\..\SingletonBase\SingletonBase.h"
 
 
 namespace Lib
