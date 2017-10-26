@@ -69,7 +69,7 @@ namespace Lib
 		switch (m_pCurrentScene->GetState())
 		{
 		case SceneBase::INIT_STATE:
-			m_pCurrentScene->Initialize();
+			if (!m_pCurrentScene->Initialize()) return true;
 
 			break;
 		case SceneBase::UPDATE_STATE:

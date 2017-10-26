@@ -94,6 +94,28 @@ namespace Lib
 		return 32 - BitCount(_bits);
 	}
 
+	/**
+	 * 値同士を比較して大きいものを返す
+	 * @param[in] 比較する値1
+	 * @param[in] 比較する値2
+	 */
+	template<typename Type>
+	__forceinline Type Max(const Type& _in1, const Type& _in2)
+	{
+		return (_in1 < _in2) ? _in2 : _in1;
+	}
+
+	/**
+	 * 値同士を比較して小さいものを返す
+	 * @param[in] 比較する値1
+	 * @param[in] 比較する値2
+	 */
+	template<typename Type>
+	__forceinline Type Min(const Type& _in1, const Type& _in2)
+	{
+		return (_in1 < _in2) ? _in1 : _in2;
+	}
+
 
 	//----------------------------------------------------------------------
 	// Vector Functions

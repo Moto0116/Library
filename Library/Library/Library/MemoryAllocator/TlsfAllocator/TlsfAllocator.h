@@ -73,19 +73,19 @@ namespace Lib
 		 * 占有しているメモリのサイズ
 		 * @return 占有メモリサイズ
 		 */
-		size_t GetAllSize(){ return *m_pEndTag; }
+		__forceinline size_t GetAllSize(){ return *m_pEndTag; }
 
 		/**
 		 * 管理しているメモリブロックサイズ
 		 * @return 管理しているメモリサイズ
 		 */
-		size_t GetBlockSize(){ return m_Size; }
+		__forceinline size_t GetBlockSize(){ return m_Size; }
 
 		/**
 		 * 境界タグをリストに追加する
 		 * @param[in,out] リストに追加するために使用する境界タグ
 		 */
-		void AddToList(BoundaryTag* _pTag)
+		__forceinline void AddToList(BoundaryTag* _pTag)
 		{
 			_pTag->m_pNext = m_pNext;
 			_pTag->m_pPrev = this;
@@ -97,7 +97,7 @@ namespace Lib
 		/**
 		 * 境界タグをリストから削除する
 		 */
-		BoundaryTag* RemoveFromList()
+		__forceinline BoundaryTag* RemoveFromList()
 		{
 			m_pPrev->m_pNext = m_pNext;
 			m_pNext->m_pPrev = m_pPrev;
@@ -229,13 +229,12 @@ namespace Lib
 		template<typename Type>
 		Type* Allocate()
 		{
-			size_t MaxFLI = GetFLI(m_AllSize);	///@todo 定数にしておきたい.
+			size_t TypeSize = Lib::Max(sizeof(Type), m_DefaultAligne);
 
-			// 要求サイズのFLIとSLIを取得.
-			size_t FLI = GetFLI(sizeof(Type) + m_AllTagSize);
-			size_t SLI = GetSLI(sizeof(Type) + m_AllTagSize, FLI);
-			MyAssert(0 > FLI || FLI > MaxFLI, "FLIが既定のサイズに収まっていません");
-			MyAssert(0 > SLI || SLI >= m_DivisionNum, "SLIが既定のサイズに収まっていません");
+			// 最大のFLIと要求サイズのFLIとSLIを取得.
+			size_t MaxFLI = GetFLI(m_AllSize);
+			size_t FLI = GetFLI(TypeSize + m_AllTagSize);
+			size_t SLI = GetSLI(TypeSize + m_AllTagSize, FLI);
 
 			// FLIとSLIからFreeIndexを取得してフリーブロックがあるかチェック.
 			BYTE FreeIndex = GetFreeIndex(FLI, SLI);
@@ -265,7 +264,7 @@ namespace Lib
 
 			// フリーリストの取得.
 			BoundaryTag* pTag = m_pFreeList[FreeIndex].m_pNext;
-			MyAssert(sizeof(Type) + m_AllTagSize >= pTag->GetAllSize(), "フリーリストのサイズが小さいです");
+			MyAssert(TypeSize + m_AllTagSize >= pTag->GetAllSize(), "フリーリストのサイズが小さいです");
 
 			// 使用されるのでフリーリストから外す.
 			pTag->RemoveFromList();
@@ -281,19 +280,19 @@ namespace Lib
 			}
 
 			/// フリーブロックの分割チェック.
-			if ((pTag->GetAllSize() - (sizeof(Type) + m_AllTagSize)) > m_AllTagSize)
+			if ((pTag->GetAllSize() - (TypeSize + m_AllTagSize)) > m_AllTagSize)
 			{
 				BYTE* pNextTagPos =
 					reinterpret_cast<BYTE*>(pTag)+
-					pTag->GetAllSize() - sizeof(Type) - m_AllTagSize;
+					pTag->GetAllSize() - TypeSize - m_AllTagSize;
 
 				BoundaryTag* pNextTag = 
-					new(pNextTagPos)BoundaryTag(pNextTagPos + m_BoundaryTagSize, sizeof(Type));
+					new(pNextTagPos)BoundaryTag(pNextTagPos + m_BoundaryTagSize, TypeSize);
 
 				// 新たに作成された境界タグにデータを書き込む.
 				pTag->m_Size -= (pNextTag->GetBlockSize() + m_AllTagSize);
-				pTag->m_pEndTag = reinterpret_cast<size_t*>(
-					pTag->m_pBlock + pTag->GetBlockSize());
+				pTag->m_pEndTag = 
+					reinterpret_cast<size_t*>(pTag->m_pBlock + pTag->GetBlockSize());
 				*pTag->m_pEndTag = m_AllTagSize + pTag->GetBlockSize();
 				
 				MyAssert(pTag->GetBlockSize() > m_AllSize, 
@@ -316,14 +315,12 @@ namespace Lib
 				m_pFreeListBitSLI[FLI] |= (1 << SLI);
 				m_FreeListBitFLI |= (1 << FLI);
 
-				// ブロックの分割を行った際にフラグを変更するべきでは?.
-
-				return reinterpret_cast<Type*>(pNextTag->m_pBlock);
+				return new(pNextTag->m_pBlock) Type;
 			}
 
-			pTag->m_IsUse = true;
+			pTag->m_IsUse = 1;
 
-			return reinterpret_cast<Type*>(pTag->m_pBlock);
+			return new (pTag->m_pBlock) Type;
 		}
 
 		/**
@@ -334,42 +331,40 @@ namespace Lib
 		template<typename Type>
 		void DeAllocate(Type* _p)
 		{
+			size_t TypeSize = Lib::Max(sizeof(Type), m_DefaultAligne);
+
 			// 前後のデータ参照を行う.
-			BoundaryTag* pPrevTag;
-			BoundaryTag* pTag;
-			BoundaryTag* pNextTag;
-			BYTE* pPrevData;
-			BYTE* pData;
-			BYTE* pNextData;
-			size_t* pPrevEndTag;
-			size_t* pEndTag;
-			size_t* pNextEndTag;
+			BYTE* pData	= 
+				reinterpret_cast<BYTE*>(_p);
+			BoundaryTag* pTag = 
+				reinterpret_cast<BoundaryTag*>(pData - m_BoundaryTagSize);
+			size_t* pEndTag = 
+				reinterpret_cast<size_t*>(pData + TypeSize);
 
-			pData = reinterpret_cast<BYTE*>(_p);
-			pTag = reinterpret_cast<BoundaryTag*>(pData - m_BoundaryTagSize);
-			pEndTag = reinterpret_cast<size_t*>(pData + sizeof(Type));
-
-			pPrevEndTag = reinterpret_cast<size_t*>(
+			size_t* pPrevEndTag = 
+				reinterpret_cast<size_t*>(
 				reinterpret_cast<BYTE*>(pTag) - sizeof(size_t));
-			pPrevTag = reinterpret_cast<BoundaryTag*>(
+			BoundaryTag* pPrevTag = 
+				reinterpret_cast<BoundaryTag*>(
 				reinterpret_cast<BYTE*>(pTag) - (*pPrevEndTag));
-			pPrevData = pPrevTag->m_pBlock;
+			BYTE* pPrevData = pPrevTag->m_pBlock;
 
-			pNextTag = reinterpret_cast<BoundaryTag*>(
+			BoundaryTag* pNextTag = 
+				reinterpret_cast<BoundaryTag*>(
 				reinterpret_cast<BYTE*>(pTag) + (*pEndTag));
-			pNextData = pNextTag->m_pBlock;
-			pNextEndTag = pNextTag->m_pEndTag;
+			BYTE* pNextData = pNextTag->m_pBlock;
+			size_t* pNextEndTag = pNextTag->m_pEndTag;
 
 			// 範囲内にあるかどうか.
-			MyAssert((BYTE*)m_pMemory > (BYTE*)pPrevTag			|| (BYTE*)pPrevTag		> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
-			MyAssert((BYTE*)m_pMemory > (BYTE*)pTag				|| (BYTE*)pTag			> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
-			MyAssert((BYTE*)m_pMemory > (BYTE*)pNextTag			|| (BYTE*)pNextTag		> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
-			MyAssert((BYTE*)m_pMemory > (BYTE*)pPrevData		|| (BYTE*)pPrevData		> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
-			MyAssert((BYTE*)m_pMemory > (BYTE*)pData			|| (BYTE*)pData			> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
-			MyAssert((BYTE*)m_pMemory > (BYTE*)pNextData		|| (BYTE*)pNextData		> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
-			MyAssert((BYTE*)m_pMemory > (BYTE*)pPrevEndTag		|| (BYTE*)pPrevEndTag	> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
-			MyAssert((BYTE*)m_pMemory > (BYTE*)pEndTag			|| (BYTE*)pEndTag		> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
-			MyAssert((BYTE*)m_pMemory > (BYTE*)pNextEndTag		|| (BYTE*)pNextEndTag	> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
+			MyAssert((BYTE*)m_pMemory > (BYTE*)pPrevTag		|| (BYTE*)pPrevTag		> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
+			MyAssert((BYTE*)m_pMemory > (BYTE*)pTag			|| (BYTE*)pTag			> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
+			MyAssert((BYTE*)m_pMemory > (BYTE*)pNextTag		|| (BYTE*)pNextTag		> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
+			MyAssert((BYTE*)m_pMemory > (BYTE*)pPrevData	|| (BYTE*)pPrevData		> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
+			MyAssert((BYTE*)m_pMemory > (BYTE*)pData		|| (BYTE*)pData			> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
+			MyAssert((BYTE*)m_pMemory > (BYTE*)pNextData	|| (BYTE*)pNextData		> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
+			MyAssert((BYTE*)m_pMemory > (BYTE*)pPrevEndTag	|| (BYTE*)pPrevEndTag	> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
+			MyAssert((BYTE*)m_pMemory > (BYTE*)pEndTag		|| (BYTE*)pEndTag		> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
+			MyAssert((BYTE*)m_pMemory > (BYTE*)pNextEndTag	|| (BYTE*)pNextEndTag	> (BYTE*)m_pMemory + m_AllSize, "ポインタが不正です");
 
 
 			// 前のブロックが未使用状態ならマージ.
@@ -438,7 +433,7 @@ namespace Lib
 		__forceinline BYTE GetFLI(size_t _bits)
 		{
 			if (_bits == 0) return 0;
-			_bits -= 1;///@todo -1の位置ってここでいいの？.
+			_bits -= 1;
 			_bits |= (_bits >> 1);
 			_bits |= (_bits >> 2);
 			_bits |= (_bits >> 4);
@@ -502,8 +497,9 @@ namespace Lib
 		}
 
 	private:
-		static const int m_DivisionNum = 4;		//!< メモリ分割数.
-		static const int m_DivisionRate = 2;	//!< 2^m_DevisionRate = m_DivisionNum.
+		static const int m_DivisionNum		= 4;	//!< メモリ分割数.
+		static const int m_DivisionRate		= 2;	//!< 2^m_DevisionRate = m_DivisionNum.
+		static const size_t m_DefaultAligne = 4;	//!< アラインメントの初期値.
 
 		void* m_pMemory;	//!< メモリの先頭ポインタ.
 
