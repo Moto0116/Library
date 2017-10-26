@@ -15,25 +15,17 @@
 
 namespace Lib
 {
-	/**
-	 * 更新開始前のタスククラス
-	 */
+	/*** 更新開始前のタスククラス */
 	class UpdateStartUpTask final : public TaskBase<>
 	{
 	public:
-		/**
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		UpdateStartUpTask();
 
-		/**
-		 * デストラクタ 
-		 */
+		/*** デストラクタ */
 		virtual ~UpdateStartUpTask();
 
-		/**
-		 * 更新前処理タスク実行
-		 */
+		/*** 更新前処理タスク実行 */
 		virtual void Run();
 	
 		/**

@@ -95,10 +95,7 @@ namespace Lib
 
 		void Animation::SetFrameNumber(int _frameNumber)
 		{
-			if (m_pFrame.size() <= static_cast<unsigned int>(_frameNumber))
-			{
-				return;
-			}
+			if (m_pFrame.size() <= static_cast<unsigned int>(_frameNumber)) return;
 
 			m_CurrentFrame = _frameNumber;
 		}
@@ -124,8 +121,6 @@ namespace Lib
 		//----------------------------------------------------------------------
 		void Animation::Load(LPCTSTR _pAnimationPath)
 		{
-			///@todo 読み込みに失敗した場合は現在のフレームをnullptrに設定するように修正する.
-
 			FILE* pAnimationFile = nullptr;
 			std::vector<float> AnimationData;
 			long FileSize = 0;
@@ -155,14 +150,11 @@ namespace Lib
 
 			while (1)
 			{
+				// データ全てを取り出すまでループ
 				if (pDataStr == nullptr)
-				{
-					break;	// データ全てを取り出すまでループ
-				}
+					break;
 				else
-				{
 					AnimationData.push_back(static_cast<float>(atof(pDataStr)));
-				}
 
 				pDataStr = strtok_s(nullptr, "{},\n", &pContext);
 			}
@@ -224,10 +216,8 @@ namespace Lib
 				m_AnimationCounter = 0.0f;
 				m_CurrentFrame++;
 
-				if (static_cast<int>(m_pFrame.size()) <= m_CurrentFrame)
-				{
+				if (static_cast<int>(m_pFrame.size()) <= m_CurrentFrame) 
 					m_CurrentFrame = 0;
-				}
 			}
 
 			return false;
@@ -246,10 +236,8 @@ namespace Lib
 						m_AnimationCounter = 0.0f;
 						m_CurrentFrame++;
 
-						if (static_cast<int>(m_pFrame.size()) - 1 <= m_CurrentFrame)
-						{
+						if (static_cast<int>(m_pFrame.size()) - 1 <= m_CurrentFrame) 
 							m_IsReverse = true;
-						}
 					}
 				}
 				else
@@ -285,9 +273,7 @@ namespace Lib
 					m_CurrentFrame++;
 
 					if (static_cast<int>(m_pFrame.size()) - 1 <= m_CurrentFrame)
-					{
 						m_IsReverse = true;
-					}
 				}
 			}
 			else

@@ -92,9 +92,7 @@ namespace Lib
 		template <typename Type2, typename ReleaseFunc2>
 		SharedPtr(SharedPtr<Type2, ReleaseFunc2>&& _src);
 
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		~SharedPtr();
 
 
@@ -231,16 +229,11 @@ namespace Lib
 		 */
 		int* GetRefCounterPtr();
 
-		/**
-		 * 参照カウンタの増分
-		 */
+		/*** 参照カウンタの増分 */
 		void AddRef();
 
-		/**
-		 * ポインタの解放
-		 */
+		/*** ポインタの解放 */
 		void Release();
-
 
 		Type*		m_Ptr;			//!< 管理するポインタ.
 		int*		m_pRefCount;	//!< 参照カウンタ.

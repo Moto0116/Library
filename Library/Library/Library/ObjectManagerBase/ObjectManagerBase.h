@@ -16,20 +16,14 @@
 
 namespace Lib
 {
-	/**
-	 * オブジェクト管理基底クラス
-	 */
+	/*** オブジェクト管理基底クラス */
 	class ObjectManagerBase
 	{
 	public:
-		/**
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		ObjectManagerBase();
 
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		virtual ~ObjectManagerBase();
 
 		/**
@@ -38,9 +32,7 @@ namespace Lib
 		 */
 		virtual bool Initialize();
 
-		/**
-		 * 終了処理
-		 */
+		/*** 終了処理 */
 		virtual void Finalize();
 
 	protected:

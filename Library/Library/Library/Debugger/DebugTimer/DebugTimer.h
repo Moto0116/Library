@@ -17,25 +17,19 @@ namespace Lib
 {
 	namespace Debugger
 	{
-		/**
-		 * デバッグ用タイマークラス
-		 */
+		/*** デバッグ用タイマークラス */
 		class DebugTimer
 		{
 		public:
-			/**
-			 * コンストラクタ
-			 */
-			DebugTimer() : m_DiffTime(0){}
+			/*** コンストラクタ */
+			DebugTimer() : 
+				m_DiffTime(0)
+			{}
 
-			/**
-			 * デストラクタ
-			 */
-			~DebugTimer(){}
+			/*** デストラクタ */
+			~DebugTimer() {}
 
-			/**
-			 * 計測開始
-			 */
+			/*** 計測開始 */
 			void StartTimer()
 			{
 #ifdef _DEBUG
@@ -43,9 +37,7 @@ namespace Lib
 #endif // _DEBUG
 			}
 
-			/**
-			 * 計測終了
-			 */
+			/*** 計測終了 */
 			void EndTimer()
 			{
 #ifdef _DEBUG

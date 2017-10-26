@@ -54,7 +54,6 @@ namespace Lib
 	
 	Window::~Window()
 	{
-		Finalize();
 	}
 	
 	
@@ -108,10 +107,7 @@ namespace Lib
 
 	void Window::Finalize()
 	{
-		if (m_hWnd != nullptr)
-		{
-			SendMessage(m_hWnd, WM_CLOSE, 0, 0);
-		}
+		if (m_hWnd != nullptr)	SendMessage(m_hWnd, WM_CLOSE, 0, 0);
 	}
 
 	bool Window::Update()

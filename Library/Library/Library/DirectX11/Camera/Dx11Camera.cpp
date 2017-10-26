@@ -1,6 +1,6 @@
 ﻿/**
  * @file   Dx11Camera.cpp
- * @brief  Cameraクラスの実装
+ * @brief  カメラ情報の管理実装
  * @author morimoto
  */
 
@@ -14,9 +14,9 @@ namespace Lib
 {
 	namespace Dx11
 	{
-		//----------------------------------------------------------------------------------------------------
+		//----------------------------------------------------------------------
 		// Constructor	Destructor
-		//----------------------------------------------------------------------------------------------------
+		//----------------------------------------------------------------------
 		Camera::Camera(float _windowWidth, float _windowHeight, float _nearZ, float _farZ) :
 			m_WindowWidth(_windowWidth),
 			m_WindowHeight(_windowHeight),
@@ -31,9 +31,9 @@ namespace Lib
 		}
 
 
-		//----------------------------------------------------------------------------------------------------
+		//----------------------------------------------------------------------
 		// Public Functions
-		//----------------------------------------------------------------------------------------------------
+		//----------------------------------------------------------------------
 		void Camera::TransformView(
 			const D3DXVECTOR3* _pEyePos,
 			const D3DXVECTOR3* _pLookPos,
@@ -44,7 +44,12 @@ namespace Lib
 			D3DXMatrixLookAtLH(&m_MatView, _pEyePos, _pLookPos, _pUpVec);
 
 			// プロジェクション座標変換行列の作成.
-			D3DXMatrixPerspectiveFovLH(&m_MatProj, static_cast<float>(D3DXToRadian(_viewAngle)), m_Aspect, m_NearZ, m_FarZ);
+			D3DXMatrixPerspectiveFovLH(
+				&m_MatProj, 
+				static_cast<float>(D3DXToRadian(_viewAngle)),
+				m_Aspect, 
+				m_NearZ,
+				m_FarZ);
 		}
 	}
 }

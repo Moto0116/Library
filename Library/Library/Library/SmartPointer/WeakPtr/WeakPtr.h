@@ -35,9 +35,7 @@ namespace Lib
 		friend Type** GetPtrPtr(WeakPtr<Type>& _ptr);
 
 
-		/**
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		WeakPtr();
 
 		/**
@@ -66,9 +64,7 @@ namespace Lib
 		template <typename MoveType>
 		WeakPtr(WeakPtr<MoveType>&& _src);
 
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		~WeakPtr();
 
 
@@ -120,7 +116,6 @@ namespace Lib
 		 * @return 管理しているポインタアドレス取得
 		 */
 		Type** GetResourceAddress();
-
 
 		Type*	m_Ptr;	//!< 管理するポインタ.
 

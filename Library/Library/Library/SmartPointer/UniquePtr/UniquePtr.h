@@ -63,9 +63,7 @@ namespace Lib
 		template <typename Type2, typename ReleaseFunc2>
 		UniquePtr(UniquePtr<Type2, ReleaseFunc2>&& _src);
 
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		~UniquePtr();
 
 
@@ -148,11 +146,8 @@ namespace Lib
 		 */
 		Type** GetResourceAddress();
 
-		/**
-		 * ポインタの解放
-		 */
+		/*** ポインタの解放 */
 		void Release();
-
 
 		Type* m_Ptr; //!< 管理するポインタ.
 

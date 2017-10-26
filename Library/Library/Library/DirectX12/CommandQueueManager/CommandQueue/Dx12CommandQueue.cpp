@@ -19,7 +19,10 @@ namespace Lib
 		//----------------------------------------------------------------------
 		// Constructor	Destructor
 		//----------------------------------------------------------------------
-		CommandQueue::CommandQueue(GraphicsDevice* _pDevice, D3D12_COMMAND_LIST_TYPE _type, int _priority) :
+		CommandQueue::CommandQueue(
+			GraphicsDevice* _pDevice,
+			D3D12_COMMAND_LIST_TYPE _type,
+			int _priority) :
 			m_pGraphicsDevice(_pDevice),
 			m_pCommandQueue(nullptr),
 			m_pFence(nullptr),

@@ -15,25 +15,17 @@
 
 namespace Lib
 {
-	/**
-	 * 描画前処理のタスククラス
-	 */
+	/*** 描画前処理のタスククラス */
 	class DrawStartUpTask final : public TaskBase<>
 	{
 	public:
-		/**
-		 * コンストラクタ 
-		 */
+		/*** コンストラクタ */
 		DrawStartUpTask();
 
-		/**
-		 * デストラクタ 
-		 */
+		/*** デストラクタ */
 		virtual ~DrawStartUpTask();
 
-		/**
-		 * 描画前処理タスク実行
-		 */
+		/*** 描画前処理タスク実行 */
 		virtual void Run();
 	
 		/**

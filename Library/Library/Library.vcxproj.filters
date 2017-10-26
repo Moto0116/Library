@@ -283,9 +283,6 @@
     <ClCompile Include="Library\DirectX11\AnimationManager\Dx11AnimationManager.cpp">
       <Filter>Library\DirectX11\AnimationManager</Filter>
     </ClCompile>
-    <ClCompile Include="Library\DirectX11\Billboard2D\Dx11Billboard2D.cpp">
-      <Filter>Library\DirectX11\Billboard2D</Filter>
-    </ClCompile>
     <ClCompile Include="Library\DirectX11\Camera\Dx11Camera.cpp">
       <Filter>Library\DirectX11\Camera</Filter>
     </ClCompile>
@@ -312,15 +309,6 @@
     </ClCompile>
     <ClCompile Include="Library\DirectX11\Vertex2D\Dx11Vertex2D.cpp">
       <Filter>Library\DirectX11\Vertex2D</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\VertexManager\IVertex\Dx11IVertex.cpp">
-      <Filter>Library\DirectX11\VertexManager\IVertex</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\VertexManager\Vertex\Dx11Vertex.cpp">
-      <Filter>Library\DirectX11\VertexManager\Vertex</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\VertexManager\Dx11VertexManager.cpp">
-      <Filter>Library\DirectX11\VertexManager</Filter>
     </ClCompile>
     <ClCompile Include="Library\Math\Math.cpp">
       <Filter>Library\Math</Filter>
@@ -474,9 +462,6 @@
     <ClInclude Include="Library\DirectX11\AnimationManager\Dx11AnimationManager.h">
       <Filter>Library\DirectX11\AnimationManager</Filter>
     </ClInclude>
-    <ClInclude Include="Library\DirectX11\Billboard2D\Dx11Billboard2D.h">
-      <Filter>Library\DirectX11\Billboard2D</Filter>
-    </ClInclude>
     <ClInclude Include="Library\DirectX11\Camera\Dx11Camera.h">
       <Filter>Library\DirectX11\Camera</Filter>
     </ClInclude>
@@ -503,15 +488,6 @@
     </ClInclude>
     <ClInclude Include="Library\DirectX11\Vertex2D\Dx11Vertex2D.h">
       <Filter>Library\DirectX11\Vertex2D</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\VertexManager\IVertex\Dx11IVertex.h">
-      <Filter>Library\DirectX11\VertexManager\IVertex</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\VertexManager\Vertex\Dx11Vertex.h">
-      <Filter>Library\DirectX11\VertexManager\Vertex</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\VertexManager\Dx11VertexManager.h">
-      <Filter>Library\DirectX11\VertexManager</Filter>
     </ClInclude>
     <ClInclude Include="Library\Math\Math.h">
       <Filter>Library\Math</Filter>

@@ -17,24 +17,19 @@
 
 namespace Lib
 {
-	/**
-	 * サウンドインターフェース
-	 */
+	/*** サウンドインターフェース */
 	interface ISound
 	{
 	public:
-		/**
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		ISound();
 
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		virtual ~ISound() = 0;
 
 		/**
 		 * サウンドの操作
+		 * @param[in] _operation サウンドに対する操作
 		 */
 		virtual void SoundOperation(SoundManager::SOUND_OPERATION _operation) = 0;
 

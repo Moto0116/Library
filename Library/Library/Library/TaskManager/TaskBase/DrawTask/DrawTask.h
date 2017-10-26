@@ -24,19 +24,13 @@ namespace Lib
 	class DrawTask final : public TaskBase<PriorityType>
 	{
 	public:
-		/**
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		DrawTask();
 	
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		virtual ~DrawTask();
 	
-		/**
-		 * 描画タスク実行
-		 */
+		/*** 描画タスク実行 */
 		virtual void Run();
 	
 		/**

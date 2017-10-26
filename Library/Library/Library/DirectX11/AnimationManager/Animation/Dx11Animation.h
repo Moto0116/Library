@@ -19,9 +19,7 @@ namespace Lib
 {
 	namespace Dx11
 	{
-		/**
-		 * 2Dアニメーションクラス
-		 */
+		/*** 2Dアニメーションクラス */
 		class Animation : public IAnimation
 		{
 		public:
@@ -31,14 +29,10 @@ namespace Lib
 			 */
 			Animation(LPCTSTR _pAnimationPath);
 
-			/**
-			 * デストラクタ
-			 */
+			/*** デストラクタ */
 			virtual ~Animation();
 
-			/**
-			 * アニメーションの開始
-			 */
+			/*** アニメーションの開始 */
 			virtual void AnimationStart();
 
 			/**
@@ -83,7 +77,6 @@ namespace Lib
 			 */
 			virtual ANIMATION_FRAME* GetCurrentFrame() const;
 
-
 		private:
 			/**
 			 * 読み込み処理
@@ -91,29 +84,19 @@ namespace Lib
 			 */
 			void Load(LPCTSTR _pAnimationPath);
 
-			/**
-			 * 解放処理
-			 */
+			/*** 解放処理 */
 			void Release();
 
-			/**
-			 * アニメーション制御
-			 */
+			/*** アニメーション制御 */
 			bool OneAnimationControl();
 
-			/**
-			 * ループアニメーション制御
-			 */
+			/*** ループアニメーション制御 */
 			bool LoopAnimationControl();
 
-			/**
-			 * 逆アニメーション制御
-			 */
+			/*** 逆アニメーション制御 */
 			bool ReverseOneAnimationControl();
 
-			/**
-			 * 逆ループアニメーション制御
-			 */
+			/*** 逆ループアニメーション制御 */
 			bool ReverseLoopAnimationControl();
 
 

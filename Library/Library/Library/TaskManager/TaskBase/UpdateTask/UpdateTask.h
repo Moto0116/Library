@@ -16,25 +16,17 @@
 
 namespace Lib
 {
-	/**
-	 * 更新のタスククラス
-	 */
+	/*** 更新のタスククラス */
 	class UpdateTask final : public TaskBase<>
 	{
 	public:
-		/**
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		UpdateTask();
 	
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		virtual ~UpdateTask();
 	
-		/**
-		 * 更新タスク実行
-		 */
+		/*** 更新タスク実行 */
 		virtual void Run();
 	
 		/**

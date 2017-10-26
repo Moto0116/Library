@@ -20,9 +20,7 @@ namespace Lib
 {
 	namespace Dx12
 	{
-		/**
-		 * コマンドキュー
-		 */
+		/*** コマンドキュークラス */
 		class CommandQueue
 		{
 		public:
@@ -36,9 +34,7 @@ namespace Lib
 				D3D12_COMMAND_LIST_TYPE _type = D3D12_COMMAND_LIST_TYPE_DIRECT,
 				int _priority = 0);
 
-			/**
-			 * デストラクタ
-			 */
+			/*** デストラクタ */
 			~CommandQueue();
 
 			/**
@@ -48,16 +44,11 @@ namespace Lib
 			ID3D12CommandQueue* Get() const { return m_pCommandQueue; }
 
 		private:
-			/**
-			 * 初期化処理
-			 */
+			/*** 初期化処理 */
 			void Initialize();
 
-			/**
-			 * 終了処理
-			 */
+			/*** 終了処理 */
 			void Finalize();
-
 
 			GraphicsDevice*					m_pGraphicsDevice;	//!< グラフィックスデバイス.
 			ID3D12CommandQueue*				m_pCommandQueue;	//!< コマンドキュー.

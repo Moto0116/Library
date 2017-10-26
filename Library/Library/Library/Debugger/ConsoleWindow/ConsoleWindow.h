@@ -16,22 +16,16 @@ namespace Lib
 {
 	namespace Debugger
 	{
-		/**
-		 * コンソールウィンドウクラス
-		 */
+		/*** コンソールウィンドウクラス */
 		class ConsoleWindow
 		{
 		public:
 			static const int m_OutputBufferSize;	//!< 一度に出力できるバッファのサイズ.
 
-			/**
-			 * コンストラクタ
-			 */
+			/*** コンストラクタ */
 			ConsoleWindow();
 
-			/**
-			 * デストラクタ
-			 */
+			/*** デストラクタ */
 			~ConsoleWindow();
 
 			/**
@@ -41,9 +35,7 @@ namespace Lib
 			 */
 			bool Initialize(LPCTSTR _name);
 
-			/**
-			 * 終了処理
-			 */
+			/*** 終了処理 */
 			void Finalize();
 
 			/**
@@ -56,17 +48,14 @@ namespace Lib
 			 * コンソールウィンドウの状態を取得
 			 * @return アクティブであればtrue 非アクティブであればfalse
 			 */
-			bool GetIsActive()
-			{
-				return m_IsActive;
-			}
+			bool GetIsActive() { return m_IsActive; }
 
 		private:
-			HANDLE m_ReadHandle;		//!< 読み込みハンドル.
-			HANDLE m_WriteHandle;		//!< 書き込みハンドル.
-			HANDLE m_ProcessHandle;		//!< プロセスハンドル.
+			HANDLE	m_ReadHandle;		//!< 読み込みハンドル.
+			HANDLE	m_WriteHandle;		//!< 書き込みハンドル.
+			HANDLE	m_ProcessHandle;	//!< プロセスハンドル.
 
-			bool m_IsActive;			//!< コンソールウィンドウがアクティブかのフラグ.
+			bool	m_IsActive;			//!< コンソールウィンドウがアクティブかのフラグ.
 
 		};
 	}

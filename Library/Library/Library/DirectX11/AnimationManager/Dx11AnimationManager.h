@@ -20,9 +20,7 @@ namespace Lib
 	{
 		interface IAnimation;
 
-		/**
-		 * アニメーションの管理クラス
-		 */
+		/*** アニメーションの管理クラス */
 		class AnimationManager : public SingletonBase<AnimationManager>
 		{
 		public:
@@ -30,15 +28,14 @@ namespace Lib
 
 			static const int m_InvalidIndex;	//!< AnimationManagerクラスがとるインデックスのエラー値.
 
+
 			/**
 			 * 初期化処理
 			 * @return 初期化に成功したらtrue 失敗したらfalse
 			 */
 			bool Initialize();
 
-			/**
-			 * 終了処理
-			 */
+			/*** 終了処理 */
 			void Finalize();
 
 			/**
@@ -60,31 +57,17 @@ namespace Lib
 			 * @param[in] _index 取得するアニメーションのインデックス
 			 * @return 格納先のアニメーション
 			 */
-			IAnimation* GetAnimation(int _index) const
-			{
-				return m_pAnimation[_index];
-			}
+			IAnimation* GetAnimation(int _index) const { return m_pAnimation[_index]; }
 
-			/**
-			 * アニメーションを格納しているバッファを解放する
-			 */
-			void ClearBuffer()
-			{
-				m_pAnimation.clear();
-			}
-
+			/*** アニメーションを格納しているバッファを解放する */
+			void ClearBuffer(){ m_pAnimation.clear(); }
 
 		private:
-			/**
-			 * コンストラクタ
-			 */
+			/*** コンストラクタ */
 			AnimationManager();
 
-			/**
-			 * デストラクタ
-			 */
+			/*** デストラクタ */
 			virtual ~AnimationManager();
-
 
 			std::vector<IAnimation*>	m_pAnimation;	//!< アニメーションを格納するコンテナ.
 

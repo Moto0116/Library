@@ -26,9 +26,7 @@ namespace Lib
 	public:
 		typedef Type InstanceType;
 
-		/**
-		 * インスタンスの生成
-		 */
+		/*** インスタンスの生成 */
 		static void Create()
 		{
 			if (m_pInstance == nullptr)
@@ -46,9 +44,7 @@ namespace Lib
 			return m_pInstance;
 		}
 	
-		/**
-		 * インスタンスの破棄
-		 */
+		/*** インスタンスの破棄 */
 		static void Delete()
 		{
 			delete m_pInstance;
@@ -58,14 +54,10 @@ namespace Lib
 	protected:
 		static Type* m_pInstance;	//!< シングルトンインスタンス.
 	
-		/**
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		SingletonBase();
 	
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		virtual ~SingletonBase();
 	
 	private:

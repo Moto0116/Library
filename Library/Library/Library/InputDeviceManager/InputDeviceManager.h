@@ -27,17 +27,13 @@
 
 namespace Lib
 {
-	/**
-	 * 入力デバイスの管理クラス
-	 */
+	/*** 入力デバイスの管理クラス */
 	class InputDeviceManager : public SingletonBase<InputDeviceManager>
 	{
 	public:
 		friend SingletonBase<InputDeviceManager>;
 
-		/**
-		 * 管理するデバイスの種類
-		 */
+		/*** 管理するデバイスの種類 */
 		enum INPUTDEVICE_TYPE
 		{
 			GAMEPAD_TYPE,		//!< コントローラー.
@@ -53,9 +49,7 @@ namespace Lib
 		 */
 		bool Initialize(HWND _hWnd);
 
-		/**
-		 * 終了処理
-		 */
+		/*** 終了処理 */
 		void Finalize();
 
 		/**
@@ -73,19 +67,13 @@ namespace Lib
 		 */
 		void ReleaseDevice(INPUTDEVICE_TYPE _deviceType);
 
-		/**
-		 * KeyDeviceの状態を更新する
-		 */
+		/*** KeyDeviceの状態を更新する */
 		void KeyUpdate();
 
-		/**
-		 * MouseDeviceの状態を更新する
-		 */
+		/*** MouseDeviceの状態を更新する */
 		void MouseUpdate();
 
-		/**
-		 * GamePadの状態を更新する
-		 */
+		/*** GamePadの状態を更新する */
 		void GamePadUpdate(GamePad::XINPUTPAD _pad);
 
 		/**
@@ -138,14 +126,10 @@ namespace Lib
 		bool GetRAnalogState(GamePad::ANALOGPAD _analogId, GamePad::XINPUTPAD _pad);
 
 	private:
-		/**
-		 * コンストラクタ 
-		 */
+		/*** コンストラクタ */
 		InputDeviceManager();
 
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		virtual ~InputDeviceManager();
 
 		/**
@@ -169,21 +153,14 @@ namespace Lib
 		 */
 		bool CreateMouseDevice(bool _isDebug, bool _IsPlayDebugLog);
 
-		/**
-		 * ゲームパッドの破棄
-		 */
+		/*** ゲームパッドの破棄 */
 		void ReleaseGamePad();
 
-		/**
-		 * キーデバイスの破棄
-		 */
+		/*** キーデバイスの破棄 */
 		void ReleaseKeyDevice();
 
-		/**
-		 * マウスデバイスの破棄
-		 */
+		/*** マウスデバイスの破棄 */
 		void ReleaseMouseDevice();
-
 
 		GamePad*		m_pGamePad;		//!< ゲームパッドオブジェクト.
 		KeyDevice*		m_pKeyDevice;	//!< キーデバイスオブジェクト.

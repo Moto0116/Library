@@ -20,31 +20,23 @@ namespace Lib
 {
 	namespace Dx11
 	{
-		/**
-		 * Fbxの読み込み処理を管理するクラス
-		 */
+		/*** Fbxの読み込み処理を管理するクラス */
 		class FbxLoader
 		{
 		public:
 			/**
-			 * FbxLoaderクラスのコンストラクタ
-			 * @param[in] _pGraphicsDevice テクスチャ読み込みに使用するグラフィックデバイス
+			 * コンストラクタ
+			 * @param[in] _pGraphicsDevice グラフィックデバイス
 			 */
 			FbxLoader(GraphicsDevice* _pGraphicsDevice);
 
-			/**
-			 * FbxLoaderクラスのデストラクタ
-			 */
+			/*** デストラクタ */
 			~FbxLoader();
 
-			/**
-			 * FbxLoaderを初期化する
-			 */
+			/*** 初期化処理 */
 			bool Initialize();
 
-			/**
-			 * FbxLoaderを解放する
-			 */
+			/*** 終了処理 */
 			void Finalize();
 
 			/**
@@ -82,24 +74,16 @@ namespace Lib
 			 */
 			bool InitFbxIOSettings();
 
-			/**
-			 * fbxsdkの管理オブジェクトを解放する
-			 */
+			/*** fbxsdkの管理オブジェクトを解放する	 */
 			void ReleaseFbxManager();
 
-			/**
-			 * Fbxのシーンをまとめるオブジェクトを解放する
-			 */
+			/*** Fbxのシーンをまとめるオブジェクトを解放する */
 			void ReleaseFbxScene();
 
-			/**
-			 * Fbxのインポーターを解放する
-			 */
+			/*** Fbxのインポーターを解放する */
 			void ReleaseFbxImporter();
 
-			/**
-			 * Fbxの入出力を設定するオブジェクトを解放する
-			 */
+			/*** Fbxの入出力を設定するオブジェクトを解放する */
 			void ReleaseFbxIOSettings();
 
 			/**
@@ -157,6 +141,7 @@ namespace Lib
 
 			/**
 			 * ファイルから取得したメッシュデータを描画に使用できるようにする
+			 * @param[in] _pMeshData メッシュデータ
 			 */
 			bool MeshDataConvert(FbxModel::MESH_DATA* _pMeshData);
 

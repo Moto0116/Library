@@ -21,10 +21,7 @@ namespace Lib
 	class EventBase;
 	class EventListener;
 
-	/**
-	 * イベント管理基底クラス
-	 * @tparam Event 通知を受けるEventクラス
-	 */
+	/*** イベント管理基底クラス */
 	class EventManager : public SingletonBase<EventManager>
 	{
 	public:
@@ -52,9 +49,7 @@ namespace Lib
 		void SendEventMessage(EventBase* _pEvent, LPCTSTR _groupName);
 
 	private:
-		/**
-		 * LPCTSTR比較用のオブジェクト
-		 */
+		/*** LPCTSTR比較用のオブジェクト */
 		struct CompareStr
 		{
 		public:
@@ -64,14 +59,10 @@ namespace Lib
 			}
 		};
 
-		/**
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		EventManager();
 
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		virtual ~EventManager();
 
 

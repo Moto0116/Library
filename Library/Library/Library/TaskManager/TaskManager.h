@@ -30,9 +30,7 @@ namespace Lib
 	public:
 		friend SingletonBase<TaskManager<Type, StartUpTask>>;
 	
-		/**
-		 * タスクの実行
-		 */
+		/*** タスクの実行 */
 		void Run();
 	
 		/**
@@ -60,16 +58,11 @@ namespace Lib
 		void RemoveStartUpTask(StartUpTask* _pStartUpTask);
 
 	private:
-		/**
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		TaskManager();
 	
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		virtual ~TaskManager();
-
 
 		std::list<StartUpTask*>	m_pStartUpTaskList;	//!< 起動タスクオブジェクトを管理するコンテナ.
 		std::list<Type*>		m_pTaskList;		//!< タスクオブジェクトを管理するコンテナ.

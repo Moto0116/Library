@@ -19,9 +19,7 @@ namespace Lib
 	class SoundDevice;
 	interface ISound;
 
-	/**
-	 * サウンドを管理するクラス
-	 */
+	/*** サウンドを管理するクラス */
 	class SoundManager : public SingletonBase<SoundManager>
 	{
 	public:
@@ -29,9 +27,7 @@ namespace Lib
 
 		static const int m_InvalidIndex;	//!< SoundManagerクラスがとるインデックスのエラー値.
 
-		/**
-		 * サウンドの操作
-		 */
+		/*** サウンドの操作 */
 		enum SOUND_OPERATION
 		{
 			PLAY,				//!< 再生.
@@ -48,9 +44,7 @@ namespace Lib
 		 */
 		bool Initialize(SoundDevice* _pSoundDevice);
 
-		/**
-		 * 終了処理
-		 */
+		/*** 終了処理 */
 		void Finalize();
 
 		/**
@@ -72,30 +66,17 @@ namespace Lib
 		 * @param[in] _index 取得するサウンドのインデックス
 		 * @return 格納先のサウンド
 		 */
-		inline ISound* GetSound(int _index) const
-		{
-			return m_pSounds[_index];
-		}
+		ISound* GetSound(int _index) const { return m_pSounds[_index]; }
 
-		/**
-		 * サウンドを格納しているバッファを解放する
-		 */
-		inline void ClearBuffer()
-		{
-			m_pSounds.clear();
-		}
+		/*** サウンドを格納しているバッファを解放する */
+		void ClearBuffer() { m_pSounds.clear(); }
 
 	private:
-		/**
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		SoundManager();
 
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		virtual ~SoundManager();
-
 
 		std::vector<ISound*>	m_pSounds;		//!< サウンドオブジェクトを管理するコンテナ.
 		SoundDevice*			m_pSoundDevice;	//!< サウンドデバイス.

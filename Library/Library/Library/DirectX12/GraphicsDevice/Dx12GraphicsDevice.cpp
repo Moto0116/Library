@@ -36,10 +36,7 @@ namespace Lib
 		{
 			MyAssert(m_pDevice != nullptr, "GraphicsDeviceオブジェクトは既に初期化されています");
 
-			if (!CreateDevice())
-			{
-				return false;
-			}
+			if (!CreateDevice())	return false;
 
 			return true;
 		}

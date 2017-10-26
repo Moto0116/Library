@@ -22,15 +22,11 @@ namespace Lib
 	{
 		class GraphicsDevice;
 
-		/**
-		 * テクスチャクラス
-		 */
+		/*** テクスチャクラス */
 		class Texture : public ITexture
 		{
 		public:
-			/**
-			 * コンストラクタ
-			 */
+			/*** コンストラクタ */
 			Texture();
 
 			/**
@@ -40,9 +36,7 @@ namespace Lib
 			 */
 			Texture(GraphicsDevice* _pGraphicsDevice, LPCTSTR _pTexturePath);
 
-			/**
-			 * デストラクタ
-			 */
+			/*** デストラクタ */
 			virtual ~Texture();
 
 			/**
@@ -57,7 +51,6 @@ namespace Lib
 			 */
 			virtual ID3D11ShaderResourceView* Get() const;
 
-
 		private:
 			/**
 			 * テクスチャの読み込み
@@ -65,11 +58,8 @@ namespace Lib
 			 */
 			void Load(LPCTSTR _pTexturePath);
 
-			/**
-			 * テクスチャの解放
-			 */
+			/*** テクスチャの解放 */
 			void Release();
-
 
 			GraphicsDevice*				m_pGraphicsDevice;	//!< グラフィックデバイス.
 			ID3D11ShaderResourceView*	m_pTexture;			//!< テクスチャのシェーダーリソースビュー.

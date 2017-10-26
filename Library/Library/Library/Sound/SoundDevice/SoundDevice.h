@@ -16,9 +16,7 @@
 
 namespace Lib
 {
-	/**
-	 * サウンドデバイスの管理クラス
-	 */
+	/*** サウンドデバイスの管理クラス */
 	class SoundDevice : public SingletonBase<SoundDevice>
 	{
 	public:
@@ -31,31 +29,21 @@ namespace Lib
 		 */
 		bool Initialize(HWND _hWnd);
 
-		/**
-		 * 終了処理
-		 */
+		/*** 終了処理 */
 		void Finalize();
 
 		/**
 		 * サウンドオブジェクトを取得する
 		 * @return サウンドオブジェクト
 		 */
-		inline IDirectSound8* GetSoundObject() const
-		{
-			return m_pDSound8;
-		}
+		IDirectSound8* GetSoundObject() const { return m_pDSound8; }
 
 	private:
-		/**
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		SoundDevice();
 
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		virtual ~SoundDevice();
-
 
 		IDirectSound8*	m_pDSound8;	//!< サウンドオブジェクト.
 		HWND			m_hWnd;		//!< 対応するウィンドウハンドル.

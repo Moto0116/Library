@@ -21,20 +21,14 @@ namespace Lib
 {
 	namespace Dx11
 	{
-		/**
-		 * 2Dポリゴンの描画クラス
-		 */
+		/*** 2Dポリゴンの描画クラス */
 		class Vertex2D
 		{
 		public:
-			/**
-			 * コンストラクタ
-			 */
+			/*** コンストラクタ */
 			Vertex2D();
 
-			/**
-			 * デストラクタ
-			 */
+			/*** デストラクタ */
 			~Vertex2D();
 
 			/**
@@ -44,9 +38,7 @@ namespace Lib
 			 */
 			bool Initialize(GraphicsDevice* _pGraphicsDevice);
 
-			/**
-			 * 終了処理
-			 */
+			/*** 終了処理 */
 			void Finalize();
 
 			/**
@@ -63,9 +55,7 @@ namespace Lib
 				const D3DXVECTOR2* _pMaxUV = &D3DXVECTOR2(1.0f, 1.0f),
 				const D3DXCOLOR* _pColor = &D3DXCOLOR(0xffffffff));
 
-			/**
-			 * 頂点バッファの解放
-			 */
+			/*** 頂点バッファの解放 */
 			void ReleaseVertexBuffer();
 
 			/**
@@ -111,42 +101,29 @@ namespace Lib
 				const D3DXVECTOR2* _pScale = &D3DXVECTOR2(1.f, 1.f),
 				const D3DXVECTOR3* _pAngle = &D3DXVECTOR3(0.f, 0.f, 0.f));
 
-			/**
-			 * デフォルトのシェーダーを使用する準備
-			 */
+			/*** デフォルトのシェーダーを使用する準備 */
 			void ShaderSetup();
 
-			/**
-			 * 2Dポリゴンの描画
-			 */
+			/*** 2Dポリゴンの描画 */
 			void Draw();
 
 			/**
 			 * 描画するテクスチャをセットする
 			 * @param[in] _pTexture テクスチャオブジェクト
 			 */
-			void SetTexture(ITexture* _pTexture)
-			{
-				m_pTexture = _pTexture;
-			}
+			void SetTexture(ITexture* _pTexture) { m_pTexture = _pTexture; }
 
 			/**
 			 * 描画時のアニメーションをセットする
 			 * @param[in] _pAnimation アニメーションオブジェクト
 			 */
-			void SetAnimation(IAnimation* _pAnimation)
-			{
-				m_pAnimation = _pAnimation;
-			}
+			void SetAnimation(IAnimation* _pAnimation) { m_pAnimation = _pAnimation; }
 
 			/**
 			 * 画像が反転しているのか設定
 			 * @param[in] _isInverse 画像が反転しているか(アニメーション使用時にしか影響しない)
 			 */
-			void SetInverse(bool _isInverse)
-			{
-				m_IsInverse = _isInverse;
-			}
+			void SetInverse(bool _isInverse) { m_IsInverse = _isInverse; }
 
 			/**
 			 * 深度ステンシルステートの設定
@@ -163,9 +140,7 @@ namespace Lib
 				VERTEX_NUM = 4 //!< 頂点数.
 			};
 
-			/**
-			 * 2D矩形描画用の頂点構造体
-			 */
+			/*** 2D矩形描画用の頂点構造体 */
 			struct VERTEX
 			{
 				D3DXVECTOR3		Pos;	//!< 頂点座標.
@@ -173,9 +148,7 @@ namespace Lib
 				D3DXCOLOR		Color;	//!< 頂点カラー値.
 			};
 
-			/**
-			 * シェーダーで使用する定数バッファ
-			 */
+			/*** シェーダーで使用する定数バッファ */
 			struct CONSTANT_BUFFER
 			{
 				D3DXMATRIX  MatWorld;	//!< ワールド変換行列.
@@ -207,26 +180,17 @@ namespace Lib
 			 */
 			bool CreateState();
 
-			/**
-			 * 頂点シェーダーの解放
-			 */
+			/*** 頂点シェーダーの解放 */
 			void ReleaseVertexShader();
 
-			/**
-			 * 頂点入力レイアウトの解放
-			 */
+			/*** 頂点入力レイアウトの解放 */
 			void ReleaseVertexLayout();
 
-			/**
-			 * ピクセルシェーダーの解放
-			 */
+			/*** ピクセルシェーダーの解放 */
 			void ReleasePixelShader();
 
-			/**
-			 * ステートの解放
-			 */
+			/*** ステートの解放 */
 			void ReleaseState();
-
 
 			GraphicsDevice*				m_pGraphicsDevice;			//!< グラフィックデバイス.
 			ID3D11VertexShader*			m_pVertexShader;			//!< 頂点シェーダー.

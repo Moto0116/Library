@@ -1,6 +1,6 @@
 ﻿/**
  * @file   Dx11Camera.h
- * @brief  Cameraクラスの定義
+ * @brief  カメラ情報の管理定義
  * @author morimoto
  */
 #ifndef LIB_DX11_CAMERA_H
@@ -17,9 +17,7 @@ namespace Lib
 {
 	namespace Dx11
 	{
-		/**
-		 * カメラ情報の管理クラス
-		 */
+		/*** カメラ情報の管理クラス */
 		class Camera
 		{
 		public:
@@ -32,9 +30,7 @@ namespace Lib
 			 */
 			Camera(float _windowWidth, float _windowHeight, float _nearZ, float _farZ);
 
-			/**
-			 * デストラクタ
-			 */
+			/*** デストラクタ */
 			~Camera();
 
 			/**
@@ -54,19 +50,13 @@ namespace Lib
 			 * ビュー座標変換用行列の取得
 			 * @return ビュー座標変換用行列
 			 */
-			const D3DXMATRIX& GetViewMatrix() const
-			{
-				return m_MatView;
-			}
+			const D3DXMATRIX& GetViewMatrix() const	{ return m_MatView; }
 
 			/**
 			 * プロジェクション座標変換用行列の取得
 			 * @return プロジェクション座標変換用行列
 			 */
-			const D3DXMATRIX& GetProjectionMatrix() const
-			{
-				return m_MatProj;
-			}
+			const D3DXMATRIX& GetProjectionMatrix() const { return m_MatProj; }
 
 		private:
 			D3DXMATRIX	m_MatView;		//!< カメラビュー行列.

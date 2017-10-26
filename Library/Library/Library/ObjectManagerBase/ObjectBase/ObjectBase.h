@@ -9,20 +9,14 @@
 
 namespace Lib
 {
-	/**
-	 * オブジェクトの基底クラス
-	 */
+	/*** オブジェクトの基底クラス */
 	class ObjectBase
 	{
 	public:
-		/**
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		ObjectBase();
 
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		virtual ~ObjectBase();
 
 		/**
@@ -31,29 +25,19 @@ namespace Lib
 		 */
 		virtual bool Initialize();
 
-		/**
-		 * 終了処理
-		 */
+		/*** 終了処理 */
 		virtual void Finalize();
 
-		/**
-		 * オブジェクトの更新前処理
-		 */
+		/*** オブジェクトの更新前処理 */
 		virtual void UpdateStartUp();
 
-		/**
-		 * オブジェクトの更新
-		 */
+		/*** オブジェクトの更新 */
 		virtual void Update();
 
-		/**
-		 * オブジェクトの描画前処理
-		 */
+		/*** オブジェクトの描画前処理 */
 		virtual void DrawStartUp();
 
-		/**
-		 * オブジェクトの描画
-		 */
+		/*** オブジェクトの描画 */
 		virtual void Draw();
 
 	};

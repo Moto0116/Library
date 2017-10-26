@@ -21,9 +21,7 @@ namespace Lib
 {
 	namespace Dx12
 	{
-		/**
-		 * コマンドリスト管理クラス
-		 */
+		/*** コマンドリスト管理クラス */
 		class CommandListManager : public SingletonBase<CommandListManager>
 		{
 		public:
@@ -36,22 +34,15 @@ namespace Lib
 			 */
 			bool Initialize(GraphicsDevice* _pGraphicsDevice);
 
-			/**
-			 * 終了処理
-			 */
+			/*** 終了処理 */
 			void Finalize();
 
 		private:
-			/**
-			 * コンストラクタ
-			 */
+			/*** コンストラクタ */
 			CommandListManager();
 
-			/**
-			 * デストラクタ
-			 */
+			/*** デストラクタ */
 			virtual ~CommandListManager();
-
 
 			GraphicsDevice*					m_pGraphicsDevice;	//!< グラフィックデバイス.
 			std::vector<ID3D12CommandList*> m_pCommandLists;	//!< コマンドリスト.

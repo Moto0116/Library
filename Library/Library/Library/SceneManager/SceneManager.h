@@ -16,20 +16,14 @@ namespace Lib
 {
 	class SceneBase;
 
-	/**
-	 * シーン管理クラス
-	 */
+	/*** シーン管理クラス */
 	class SceneManager
 	{
 	public:
-		/**
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		SceneManager();
 
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		~SceneManager();
 
 		/**
@@ -38,9 +32,7 @@ namespace Lib
 		 */
 		bool Initialize();
 
-		/**
-		 * 終了処理
-		 */
+		/*** 終了処理 */
 		void Finalize();
 
 		/**

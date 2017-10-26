@@ -71,8 +71,7 @@ namespace Lib
 			sprintf_s(Args, "%s", _name);
 			for (int i = 0; i < _countof(Args); i++)
 			{
-				// スペースがあると別引数と認識されるので-に置き換え.
-				if (Args[i] == ' ')	Args[i] = '-';
+				if (Args[i] == ' ')	Args[i] = '-';	// スペースがあると別引数と認識されるので-に置き換え.
 			}
 
 			if (!CreateProcess(

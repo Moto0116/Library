@@ -16,21 +16,20 @@ namespace Lib
 {
 	class EventBase;
 
-	/**
-	 * イベント受信クラス
-	 */
+	/*** イベント受信クラス */
 	class EventListener final
 	{
 	public:
+		/*** 受信関数オブジェクト */
+		using ReciveFunc = std::function<void(EventBase*)>;
+
 		/**
 		 * コンストラクタ
 		 * @param[in] _pFunc 設定する関数ポインタオブジェクト
 		 */
-		EventListener(std::function<void(EventBase*)>* _pFunc);
+		EventListener(ReciveFunc* _pFunc);
 
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		~EventListener();
 
 		/**
@@ -43,30 +42,18 @@ namespace Lib
 		 * EventListenerのIDを取得する関数
 		 * @return EventListenerのID
 		 */
-		unsigned int GetEventListenerID() const
-		{
-			return m_EventListenerID;
-		}
+		unsigned int GetEventListenerID() const { return m_EventListenerID; }
 
 		/**
 		 * イベントの通知を受け取る関数を設定
 		 * @param[in] _pFunc 設定する関数ポインタオブジェクト
 		 */
-		void SetReceiveFunc(std::function<void(EventBase*)>* _pFunc)
-		{
-			m_pReceiveFunc = _pFunc;
-		}
-
-		// 比較演算子.
-		bool operator == (EventListener* _pListener)
-		{
-			return m_EventListenerID == _pListener->GetEventListenerID();
-		}
+		void SetReceiveFunc(ReciveFunc* _pFunc) { m_pReceiveFunc = _pFunc; }
 
 	private:
 		static unsigned int	m_EventListenerCount;	//!< リスナーオブジェクトの作成数.
 		unsigned int		m_EventListenerID;		//!< リスナオブジェクトのユニークID.
-		std::function<void(EventBase*)>*	m_pReceiveFunc;		//!< 受信関数ポインタオブジェクト.
+		ReciveFunc*			m_pReceiveFunc;			//!< 受信関数ポインタオブジェクト.
 
 	};
 }

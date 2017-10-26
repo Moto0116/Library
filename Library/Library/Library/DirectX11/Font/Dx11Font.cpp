@@ -67,41 +67,11 @@ namespace Lib
 			m_WindowWidth = static_cast<float>(WindowRect.right - WindowRect.left);
 			m_WindowHeight = static_cast<float>(WindowRect.bottom - WindowRect.top);
 
-
-			if (!CreateVertexShader())
-			{
-				return false;
-			}
-
-			if (!CreateVertexLayout())
-			{
-				ReleaseVertexShader();
-				return false;
-			}
-
-			if (!CreatePixelShader())
-			{
-				ReleaseVertexLayout();
-				ReleaseVertexShader();
-				return false;
-			}
-
-			if (!CreateState())
-			{
-				ReleasePixelShader();
-				ReleaseVertexLayout();
-				ReleaseVertexShader();
-				return false;
-			}
-
-			if (!CreateResourceView())
-			{
-				ReleaseState();
-				ReleasePixelShader();
-				ReleaseVertexLayout();
-				ReleaseVertexShader();
-				return false;
-			}
+			if (!CreateVertexShader())	return false;
+			if (!CreateVertexLayout())	return false;
+			if (!CreatePixelShader())	return false;
+			if (!CreateState())			return false;
+			if (!CreateResourceView())	return false;
 
 			return true;
 		}

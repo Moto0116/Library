@@ -20,9 +20,7 @@ namespace Lib
 {
 	namespace Dx12
 	{
-		/**
-		 * グラフィックデバイスの管理クラス定義
-		 */
+		/*** グラフィックデバイスの管理クラス */
 		class GraphicsDevice : public SingletonBase<GraphicsDevice>
 		{
 		public:
@@ -34,29 +32,20 @@ namespace Lib
 			 */
 			bool Initialize();
 
-			/**
-			 * 終了処理
-			 */
+			/*** 終了処理 */
 			void Finalize();
 
 			/**
 			 * デバイスの取得
 			 * @return DirectX12デバイス
 			 */
-			ID3D12Device* GetDevice()
-			{
-				return m_pDevice;
-			}
+			ID3D12Device* GetDevice() const	{ return m_pDevice; }
 
 		private:
-			/**
-			 * コンストラクタ 
-			 */
+			/*** コンストラクタ */
 			GraphicsDevice();
 
-			/**
-			 * デストラクタ
-			 */
+			/*** デストラクタ */
 			virtual ~GraphicsDevice();
 
 			/**
@@ -65,11 +54,8 @@ namespace Lib
 			 */
 			bool CreateDevice();
 
-			/**
-			 * デバイスの解放関数
-			 */
+			/*** デバイスの解放関数 */
 			void ReleaseDevice();
-
 
 			ID3D12Device*	m_pDevice;	//!< デバイス.
 

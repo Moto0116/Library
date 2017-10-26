@@ -19,20 +19,14 @@ namespace Lib
 {
 	namespace Dx11
 	{
-		/**
-		 * テクスチャインターフェース
-		 */
+		/*** テクスチャインターフェース */
 		interface ITexture
 		{
 		public:
-			/**
-			 * コンストラクタ
-			 */
+			/*** コンストラクタ */
 			ITexture();
 
-			/**
-			 * デストラクタ
-			 */
+			/*** デストラクタ */
 			virtual ~ITexture() = 0;
 
 			/**
@@ -46,7 +40,6 @@ namespace Lib
 			 * @return テクスチャ
 			 */
 			virtual ID3D11ShaderResourceView* Get() const = 0;
-
 
 		private:
 			DISALLOW_COPY_AND_ASSIGN(ITexture);

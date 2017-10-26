@@ -20,15 +20,11 @@ namespace Lib
 {
 	namespace Dx11
 	{
-		/**
-		 * Fbxファイルのモデル情報を管理するクラス
-		 */
+		/*** Fbxファイルのモデル情報を管理するクラス */
 		class FbxModel
 		{
 		public:
-			/**
-			 * Fbxの描画の際に利用する頂点構造体
-			 */
+			/*** Fbxの描画の際に利用する頂点構造体 */
 			struct FBXMODEL_VERTEX
 			{
 				D3DXVECTOR3 Pos;	//!< 頂点座標.
@@ -36,9 +32,7 @@ namespace Lib
 				D3DXVECTOR2 Texel;	//!< テクスチャ座標.
 			};
 
-			/**
-			 * Fbxファイルから取得する頂点情報構造体
-			 */
+			/*** Fbxファイルから取得する頂点情報構造体 */
 			struct VERTEX_DATA
 			{
 				int				PolygonNum;			//!< ポリゴンの数.
@@ -48,17 +42,13 @@ namespace Lib
 				D3DXVECTOR3*	pVertex;			//!< インデックスが参照する頂点.
 			};
 
-			/**
-			 * Fbxファイルから取得する法線情報構造体
-			 */
+			/*** Fbxファイルから取得する法線情報構造体 */
 			struct NORMAL_DATA
 			{
 				D3DXVECTOR3* pNormalVec; //!< 法線ベクトルの配列.
 			};
 
-			/**
-			 * メッシュの描画に利用するマテリアル構造体
-			 */
+			/*** メッシュの描画に利用するマテリアル構造体 */
 			struct MATERIAL
 			{
 				D3DXCOLOR	Diffuse;	//!< ディフューズ反射.
@@ -68,27 +58,21 @@ namespace Lib
 				float		Power;		//!< スペキュラ強度.
 			};
 
-			/**
-			 * テクスチャUVのデータ構造体
-			 */
+			/*** テクスチャUVのデータ構造体 */
 			struct TEXTURE_UV_DATA
 			{
 				LPCTSTR			pUVSetName;	//!< UVセットの名前(テクスチャ座標とテクスチャを紐づける).
 				D3DXVECTOR2*	pTextureUV;	//!< テクスチャ座標.
 			};
 
-			/**
-			 * Fbxファイルから取得するテクスチャ構造体
-			 */
+			/*** Fbxファイルから取得するテクスチャ構造体 */
 			struct TEXTURE_DATA
 			{
 				TEXTURE_UV_DATA* pTextureUVData;	//!< テクスチャUVデータ.
 				int TextureUVCount;					//!< テクスチャUVデータの数.
 			};
 
-			/**
-			 * Fbxから取得するマテリアル構造体
-			 */
+			/*** Fbxから取得するマテリアル構造体 */
 			struct MATERIAL_DATA
 			{
 				MATERIAL					pMaterial;			//!< メッシュのマテリアル.
@@ -98,9 +82,7 @@ namespace Lib
 				ID3D11ShaderResourceView**	pTextureView;		//!< マテリアルに紐づいているテクスチャのビューが格納された配列.
 			};
 
-			/**
-			 * Fbxから取得するメッシュのデータ構造体
-			 */
+			/*** Fbxから取得するメッシュのデータ構造体 */
 			struct MESH_DATA
 			{
 				VERTEX_DATA*	pVertexData;	//!< メッシュの頂点情報.
@@ -116,9 +98,7 @@ namespace Lib
 			 */
 			FbxModel(GraphicsDevice* _pGraphicsDevice);
 
-			/**
-			 * デストラクタ
-			 */
+			/*** デストラクタ */
 			~FbxModel();
 
 			/**
@@ -133,9 +113,7 @@ namespace Lib
 			 */
 			bool Initialize();
 
-			/**
-			 * 終了処理
-			 */
+			/*** 終了処理 */
 			void Finalize();
 
 			/**
@@ -144,9 +122,7 @@ namespace Lib
 			 */
 			void Draw(int _meshNum = 0);
 
-			/**
-			 * アニメーション描画
-			 */
+			/*** アニメーション描画 */
 			void AnimationDraw();
 
 			/**
@@ -161,17 +137,8 @@ namespace Lib
 			 */
 			int GetAnimationFrame();
 
-			/**
-			 * モデル内のメッシュ数を取得する
-			 * @return モデル内のメッシュ数
-			 */
-			int GetMeshNum();
-
-
 		private:
-			/**
-			 * マテリアルの定数バッファ
-			 */
+			/*** マテリアルの定数バッファ */
 			struct MATERIAL_CONSTANT_BUFFER
 			{
 				D3DXVECTOR4 Diffuse;	//!< ディフューズ.
@@ -204,24 +171,16 @@ namespace Lib
 			 */
 			bool CreateConstantBuffer();
 
-			/**
-			 * インデックスバッファの解放
-			 */
+			/*** インデックスバッファの解放 */
 			void ReleaseIndexBuffer();
 
-			/**
-			 * 頂点バッファの解放
-			 */
+			/*** 頂点バッファの解放 */
 			void ReleaseVertexBuffer();
 
-			/**
-			 * サンプラステートの解放
-			 */
+			/*** サンプラステートの解放 */
 			void ReleaseSamplerState();
 
-			/**
-			 * 定数バッファの解放
-			 */
+			/*** 定数バッファの解放 */
 			void ReleaseConstantBuffer();
 
 			/**
@@ -229,7 +188,6 @@ namespace Lib
 			 * @param[in] 定数バッファに書き込むデータを持つメッシュ
 			 */
 			void WriteConstantBuffer(int _meshNum = 0);
-
 
 			GraphicsDevice*				m_pGraphicsDevice;			//!< グラフィックデバイス.
 			std::vector<MESH_DATA>		m_MeshData;					//!< メッシュデータ.

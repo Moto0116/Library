@@ -9,15 +9,11 @@
 
 namespace Lib
 {
-	/**
-	 * シーンの基底クラス
-	 */
+	/*** シーンの基底クラス */
 	class SceneBase
 	{
 	public:
-		/**
-		 * シーンの状態列挙子
-		 */
+		/*** シーンの状態列挙子 */
 		enum STATE
 		{
 			INIT_STATE,		//!< 初期化状態.
@@ -31,9 +27,7 @@ namespace Lib
 		 */
 		SceneBase(int _sceneID);
 
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		virtual ~SceneBase();
 
 		/**
@@ -42,42 +36,29 @@ namespace Lib
 		 */
 		virtual bool Initialize();
 
-		/**
-		 * 終了処理
-		 */
+		/*** 終了処理 */
 		virtual void Finalize();
 
-		/**
-		 * シーンの更新
-		 */
+		/*** シーンの更新	 */
 		virtual void Update();
 
 		/**
 		 * シーンの状態を取得する
 		 * @return シーンの状態
 		 */
-		STATE GetState() const
-		{
-			return m_State;
-		}
+		STATE GetState() const { return m_State; }
 		
 		/**
 		 * シーンIDを取得する
 		 * @return シーンID
 		 */
-		int GetID() const 
-		{
-			return m_SceneID;
-		}
+		int GetID() const { return m_SceneID; }
 
 		/**
 		 * 遷移先のシーンIDを取得する
 		 * @return 遷移先のシーンID
 		 */
-		int GetNextSceneID() const
-		{
-			return m_NextSceneID;
-		}
+		int GetNextSceneID() const { return m_NextSceneID; }
 
 	protected:
 		STATE	m_State;		//!< シーンの状態.

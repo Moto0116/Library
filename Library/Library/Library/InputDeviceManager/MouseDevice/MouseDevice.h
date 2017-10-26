@@ -22,15 +22,11 @@
 
 namespace Lib
 {
-	/** 
-	 * マウスデバイスクラス
-	 */
+	/*** マウスデバイスクラス */
 	class MouseDevice
 	{
 	public:
-		/**
-		 * マウスの状態を表した列挙子
-		 */
+		/*** マウスの状態を表した列挙子 */
 		enum MOUSEBUTTONSTATE
 		{
 			MOUSEBUTTON_PUSH,	//!< マウスのボタンが押された瞬間の状態.
@@ -39,9 +35,7 @@ namespace Lib
 			MOUSEBUTTON_OFF		//!< マウスのボタンが離されている状態.
 		};
 
-		/**
-		 * マウスの状態を格納する構造体
-		 */
+		/*** マウスの状態を格納する構造体 */
 		struct MOUSESTATE
 		{
 			LONG				lX;			//!< マウスのX方向の移動量.
@@ -51,14 +45,10 @@ namespace Lib
 			POINT				CursorPos;	//!< ウィンドウ内のカーソル位置.
 		};
 
-		/**
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		MouseDevice();
 
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		~MouseDevice();
 
 		/**
@@ -69,24 +59,17 @@ namespace Lib
 		 */
 		bool Initialize(LPDIRECTINPUT8 _pDInput8, HWND _hWnd);
 
-		/**
-		 * 終了処理
-		 */
+		/*** 終了処理 */
 		void Finalize();
 
-		/**
-		 * マウスの状態を更新
-		 */
+		/*** マウスの状態を更新 */
 		void Update();
 
 		/**
 		 * マウスの状態を取得
 		 * @return マウスの状態
 		 */
-		const MOUSESTATE& GetMouseState() const 
-		{ 
-			return m_MouseState; 
-		}
+		const MOUSESTATE& GetMouseState() const { return m_MouseState; }
 
 	private:
 		LPDIRECTINPUT8			m_pDInput8;			//!< DirectInput8オブジェクト.

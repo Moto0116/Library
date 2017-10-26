@@ -9,9 +9,7 @@
 
 namespace Lib
 {
-	/**
-	 * イベント基底クラス
-	 */
+	/*** イベント基底クラス */
 	class EventBase
 	{
 	public:
@@ -21,19 +19,14 @@ namespace Lib
 		 */
 		EventBase(unsigned int _eventID);
 
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		virtual ~EventBase();
 
 		/**
 		 * イベントのIDを取得
 		 * @return イベントID
 		 */
-		unsigned int GetEventID()
-		{
-			return m_EventID;
-		}
+		unsigned int GetEventID() const { return m_EventID; }
 
 	private:
 		unsigned int m_EventID;	//!< イベントID.

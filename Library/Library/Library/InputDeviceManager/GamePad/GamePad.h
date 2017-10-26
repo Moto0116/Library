@@ -15,15 +15,11 @@
 
 namespace Lib
 {
-	/**
-	 * ゲームパッドクラス
-	 */
+	/*** ゲームパッドクラス */
 	class GamePad
 	{
 	public:
-		/**
-		 * XboxコントローラのボタンID
-		 */
+		/*** XboxコントローラのボタンID */
 		enum XINPUT_ID
 		{
 			GAMEPAD_DANALOG_UP,			//!< アナログ十字キー上.
@@ -43,9 +39,7 @@ namespace Lib
 			XINPUT_ID_MAX				//!< ボタンの総数.
 		};
 
-		/**
-		 * XboxコントローラのID
-		 */
+		/*** XboxコントローラのID */
 		enum XINPUTPAD
 		{
 			GAMEPAD1,		//!< ゲームパッド1P.
@@ -55,9 +49,7 @@ namespace Lib
 			GAMEANALOG_MAX	//!< ゲームパッドの最大数.
 		};
 
-		/**
-		 * ボタンの状態 
-		 */
+		/*** ボタンの状態 */
 		enum PADSTATE
 		{
 			PAD_PUSH,		//!< 押されたら.
@@ -66,9 +58,7 @@ namespace Lib
 			PAD_OFF			//!< 離され続けている.
 		};
 
-		/**
-		 * アナログパッドの状態
-		 */
+		/*** アナログパッドの状態 */
 		enum ANALOGPAD
 		{
 			ANALOG_LEFT,	//!< 左.
@@ -79,14 +69,10 @@ namespace Lib
 		};
 
 
-		/**
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		GamePad();
 
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		~GamePad();
 
 		/**
@@ -126,7 +112,6 @@ namespace Lib
 		 */
 		bool GetRAnalogState(ANALOGPAD _analogId, XINPUTPAD _pad);
 
-
 	private:
 		/**
 		 * コントローラの状態構造体
@@ -137,9 +122,7 @@ namespace Lib
 			XINPUT_VIBRATION	Vib_State;	//!< 振動の状態.
 		};
 
-
 		static const float m_ControlerDeadZone;	//!< コントローラーのデッドゾーン値.
-
 
 		CONTROLER_STATE m_PadControlState[GAMEANALOG_MAX];				//!< コントローラステート構造体.
 		PADSTATE		m_PadOldState[GAMEANALOG_MAX][XINPUT_ID_MAX];	//!< 前回のパッド状態構造体.

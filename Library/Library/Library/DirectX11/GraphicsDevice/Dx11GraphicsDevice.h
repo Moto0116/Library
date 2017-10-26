@@ -19,9 +19,7 @@ namespace Lib
 {
 	namespace Dx11
 	{
-		/**
-		 * グラフィックデバイスの管理クラス定義
-		 */
+		/*** グラフィックデバイスの管理クラス */
 		class GraphicsDevice : public SingletonBase<GraphicsDevice>
 		{
 		public:
@@ -31,9 +29,7 @@ namespace Lib
 			static const int m_ScreenShotCountMax;	//!< スクリーンショットの最大作成数.
 
 
-			/**
-			 * レンダーターゲットの識別子
-			 */
+			/*** レンダーターゲットの識別子 */
 			enum RENDER_TARGET
 			{
 				BACKBUFFER_TARGET = 0	//!< バックバッファ.
@@ -46,9 +42,7 @@ namespace Lib
 			 */
 			bool Initialize(HWND _hWnd);
 
-			/**
-			 * 終了処理
-			 */
+			/*** 終了処理 */
 			void Finalize();
 
 			/**
@@ -59,12 +53,11 @@ namespace Lib
 
 			/**
 			 * シーンの切り替えを行う
+			 * @param[in] _stage 切り替えるステージ
 			 */
 			void SetScene(int _stage);
 
-			/**
-			 * 描画後処理
-			 */
+			/*** 描画後処理 */
 			void EndScene();
 
 			/**
@@ -110,55 +103,37 @@ namespace Lib
 			 * DirectXデバイスの取得
 			 * @return DirectXデバイス
 			 */
-			ID3D11Device* GetDevice() const
-			{
-				return m_pDevice;
-			}
+			ID3D11Device* GetDevice() const	{ return m_pDevice; }
 
 			/**
 			 * デバイスコンテキストの取得
 			 * @return デバイスコンテキスト
 			 */
-			ID3D11DeviceContext* GetDeviceContext() const
-			{
-				return m_pDeviceContext;
-			}
+			ID3D11DeviceContext* GetDeviceContext() const { return m_pDeviceContext; }
 
 			/**
-			 * GraphicsDeviceに結びついているウィンドウのハンドルを取得する
+			 * GraphicsDeviceに結びついているウィンドウのハンドルを取得
 			 * @return ウィンドウハンドル
 			 */
-			HWND GetMainWindowHandle() const
-			{
-				return m_hWnd;
-			}
+			HWND GetMainWindowHandle() const { return m_hWnd; }
 
 			/**
-			 * GraphicsDeviceに結びついているウィンドウのサイズを取得する
+			 * GraphicsDeviceに結びついているウィンドウのサイズを取得
 			 * @return ウィンドウサイズ
 			 */
-			const RECT* GetMainWindowRect() const
-			{
-				return &m_WindowRect;
-			}
+			const RECT* GetMainWindowRect() const { return &m_WindowRect; }
 
 			/**
 			 * バックバッファの取得
 			 * @return バックバッファ
 			 */
-			ID3D11Texture2D* GetBackBuffer() const
-			{
-				return m_pBackBuffer;
-			}
+			ID3D11Texture2D* GetBackBuffer() const { return m_pBackBuffer; }
 
 			/**
 			 * 深度バッファの取得
 			 * @return 深度バッファ
 			 */
-			ID3D11Texture2D* GetDepthStencil() const
-			{
-				return m_pDepthStencilBuffer;
-			}
+			ID3D11Texture2D* GetDepthStencil() const { return m_pDepthStencilBuffer; }
 
 			/**
 			 * フルスクリーン設定を行う
@@ -170,14 +145,10 @@ namespace Lib
 			}
 
 		private:
-			/**
-			 * コンストラクタ
-			 */
+			/*** コンストラクタ */
 			GraphicsDevice();
 
-			/**
-			 * デストラクタ
-			 */
+			/*** デストラクタ */
 			virtual ~GraphicsDevice();
 
 			/**
@@ -192,14 +163,10 @@ namespace Lib
 			 */
 			bool CreateDisplay();
 
-			/**
-			 * デバイスの解放関数
-			 */
+			/*** デバイスの解放関数 */
 			void ReleaseDevice();
 
-			/**
-			 * ディスプレイ系の解放関数
-			 */
+			/*** ディスプレイ系の解放関数 */
 			void ReleaseDisplay();
 
 

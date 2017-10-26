@@ -20,9 +20,7 @@ namespace Lib
 {
 	class SoundDevice;
 
-	/**
-	 * サウンドクラス
-	 */
+	/*** サウンドクラス */
 	class Sound : public ISound
 	{
 	public:
@@ -33,9 +31,7 @@ namespace Lib
 		 */
 		Sound(SoundDevice* _pSoundDevice, LPSTR _pSoundPath);
 
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		virtual ~Sound();
 
 		/**
@@ -48,10 +44,7 @@ namespace Lib
 		 * サウンドの取得
 		 * @return サウンドバッファ
 		 */
-		inline LPDIRECTSOUNDBUFFER8 Get() const
-		{
-			return m_pSound;
-		}
+		LPDIRECTSOUNDBUFFER8 Get() const { return m_pSound; }
 
 	private:
 		/**
@@ -60,9 +53,7 @@ namespace Lib
 		 */
 		void Load(LPSTR _pSoundPath);
 
-		/**
-		 * サウンドの解放
-		 */
+		/*** サウンドの解放 */
 		void Release();
 
 		/**
@@ -74,7 +65,6 @@ namespace Lib
 		 * @return 読み込みに成功したらtrue 失敗したらfalse
 		 */
 		bool WaveLoad(LPSTR _pFilePath, WAVEFORMATEX* _pWaveFormat, char** _pWaveData, DWORD* _pDataSize);
-
 
 		SoundDevice*			m_pSoundDevice;	//!< サウンドデバイス.
 		LPDIRECTSOUNDBUFFER8	m_pSound;		//!< サウンドバッファ.

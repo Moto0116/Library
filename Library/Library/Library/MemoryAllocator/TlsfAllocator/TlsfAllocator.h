@@ -16,20 +16,14 @@
 #include <math.h>
 #include <new>
 
-///@todo char型をDeAllocateするとAddToListでnullアクセスして停止する.
-// アラインメントを考慮してないから4byteより小さいと予想外なことが起きる?.
 
 namespace Lib
 {
-	/**
-	 * 境界タグクラス
-	 */
+	/*** 境界タグクラス */
 	class BoundaryTag
 	{
 	public:
-		/**
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		BoundaryTag() : 
 			m_IsUse(false),
 			m_Size(0),
@@ -64,10 +58,8 @@ namespace Lib
 			}
 		}
 
-		/**
-		 * デストラクタ
-		 */
-		~BoundaryTag(){}
+		/*** デストラクタ */
+		~BoundaryTag() {}
 
 		/**
 		 * 占有しているメモリのサイズ
@@ -96,6 +88,7 @@ namespace Lib
 
 		/**
 		 * 境界タグをリストから削除する
+		 * @return 自身のポインタ
 		 */
 		__forceinline BoundaryTag* RemoveFromList()
 		{
@@ -118,24 +111,18 @@ namespace Lib
 
 	};
 
-	/**
-	 * TLSFメモリアロケータクラス
-	 */
+	/*** TLSFメモリアロケータクラス */
 	class TlsfAllocator
 	{
 	public:
-		/**
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		TlsfAllocator() : 
 			m_pMemory(nullptr),
 			m_pFreeList(nullptr)
 		{}
 
-		/**
-		 * デストラクタ
-		 */
-		~TlsfAllocator(){}
+		/*** デストラクタ */
+		~TlsfAllocator() {}
 
 		/**
 		 * 初期化処理
@@ -201,9 +188,7 @@ namespace Lib
 			return true;
 		}
 
-		/**
-		 * 終了処理
-		 */
+		/*** 終了処理 */
 		void Finalize()
 		{
 			// リストビットフラグの破棄.
@@ -507,12 +492,9 @@ namespace Lib
 
 		size_t m_FreeListBitFLI;	//!< フリーリストビットのFLI.
 		BYTE* m_pFreeListBitSLI;	//!< フリーリストビットのSLI.
-
 		BYTE* m_pFreeListBit;		//!< フリーリストブロックが存在するかのフラグ.
-
 		size_t m_MemoryPoolSize;	//!< メモリプールのサイズ.
 		size_t m_AllSize;			//!< メモリプールと管理領域を含めたサイズ.
-
 		size_t m_BoundaryTagSize;	//!< 境界タグサイズ(今のところ変数として持つ).
 		size_t m_AllTagSize;		//!< 境界タグと終端タグを合わせたサイズ.
 

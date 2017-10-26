@@ -19,20 +19,14 @@ namespace Lib
 {
 	namespace Dx11
 	{
-		/**
-		 * フォントクラス
-		 */
+		/*** フォントクラス */
 		class Font
 		{
 		public:
-			/**
-			 * コンストラクタ
-			 */
+			/*** コンストラクタ */
 			Font();
 
-			/**
-			 * デストラクタ
-			 */
+			/*** デストラクタ */
 			~Font();
 
 			/**
@@ -42,9 +36,7 @@ namespace Lib
 			 */
 			bool Initialize(GraphicsDevice* _pGraphicsDevice);
 
-			/**
-			 * 終了処理
-			 */
+			/*** 終了処理 */
 			void Finalize();
 
 			/**
@@ -57,9 +49,7 @@ namespace Lib
 				const D3DXVECTOR2* _pSize, 
 				const D3DXCOLOR* _pColor = &D3DXCOLOR(0xffffffff));
 
-			/**
-			 * 頂点バッファの解放
-			 */
+			/*** 頂点バッファの解放 */
 			void ReleaseVertexBuffer();
 
 			/**
@@ -88,9 +78,7 @@ namespace Lib
 				VERTEX_NUM = 4 //!< 頂点数.
 			};
 
-			/**
-			 * フォント表示のための頂点構造体
-			 */
+			/*** フォント表示のための頂点構造体 */
 			struct FONT_VERTEX
 			{
 				D3DXVECTOR3 Pos;	//!< 頂点座標.
@@ -98,9 +86,7 @@ namespace Lib
 				D3DXCOLOR	Color;	//!< 頂点カラー.
 			};
 
-			/**
-			 * シェーダーに渡す定数バッファ構造体
-			 */
+			/*** シェーダーに渡す定数バッファ構造体 */
 			struct CONSTANT_BUFFER
 			{
 				D3DXMATRIX	MatWorld;	//!< ワールド変換行列.
@@ -139,39 +125,25 @@ namespace Lib
 			 */
 			bool CreateResourceView();
 
-			/**
-			 * 頂点シェーダーの解放
-			 */
+			/*** 頂点シェーダーの解放 */
 			void ReleaseVertexShader();
 
-			/**
-			 * 頂点入力レイアウトの解放
-			 */
+			/*** 頂点入力レイアウトの解放 */
 			void ReleaseVertexLayout();
 
-			/**
-			 * ピクセルシェーダーの解放
-			 */
+			/*** ピクセルシェーダーの解放 */
 			void ReleasePixelShader();
 
-			/**
-			 * 描画ステートの解放
-			 */
+			/*** 描画ステートの解放 */
 			void ReleaseState();
 
-			/**
-			 * リソースビューの解放
-			 */
+			/*** リソースビューの解放 */
 			void ReleaseResourceView();
 
-			/**
-			 * 右寄せ描画処理
-			 */
+			/*** 右寄せ描画処理 */
 			void AlignmentRightDraw(const D3DXVECTOR2* _pDrawPos, LPCTSTR _pStr);
 
-			/**
-			 * 左寄せ描画処理
-			 */
+			/*** 左寄せ描画処理 */
 			void AlignmentLeftDraw(const D3DXVECTOR2* _pDrawPos, LPCTSTR _pStr);
 
 
@@ -192,7 +164,7 @@ namespace Lib
 			float						m_WindowWidth;			//!< ウィンドウの幅.
 			float						m_WindowHeight;			//!< ウィンドウの高さ.
 			bool						m_IsAlignmentRight;		//!< フォントを左寄せにするかのフラグ.
-			void(Font::*m_pDrawFunc)(const D3DXVECTOR2*, LPCTSTR);
+			void(Font::*m_pDrawFunc)(const D3DXVECTOR2*, LPCTSTR);	//!< 描画関数ポインタ.
 
 		};
 	}

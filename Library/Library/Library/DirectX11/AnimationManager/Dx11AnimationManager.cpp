@@ -56,7 +56,8 @@ namespace Lib
 		{
 			Animation* pAnimation = new Animation(_pAnimationPath);
 
-			if (pAnimation->GetCurrentFrame() == nullptr)	// 現在のフレームがなければ生成に失敗したと判断する.
+			// 現在のフレームがなければ生成に失敗したと判断する.
+			if (pAnimation->GetCurrentFrame() == nullptr)	
 			{
 				delete pAnimation;
 				*_pIndex = m_InvalidIndex;

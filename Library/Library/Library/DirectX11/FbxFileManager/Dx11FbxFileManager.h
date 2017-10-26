@@ -23,9 +23,7 @@ namespace Lib
 		class GraphicsDevice;
 		class FbxLoader;
 
-		/**
-		 *  Fbxファイルを管理するクラス
-		 */
+		/*** Fbxファイルを管理するクラス */
 		class FbxFileManager : public SingletonBase<FbxFileManager>
 		{
 		public:
@@ -40,9 +38,7 @@ namespace Lib
 			 */
 			bool Initialize(GraphicsDevice* _pGraphicsDevice);
 
-			/**
-			 * 終了処理
-			 */
+			/*** 終了処理 */
 			void Finalize();
 
 			/**
@@ -58,10 +54,7 @@ namespace Lib
 			 * @param[in] _index 取得するモデルのインデックス
 			 * @return Fbxのデータを格納したFbxModelクラス
 			 */
-			FbxModel* GetFbxModel(int _index) const
-			{
-				return m_pFbxModel[_index];
-			}
+			FbxModel* GetFbxModel(int _index) const { return m_pFbxModel[_index]; }
 
 			/**
 			 * Fbxモデルを解放する
@@ -69,28 +62,15 @@ namespace Lib
 			 */
 			void ReleaseFbxModel(int _index);
 
-			/**
-			 * モデルを確保しているバッファをクリアする
-			 *
-			 * vectorを使用しているのでバッファ領域は解放されない。\n
-			 * バッファ領域はFbxFileManagerが破棄されたときに解放される。
-			 */
-			void ClearBuffer()
-			{
-				m_pFbxModel.clear();
-			}
+			/*** モデルを確保しているバッファをクリア */
+			void ClearBuffer(){ m_pFbxModel.clear(); }
 
 		private:
-			/**
-			 * FbxFileManagerクラスのコンストラクタ
-			 */
+			/*** コンストラクタ */
 			FbxFileManager();
 
-			/**
-			 * FbxFileManagerクラスのデストラクタ
-			 */
+			/*** デストラクタ */
 			virtual ~FbxFileManager();
-
 
 			GraphicsDevice*				m_pGraphicsDevice;	//!< グラフィックデバイス.
 			FbxLoader*					m_pFbxLoader;		//!< fbx読み込みオブジェクト.

@@ -3,8 +3,8 @@
  * @brief	バイナリファイルクラス定義
  * @author	morimoto
  */
-#ifndef BINARYFILE_H
-#define BINARYFILE_H
+#ifndef LIB_BINARYFILE_H
+#define LIB_BINARYFILE_H
 
 //----------------------------------------------------------------------
 // Include
@@ -14,17 +14,14 @@
 
 namespace Lib
 {
+	/*** バイナリファイルクラス */
 	class BinaryFile
 	{
 	public:
-		/**
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		BinaryFile();
 
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		~BinaryFile();
 
 		/**
@@ -33,34 +30,24 @@ namespace Lib
 		 */
 		bool Read(TCHAR* _pFileName);
 
-		/**
-		 * ファイル解放
-		 */
+		/*** ファイル解放 */
 		void Destroy();
 
 		/**
 		 * バイナリデータの取得
 		 * @return バイナリデータ
 		 */
-		void* GetBinary() const
-		{
-			return m_pBinary;
-		}
+		void* GetBinary() const	{ return m_pBinary; }
 
 		/**
 		 * バイナリデータサイズの取得
 		 * @return バイナリデータサイズ
 		 */
-		size_t GetBinarySize() const
-		{
-			return m_BinarySize;
-		}
-
+		size_t GetBinarySize() const { return m_BinarySize; }
 
 	private:
 		void*	m_pBinary;		//!< バイナリデータ.
 		size_t	m_BinarySize;	//!< バイナリデータサイズ.
-
 
 	};
 }

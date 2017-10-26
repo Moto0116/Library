@@ -23,9 +23,7 @@ namespace Lib
 	{
 		class GraphicsDevice;
 
-		/**
-		 * シェーダーの管理クラス
-		 */
+		/*** シェーダーの管理クラス */
 		class ShaderManager : public SingletonBase<ShaderManager>
 		{
 		public:
@@ -40,9 +38,7 @@ namespace Lib
 			 */
 			bool Initialize(GraphicsDevice* _pGraphicsDevice);
 
-			/**
-			 * 終了処理
-			 */
+			/*** 終了処理 */
 			void Finalize();
 
 			/**
@@ -105,9 +101,7 @@ namespace Lib
 			 */
 			void ReleaseVertexShader(int _index);
 
-			/**
-			 * 頂点シェーダーとそのコンパイルデータを全て解放
-			 */
+			/*** 頂点シェーダーとそのコンパイルデータを全て解放 */
 			void ReleaseVertexShader();
 
 			/**
@@ -127,9 +121,7 @@ namespace Lib
 			 */
 			void ReleaseGeometryShader(int _index);
 
-			/**
-			 * ジオメトリシェーダーとそのコンパイルデータを全て解放
-			 */
+			/*** ジオメトリシェーダーとそのコンパイルデータを全て解放 */
 			void ReleaseGeometryShader();
 
 			/**
@@ -138,9 +130,7 @@ namespace Lib
 			 */
 			void ReleaseHullShader(int _index);
 
-			/**
-			 * ハルシェーダーとそのコンパイルデータを全て解放
-			 */
+			/*** ハルシェーダーとそのコンパイルデータを全て解放 */
 			void ReleaseHullShader();
 
 			/**
@@ -149,9 +139,7 @@ namespace Lib
 			 */
 			void ReleaseDomainShader(int _index);
 
-			/**
-			 * ドメインシェーダーとそのコンパイルデータを全て解放
-			 */
+			/*** ドメインシェーダーとそのコンパイルデータを全て解放 */
 			void ReleaseDomainShader();
 
 			/**
@@ -160,9 +148,7 @@ namespace Lib
 			 */
 			void ReleaseComputeShader(int _index);
 
-			/**
-			 * コンピュートシェーダーとそのコンパイルデータを全て解放
-			 */
+			/*** コンピュートシェーダーとそのコンパイルデータを全て解放 */
 			void ReleaseComputeShader();
 
 			/**
@@ -285,41 +271,29 @@ namespace Lib
 				return m_pCompiledComputeShader[_index];
 			}
 
-			/**
-			 * シェーダーのデータを確保しているバッファをクリア
-			 */
+			/*** シェーダーのデータを確保しているバッファをクリア */
 			void ClearShaderBuffer()
 			{
 				m_pVertexShader.clear();
 				m_pCompiledVertexShader.clear();
-
 				m_pPixelShader.clear();
 				m_pCompiledPixelShader.clear();
-
 				m_pGeometryShader.clear();
 				m_pCompiledGeometryShader.clear();
-
 				m_pHullShader.clear();
 				m_pCompiledHullShader.clear();
-
 				m_pDomainShader.clear();
 				m_pCompiledDomainShader.clear();
-
 				m_pComputeShader.clear();
 				m_pCompiledComputeShader.clear();
 			}
 
 		private:
-			/**
-			 * コンストラクタ
-			 */
+			/*** コンストラクタ */
 			ShaderManager();
 
-			/**
-			 * デストラクタ
-			 */
+			/*** デストラクタ */
 			virtual ~ShaderManager();
-
 
 			GraphicsDevice*						m_pGraphicsDevice;			//!< グラフィックデバイス.
 			std::vector<ID3D11VertexShader*>	m_pVertexShader;			//!< 頂点シェーダーを格納するコンテナ.

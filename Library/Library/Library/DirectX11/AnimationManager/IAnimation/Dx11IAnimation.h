@@ -18,15 +18,11 @@ namespace Lib
 {
 	namespace Dx11
 	{
-		/**
-		 * アニメーションインターフェース
-		 */
+		/*** アニメーションインターフェース */
 		interface IAnimation
 		{
 		public:
-			/**
-			 * アニメーションのパターン
-			 */
+			/*** アニメーションのパターン */
 			enum ANIMATION_PATTERN
 			{
 				ONE_ANIMATION,			//!< アニメーションが終了したらそのまま終了する.
@@ -35,9 +31,7 @@ namespace Lib
 				REVERSE_LOOP_ANIMATION	//!< アニメーションが終了したら反転して最初まで戻るのをする.
 			};
 
-			/**
-			 * アニメーションのフレーム情報
-			 */
+			/*** アニメーションのフレーム情報 */
 			struct ANIMATION_FRAME
 			{
 				int FrameID;	//!< フレームのID.
@@ -47,20 +41,13 @@ namespace Lib
 				float MaxTv;	//!< tvの最大値.
 			};
 
-
-			/**
-			 * コンストラクタ
-			 */
+			/*** コンストラクタ */
 			IAnimation();
 
-			/**
-			 * デストラクタ
-			 */
+			/*** デストラクタ */
 			virtual ~IAnimation() = 0;
 
-			/**
-			 * アニメーションの開始
-			 */
+			/*** アニメーションの開始 */
 			virtual void AnimationStart() = 0;
 
 			/**
@@ -104,7 +91,6 @@ namespace Lib
 			 * @return 現在のアニメーションフレーム
 			 */
 			virtual ANIMATION_FRAME* GetCurrentFrame() const = 0;
-
 
 		private:
 			DISALLOW_COPY_AND_ASSIGN(IAnimation);

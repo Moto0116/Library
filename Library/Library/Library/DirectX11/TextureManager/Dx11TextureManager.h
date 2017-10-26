@@ -21,9 +21,7 @@ namespace Lib
 		class GraphicsDevice;
 		interface ITexture;
 
-		/**
-		 * テクスチャ管理クラス
-		 */
+		/*** テクスチャ管理クラス */
 		class TextureManager : public SingletonBase<TextureManager>
 		{
 		public:
@@ -38,9 +36,7 @@ namespace Lib
 			 */
 			bool Initialize(GraphicsDevice* _pGraphicsDevice);
 
-			/**
-			 * 終了処理
-			 */
+			/*** 終了処理 */
 			void Finalize();
 
 			/**
@@ -64,22 +60,15 @@ namespace Lib
 			 */
 			ITexture* GetTexture(int _index) const;
 
-			/**
-			 * テクスチャを格納しているバッファを解放する
-			 */
+			/*** テクスチャを格納しているバッファを解放する */
 			void ClearBuffer();
 
 		private:
-			/**
-			 * コンストラクタ
-			 */
+			/*** コンストラクタ */
 			TextureManager();
 
-			/**
-			 * デストラクタ
-			 */
+			/*** デストラクタ */
 			virtual ~TextureManager();
-
 
 			GraphicsDevice*			m_pGraphicsDevice;	//!< グラフィックデバイス.
 			std::vector<ITexture*>	m_pTextures;		//!< テクスチャを格納するコンテナ.

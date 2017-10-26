@@ -1,6 +1,6 @@
 ﻿/**
  * @file   Dx11Light.cpp
- * @brief  Lightクラスの実装
+ * @brief  ライト情報の管理実装
  * @author morimoto
  */
 

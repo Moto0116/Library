@@ -14,24 +14,18 @@
 
 namespace Lib
 {
-	/**
-	 * ウィンドウクラス
-	 */
+	/*** ウィンドウクラス */
 	class Window
 	{
 	public:
-		/**
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		Window();
 	
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		~Window();
 	
 		/**
-		 * ウィンドウ作成
+		 * 初期化処理(ウィンドウの生成)
 		 * @param[in] _pWindowName ウィンドウの名前
 		 * @param[in] _windowWidth ウィンドウの幅
 		 * @param[in] _windowHeight ウィンドウの高さ
@@ -46,9 +40,7 @@ namespace Lib
 			DWORD _style, 
 			HWND _hWndParent = nullptr);
 	
-		/**
-		 * ウィンドウ破棄
-		 */
+		/*** 終了処理(ウィンドウの破棄) */
 		void Finalize();
 
 		/**
@@ -61,10 +53,7 @@ namespace Lib
 		 * ウィンドウハンドルを取得
 		 * @return ウィンドウハンドル
 		 */
-		HWND GetWindowHandle() const
-		{
-			return m_hWnd;
-		}
+		HWND GetWindowHandle() const { return m_hWnd; }
 	
 	private:
 		HWND	m_hWnd;			//!< ウィンドウハンドル.

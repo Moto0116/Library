@@ -21,7 +21,7 @@ namespace Lib
 	//----------------------------------------------------------------------
 	// Constructor	Destructor
 	//----------------------------------------------------------------------
-	EventListener::EventListener(std::function<void(EventBase*)>* _pFunc) :
+	EventListener::EventListener(ReciveFunc* _pFunc) :
 		m_EventListenerID(m_EventListenerCount),
 		m_pReceiveFunc(_pFunc)
 	{

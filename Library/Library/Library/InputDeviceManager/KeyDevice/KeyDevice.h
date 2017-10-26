@@ -23,15 +23,11 @@
 
 namespace Lib
 {
-	/**
-	 * キーデバイスクラス
-	 */
+	/*** キーデバイスクラス */
 	class KeyDevice
 	{
 	public:
-		/**
-		 * キーの状態を表した列挙子
-		 */
+		/*** キーの状態を表した列挙子 */
 		enum KEYSTATE
 		{
 			KEY_PUSH,		//!< キーが押された瞬間の状態.
@@ -40,14 +36,10 @@ namespace Lib
 			KEY_OFF			//!< キーが押されていない状態.
 		};
 
-		/** 
-		 * コンストラクタ
-		 */
+		/*** コンストラクタ */
 		KeyDevice();
 
-		/**
-		 * デストラクタ
-		 */
+		/*** デストラクタ */
 		~KeyDevice();
 
 		/**
@@ -64,14 +56,10 @@ namespace Lib
 			bool _IsDebug = false, 
 			bool _IsPlayDebugLog = false);
 
-		/**
-		 * 終了処理
-		 */
+		/*** 終了処理 */
 		void Finalize();
 
-		/**
-		 * デバイスの状態を更新する
-		 */
+		/*** デバイスの状態を更新 */
 		void Update();
 
 		/**
@@ -84,10 +72,7 @@ namespace Lib
 		 * キーの状態が格納されている配列を取得する
 		 * @return キーの状態が格納されている配列
 		 */
-		const KEYSTATE* GetKeyState() const 
-		{
-			return m_pKeyState;
-		}
+		const KEYSTATE* GetKeyState() const { return m_pKeyState; }
 
 	private:
 		static const char*	m_pDebugFileName;	//!< デバッグファイルの名前.
@@ -95,19 +80,13 @@ namespace Lib
 		static const int	m_TimeCounterMax;	//!< 時間カウンタの最大値.
 		static const int	m_TimeCounter2Max;	//!< 時間カウンタ2の最大値.
 
-		/**
-		 * 通常時の更新関数
-		 */
+		/*** 通常時の更新関数 */
 		void NormalUpdate();
 
-		/**
-		 * デバッグログを出力する際の更新関数
-		 */
+		/*** デバッグログを出力する際の更新関数 */
 		void DebugUpdate();
 
-		/**
-		 * デバッグログを実行する際の更新関数
-		 */
+		/*** デバッグログを実行する際の更新関数 */
 		void DebugLogPlay();
 
 
@@ -118,7 +97,6 @@ namespace Lib
 		BYTE					m_pDIKeyState[256];		//!< キーの状態を格納している配列.
 		BYTE					m_pOldDIKeyState[256];	//!< キーの古い状態を格納している配列.
 		void(KeyDevice::*m_pUpdateFunc)();				//!< 更新関数ポインタ.
-
 		bool					m_IsDebug;				//!< デバッグ機能を使用するか.
 		FILE*					m_pDebugFile;			//!< デバッグ情報を出力するファイル.
 		int						m_TimeCounter;			//!< 時間カウンタ.

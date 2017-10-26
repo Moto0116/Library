@@ -23,9 +23,7 @@ namespace Lib
 	{
 		class CommandQueue;
 
-		/**
-		 * コマンドキューの管理クラス
-		 */
+		/*** コマンドキューの管理クラス */
 		class CommandQueueManager : public SingletonBase<CommandQueueManager>
 		{
 		public:
@@ -40,9 +38,7 @@ namespace Lib
 			 */
 			bool Initialize(GraphicsDevice* _pGraphicsDevice);
 
-			/**
-			 * 終了処理
-			 */
+			/*** 終了処理 */
 			void Finalize();
 
 			/**
@@ -64,16 +60,11 @@ namespace Lib
 			void ReleaseCommandQueue(int _index);
 
 		private:
-			/**
-			 * コンストラクタ
-			 */
+			/*** コンストラクタ */
 			CommandQueueManager();
 
-			/**
-			 * デストラクタ
-			 */
+			/*** デストラクタ */
 			virtual ~CommandQueueManager();
-
 
 			GraphicsDevice*				m_pGraphicsDevice;	//!< グラフィックデバイス.
 			std::vector<CommandQueue*>	m_pCommandQueues;	//!< コマンドキュー.
