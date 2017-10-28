@@ -1,10 +1,10 @@
 ﻿/**
- * @file	Dx11Vertex2D.h
- * @brief	2Dポリゴンの描画クラス定義
+ * @file	Dx11SingleVertex2D.h
+ * @brief	単一の矩形描画クラス定義
  * @author	morimoto
  */
-#ifndef LIB_DX11_VERTEX2D_H
-#define LIB_DX11_VERTEX2D_H
+#ifndef LIB_DX11_SINGLEVERTEX2D_H
+#define LIB_DX11_SINGLEVERTEX2D_H
 
 //----------------------------------------------------------------------
 // Include
@@ -12,24 +12,24 @@
 #include <D3DX11.h>
 #include <D3DX10.h>
 
-#include "..\GraphicsDevice\Dx11GraphicsDevice.h"
-#include "..\AnimationManager\IAnimation\Dx11IAnimation.h"
-#include "..\TextureManager\ITexture\Dx11ITexture.h"
+#include "..\..\GraphicsDevice\Dx11GraphicsDevice.h"
+#include "..\..\AnimationManager\IAnimation\Dx11IAnimation.h"
+#include "..\..\TextureManager\ITexture\Dx11ITexture.h"
 
 
 namespace Lib
 {
 	namespace Dx11
 	{
-		/*** 2Dポリゴンの描画クラス */
-		class Vertex2D
+		/*** 単一の矩形描画クラス */
+		class SingleVertex2D
 		{
 		public:
 			/*** コンストラクタ */
-			Vertex2D();
+			SingleVertex2D();
 
 			/*** デストラクタ */
-			~Vertex2D();
+			~SingleVertex2D();
 
 			/**
 			 * 初期化処理
@@ -63,12 +63,6 @@ namespace Lib
 			 * @return 初期化に成功したらtrue 失敗したらfalse
 			 */
 			bool WriteVertexBuffer();
-
-			/**
-			 * 頂点座標を直接指定する
-			 * @param[in] _pVertex 設定する頂点座標(指定順序は左上-右上-左下-右下)
-			 */
-			void SetVertexPos(const D3DXVECTOR2* _pVertex);
 
 			/**
 			 * 矩形情報から頂点座標を設定する
@@ -108,26 +102,27 @@ namespace Lib
 			void Draw();
 
 			/**
-			 * 描画するテクスチャをセットする
+			 * 描画するテクスチャの設定
 			 * @param[in] _pTexture テクスチャオブジェクト
 			 */
 			void SetTexture(ITexture* _pTexture) { m_pTexture = _pTexture; }
 
 			/**
-			 * 描画時のアニメーションをセットする
+			 * 描画時のアニメーションの設定
 			 * @param[in] _pAnimation アニメーションオブジェクト
 			 */
 			void SetAnimation(IAnimation* _pAnimation) { m_pAnimation = _pAnimation; }
 
 			/**
-			 * 画像が反転しているのか設定
-			 * @param[in] _isInverse 画像が反転しているか(アニメーション使用時にしか影響しない)
+			 * アニメーション時の画像反転フラグの設定
+			 * アニメーションオブジェクトが設定されていなければ動作しない
+			 * @param[in] _isInverse 画像が反転しているか
 			 */
-			void SetInverse(bool _isInverse) { m_IsInverse = _isInverse; }
+			void SetAnimationUVInverse(bool _isInverse) { m_IsInverse = _isInverse; }
 
 			/**
 			 * 深度ステンシルステートの設定
-			 * @param[in] _pState 画像が設定するステート
+			 * @param[in] _pState 設定するステート
 			 */
 			void SetDepthStencilState(ID3D11DepthStencilState* _pState)
 			{
@@ -216,4 +211,4 @@ namespace Lib
 }
 
 
-#endif // !LIB_DX11_VERTEX2D_H
+#endif // !LIB_DX11_SINGLEVERTEX2D_H

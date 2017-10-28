@@ -90,7 +90,7 @@ namespace Lib
 			 * 現在のフレームを取得する
 			 * @return 現在のアニメーションフレーム
 			 */
-			virtual ANIMATION_FRAME* GetCurrentFrame() const = 0;
+			virtual const ANIMATION_FRAME* GetCurrentFrame() const = 0;
 
 		private:
 			DISALLOW_COPY_AND_ASSIGN(IAnimation);

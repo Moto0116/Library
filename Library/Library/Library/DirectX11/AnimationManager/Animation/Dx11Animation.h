@@ -75,7 +75,7 @@ namespace Lib
 			 * 現在のフレームを取得する
 			 * @return 現在のアニメーションフレーム
 			 */
-			virtual ANIMATION_FRAME* GetCurrentFrame() const;
+			virtual const ANIMATION_FRAME* GetCurrentFrame() const;
 
 		private:
 			/**

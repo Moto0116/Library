@@ -307,9 +307,6 @@
     <ClCompile Include="Library\DirectX11\TextureManager\Dx11TextureManager.cpp">
       <Filter>Library\DirectX11\TextureManager</Filter>
     </ClCompile>
-    <ClCompile Include="Library\DirectX11\Vertex2D\Dx11Vertex2D.cpp">
-      <Filter>Library\DirectX11\Vertex2D</Filter>
-    </ClCompile>
     <ClCompile Include="Library\Math\Math.cpp">
       <Filter>Library\Math</Filter>
     </ClCompile>
@@ -370,6 +367,10 @@
     <ClCompile Include="Library\Sound\SoundManager\SoundManager.cpp">
       <Filter>Library\Sound\SoundManager</Filter>
     </ClCompile>
+    <ClCompile Include="Library\DirectX11\Vertex2D\SingleVertex2D\Dx11SingleVertex2D.cpp">
+      <Filter>Library\DirectX11\Vertex2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\Vertex2D\MultipleVertex2D\Dx11MultipleVertex2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Debugger\Debugger.h">
@@ -486,9 +487,6 @@
     <ClInclude Include="Library\DirectX11\TextureManager\Dx11TextureManager.h">
       <Filter>Library\DirectX11\TextureManager</Filter>
     </ClInclude>
-    <ClInclude Include="Library\DirectX11\Vertex2D\Dx11Vertex2D.h">
-      <Filter>Library\DirectX11\Vertex2D</Filter>
-    </ClInclude>
     <ClInclude Include="Library\Math\Math.h">
       <Filter>Library\Math</Filter>
     </ClInclude>
@@ -558,13 +556,18 @@
     <ClInclude Include="Library\Sound\SoundManager\SoundManager.h">
       <Filter>Library\Sound\SoundManager</Filter>
     </ClInclude>
+    <ClInclude Include="Library\TypeTraits\TypeTraits.h" />
+    <ClInclude Include="Library\DirectX11\Vertex2D\SingleVertex2D\Dx11SingleVertex2D.h">
+      <Filter>Library\DirectX11\Vertex2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\Vertex2D\MultipleVertex2D\Dx11MultipleVertex2D.h" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Library\DirectX11\Vertex2D\Effect\Vertex2D.fx">
-      <Filter>Library\DirectX11\Vertex2D\Effect</Filter>
-    </FxCompile>
     <FxCompile Include="Library\DirectX11\Font\Effect\Font.fx">
       <Filter>Library\DirectX11\Font\Effect</Filter>
+    </FxCompile>
+    <FxCompile Include="Library\DirectX11\Vertex2D\SingleVertex2D\Effect\Vertex2D.fx">
+      <Filter>Library\DirectX11\Vertex2D\Effect</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>

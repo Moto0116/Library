@@ -110,7 +110,7 @@ namespace Lib
 			return m_pFrame.size();
 		}
 
-		Animation::ANIMATION_FRAME* Animation::GetCurrentFrame() const
+		const Animation::ANIMATION_FRAME* Animation::GetCurrentFrame() const
 		{
 			return m_pFrame[m_CurrentFrame];
 		}

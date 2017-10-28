@@ -1,17 +1,17 @@
 ﻿/**
- * @file	Dx11Vertex2D.cpp
- * @brief	2Dポリゴンの描画クラス実装
+ * @file	Dx11SingleVertex2D.cpp
+ * @brief	単一の矩形描画クラス実装
  * @author	morimoto
  */
 
 //----------------------------------------------------------------------
 // Include
 //----------------------------------------------------------------------
-#include "Dx11Vertex2D.h"
+#include "Dx11SingleVertex2D.h"
 
-#include "..\AnimationManager\Animation\Dx11Animation.h"
-#include "..\TextureManager\Texture\Dx11Texture.h"
-#include "..\..\Debugger\Debugger.h"
+#include "..\..\AnimationManager\Animation\Dx11Animation.h"
+#include "..\..\TextureManager\Texture\Dx11Texture.h"
+#include "..\..\..\Debugger\Debugger.h"
 
 
 namespace Lib
@@ -21,7 +21,7 @@ namespace Lib
 		//----------------------------------------------------------------------
 		// Constructor	Destructor
 		//----------------------------------------------------------------------
-		Vertex2D::Vertex2D() :
+		SingleVertex2D::SingleVertex2D() :
 			m_pGraphicsDevice(nullptr),
 			m_pVertexShader(nullptr),
 			m_pVertexCompiledShader(nullptr),
@@ -42,7 +42,7 @@ namespace Lib
 		{
 		}
 
-		Vertex2D::~Vertex2D()
+		SingleVertex2D::~SingleVertex2D()
 		{
 		}
 
@@ -50,7 +50,7 @@ namespace Lib
 		//----------------------------------------------------------------------
 		// Public Functions
 		//----------------------------------------------------------------------
-		bool Vertex2D::Initialize(GraphicsDevice* _pGraphicsDevice)
+		bool SingleVertex2D::Initialize(GraphicsDevice* _pGraphicsDevice)
 		{
 			if (m_pGraphicsDevice != nullptr)
 			{
@@ -73,7 +73,7 @@ namespace Lib
 			return true;
 		}
 
-		void Vertex2D::Finalize()
+		void SingleVertex2D::Finalize()
 		{
 			ReleaseVertexBuffer();
 			ReleaseState();
@@ -82,7 +82,7 @@ namespace Lib
 			ReleaseVertexShader();
 		}
 
-		bool Vertex2D::CreateVertexBuffer(
+		bool SingleVertex2D::CreateVertexBuffer(
 			const D3DXVECTOR2* _pSize,
 			const D3DXVECTOR2* _pMinUV,
 			const D3DXVECTOR2* _pMaxUV, 
@@ -123,8 +123,10 @@ namespace Lib
 			D3D11_SUBRESOURCE_DATA ResourceData;
 			ZeroMemory(&ResourceData, sizeof(D3D11_SUBRESOURCE_DATA));
 			ResourceData.pSysMem = m_pVertexData;
-
-			if (FAILED(m_pGraphicsDevice->GetDevice()->CreateBuffer(&BufferDesc, &ResourceData, &m_pVertexBuffer)))
+			if (FAILED(m_pGraphicsDevice->GetDevice()->CreateBuffer(
+				&BufferDesc, 
+				&ResourceData,
+				&m_pVertexBuffer)))
 			{
 				OutputErrorLog("頂点バッファの生成に失敗しました");
 				return false;
@@ -133,12 +135,12 @@ namespace Lib
 			return true;
 		}
 
-		void Vertex2D::ReleaseVertexBuffer()
+		void SingleVertex2D::ReleaseVertexBuffer()
 		{
 			SafeRelease(m_pVertexBuffer);
 		}
 
-		bool Vertex2D::WriteVertexBuffer()
+		bool SingleVertex2D::WriteVertexBuffer()
 		{
 			D3D11_MAPPED_SUBRESOURCE MappedResource;
 			if (SUCCEEDED(m_pGraphicsDevice->GetDeviceContext()->Map(m_pVertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &MappedResource)))
@@ -156,19 +158,7 @@ namespace Lib
 			return false;
 		}
 
-		void Vertex2D::SetVertexPos(const D3DXVECTOR2* _pVertex)
-		{
-			m_pVertexData[0].Pos.x = _pVertex[0].x;
-			m_pVertexData[0].Pos.y = _pVertex[0].y;
-			m_pVertexData[1].Pos.x = _pVertex[1].x;
-			m_pVertexData[1].Pos.y = _pVertex[1].y;
-			m_pVertexData[2].Pos.x = _pVertex[2].x;
-			m_pVertexData[2].Pos.y = _pVertex[2].y;
-			m_pVertexData[3].Pos.x = _pVertex[3].x;
-			m_pVertexData[3].Pos.y = _pVertex[3].y;
-		}
-
-		void Vertex2D::SetVertex(const D3DXVECTOR2* _pSize)
+		void SingleVertex2D::SetVertex(const D3DXVECTOR2* _pSize)
 		{
 			m_pVertexData[0].Pos.x = -_pSize->x / 2;
 			m_pVertexData[0].Pos.y = -_pSize->y / 2;
@@ -180,7 +170,7 @@ namespace Lib
 			m_pVertexData[3].Pos.y = _pSize->y / 2;
 		}
 
-		void Vertex2D::SetUV(const D3DXVECTOR2* _pMinUV, const D3DXVECTOR2* _pMaxUV)
+		void SingleVertex2D::SetUV(const D3DXVECTOR2* _pMinUV, const D3DXVECTOR2* _pMaxUV)
 		{
 			m_pVertexData[0].UV.x = _pMinUV->x;
 			m_pVertexData[0].UV.y = _pMinUV->y;
@@ -192,7 +182,7 @@ namespace Lib
 			m_pVertexData[3].UV.y = _pMaxUV->y;
 		}
 
-		void Vertex2D::SetColor(const D3DXCOLOR* _pColor)
+		void SingleVertex2D::SetColor(const D3DXCOLOR* _pColor)
 		{
 			for (int i = 0; i < VERTEX_NUM; i++)
 			{
@@ -200,7 +190,7 @@ namespace Lib
 			}
 		}
 
-		bool Vertex2D::WriteConstantBuffer(
+		bool SingleVertex2D::WriteConstantBuffer(
 			const D3DXVECTOR2* _pDrawPos, 
 			const D3DXVECTOR2* _pScale, 
 			const D3DXVECTOR3* _pAngle)
@@ -249,7 +239,7 @@ namespace Lib
 			return false;
 		}
 
-		void Vertex2D::ShaderSetup()
+		void SingleVertex2D::ShaderSetup()
 		{
 			m_pGraphicsDevice->GetDeviceContext()->VSSetShader(m_pVertexShader, nullptr, 0);
 			m_pGraphicsDevice->GetDeviceContext()->PSSetShader(m_pPixelShader, nullptr, 0);
@@ -259,12 +249,12 @@ namespace Lib
 			m_pGraphicsDevice->GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 		}
 
-		void Vertex2D::Draw()
+		void SingleVertex2D::Draw()
 		{
 			// アニメーションインターフェースがあればアニメーションを行う.
 			if (m_pAnimation != nullptr)
 			{
-				Animation::ANIMATION_FRAME* pFrame = m_pAnimation->GetCurrentFrame();
+				const Animation::ANIMATION_FRAME* pFrame = m_pAnimation->GetCurrentFrame();
 				if (m_IsInverse)
 					SetUV(
 					&D3DXVECTOR2(pFrame->MaxTu, pFrame->MinTv),
@@ -282,7 +272,7 @@ namespace Lib
 
 			m_pGraphicsDevice->GetDeviceContext()->IASetInputLayout(m_pVertexLayout);
 
-			// テクスチャインターフェースがあれば、テクスチャを貼り付ける.
+			// テクスチャインターフェースがあれば貼り付ける.
 			if (m_pTexture != nullptr)
 			{
 				ID3D11ShaderResourceView* pTextureResource = m_pTexture->Get();
@@ -308,7 +298,7 @@ namespace Lib
 		//----------------------------------------------------------------------
 		// Private Functions
 		//----------------------------------------------------------------------
-		bool Vertex2D::CreateVertexShader()
+		bool SingleVertex2D::CreateVertexShader()
 		{
 			UINT Flag1 = D3D10_SHADER_ENABLE_STRICTNESS;
 #ifdef _DEBUG
@@ -319,7 +309,7 @@ namespace Lib
 
 			ID3DBlob* pShaderErrors = nullptr;
 			if (FAILED(D3DX11CompileFromFile(
-				TEXT("Library\\DirectX11\\Vertex2D\\Effect\\Vertex2D.fx"),
+				TEXT("Library\\DirectX11\\Vertex2D\\SingleVertex2D\\Effect\\Vertex2D.fx"),
 				nullptr,
 				nullptr,
 				"VS",
@@ -352,7 +342,7 @@ namespace Lib
 			return true;
 		}
 
-		bool Vertex2D::CreateVertexLayout()
+		bool SingleVertex2D::CreateVertexLayout()
 		{
 			D3D11_INPUT_ELEMENT_DESC InputElementDesc[] =
 			{
@@ -375,7 +365,7 @@ namespace Lib
 			return true;
 		}
 
-		bool Vertex2D::CreatePixelShader()
+		bool SingleVertex2D::CreatePixelShader()
 		{
 			UINT Flag1 = D3D10_SHADER_ENABLE_STRICTNESS;
 #ifdef _DEBUG
@@ -386,7 +376,7 @@ namespace Lib
 
 			ID3DBlob* pShaderErrors = nullptr;
 			if (FAILED(D3DX11CompileFromFile(
-				TEXT("Library\\DirectX11\\Vertex2D\\Effect\\Vertex2D.fx"),
+				TEXT("Library\\DirectX11\\Vertex2D\\SingleVertex2D\\Effect\\Vertex2D.fx"),
 				nullptr,
 				nullptr,
 				"PS",
@@ -419,7 +409,7 @@ namespace Lib
 			return true;
 		}
 
-		bool Vertex2D::CreateState()
+		bool SingleVertex2D::CreateState()
 		{
 			D3D11_BLEND_DESC BlendDesc;
 			ZeroMemory(&BlendDesc, sizeof(D3D11_BLEND_DESC));
@@ -493,24 +483,24 @@ namespace Lib
 			return true;
 		}
 
-		void Vertex2D::ReleaseVertexShader()
+		void SingleVertex2D::ReleaseVertexShader()
 		{
 			SafeRelease(m_pVertexShader);
 			SafeRelease(m_pVertexCompiledShader);
 		}
 
-		void Vertex2D::ReleaseVertexLayout()
+		void SingleVertex2D::ReleaseVertexLayout()
 		{
 			SafeRelease(m_pVertexLayout);
 		}
 
-		void Vertex2D::ReleasePixelShader()
+		void SingleVertex2D::ReleasePixelShader()
 		{
 			SafeRelease(m_pPixelShader);
 			SafeRelease(m_pPixelCompiledShader);
 		}
 
-		void Vertex2D::ReleaseState()
+		void SingleVertex2D::ReleaseState()
 		{
 			SafeRelease(m_pConstantBuffer);
 			SafeRelease(m_pDepthStencilState);
