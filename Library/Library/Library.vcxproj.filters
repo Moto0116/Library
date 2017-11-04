@@ -569,6 +569,7 @@
     <FxCompile Include="Library\DirectX11\Vertex2D\SingleVertex2D\Effect\Vertex2D.fx">
       <Filter>Library\DirectX11\Vertex2D\Effect</Filter>
     </FxCompile>
+    <FxCompile Include="Library\DirectX11\Vertex2D\MultipleVertex2D\Effect\Vertex2D.fx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\SmartPointer\WeakPtr\WeakPtr_private.inl">

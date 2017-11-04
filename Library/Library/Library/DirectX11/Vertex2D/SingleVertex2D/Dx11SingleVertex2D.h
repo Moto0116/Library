@@ -95,10 +95,25 @@ namespace Lib
 				const D3DXVECTOR2* _pScale = &D3DXVECTOR2(1.f, 1.f),
 				const D3DXVECTOR3* _pAngle = &D3DXVECTOR3(0.f, 0.f, 0.f));
 
-			/*** デフォルトのシェーダーを使用する準備 */
+			/*** アニメーションの準備 */
+			void AnimationSetup();
+
+			/*** デフォルトのシェーダーの準備 */
 			void ShaderSetup();
 
-			/*** 2Dポリゴンの描画 */
+			/*** テクスチャの準備 */
+			void TextureSetup();
+
+			/*** デフォルトの深度ステンシルステート準備*/
+			void DepthStencilStateSetup();
+
+			/*** デフォルトのブレンドステート準備*/
+			void BlendStateSetup();
+
+			/*** 単一矩形のデフォルト描画 */
+			void DefaultDraw();
+
+			/*** 単一矩形の描画(ポリゴンの描画処理のみ行う) */
 			void Draw();
 
 			/**
@@ -118,16 +133,7 @@ namespace Lib
 			 * アニメーションオブジェクトが設定されていなければ動作しない
 			 * @param[in] _isInverse 画像が反転しているか
 			 */
-			void SetAnimationUVInverse(bool _isInverse) { m_IsInverse = _isInverse; }
-
-			/**
-			 * 深度ステンシルステートの設定
-			 * @param[in] _pState 設定するステート
-			 */
-			void SetDepthStencilState(ID3D11DepthStencilState* _pState)
-			{
-				m_pUserDepthStencilState = _pState;
-			}
+			void SetAnimationUVInverse(bool _isInverse) { m_IsAnimationUVInverse = _isInverse; }
 
 		private:
 			enum
@@ -196,15 +202,14 @@ namespace Lib
 			ID3D11BlendState*			m_pBlendState;				//!< ブレンドステート.
 			ID3D11SamplerState*			m_pSamplerState;			//!< サンプラステート.
 			ID3D11DepthStencilState*	m_pDepthStencilState;		//!< 深度ステンシルステート.
-			ID3D11DepthStencilState*	m_pUserDepthStencilState;	//!< ユーザー指定の深度ステンシルステート.
 			ID3D11Buffer*				m_pVertexBuffer;			//!< 頂点バッファ.
 			ID3D11Buffer*				m_pConstantBuffer;			//!< 定数バッファ.
 			ITexture*					m_pTexture;					//!< テクスチャインターフェース.
 			IAnimation*					m_pAnimation;				//!< アニメーションインターフェース.
+			bool						m_IsAnimationUVInverse;		//!< アニメーション画像が反転しているか.
 			VERTEX						m_pVertexData[VERTEX_NUM];	//!< 頂点情報構造体.
 			float						m_WindowWidth;				//!< ウィンドウの幅.
 			float						m_WindowHeight;				//!< ウィンドウの高さ.
-			bool						m_IsInverse;				//!< 画像が反転しているか.
 
 		};
 	}

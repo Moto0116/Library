@@ -31,14 +31,13 @@ namespace Lib
 			m_pBlendState(nullptr),
 			m_pSamplerState(nullptr),
 			m_pDepthStencilState(nullptr),
-			m_pUserDepthStencilState(nullptr),
 			m_pVertexBuffer(nullptr),
 			m_pConstantBuffer(nullptr),
 			m_pTexture(nullptr),
 			m_pAnimation(nullptr),
+			m_IsAnimationUVInverse(false),
 			m_WindowWidth(0),
-			m_WindowHeight(0),
-			m_IsInverse(false)
+			m_WindowHeight(0)
 		{
 		}
 
@@ -97,16 +96,16 @@ namespace Lib
 			VERTEX VertexData[VERTEX_NUM] =
 			{
 				VERTEX{ D3DXVECTOR3(-_pSize->x / 2, -_pSize->y / 2, 0), D3DXVECTOR2(_pMinUV->x, _pMinUV->y), *_pColor },
-				VERTEX{ D3DXVECTOR3(_pSize->x / 2, -_pSize->y / 2, 0), D3DXVECTOR2(_pMaxUV->x, _pMinUV->y), *_pColor },
-				VERTEX{ D3DXVECTOR3(-_pSize->x / 2, _pSize->y / 2, 0), D3DXVECTOR2(_pMinUV->x, _pMaxUV->y), *_pColor },
-				VERTEX{ D3DXVECTOR3(_pSize->x / 2, _pSize->y / 2, 0), D3DXVECTOR2(_pMaxUV->x, _pMaxUV->y), *_pColor }
+				VERTEX{ D3DXVECTOR3( _pSize->x / 2, -_pSize->y / 2, 0), D3DXVECTOR2(_pMaxUV->x, _pMinUV->y), *_pColor },
+				VERTEX{ D3DXVECTOR3(-_pSize->x / 2,  _pSize->y / 2, 0), D3DXVECTOR2(_pMinUV->x, _pMaxUV->y), *_pColor },
+				VERTEX{ D3DXVECTOR3( _pSize->x / 2,  _pSize->y / 2, 0), D3DXVECTOR2(_pMaxUV->x, _pMaxUV->y), *_pColor }
 			};
 
 			for (int i = 0; i < VERTEX_NUM; i++)
 			{
-				m_pVertexData[i].Pos = VertexData[i].Pos;
-				m_pVertexData[i].UV = VertexData[i].UV;
-				m_pVertexData[i].Color = VertexData[i].Color;
+				m_pVertexData[i].Pos	= VertexData[i].Pos;
+				m_pVertexData[i].UV		= VertexData[i].UV;
+				m_pVertexData[i].Color	= VertexData[i].Color;
 			}
 
 			// 頂点バッファの設定.
@@ -143,13 +142,19 @@ namespace Lib
 		bool SingleVertex2D::WriteVertexBuffer()
 		{
 			D3D11_MAPPED_SUBRESOURCE MappedResource;
-			if (SUCCEEDED(m_pGraphicsDevice->GetDeviceContext()->Map(m_pVertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &MappedResource)))
+			if (SUCCEEDED(m_pGraphicsDevice->GetDeviceContext()->Map(
+				m_pVertexBuffer, 
+				0, 
+				D3D11_MAP_WRITE_DISCARD,
+				0,
+				&MappedResource)))
 			{
 				memcpy_s(
 					MappedResource.pData,
 					MappedResource.RowPitch,
 					m_pVertexData,
 					sizeof(VERTEX) * VERTEX_NUM);
+
 				m_pGraphicsDevice->GetDeviceContext()->Unmap(m_pVertexBuffer, 0);
 
 				return true;
@@ -160,34 +165,26 @@ namespace Lib
 
 		void SingleVertex2D::SetVertex(const D3DXVECTOR2* _pSize)
 		{
-			m_pVertexData[0].Pos.x = -_pSize->x / 2;
-			m_pVertexData[0].Pos.y = -_pSize->y / 2;
-			m_pVertexData[1].Pos.x = _pSize->x / 2;
-			m_pVertexData[1].Pos.y = -_pSize->y / 2;
-			m_pVertexData[2].Pos.x = -_pSize->x / 2;
-			m_pVertexData[2].Pos.y = _pSize->y / 2;
-			m_pVertexData[3].Pos.x = _pSize->x / 2;
-			m_pVertexData[3].Pos.y = _pSize->y / 2;
+			m_pVertexData[0].Pos.x = -_pSize->x / 2; m_pVertexData[0].Pos.y = -_pSize->y / 2;
+			m_pVertexData[1].Pos.x =  _pSize->x / 2; m_pVertexData[1].Pos.y = -_pSize->y / 2;
+			m_pVertexData[2].Pos.x = -_pSize->x / 2; m_pVertexData[2].Pos.y =  _pSize->y / 2;
+			m_pVertexData[3].Pos.x =  _pSize->x / 2; m_pVertexData[3].Pos.y =  _pSize->y / 2;
 		}
 
 		void SingleVertex2D::SetUV(const D3DXVECTOR2* _pMinUV, const D3DXVECTOR2* _pMaxUV)
 		{
-			m_pVertexData[0].UV.x = _pMinUV->x;
-			m_pVertexData[0].UV.y = _pMinUV->y;
-			m_pVertexData[1].UV.x = _pMaxUV->x;
-			m_pVertexData[1].UV.y = _pMinUV->y;
-			m_pVertexData[2].UV.x = _pMinUV->x;
-			m_pVertexData[2].UV.y = _pMaxUV->y;
-			m_pVertexData[3].UV.x = _pMaxUV->x;
-			m_pVertexData[3].UV.y = _pMaxUV->y;
+			m_pVertexData[0].UV.x = _pMinUV->x; m_pVertexData[0].UV.y = _pMinUV->y;
+			m_pVertexData[1].UV.x = _pMaxUV->x; m_pVertexData[1].UV.y = _pMinUV->y;
+			m_pVertexData[2].UV.x = _pMinUV->x; m_pVertexData[2].UV.y = _pMaxUV->y;
+			m_pVertexData[3].UV.x = _pMaxUV->x; m_pVertexData[3].UV.y = _pMaxUV->y;
 		}
 
 		void SingleVertex2D::SetColor(const D3DXCOLOR* _pColor)
 		{
-			for (int i = 0; i < VERTEX_NUM; i++)
-			{
-				m_pVertexData[i].Color = *_pColor;
-			}
+			m_pVertexData[0].Color = *_pColor;
+			m_pVertexData[1].Color = *_pColor;
+			m_pVertexData[2].Color = *_pColor;
+			m_pVertexData[3].Color = *_pColor;
 		}
 
 		bool SingleVertex2D::WriteConstantBuffer(
@@ -239,23 +236,13 @@ namespace Lib
 			return false;
 		}
 
-		void SingleVertex2D::ShaderSetup()
+		void SingleVertex2D::AnimationSetup()
 		{
-			m_pGraphicsDevice->GetDeviceContext()->VSSetShader(m_pVertexShader, nullptr, 0);
-			m_pGraphicsDevice->GetDeviceContext()->PSSetShader(m_pPixelShader, nullptr, 0);
-			m_pGraphicsDevice->GetDeviceContext()->GSSetShader(nullptr, nullptr, 0);
-			m_pGraphicsDevice->GetDeviceContext()->HSSetShader(nullptr, nullptr, 0);
-			m_pGraphicsDevice->GetDeviceContext()->DSSetShader(nullptr, nullptr, 0);
-			m_pGraphicsDevice->GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
-		}
-
-		void SingleVertex2D::Draw()
-		{
-			// アニメーションインターフェースがあればアニメーションを行う.
+			// アニメーションインターフェースがあればフレームからUVを計算する.
 			if (m_pAnimation != nullptr)
 			{
 				const Animation::ANIMATION_FRAME* pFrame = m_pAnimation->GetCurrentFrame();
-				if (m_IsInverse)
+				if (m_IsAnimationUVInverse)
 					SetUV(
 					&D3DXVECTOR2(pFrame->MaxTu, pFrame->MinTv),
 					&D3DXVECTOR2(pFrame->MinTu, pFrame->MaxTv));
@@ -266,12 +253,25 @@ namespace Lib
 
 				WriteVertexBuffer();
 			}
+		}
+
+		void SingleVertex2D::ShaderSetup()
+		{
+			m_pGraphicsDevice->GetDeviceContext()->VSSetShader(m_pVertexShader, nullptr, 0);
+			m_pGraphicsDevice->GetDeviceContext()->PSSetShader(m_pPixelShader, nullptr, 0);
+			m_pGraphicsDevice->GetDeviceContext()->GSSetShader(nullptr, nullptr, 0);
+			m_pGraphicsDevice->GetDeviceContext()->HSSetShader(nullptr, nullptr, 0);
+			m_pGraphicsDevice->GetDeviceContext()->DSSetShader(nullptr, nullptr, 0);
+			m_pGraphicsDevice->GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
 			m_pGraphicsDevice->GetDeviceContext()->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
 			m_pGraphicsDevice->GetDeviceContext()->PSSetConstantBuffers(0, 1, &m_pConstantBuffer);
 
 			m_pGraphicsDevice->GetDeviceContext()->IASetInputLayout(m_pVertexLayout);
+		}
 
+		void SingleVertex2D::TextureSetup()
+		{	
 			// テクスチャインターフェースがあれば貼り付ける.
 			if (m_pTexture != nullptr)
 			{
@@ -279,14 +279,30 @@ namespace Lib
 				m_pGraphicsDevice->GetDeviceContext()->PSSetSamplers(0, 1, &m_pSamplerState);
 				m_pGraphicsDevice->GetDeviceContext()->PSSetShaderResources(0, 1, &pTextureResource);
 			}
+		}
 
-			if (m_pUserDepthStencilState == nullptr)
-				m_pGraphicsDevice->GetDeviceContext()->OMSetDepthStencilState(m_pDepthStencilState, 0);
-			else
-				m_pGraphicsDevice->GetDeviceContext()->OMSetDepthStencilState(m_pUserDepthStencilState, 0);
+		void SingleVertex2D::DepthStencilStateSetup()
+		{
+			m_pGraphicsDevice->GetDeviceContext()->OMSetDepthStencilState(m_pDepthStencilState, 0);
+		}
 
+		void SingleVertex2D::BlendStateSetup()
+		{
 			m_pGraphicsDevice->GetDeviceContext()->OMSetBlendState(m_pBlendState, nullptr, 0xffffffff);
+		}
 
+		void SingleVertex2D::DefaultDraw()
+		{
+			AnimationSetup();
+			ShaderSetup();
+			TextureSetup();
+			DepthStencilStateSetup();
+			BlendStateSetup();
+			Draw();
+		}
+
+		void SingleVertex2D::Draw()
+		{
 			UINT Stride = sizeof(VERTEX);
 			UINT Offset = 0;
 			m_pGraphicsDevice->GetDeviceContext()->IASetVertexBuffers(0, 1, &m_pVertexBuffer, &Stride, &Offset);
@@ -322,7 +338,6 @@ namespace Lib
 				nullptr)))
 			{
 				OutputErrorLog("頂点シェーダーの読み込みに失敗しました");
-				SafeRelease(pShaderErrors);
 				return false;
 			}
 
@@ -335,7 +350,6 @@ namespace Lib
 				&m_pVertexShader)))
 			{
 				OutputErrorLog("頂点シェーダーの生成に失敗しました");
-				SafeRelease(m_pVertexCompiledShader);
 				return false;
 			}
 
@@ -389,7 +403,6 @@ namespace Lib
 				nullptr)))
 			{
 				OutputErrorLog("ピクセルシェーダーの読み込みに失敗しました");
-				SafeRelease(pShaderErrors);
 				return false;
 			}
 
@@ -402,7 +415,6 @@ namespace Lib
 				&m_pPixelShader)))
 			{
 				OutputErrorLog("ピクセルシェーダーの生成に失敗しました");
-				SafeRelease(m_pPixelCompiledShader);
 				return false;
 			}
 
@@ -428,7 +440,6 @@ namespace Lib
 				&m_pBlendState)))
 			{
 				OutputErrorLog("ブレンドステートの生成に失敗しました");
-				ReleaseState();
 				return false;
 			}
 
@@ -443,7 +454,6 @@ namespace Lib
 				&m_pSamplerState)))
 			{
 				OutputErrorLog("サンプラステートの生成に失敗しました");
-				ReleaseState();
 				return false;
 			}
 
@@ -458,7 +468,6 @@ namespace Lib
 				&m_pDepthStencilState)))
 			{
 				OutputErrorLog("深度ステンシルステートの生成に失敗しました");
-				ReleaseState();
 				return false;
 			}
 
@@ -476,7 +485,6 @@ namespace Lib
 				&m_pConstantBuffer)))
 			{
 				OutputErrorLog("定数バッファの生成に失敗しました");
-				ReleaseState();
 				return false;
 			}
 
