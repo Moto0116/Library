@@ -5,6 +5,10 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="MyDebug|Win32">
+      <Configuration>MyDebug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
@@ -16,6 +20,12 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
@@ -34,12 +44,36 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2016.1\include;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ProjectDir)Library;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.15063.0\shared;C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\um;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4005;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2016.1\lib\vs2013\x86\debug;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.15063.0\um\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
@@ -83,8 +117,10 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Library\Factory\Factory.h" />
     <ClInclude Include="Library\Debugger\ConsoleWindow\ConsoleWindow.h" />
     <ClInclude Include="Library\Debugger\DebugTimer\DebugTimer.h" />
+    <ClInclude Include="Library\Hash\Hash.h" />
     <ClInclude Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask.h" />
     <ClInclude Include="Library\DirectX12\CommandListManager\CommandList\Dx12CommandList.h" />
     <ClInclude Include="Library\DirectX12\CommandQueueManager\CommandQueue\Dx12CommandQueue.h" />
@@ -126,8 +162,9 @@
     <ClInclude Include="Library\DirectX12\PSOManager\PSOManager.h" />
     <ClInclude Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask.h" />
     <ClInclude Include="Library\TaskManager\TaskBase\DrawTask\DrawTask.h" />
-    <ClInclude Include="Library\ObjectManagerBase\ObjectBase\ObjectBase.h" />
+    <ClInclude Include="Library\ObjectBase\ObjectBase.h" />
     <ClInclude Include="Library\DirectX11\Vertex2D\MultipleVertex2D\Dx11MultipleVertex2D.h" />
+    <None Include="Library\Factory\Factory_private.inl" />
     <None Include="Library\SingletonBase\SingletonBase_private.inl" />
     <ClInclude Include="Library\TaskManager\TaskManager.h" />
     <ClInclude Include="Library\TaskManager\TaskBase\TaskBase.h" />
@@ -152,7 +189,6 @@
     <ClInclude Include="Library\Sound\SoundManager\Sound\Sound.h" />
     <ClInclude Include="Library\Sound\SoundDevice\SoundDevice.h" />
     <ClInclude Include="Library\DirectX11\Light\Dx11Light.h" />
-    <ClInclude Include="Library\ObjectManagerBase\ObjectManagerBase.h" />
     <ClInclude Include="Library\MemoryAllocator\TlsfAllocator\TlsfAllocator.h" />
     <None Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask_private.inl" />
     <None Include="Library\TaskManager\TaskBase\UpdateTask\UpdateTask_private.inl" />
@@ -186,7 +222,7 @@
     <ClCompile Include="Library\Debugger\Debugger.cpp" />
     <ClCompile Include="Library\InputDeviceManager\InputDeviceManager.cpp" />
     <ClCompile Include="Library\Math\Math.cpp" />
-    <ClCompile Include="Library\ObjectManagerBase\ObjectBase\ObjectBase.cpp" />
+    <ClCompile Include="Library\ObjectBase\ObjectBase.cpp" />
     <ClCompile Include="Library\SceneManager\SceneManager.cpp" />
     <ClCompile Include="Library\SceneManager\SceneBase\SceneBase.cpp" />
     <ClCompile Include="Library\Window\Window.cpp" />
@@ -199,7 +235,6 @@
     <ClCompile Include="Library\Sound\SoundManager\Sound\Sound.cpp" />
     <ClCompile Include="Library\Sound\SoundDevice\SoundDevice.cpp" />
     <ClCompile Include="Library\DirectX11\Light\Dx11Light.cpp" />
-    <ClCompile Include="Library\ObjectManagerBase\ObjectManagerBase.cpp" />
     <ClCompile Include="Library\Math\Vector2\Vector2.cpp" />
     <ClCompile Include="Library\Math\Vector3\Vector3.cpp" />
     <ClCompile Include="Library\Math\Vector4\Vector4.cpp" />
@@ -217,14 +252,22 @@
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </EntryPointName>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'">
+      </EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'">Effect</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'">5.0</ShaderModel>
     </FxCompile>
     <FxCompile Include="Library\DirectX11\Vertex2D\MultipleVertex2D\Effect\Vertex2D.fx">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </EntryPointName>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'">
+      </EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'">Effect</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'">5.0</ShaderModel>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
@@ -233,8 +276,12 @@
     <FxCompile Include="Library\DirectX11\Vertex2D\SingleVertex2D\Effect\Vertex2D.fx">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </EntryPointName>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'">
+      </EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'">Effect</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'">5.0</ShaderModel>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>

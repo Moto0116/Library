@@ -11,7 +11,7 @@
 //----------------------------------------------------------------------
 #include "..\..\TaskManager.h"
 #include "..\UpdateStartUpTask\UpdateStartUpTask.h"
-#include "..\..\..\ObjectManagerBase\ObjectBase\ObjectBase.h"
+#include "..\..\..\ObjectBase\ObjectBase.h"
 
 
 namespace Lib

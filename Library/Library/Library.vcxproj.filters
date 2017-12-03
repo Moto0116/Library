@@ -250,9 +250,6 @@
     <ClCompile Include="Library\InputDeviceManager\MouseDevice\MouseDevice.cpp">
       <Filter>Library\InputDeviceManager\MouseDevice</Filter>
     </ClCompile>
-    <ClCompile Include="Library\ObjectManagerBase\ObjectBase\ObjectBase.cpp">
-      <Filter>Library\ObjectManagerBase\ObjectBase</Filter>
-    </ClCompile>
     <ClCompile Include="Library\BinaryFile\BinaryFile.cpp">
       <Filter>Library\BinaryFile</Filter>
     </ClCompile>
@@ -264,9 +261,6 @@
     </ClCompile>
     <ClCompile Include="Library\Math\Vector4\Vector4.cpp">
       <Filter>Library\Math\Vector4</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\ObjectManagerBase\ObjectManagerBase.cpp">
-      <Filter>Library\ObjectManagerBase</Filter>
     </ClCompile>
     <ClCompile Include="Library\EventManager\EventBase\EventBase.cpp">
       <Filter>Library\EventManager\EventBase</Filter>
@@ -371,6 +365,9 @@
       <Filter>Library\DirectX11\Vertex2D</Filter>
     </ClCompile>
     <ClCompile Include="Library\DirectX11\Vertex2D\MultipleVertex2D\Dx11MultipleVertex2D.cpp" />
+    <ClCompile Include="Library\ObjectBase\ObjectBase.cpp">
+      <Filter>Library\ObjectManagerBase\ObjectBase</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Debugger\Debugger.h">
@@ -382,23 +379,8 @@
     <ClInclude Include="Library\SceneManager\SceneManager.h">
       <Filter>Library\SceneManager</Filter>
     </ClInclude>
-    <ClInclude Include="Library\TaskManager\TaskManager.h">
-      <Filter>Library\TaskManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\TaskManager\TaskBase\DrawTask\DrawTask.h">
-      <Filter>Library\TaskManager\TaskBase\DrawTask</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\TaskManager\TaskBase\TaskBase.h">
-      <Filter>Library\TaskManager\TaskBase</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\TaskManager\TaskBase\UpdateTask\UpdateTask.h">
-      <Filter>Library\TaskManager\TaskBase\UpdateTask</Filter>
-    </ClInclude>
     <ClInclude Include="Library\InputDeviceManager\InputDeviceManager.h">
       <Filter>Library\InputDeviceManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\SingletonBase\SingletonBase.h">
-      <Filter>Library\SingletonBase</Filter>
     </ClInclude>
     <ClInclude Include="Library\Window\Window.h">
       <Filter>Library\Window</Filter>
@@ -415,23 +397,8 @@
     <ClInclude Include="Library\Define\Define.h">
       <Filter>Library\Define</Filter>
     </ClInclude>
-    <ClInclude Include="Library\ObjectManagerBase\ObjectBase\ObjectBase.h">
-      <Filter>Library\ObjectManagerBase\ObjectBase</Filter>
-    </ClInclude>
     <ClInclude Include="Library\BinaryFile\BinaryFile.h">
       <Filter>Library\BinaryFile</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\SmartPointer\SmartPointer.h">
-      <Filter>Library\SmartPointer</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\SmartPointer\WeakPtr\WeakPtr.h">
-      <Filter>Library\SmartPointer\WeakPtr</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\SmartPointer\SharedPtr\SharedPtr.h">
-      <Filter>Library\SmartPointer\SharedPtr</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\SmartPointer\UniquePtr\UniquePtr.h">
-      <Filter>Library\SmartPointer\UniquePtr</Filter>
     </ClInclude>
     <ClInclude Include="Library\Math\Vector2\Vector2.h">
       <Filter>Library\Math\Vector2</Filter>
@@ -444,9 +411,6 @@
     </ClInclude>
     <ClInclude Include="Library\MemoryAllocator\TlsfAllocator\TlsfAllocator.h">
       <Filter>Library\MemoryAllocator\TlsfAllocator</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\ObjectManagerBase\ObjectManagerBase.h">
-      <Filter>Library\ObjectManagerBase</Filter>
     </ClInclude>
     <ClInclude Include="Library\EventManager\EventBase\EventBase.h">
       <Filter>Library\EventManager\EventBase</Filter>
@@ -535,12 +499,6 @@
     <ClInclude Include="Library\DirectX12\RootSignature\RootSignatureManager.h">
       <Filter>Library\DirectX12\RootSignatureManager</Filter>
     </ClInclude>
-    <ClInclude Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask.h">
-      <Filter>Library\TaskManager\TaskBase\DrawStartUpTask</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask.h">
-      <Filter>Library\TaskManager\TaskBase\UpdateStartUpTask</Filter>
-    </ClInclude>
     <ClInclude Include="Library\Math\Matrix\Matrix.h">
       <Filter>Library\Math\Matrix</Filter>
     </ClInclude>
@@ -556,11 +514,49 @@
     <ClInclude Include="Library\Sound\SoundManager\SoundManager.h">
       <Filter>Library\Sound\SoundManager</Filter>
     </ClInclude>
-    <ClInclude Include="Library\TypeTraits\TypeTraits.h" />
     <ClInclude Include="Library\DirectX11\Vertex2D\SingleVertex2D\Dx11SingleVertex2D.h">
       <Filter>Library\DirectX11\Vertex2D</Filter>
     </ClInclude>
     <ClInclude Include="Library\DirectX11\Vertex2D\MultipleVertex2D\Dx11MultipleVertex2D.h" />
+    <ClInclude Include="Library\ObjectBase\ObjectBase.h">
+      <Filter>Library\ObjectManagerBase\ObjectBase</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\SingletonBase\SingletonBase.h">
+      <Filter>Library\SingletonBase</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\SmartPointer\SharedPtr\SharedPtr.h">
+      <Filter>Library\SmartPointer\SharedPtr</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\SmartPointer\UniquePtr\UniquePtr.h">
+      <Filter>Library\SmartPointer\UniquePtr</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\SmartPointer\WeakPtr\WeakPtr.h">
+      <Filter>Library\SmartPointer\WeakPtr</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\SmartPointer\SmartPointer.h">
+      <Filter>Library\SmartPointer</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask.h">
+      <Filter>Library\TaskManager\TaskBase\DrawStartUpTask</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TaskManager\TaskBase\DrawTask\DrawTask.h">
+      <Filter>Library\TaskManager\TaskBase\DrawTask</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask.h">
+      <Filter>Library\TaskManager\TaskBase\UpdateStartUpTask</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TaskManager\TaskBase\UpdateTask\UpdateTask.h">
+      <Filter>Library\TaskManager\TaskBase\UpdateTask</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TaskManager\TaskBase\TaskBase.h">
+      <Filter>Library\TaskManager\TaskBase</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TaskManager\TaskManager.h">
+      <Filter>Library\TaskManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TypeTraits\TypeTraits.h" />
+    <ClInclude Include="Library\Factory\Factory.h" />
+    <ClInclude Include="Library\Hash\Hash.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\DirectX11\Font\Effect\Font.fx">
@@ -572,8 +568,8 @@
     <FxCompile Include="Library\DirectX11\Vertex2D\MultipleVertex2D\Effect\Vertex2D.fx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\SmartPointer\WeakPtr\WeakPtr_private.inl">
-      <Filter>Library\SmartPointer\WeakPtr</Filter>
+    <None Include="Library\SingletonBase\SingletonBase_private.inl">
+      <Filter>Library\SingletonBase</Filter>
     </None>
     <None Include="Library\SmartPointer\SharedPtr\SharedPtr_private.inl">
       <Filter>Library\SmartPointer\SharedPtr</Filter>
@@ -581,20 +577,14 @@
     <None Include="Library\SmartPointer\UniquePtr\UniquePtr_private.inl">
       <Filter>Library\SmartPointer\UniquePtr</Filter>
     </None>
-    <None Include="Library\SingletonBase\SingletonBase_private.inl">
-      <Filter>Library\SingletonBase</Filter>
-    </None>
-    <None Include="Library\TaskManager\TaskManager_private.inl">
-      <Filter>Library\TaskManager</Filter>
-    </None>
-    <None Include="Library\TaskManager\TaskBase\TaskBase_private.inl">
-      <Filter>Library\TaskManager\TaskBase</Filter>
-    </None>
-    <None Include="Library\TaskManager\TaskBase\DrawTask\DrawTask_private.inl">
-      <Filter>Library\TaskManager\TaskBase\DrawTask</Filter>
+    <None Include="Library\SmartPointer\WeakPtr\WeakPtr_private.inl">
+      <Filter>Library\SmartPointer\WeakPtr</Filter>
     </None>
     <None Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask_private.inl">
       <Filter>Library\TaskManager\TaskBase\DrawStartUpTask</Filter>
+    </None>
+    <None Include="Library\TaskManager\TaskBase\DrawTask\DrawTask_private.inl">
+      <Filter>Library\TaskManager\TaskBase\DrawTask</Filter>
     </None>
     <None Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask_private.inl">
       <Filter>Library\TaskManager\TaskBase\UpdateStartUpTask</Filter>
@@ -602,5 +592,12 @@
     <None Include="Library\TaskManager\TaskBase\UpdateTask\UpdateTask_private.inl">
       <Filter>Library\TaskManager\TaskBase\UpdateTask</Filter>
     </None>
+    <None Include="Library\TaskManager\TaskBase\TaskBase_private.inl">
+      <Filter>Library\TaskManager\TaskBase</Filter>
+    </None>
+    <None Include="Library\TaskManager\TaskManager_private.inl">
+      <Filter>Library\TaskManager</Filter>
+    </None>
+    <None Include="Library\Factory\Factory_private.inl" />
   </ItemGroup>
 </Project>

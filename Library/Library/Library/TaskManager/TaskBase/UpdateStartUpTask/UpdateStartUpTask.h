@@ -10,7 +10,7 @@
 // Include
 //----------------------------------------------------------------------
 #include "..\TaskBase.h"
-#include "..\..\..\ObjectManagerBase\ObjectBase\ObjectBase.h"
+#include "..\..\..\ObjectBase\ObjectBase.h"
 
 
 namespace Lib

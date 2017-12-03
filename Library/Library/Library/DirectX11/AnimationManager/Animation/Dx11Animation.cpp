@@ -173,7 +173,7 @@ namespace Lib
 				m_pFrame[i]->MaxTv = AnimationData[i * 5 + 4];
 			}
 
-			delete pBuffer;
+			SafeDeleteArray(pBuffer);
 		}
 
 		void Animation::Release()

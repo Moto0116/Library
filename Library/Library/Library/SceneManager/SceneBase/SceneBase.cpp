@@ -41,6 +41,5 @@ namespace Lib
 	void SceneBase::Update()
 	{
 	}
-
 }
 
