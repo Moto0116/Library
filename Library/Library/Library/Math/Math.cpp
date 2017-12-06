@@ -208,10 +208,10 @@ namespace Lib
 		return *_pMat;
 	}
 
-	MATRIX MatrixLookAtLH(MATRIX* _pMat, VECTOR3* _eyePos, VECTOR3* _at, VECTOR3* _up)
+	MATRIX MatrixLookAtLH(MATRIX* _pMat, VECTOR3* _pEyePos, VECTOR3* _pAt, VECTOR3* _pUp)
 	{
-		VECTOR3 Zaxis = Vector3Normalize(&VECTOR3(*_at - *_eyePos));
-		VECTOR3 Xaxis = Vector3Normalize(&Vector3Cross(_up, &Zaxis, &Xaxis));
+		VECTOR3 Zaxis = Vector3Normalize(&VECTOR3(*_pAt - *_pEyePos));
+		VECTOR3 Xaxis = Vector3Normalize(&Vector3Cross(_pUp, &Zaxis, &Xaxis));
 		VECTOR3 Yaxis = Vector3Cross(&Zaxis, &Xaxis, &Yaxis);
 
 		_pMat->_11 = Xaxis.x;
@@ -226,9 +226,9 @@ namespace Lib
 		_pMat->_32 = Yaxis.z;
 		_pMat->_33 = Zaxis.z;
 		_pMat->_34 = 0.f;
-		_pMat->_41 = -Vector3Dot(&Xaxis, _eyePos);
-		_pMat->_42 = -Vector3Dot(&Yaxis, _eyePos);
-		_pMat->_43 = -Vector3Dot(&Zaxis, _eyePos);
+		_pMat->_41 = -Vector3Dot(&Xaxis, _pEyePos);
+		_pMat->_42 = -Vector3Dot(&Yaxis, _pEyePos);
+		_pMat->_43 = -Vector3Dot(&Zaxis, _pEyePos);
 		_pMat->_44 = 1.f;
 
 		return *_pMat;

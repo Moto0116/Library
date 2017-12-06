@@ -28,6 +28,7 @@ namespace Lib
 	//----------------------------------------------------------------------
 	// Utility Functions
 	//----------------------------------------------------------------------
+
 	/**
 	 * 角度をラジアンに変換
 	 * @param[in] _degree 角度 
@@ -152,9 +153,9 @@ namespace Lib
 	 */
 	MATRIX MatrixLookAtLH(
 		MATRIX* _pMat,
-		VECTOR3* _eyePos,
-		VECTOR3* _at, 
-		VECTOR3* _up = &VECTOR3(0.f, 1.f, 0.f));
+		VECTOR3* _pEyePos,
+		VECTOR3* _pAt, 
+		VECTOR3* _pUp = &VECTOR3(0.f, 1.f, 0.f));
 
 	/**
 	 * 左手座標系パースペクティブ射影行列作成

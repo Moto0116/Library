@@ -43,7 +43,6 @@ namespace Lib
 		/**
 		 * コンストラクタ
 		 * @param[in] _taskName タスクの名前
-		 * @todo できれば引数なしにしたいので何かしら修正する予定
 		 */
 		TaskBase(LPCTSTR _taskName = "unknown");
 	

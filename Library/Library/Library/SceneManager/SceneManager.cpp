@@ -32,7 +32,7 @@ namespace Lib
 
 	SceneManager::~SceneManager()
 	{
-		for (auto itr = m_pSceneData.begin(); itr != m_pSceneData.end(); itr++)
+		for (auto itr = m_pScenes.begin(); itr != m_pScenes.end(); itr++)
 		{
 			SafeDelete(*itr);	// シーンが残っていたら削除する.
 		}
@@ -45,7 +45,7 @@ namespace Lib
 	bool SceneManager::Initialize()
 	{
 		SceneBase* pEmptyScene = new SceneBase(m_EmptySceneID);
-		m_pSceneData.push_back(pEmptyScene);
+		m_pScenes.push_back(pEmptyScene);
 
 		m_pCurrentScene = pEmptyScene;	// 空シーンを現在のシーンとして登録しておく.
 
@@ -54,11 +54,12 @@ namespace Lib
 
 	void SceneManager::Finalize()
 	{
-		for (auto itr = m_pSceneData.begin(); itr != m_pSceneData.end(); itr++)
+		for (auto itr = m_pScenes.begin(); itr != m_pScenes.end(); itr++)
 		{
 			if ((*itr)->GetID() == m_EmptySceneID)	// 空シーンを探して削除する.
 			{
 				SafeDelete(*itr);
+				m_pScenes.erase(itr);
 				break;
 			}
 		}
@@ -80,7 +81,7 @@ namespace Lib
 			int NextSceneID = m_pCurrentScene->GetNextSceneID();	// 遷移先のシーンIDを取得する.
 			m_pCurrentScene->Finalize();
 
-			for (auto itr = m_pSceneData.begin(); itr != m_pSceneData.end(); itr++)
+			for (auto itr = m_pScenes.begin(); itr != m_pScenes.end(); itr++)
 			{
 				if ((*itr)->GetID() == NextSceneID)
 				{
@@ -99,7 +100,7 @@ namespace Lib
 
 	bool SceneManager::AddScene(SceneBase* _pScene)
 	{
-		for (auto itr = m_pSceneData.begin(); itr != m_pSceneData.end(); itr++)
+		for (auto itr = m_pScenes.begin(); itr != m_pScenes.end(); itr++)
 		{
 			if ((*itr)->GetID() == _pScene->GetID())
 			{
@@ -108,14 +109,14 @@ namespace Lib
 			}
 		}
 
-		m_pSceneData.push_back(_pScene);
+		m_pScenes.push_back(_pScene);
 
 		return true;
 	}
 
 	void SceneManager::DeleteScene(SceneBase* _pScene)
 	{
-		for (auto itr = m_pSceneData.begin(); itr != m_pSceneData.end(); itr++)
+		for (auto itr = m_pScenes.begin(); itr != m_pScenes.end(); itr++)
 		{
 			if ((*itr)->GetID() == _pScene->GetID())
 			{
@@ -130,7 +131,7 @@ namespace Lib
 					break;
 				}
 
-				m_pSceneData.erase(itr);
+				m_pScenes.erase(itr);
 				break;
 			}
 		}
@@ -138,7 +139,7 @@ namespace Lib
 
 	void SceneManager::SetEntryScene(SceneBase* _pScene)
 	{
-		for (auto itr = m_pSceneData.begin(); itr != m_pSceneData.end(); itr++)
+		for (auto itr = m_pScenes.begin(); itr != m_pScenes.end(); itr++)
 		{
 			if ((*itr)->GetID() == _pScene->GetID())
 			{

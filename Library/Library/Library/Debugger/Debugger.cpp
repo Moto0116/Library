@@ -21,10 +21,10 @@ namespace Lib
 		//----------------------------------------------------------------------
 		// Static Variables
 		//----------------------------------------------------------------------
-		static const unsigned int	g_DebugLogMax = 512;	//!< デバッグログの最大文字数.
-		static FILE*				g_pLogFile = nullptr;	//!< デバッグ用ファイルポインタ.
-		static const int			g_StackMax = 100;		//!< 保持するスタックフレームの最大数.
-		static const int			g_SymbolNameMax = 256;	//!< シンボル名の最大文字数.
+		static const unsigned int	g_DebugLogMax	= 512;		//!< デバッグログの最大文字数.
+		static FILE*				g_pLogFile		= nullptr;	//!< デバッグ用ファイルポインタ.
+		static const int			g_StackMax		= 100;		//!< 保持するスタックフレームの最大数.
+		static const int			g_SymbolNameMax = 256;		//!< シンボル名の最大文字数.
 
 
 		//----------------------------------------------------------------------

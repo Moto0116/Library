@@ -94,7 +94,6 @@ namespace Lib
 			CloseHandle(ProcessInfo.hThread);	// プライマリスレッドのハンドルは必要ないので閉じる.
 
 			m_IsActive = true;
-
 #endif // _DEBUG
 
 			return true;
@@ -117,7 +116,6 @@ namespace Lib
 			}
 
 			m_IsActive = false;
-
 #endif // !_DEBUG
 		}
 

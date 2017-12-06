@@ -73,12 +73,12 @@ namespace Lib
 			}
 
 		private:
-			typedef std::chrono::duration<
-				std::chrono::system_clock::rep,
-				std::chrono::system_clock::period> DebugDiffTime;
+			using SystemClock	= std::chrono::system_clock;
+			using StartTime		= SystemClock::time_point;
+			using DebugDiffTime = std::chrono::duration<SystemClock::rep, SystemClock::period>;
 
-			std::chrono::system_clock::time_point	m_StartTime;	//!< 計測開始時間.
-			DebugDiffTime m_DiffTime;								//!< 計測時間.
+			StartTime		m_StartTime;	//!< 計測開始時間.
+			DebugDiffTime	m_DiffTime;		//!< 計測時間.
 
 		};
 	}

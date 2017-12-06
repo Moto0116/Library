@@ -63,7 +63,7 @@ namespace Lib
 	private:
 		static const int		m_EmptySceneID;	//!< 空シーンのID.
 
-		std::vector<SceneBase*>	m_pSceneData;	//!< シーンを格納しているコンテナ.
+		std::vector<SceneBase*>	m_pScenes;		//!< シーンを格納しているコンテナ.
 		SceneBase*				m_pCurrentScene;//!< 現在のシーン.
 
 	};

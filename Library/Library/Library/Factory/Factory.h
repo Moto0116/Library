@@ -27,11 +27,15 @@ namespace Lib
 	public:
 		using Func = Type*(*)();
 
-		/*** コンストラクタ */
-		Factory();
-
-		/*** デストラクタ */
-		~Factory();
+		/**
+		 * インスタンスの取得
+		 * @return インスタンス 
+		 */
+		static Factory* GetInstance()
+		{
+			static Factory Instance;
+			return &Instance;
+		}
 
 		/**
 		 * 生成関数登録
@@ -56,6 +60,12 @@ namespace Lib
 		Type* Create(Identifier _id);
 
 	private:
+		/*** コンストラクタ */
+		Factory();
+
+		/*** デストラクタ */
+		~Factory();
+
 		std::map<Identifier, Func> m_Functions;
 
 	};

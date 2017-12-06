@@ -35,7 +35,15 @@ namespace Lib
 	{
 		MyAssert(m_pBinary != nullptr, "既にファイルが読み込まれています");
 
-		HANDLE FileHandle = CreateFile(_pFileName, GENERIC_READ, 0, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
+		HANDLE FileHandle = CreateFile(
+			_pFileName, 
+			GENERIC_READ, 
+			0, 
+			nullptr,
+			OPEN_EXISTING, 
+			FILE_ATTRIBUTE_NORMAL,
+			nullptr);
+
 		if (FileHandle == INVALID_HANDLE_VALUE)
 		{
 			OutputErrorLog("ファイルオープンに失敗しました");

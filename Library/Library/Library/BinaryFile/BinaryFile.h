@@ -27,6 +27,7 @@ namespace Lib
 		/**
 		 * ファイル読み込み
 		 * @param[in] _pFileName 読み込むファイル名
+		 * @return 成功したらtrue 失敗したらfalse
 		 */
 		bool Read(TCHAR* _pFileName);
 

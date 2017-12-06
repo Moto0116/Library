@@ -58,4 +58,5 @@ namespace Lib
 	}
 }
 
+
 #endif // !LIB_HASH_H
