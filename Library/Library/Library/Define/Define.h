@@ -26,8 +26,10 @@
 #define DISALLOW_COPY_AND_ASSIGN(_type)	_type(const _type&);			\
 										void operator=(const _type&)
 
+#ifndef interface
 // インターフェースマクロ.
 #define interface struct
+#endif //!interface
 
 // 文字列変換マクロ.
 #define TO_STRING(_str) (#_str)

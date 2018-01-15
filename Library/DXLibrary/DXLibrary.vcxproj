@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5039EEB0-084A-4D18-85E2-9CB6D4614CD5}</ProjectGuid>
+    <RootNamespace>DXLibrary</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2016.1\include;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ProjectDir)DXLibrary;$(SolutionDir)Library\Library;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.15063.0\shared;C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\um;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4005</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2016.1\lib\vs2013\x86\debug;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.15063.0\um\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2016.1\include;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ProjectDir)DXLibrary;$(SolutionDir)Library\Library;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.15063.0\shared;C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\um;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4005</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2016.1\lib\vs2013\x86\release;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.15063.0\um\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="DXLibrary\DirectX11\AnimationManager\Animation\Dx11Animation.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\AnimationManager\Dx11AnimationManager.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\AnimationManager\IAnimation\Dx11IAnimation.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\Camera\Dx11Camera.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\FbxFileManager\Dx11FbxFileManager.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\FbxFileManager\FbxLoader\Dx11FbxLoader.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\FbxFileManager\FbxModel\Dx11FbxModel.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\Font\Dx11Font.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\GraphicsDevice\Dx11GraphicsDevice.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\Light\Dx11Light.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\ShaderManager\Dx11ShaderManager.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\TextureManager\Dx11TextureManager.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\TextureManager\ITexture\Dx11ITexture.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\TextureManager\Texture\Dx11Texture.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\Vertex2D\MultipleVertex2D\Dx11MultipleVertex2D.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\Vertex2D\SingleVertex2D\Dx11SingleVertex2D.cpp" />
+    <ClCompile Include="DXLibrary\DirectX12\CommandListManager\CommandList\Dx12CommandList.cpp" />
+    <ClCompile Include="DXLibrary\DirectX12\CommandListManager\Dx12CommandListManager.cpp" />
+    <ClCompile Include="DXLibrary\DirectX12\CommandQueueManager\CommandQueue\Dx12CommandQueue.cpp" />
+    <ClCompile Include="DXLibrary\DirectX12\CommandQueueManager\Dx12CommandQueueManager.cpp" />
+    <ClCompile Include="DXLibrary\DirectX12\DescriptorManager\DescriptorManager.cpp" />
+    <ClCompile Include="DXLibrary\DirectX12\GraphicsDevice\Dx12GraphicsDevice.cpp" />
+    <ClCompile Include="DXLibrary\DirectX12\PSOManager\PSOManager.cpp" />
+    <ClCompile Include="DXLibrary\DirectX12\RootSignature\RootSignatureManager.cpp" />
+    <ClCompile Include="DXLibrary\DirectX12\SwapChain\Dx12SwapChain.cpp" />
+    <ClCompile Include="DXLibrary\InputDeviceManager\GamePad\GamePad.cpp" />
+    <ClCompile Include="DXLibrary\InputDeviceManager\InputDeviceManager.cpp" />
+    <ClCompile Include="DXLibrary\InputDeviceManager\KeyDevice\KeyDevice.cpp" />
+    <ClCompile Include="DXLibrary\InputDeviceManager\MouseDevice\MouseDevice.cpp" />
+    <ClCompile Include="DXLibrary\Sound\SoundDevice\SoundDevice.cpp" />
+    <ClCompile Include="DXLibrary\Sound\SoundManager\ISound\ISound.cpp" />
+    <ClCompile Include="DXLibrary\Sound\SoundManager\SoundManager.cpp" />
+    <ClCompile Include="DXLibrary\Sound\SoundManager\Sound\Sound.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DXLibrary\DirectX11\AnimationManager\Animation\Dx11Animation.h" />
+    <ClInclude Include="DXLibrary\DirectX11\AnimationManager\Dx11AnimationManager.h" />
+    <ClInclude Include="DXLibrary\DirectX11\AnimationManager\IAnimation\Dx11IAnimation.h" />
+    <ClInclude Include="DXLibrary\DirectX11\Camera\Dx11Camera.h" />
+    <ClInclude Include="DXLibrary\DirectX11\FbxFileManager\Dx11FbxFileManager.h" />
+    <ClInclude Include="DXLibrary\DirectX11\FbxFileManager\FbxLoader\Dx11FbxLoader.h" />
+    <ClInclude Include="DXLibrary\DirectX11\FbxFileManager\FbxModel\Dx11FbxModel.h" />
+    <ClInclude Include="DXLibrary\DirectX11\Font\Dx11Font.h" />
+    <ClInclude Include="DXLibrary\DirectX11\GraphicsDevice\Dx11GraphicsDevice.h" />
+    <ClInclude Include="DXLibrary\DirectX11\Light\Dx11Light.h" />
+    <ClInclude Include="DXLibrary\DirectX11\ShaderManager\Dx11ShaderManager.h" />
+    <ClInclude Include="DXLibrary\DirectX11\TextureManager\Dx11TextureManager.h" />
+    <ClInclude Include="DXLibrary\DirectX11\TextureManager\ITexture\Dx11ITexture.h" />
+    <ClInclude Include="DXLibrary\DirectX11\TextureManager\Texture\Dx11Texture.h" />
+    <ClInclude Include="DXLibrary\DirectX11\Vertex2D\MultipleVertex2D\Dx11MultipleVertex2D.h" />
+    <ClInclude Include="DXLibrary\DirectX11\Vertex2D\SingleVertex2D\Dx11SingleVertex2D.h" />
+    <ClInclude Include="DXLibrary\DirectX12\CommandListManager\CommandList\Dx12CommandList.h" />
+    <ClInclude Include="DXLibrary\DirectX12\CommandListManager\Dx12CommandListManager.h" />
+    <ClInclude Include="DXLibrary\DirectX12\CommandQueueManager\CommandQueue\Dx12CommandQueue.h" />
+    <ClInclude Include="DXLibrary\DirectX12\CommandQueueManager\Dx12CommandQueueManager.h" />
+    <ClInclude Include="DXLibrary\DirectX12\DescriptorManager\DescriptorManager.h" />
+    <ClInclude Include="DXLibrary\DirectX12\GraphicsDevice\Dx12GraphicsDevice.h" />
+    <ClInclude Include="DXLibrary\DirectX12\PSOManager\PSOManager.h" />
+    <ClInclude Include="DXLibrary\DirectX12\RootSignature\RootSignatureManager.h" />
+    <ClInclude Include="DXLibrary\DirectX12\SwapChain\Dx12SwapChain.h" />
+    <ClInclude Include="DXLibrary\InputDeviceManager\GamePad\GamePad.h" />
+    <ClInclude Include="DXLibrary\InputDeviceManager\InputDeviceManager.h" />
+    <ClInclude Include="DXLibrary\InputDeviceManager\KeyDevice\KeyDevice.h" />
+    <ClInclude Include="DXLibrary\InputDeviceManager\MouseDevice\MouseDevice.h" />
+    <ClInclude Include="DXLibrary\Sound\SoundDevice\SoundDevice.h" />
+    <ClInclude Include="DXLibrary\Sound\SoundManager\ISound\ISound.h" />
+    <ClInclude Include="DXLibrary\Sound\SoundManager\SoundManager.h" />
+    <ClInclude Include="DXLibrary\Sound\SoundManager\Sound\Sound.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="DXLibrary\DirectX11\Font\Effect\Font.fx">
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </EntryPointName>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </EntryPointName>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+    </FxCompile>
+    <FxCompile Include="DXLibrary\DirectX11\Vertex2D\MultipleVertex2D\Effect\Vertex2D.fx">
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </EntryPointName>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </EntryPointName>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="DXLibrary\DirectX11\Vertex2D\SingleVertex2D\Effect\Vertex2D.fx">
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </EntryPointName>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </EntryPointName>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
+    </FxCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

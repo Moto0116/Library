@@ -122,24 +122,8 @@
     <ClInclude Include="Library\Debugger\DebugTimer\DebugTimer.h" />
     <ClInclude Include="Library\Hash\Hash.h" />
     <ClInclude Include="Library\TaskManager\TaskBase\DrawStartUpTask\DrawStartUpTask.h" />
-    <ClInclude Include="Library\DirectX12\CommandListManager\CommandList\Dx12CommandList.h" />
-    <ClInclude Include="Library\DirectX12\CommandQueueManager\CommandQueue\Dx12CommandQueue.h" />
-    <ClInclude Include="Library\DirectX12\DescriptorManager\DescriptorManager.h" />
-    <ClInclude Include="Library\DirectX12\CommandListManager\Dx12CommandListManager.h" />
-    <ClInclude Include="Library\DirectX12\CommandQueueManager\Dx12CommandQueueManager.h" />
-    <ClInclude Include="Library\DirectX12\GraphicsDevice\Dx12GraphicsDevice.h" />
     <ClInclude Include="Library\BinaryFile\BinaryFile.h" />
-    <ClInclude Include="Library\DirectX11\AnimationManager\IAnimation\Dx11IAnimation.h" />
-    <ClInclude Include="Library\DirectX11\Camera\Dx11Camera.h" />
-    <ClInclude Include="Library\DirectX11\FbxFileManager\Dx11FbxFileManager.h" />
-    <ClInclude Include="Library\DirectX11\FbxFileManager\FbxLoader\Dx11FbxLoader.h" />
-    <ClInclude Include="Library\DirectX11\FbxFileManager\FbxModel\Dx11FbxModel.h" />
-    <ClInclude Include="Library\DirectX11\Font\Dx11Font.h" />
-    <ClInclude Include="Library\Sound\SoundManager\ISound\ISound.h" />
-    <ClInclude Include="Library\DirectX11\TextureManager\ITexture\Dx11ITexture.h" />
     <ClInclude Include="Library\Define\Define.h" />
-    <ClInclude Include="Library\DirectX11\AnimationManager\Animation\Dx11Animation.h" />
-    <ClInclude Include="Library\DirectX11\AnimationManager\Dx11AnimationManager.h" />
     <ClInclude Include="Library\SmartPointer\SharedPtr\SharedPtr.h" />
     <ClInclude Include="Library\SmartPointer\SmartPointer.h" />
     <ClInclude Include="Library\SmartPointer\UniquePtr\UniquePtr.h" />
@@ -147,23 +131,15 @@
     <ClInclude Include="Library\Math\Vector2\Vector2.h" />
     <ClInclude Include="Library\Math\Vector3\Vector3.h" />
     <ClInclude Include="Library\Math\Vector4\Vector4.h" />
-    <ClInclude Include="Library\InputDeviceManager\GamePad\GamePad.h" />
-    <ClInclude Include="Library\InputDeviceManager\KeyDevice\KeyDevice.h" />
-    <ClInclude Include="Library\DirectX11\GraphicsDevice\Dx11GraphicsDevice.h" />
     <ClInclude Include="Library\EventManager\EventBase\EventBase.h" />
     <ClInclude Include="Library\EventManager\EventManager.h" />
     <ClInclude Include="Library\EventManager\EventListener\EventListener.h" />
     <ClInclude Include="Library\Debugger\Debugger.h" />
-    <ClInclude Include="Library\InputDeviceManager\InputDeviceManager.h" />
     <ClInclude Include="Library\Math\Math.h" />
-    <ClInclude Include="Library\DirectX12\SwapChain\Dx12SwapChain.h" />
     <ClInclude Include="Library\Math\Matrix\Matrix.h" />
-    <ClInclude Include="Library\DirectX12\RootSignature\RootSignatureManager.h" />
-    <ClInclude Include="Library\DirectX12\PSOManager\PSOManager.h" />
     <ClInclude Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask.h" />
     <ClInclude Include="Library\TaskManager\TaskBase\DrawTask\DrawTask.h" />
     <ClInclude Include="Library\ObjectBase\ObjectBase.h" />
-    <ClInclude Include="Library\DirectX11\Vertex2D\MultipleVertex2D\Dx11MultipleVertex2D.h" />
     <None Include="Library\Factory\Factory_private.inl" />
     <None Include="Library\SingletonBase\SingletonBase_private.inl" />
     <ClInclude Include="Library\TaskManager\TaskManager.h" />
@@ -180,15 +156,6 @@
     <None Include="Library\TaskManager\TaskBase\TaskBase_private.inl" />
     <ClInclude Include="Library\TypeTraits\TypeTraits.h" />
     <ClInclude Include="Library\Window\Window.h" />
-    <ClInclude Include="Library\InputDeviceManager\MouseDevice\MouseDevice.h" />
-    <ClInclude Include="Library\DirectX11\TextureManager\Dx11TextureManager.h" />
-    <ClInclude Include="Library\DirectX11\TextureManager\Texture\Dx11Texture.h" />
-    <ClInclude Include="Library\DirectX11\ShaderManager\Dx11ShaderManager.h" />
-    <ClInclude Include="Library\DirectX11\Vertex2D\SingleVertex2D\Dx11SingleVertex2D.h" />
-    <ClInclude Include="Library\Sound\SoundManager\SoundManager.h" />
-    <ClInclude Include="Library\Sound\SoundManager\Sound\Sound.h" />
-    <ClInclude Include="Library\Sound\SoundDevice\SoundDevice.h" />
-    <ClInclude Include="Library\DirectX11\Light\Dx11Light.h" />
     <ClInclude Include="Library\MemoryAllocator\TlsfAllocator\TlsfAllocator.h" />
     <None Include="Library\TaskManager\TaskBase\UpdateStartUpTask\UpdateStartUpTask_private.inl" />
     <None Include="Library\TaskManager\TaskBase\UpdateTask\UpdateTask_private.inl" />
@@ -196,97 +163,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Library\Debugger\ConsoleWindow\ConsoleWindow.cpp" />
-    <ClCompile Include="Library\DirectX12\CommandListManager\CommandList\Dx12CommandList.cpp" />
-    <ClCompile Include="Library\DirectX12\CommandQueueManager\CommandQueue\Dx12CommandQueue.cpp" />
-    <ClCompile Include="Library\DirectX12\DescriptorManager\DescriptorManager.cpp" />
-    <ClCompile Include="Library\DirectX12\CommandListManager\Dx12CommandListManager.cpp" />
-    <ClCompile Include="Library\DirectX12\CommandQueueManager\Dx12CommandQueueManager.cpp" />
-    <ClCompile Include="Library\DirectX12\GraphicsDevice\Dx12GraphicsDevice.cpp" />
     <ClCompile Include="Library\BinaryFile\BinaryFile.cpp" />
-    <ClCompile Include="Library\DirectX11\AnimationManager\IAnimation\Dx11IAnimation.cpp" />
-    <ClCompile Include="Library\DirectX11\Camera\Dx11Camera.cpp" />
-    <ClCompile Include="Library\DirectX11\FbxFileManager\Dx11FbxFileManager.cpp" />
-    <ClCompile Include="Library\DirectX11\FbxFileManager\FbxLoader\Dx11FbxLoader.cpp" />
-    <ClCompile Include="Library\DirectX11\FbxFileManager\FbxModel\Dx11FbxModel.cpp" />
-    <ClCompile Include="Library\DirectX11\Font\Dx11Font.cpp" />
-    <ClCompile Include="Library\Sound\SoundManager\ISound\ISound.cpp" />
-    <ClCompile Include="Library\DirectX11\TextureManager\ITexture\Dx11ITexture.cpp" />
-    <ClCompile Include="Library\DirectX11\AnimationManager\Animation\Dx11Animation.cpp" />
-    <ClCompile Include="Library\DirectX11\AnimationManager\Dx11AnimationManager.cpp" />
-    <ClCompile Include="Library\InputDeviceManager\GamePad\GamePad.cpp" />
-    <ClCompile Include="Library\InputDeviceManager\KeyDevice\KeyDevice.cpp" />
-    <ClCompile Include="Library\DirectX11\GraphicsDevice\Dx11GraphicsDevice.cpp" />
     <ClCompile Include="Library\EventManager\EventBase\EventBase.cpp" />
     <ClCompile Include="Library\EventManager\EventManager.cpp" />
     <ClCompile Include="Library\EventManager\EventListener\EventListener.cpp" />
     <ClCompile Include="Library\Debugger\Debugger.cpp" />
-    <ClCompile Include="Library\InputDeviceManager\InputDeviceManager.cpp" />
     <ClCompile Include="Library\Math\Math.cpp" />
     <ClCompile Include="Library\ObjectBase\ObjectBase.cpp" />
     <ClCompile Include="Library\SceneManager\SceneManager.cpp" />
     <ClCompile Include="Library\SceneManager\SceneBase\SceneBase.cpp" />
     <ClCompile Include="Library\Window\Window.cpp" />
-    <ClCompile Include="Library\InputDeviceManager\MouseDevice\MouseDevice.cpp" />
-    <ClCompile Include="Library\DirectX11\TextureManager\Dx11TextureManager.cpp" />
-    <ClCompile Include="Library\DirectX11\TextureManager\Texture\Dx11Texture.cpp" />
-    <ClCompile Include="Library\DirectX11\ShaderManager\Dx11ShaderManager.cpp" />
-    <ClCompile Include="Library\DirectX11\Vertex2D\SingleVertex2D\Dx11SingleVertex2D.cpp" />
-    <ClCompile Include="Library\Sound\SoundManager\SoundManager.cpp" />
-    <ClCompile Include="Library\Sound\SoundManager\Sound\Sound.cpp" />
-    <ClCompile Include="Library\Sound\SoundDevice\SoundDevice.cpp" />
-    <ClCompile Include="Library\DirectX11\Light\Dx11Light.cpp" />
     <ClCompile Include="Library\Math\Vector2\Vector2.cpp" />
     <ClCompile Include="Library\Math\Vector3\Vector3.cpp" />
     <ClCompile Include="Library\Math\Vector4\Vector4.cpp" />
-    <ClCompile Include="Library\DirectX12\SwapChain\Dx12SwapChain.cpp" />
     <ClCompile Include="Library\Math\Matrix\Matrix.cpp" />
-    <ClCompile Include="Library\DirectX12\RootSignature\RootSignatureManager.cpp" />
-    <ClCompile Include="Library\DirectX12\PSOManager\PSOManager.cpp" />
-    <ClCompile Include="Library\DirectX11\Vertex2D\MultipleVertex2D\Dx11MultipleVertex2D.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="Library\DirectX11\Font\Effect\Font.fx">
-      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </EntryPointName>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
-      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </EntryPointName>
-      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'">
-      </EntryPointName>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'">Effect</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'">5.0</ShaderModel>
-    </FxCompile>
-    <FxCompile Include="Library\DirectX11\Vertex2D\MultipleVertex2D\Effect\Vertex2D.fx">
-      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </EntryPointName>
-      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'">
-      </EntryPointName>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'">Effect</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'">5.0</ShaderModel>
-      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </EntryPointName>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
-    </FxCompile>
-    <FxCompile Include="Library\DirectX11\Vertex2D\SingleVertex2D\Effect\Vertex2D.fx">
-      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </EntryPointName>
-      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'">
-      </EntryPointName>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'">Effect</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='MyDebug|Win32'">5.0</ShaderModel>
-      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </EntryPointName>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
-    </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

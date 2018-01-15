@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="DXLibrary\DirectX12\CommandListManager\CommandList\Dx12CommandList.cpp" />
+    <ClCompile Include="DXLibrary\DirectX12\CommandListManager\Dx12CommandListManager.cpp" />
+    <ClCompile Include="DXLibrary\DirectX12\CommandQueueManager\CommandQueue\Dx12CommandQueue.cpp" />
+    <ClCompile Include="DXLibrary\DirectX12\CommandQueueManager\Dx12CommandQueueManager.cpp" />
+    <ClCompile Include="DXLibrary\DirectX12\DescriptorManager\DescriptorManager.cpp" />
+    <ClCompile Include="DXLibrary\DirectX12\GraphicsDevice\Dx12GraphicsDevice.cpp" />
+    <ClCompile Include="DXLibrary\DirectX12\PSOManager\PSOManager.cpp" />
+    <ClCompile Include="DXLibrary\DirectX12\RootSignature\RootSignatureManager.cpp" />
+    <ClCompile Include="DXLibrary\DirectX12\SwapChain\Dx12SwapChain.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\AnimationManager\Animation\Dx11Animation.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\AnimationManager\IAnimation\Dx11IAnimation.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\AnimationManager\Dx11AnimationManager.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\Camera\Dx11Camera.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\FbxFileManager\FbxLoader\Dx11FbxLoader.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\FbxFileManager\FbxModel\Dx11FbxModel.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\FbxFileManager\Dx11FbxFileManager.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\Font\Dx11Font.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\GraphicsDevice\Dx11GraphicsDevice.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\Light\Dx11Light.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\ShaderManager\Dx11ShaderManager.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\TextureManager\ITexture\Dx11ITexture.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\TextureManager\Texture\Dx11Texture.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\TextureManager\Dx11TextureManager.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\Vertex2D\MultipleVertex2D\Dx11MultipleVertex2D.cpp" />
+    <ClCompile Include="DXLibrary\DirectX11\Vertex2D\SingleVertex2D\Dx11SingleVertex2D.cpp" />
+    <ClCompile Include="DXLibrary\InputDeviceManager\GamePad\GamePad.cpp" />
+    <ClCompile Include="DXLibrary\InputDeviceManager\KeyDevice\KeyDevice.cpp" />
+    <ClCompile Include="DXLibrary\InputDeviceManager\MouseDevice\MouseDevice.cpp" />
+    <ClCompile Include="DXLibrary\InputDeviceManager\InputDeviceManager.cpp" />
+    <ClCompile Include="DXLibrary\Sound\SoundDevice\SoundDevice.cpp" />
+    <ClCompile Include="DXLibrary\Sound\SoundManager\ISound\ISound.cpp" />
+    <ClCompile Include="DXLibrary\Sound\SoundManager\Sound\Sound.cpp" />
+    <ClCompile Include="DXLibrary\Sound\SoundManager\SoundManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DXLibrary\DirectX12\CommandListManager\CommandList\Dx12CommandList.h" />
+    <ClInclude Include="DXLibrary\DirectX12\CommandListManager\Dx12CommandListManager.h" />
+    <ClInclude Include="DXLibrary\DirectX12\CommandQueueManager\CommandQueue\Dx12CommandQueue.h" />
+    <ClInclude Include="DXLibrary\DirectX12\CommandQueueManager\Dx12CommandQueueManager.h" />
+    <ClInclude Include="DXLibrary\DirectX12\DescriptorManager\DescriptorManager.h" />
+    <ClInclude Include="DXLibrary\DirectX12\GraphicsDevice\Dx12GraphicsDevice.h" />
+    <ClInclude Include="DXLibrary\DirectX12\PSOManager\PSOManager.h" />
+    <ClInclude Include="DXLibrary\DirectX12\RootSignature\RootSignatureManager.h" />
+    <ClInclude Include="DXLibrary\DirectX12\SwapChain\Dx12SwapChain.h" />
+    <ClInclude Include="DXLibrary\DirectX11\AnimationManager\Animation\Dx11Animation.h" />
+    <ClInclude Include="DXLibrary\DirectX11\AnimationManager\IAnimation\Dx11IAnimation.h" />
+    <ClInclude Include="DXLibrary\DirectX11\AnimationManager\Dx11AnimationManager.h" />
+    <ClInclude Include="DXLibrary\DirectX11\Camera\Dx11Camera.h" />
+    <ClInclude Include="DXLibrary\DirectX11\FbxFileManager\FbxLoader\Dx11FbxLoader.h" />
+    <ClInclude Include="DXLibrary\DirectX11\FbxFileManager\FbxModel\Dx11FbxModel.h" />
+    <ClInclude Include="DXLibrary\DirectX11\FbxFileManager\Dx11FbxFileManager.h" />
+    <ClInclude Include="DXLibrary\DirectX11\Font\Dx11Font.h" />
+    <ClInclude Include="DXLibrary\DirectX11\GraphicsDevice\Dx11GraphicsDevice.h" />
+    <ClInclude Include="DXLibrary\DirectX11\Light\Dx11Light.h" />
+    <ClInclude Include="DXLibrary\DirectX11\ShaderManager\Dx11ShaderManager.h" />
+    <ClInclude Include="DXLibrary\DirectX11\TextureManager\ITexture\Dx11ITexture.h" />
+    <ClInclude Include="DXLibrary\DirectX11\TextureManager\Texture\Dx11Texture.h" />
+    <ClInclude Include="DXLibrary\DirectX11\TextureManager\Dx11TextureManager.h" />
+    <ClInclude Include="DXLibrary\DirectX11\Vertex2D\MultipleVertex2D\Dx11MultipleVertex2D.h" />
+    <ClInclude Include="DXLibrary\DirectX11\Vertex2D\SingleVertex2D\Dx11SingleVertex2D.h" />
+    <ClInclude Include="DXLibrary\InputDeviceManager\GamePad\GamePad.h" />
+    <ClInclude Include="DXLibrary\InputDeviceManager\KeyDevice\KeyDevice.h" />
+    <ClInclude Include="DXLibrary\InputDeviceManager\MouseDevice\MouseDevice.h" />
+    <ClInclude Include="DXLibrary\InputDeviceManager\InputDeviceManager.h" />
+    <ClInclude Include="DXLibrary\Sound\SoundDevice\SoundDevice.h" />
+    <ClInclude Include="DXLibrary\Sound\SoundManager\ISound\ISound.h" />
+    <ClInclude Include="DXLibrary\Sound\SoundManager\Sound\Sound.h" />
+    <ClInclude Include="DXLibrary\Sound\SoundManager\SoundManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="DXLibrary\DirectX11\Font\Effect\Font.fx" />
+    <FxCompile Include="DXLibrary\DirectX11\Vertex2D\MultipleVertex2D\Effect\Vertex2D.fx" />
+    <FxCompile Include="DXLibrary\DirectX11\Vertex2D\SingleVertex2D\Effect\Vertex2D.fx" />
+  </ItemGroup>
+</Project>
