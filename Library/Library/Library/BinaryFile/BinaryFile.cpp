@@ -25,6 +25,8 @@ namespace Lib
 
 	BinaryFile::~BinaryFile()
 	{
+		MyAssert(m_pBinary != nullptr, "バイナリデータが解放されていません");
+		Destroy();
 	}
 
 

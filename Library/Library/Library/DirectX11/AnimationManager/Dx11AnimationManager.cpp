@@ -10,6 +10,7 @@
 #include "Dx11AnimationManager.h"
 
 #include "Animation\Dx11Animation.h"
+#include "Debugger\Debugger.h"
 
 
 namespace Lib

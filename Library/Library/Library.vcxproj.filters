@@ -89,9 +89,6 @@
     <Filter Include="Library\DirectX11\Vertex2D">
       <UniqueIdentifier>{fa6d724f-6dcd-4525-9dff-dc35df6fbffc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Library\DirectX11\Vertex2D\Effect">
-      <UniqueIdentifier>{3ec8af42-8586-4d1e-bb74-9404211f8870}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Library\Define">
       <UniqueIdentifier>{048bba30-4807-4261-964b-007596e89332}</UniqueIdentifier>
     </Filter>
@@ -223,6 +220,27 @@
     </Filter>
     <Filter Include="Library\Sound\SoundManager\ISound">
       <UniqueIdentifier>{396220ba-4965-48d4-bc6d-1ecfeecccd8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Factory">
+      <UniqueIdentifier>{6461b0e1-a6e4-4b22-99e4-c49b0b0ae47b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\TypeTraits">
+      <UniqueIdentifier>{afa80415-8934-4685-a91a-2282dfdae88d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Hash">
+      <UniqueIdentifier>{a9abb658-1e45-49b3-bfe8-47436f5b07fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\DirectX11\Vertex2D\SingleVertex">
+      <UniqueIdentifier>{81f41c56-c48d-482e-85d1-b7e5a2b2522b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\DirectX11\Vertex2D\SingleVertex\Effect">
+      <UniqueIdentifier>{3ec8af42-8586-4d1e-bb74-9404211f8870}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\DirectX11\Vertex2D\MultipleVertex">
+      <UniqueIdentifier>{4622fcec-9d07-4fc5-8fc6-b5c49a786ad7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\DirectX11\Vertex2D\MultipleVertex\Effect">
+      <UniqueIdentifier>{1d33bc0e-ea6d-4b10-9305-ea0395b38c67}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -361,12 +379,14 @@
     <ClCompile Include="Library\Sound\SoundManager\SoundManager.cpp">
       <Filter>Library\Sound\SoundManager</Filter>
     </ClCompile>
-    <ClCompile Include="Library\DirectX11\Vertex2D\SingleVertex2D\Dx11SingleVertex2D.cpp">
-      <Filter>Library\DirectX11\Vertex2D</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\DirectX11\Vertex2D\MultipleVertex2D\Dx11MultipleVertex2D.cpp" />
     <ClCompile Include="Library\ObjectBase\ObjectBase.cpp">
       <Filter>Library\ObjectManagerBase\ObjectBase</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\Vertex2D\SingleVertex2D\Dx11SingleVertex2D.cpp">
+      <Filter>Library\DirectX11\Vertex2D\SingleVertex</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectX11\Vertex2D\MultipleVertex2D\Dx11MultipleVertex2D.cpp">
+      <Filter>Library\DirectX11\Vertex2D\MultipleVertex</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -514,10 +534,6 @@
     <ClInclude Include="Library\Sound\SoundManager\SoundManager.h">
       <Filter>Library\Sound\SoundManager</Filter>
     </ClInclude>
-    <ClInclude Include="Library\DirectX11\Vertex2D\SingleVertex2D\Dx11SingleVertex2D.h">
-      <Filter>Library\DirectX11\Vertex2D</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectX11\Vertex2D\MultipleVertex2D\Dx11MultipleVertex2D.h" />
     <ClInclude Include="Library\ObjectBase\ObjectBase.h">
       <Filter>Library\ObjectManagerBase\ObjectBase</Filter>
     </ClInclude>
@@ -554,18 +570,32 @@
     <ClInclude Include="Library\TaskManager\TaskManager.h">
       <Filter>Library\TaskManager</Filter>
     </ClInclude>
-    <ClInclude Include="Library\TypeTraits\TypeTraits.h" />
-    <ClInclude Include="Library\Factory\Factory.h" />
-    <ClInclude Include="Library\Hash\Hash.h" />
+    <ClInclude Include="Library\Factory\Factory.h">
+      <Filter>Library\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TypeTraits\TypeTraits.h">
+      <Filter>Library\TypeTraits</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\Hash\Hash.h">
+      <Filter>Library\Hash</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\Vertex2D\SingleVertex2D\Dx11SingleVertex2D.h">
+      <Filter>Library\DirectX11\Vertex2D\SingleVertex</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectX11\Vertex2D\MultipleVertex2D\Dx11MultipleVertex2D.h">
+      <Filter>Library\DirectX11\Vertex2D\MultipleVertex</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\DirectX11\Font\Effect\Font.fx">
       <Filter>Library\DirectX11\Font\Effect</Filter>
     </FxCompile>
     <FxCompile Include="Library\DirectX11\Vertex2D\SingleVertex2D\Effect\Vertex2D.fx">
-      <Filter>Library\DirectX11\Vertex2D\Effect</Filter>
+      <Filter>Library\DirectX11\Vertex2D\SingleVertex\Effect</Filter>
     </FxCompile>
-    <FxCompile Include="Library\DirectX11\Vertex2D\MultipleVertex2D\Effect\Vertex2D.fx" />
+    <FxCompile Include="Library\DirectX11\Vertex2D\MultipleVertex2D\Effect\Vertex2D.fx">
+      <Filter>Library\DirectX11\Vertex2D\MultipleVertex\Effect</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\SingletonBase\SingletonBase_private.inl">
@@ -598,6 +628,8 @@
     <None Include="Library\TaskManager\TaskManager_private.inl">
       <Filter>Library\TaskManager</Filter>
     </None>
-    <None Include="Library\Factory\Factory_private.inl" />
+    <None Include="Library\Factory\Factory_private.inl">
+      <Filter>Library\Factory</Filter>
+    </None>
   </ItemGroup>
 </Project>

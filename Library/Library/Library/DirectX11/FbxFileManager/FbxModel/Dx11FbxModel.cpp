@@ -388,10 +388,10 @@ namespace Lib
 			{
 				// マテリアルデータを定数バッファに詰める.
 				MATERIAL_CONSTANT_BUFFER ConstantBuffer;
-				ConstantBuffer.Diffuse = static_cast<D3DXVECTOR4>(m_MeshData[_meshNum].pMaterialData->pMaterial.Diffuse);
-				ConstantBuffer.Ambient = static_cast<D3DXVECTOR4>(m_MeshData[_meshNum].pMaterialData->pMaterial.Ambient);
-				ConstantBuffer.Specular = static_cast<D3DXVECTOR4>(m_MeshData[_meshNum].pMaterialData->pMaterial.Specular);
-				ConstantBuffer.Emissive = static_cast<D3DXVECTOR4>(m_MeshData[_meshNum].pMaterialData->pMaterial.Emissive);
+				ConstantBuffer.Diffuse = static_cast<D3DXVECTOR4>(m_MeshData[_meshNum].pMaterialData->Material.Diffuse);
+				ConstantBuffer.Ambient = static_cast<D3DXVECTOR4>(m_MeshData[_meshNum].pMaterialData->Material.Ambient);
+				ConstantBuffer.Specular = static_cast<D3DXVECTOR4>(m_MeshData[_meshNum].pMaterialData->Material.Specular);
+				ConstantBuffer.Emissive = static_cast<D3DXVECTOR4>(m_MeshData[_meshNum].pMaterialData->Material.Emissive);
 
 				memcpy_s(
 					SubResourceData.pData,

@@ -21,6 +21,7 @@ namespace Lib
 		//----------------------------------------------------------------------
 		const D3DXCOLOR FbxLoader::m_DefaultAmbient = D3DXCOLOR(0.7f, 0.7f, 0.7f, 1.0f);
 
+
 		//----------------------------------------------------------------------
 		// Constructor	Destructor
 		//----------------------------------------------------------------------
@@ -449,7 +450,7 @@ namespace Lib
 					return false;
 				}
 
-				pMaterialData[i].pMaterial = pMaterial[i];
+				pMaterialData[i].Material = pMaterial[i];
 				pMaterialData[i].TextureCount = TextureFileCount;
 				pMaterialData[i].pTextureName = new LPCTSTR[TextureFileCount];
 				pMaterialData[i].pTextureUVSetName = new LPCTSTR[TextureFileCount];
@@ -583,7 +584,7 @@ namespace Lib
 				for (int i = 0; i < TextureCount; i++)
 				{
 					(*_pOutCount)++;
-					fbxsdk::FbxFileTexture* fbxTexture = FbxCast<fbxsdk::FbxFileTexture>(Property.GetSrcObject<fbxsdk::FbxFileTexture>(i));
+					fbxsdk::FbxFileTexture* fbxTexture = Property.GetSrcObject<fbxsdk::FbxFileTexture>(i);
 					_pOutUvSetName->push_back(fbxTexture->UVSet.Get());
 					_pOutFileName->push_back(fbxTexture->GetRelativeFileName());
 				}

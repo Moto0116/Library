@@ -32,9 +32,11 @@ namespace Lib
 
 	SceneManager::~SceneManager()
 	{
+		MyAssert(!m_pScenes.empty(), "登録されたシーンが残っています");
+
 		for (auto itr = m_pScenes.begin(); itr != m_pScenes.end(); itr++)
 		{
-			SafeDelete(*itr);	// シーンが残っていたら削除する.
+			SafeDelete(*itr);
 		}
 	}
 

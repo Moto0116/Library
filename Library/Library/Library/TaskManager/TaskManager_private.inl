@@ -25,6 +25,8 @@ namespace Lib
 	{
 #ifdef _DEBUG
 		m_ConsoleWindow.Finalize();
+		MyAssert(!m_pStartUpTaskList.empty(), "登録されたスタートアップタスクが残っています");
+		MyAssert(!m_pTaskList.empty(), "登録されたタスクが残っています");
 #endif // _DEBUG
 	}
 

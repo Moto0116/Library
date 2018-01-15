@@ -11,6 +11,7 @@
 
 #include "..\GraphicsDevice\Dx11GraphicsDevice.h"
 #include "Texture\Dx11Texture.h"
+#include "Debugger\Debugger.h"
 
 
 namespace Lib

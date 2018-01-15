@@ -35,6 +35,8 @@ namespace Lib
 
 		ConsoleWindow::~ConsoleWindow()
 		{
+			MyAssert(m_IsActive == true, "コンソールウィンドウプロセスは解放されていません");
+			Finalize();
 		}
 
 

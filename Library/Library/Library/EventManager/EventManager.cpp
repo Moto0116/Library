@@ -31,6 +31,7 @@ namespace Lib
 	{
 #ifdef _DEBUG
 		m_ConsoleWindow.Finalize();
+		MyAssert(!m_pEventListeners.empty(), "登録されたイベントリスナが残っています");
 #endif // _DEBUG
 	}
 

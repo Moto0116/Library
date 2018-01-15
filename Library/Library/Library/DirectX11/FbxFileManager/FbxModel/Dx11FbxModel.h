@@ -75,7 +75,7 @@ namespace Lib
 			/*** Fbxから取得するマテリアル構造体 */
 			struct MATERIAL_DATA
 			{
-				MATERIAL					pMaterial;			//!< メッシュのマテリアル.
+				MATERIAL					Material;			//!< メッシュのマテリアル.
 				int							TextureCount;		//!< マテリアルに紐づいているテクスチャの数.
 				LPCTSTR*					pTextureName;		//!< マテリアルに紐づいているテクスチャの名前が格納された配列.
 				LPCTSTR*					pTextureUVSetName;	//!< マテリアルに紐づいているテクスチャとUVを結びつける文字列が格納された配列.
