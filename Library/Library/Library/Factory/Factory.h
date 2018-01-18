@@ -66,7 +66,7 @@ namespace Lib
 		/*** デストラクタ */
 		~Factory();
 
-		std::map<Identifier, Func> m_Functions;
+		std::map<Identifier, Func> m_Functions;	//!< 生成関数のコンテナ.
 
 	};
 }

@@ -15,7 +15,7 @@
 namespace Lib
 {
 	/*** ウィンドウクラス */
-	class Window
+	class Window final
 	{
 	public:
 		/*** コンストラクタ */

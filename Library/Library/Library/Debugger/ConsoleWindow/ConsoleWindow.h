@@ -30,10 +30,10 @@ namespace Lib
 
 			/**
 			 * 初期化処理
-			 * @param[in] _name ウィンドウの名前
+			 * @param[in] _windowName コンソールウィンドウの名前
 			 * @return 成功したらtrue 失敗したらfalse
 			 */
-			bool Initialize(LPCTSTR _name);
+			bool Initialize(LPCTSTR _windowName);
 
 			/*** 終了処理 */
 			void Finalize();

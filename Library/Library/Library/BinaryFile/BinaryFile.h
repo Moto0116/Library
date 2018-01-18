@@ -18,36 +18,39 @@ namespace Lib
 	class BinaryFile
 	{
 	public:
-		/*** コンストラクタ */
-		BinaryFile();
+		/**
+		 * コンストラクタ 
+		 * @param[in] _pFileName 読み込むファイル名
+		 */
+		BinaryFile(TCHAR* _pFileName);
 
 		/*** デストラクタ */
 		~BinaryFile();
 
 		/**
-		 * ファイル読み込み
-		 * @param[in] _pFileName 読み込むファイル名
-		 * @return 成功したらtrue 失敗したらfalse
-		 */
-		bool Read(TCHAR* _pFileName);
-
-		/*** ファイル解放 */
-		void Destroy();
-
-		/**
 		 * バイナリデータの取得
-		 * @return バイナリデータ
+		 * @return バイナリの生データ
 		 */
 		void* GetBinary() const	{ return m_pBinary; }
 
 		/**
 		 * バイナリデータサイズの取得
-		 * @return バイナリデータサイズ
+		 * @return バイナリデータのサイズ
 		 */
 		size_t GetBinarySize() const { return m_BinarySize; }
 
 	private:
-		void*	m_pBinary;		//!< バイナリデータ.
+		/**
+		 * ファイルを読み込む
+		 * @param[in] _pFileName 読み込むファイル名
+		 * @return 成功したらtrue 失敗したらfalse
+		 */
+		bool LoadFile(TCHAR* _pFileName);
+
+		/*** ファイルを解放 */
+		void UnLoadFile();
+
+		void*	m_pBinary;		//!< バイナリの生データ.
 		size_t	m_BinarySize;	//!< バイナリデータサイズ.
 
 	};

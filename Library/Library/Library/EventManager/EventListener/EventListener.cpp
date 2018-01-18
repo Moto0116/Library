@@ -21,7 +21,7 @@ namespace Lib
 	//----------------------------------------------------------------------
 	// Constructor	Destructor
 	//----------------------------------------------------------------------
-	EventListener::EventListener(ReciveFunc* _pFunc) :
+	EventListener::EventListener(ReceiveFunc* _pFunc) :
 		m_EventListenerID(m_EventListenerCount),
 		m_pReceiveFunc(_pFunc)
 	{
@@ -36,7 +36,7 @@ namespace Lib
 	//----------------------------------------------------------------------
 	// Public Functions
 	//----------------------------------------------------------------------
-	void EventListener::EventMessage(EventBase* _pEvent)
+	void EventListener::ReceiveEvent(EventBase* _pEvent)
 	{
 		(*m_pReceiveFunc)(_pEvent);
 	}

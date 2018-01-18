@@ -25,7 +25,7 @@ namespace Lib
 	 * @tparam StartUpTask Typeタスク実行前に処理を行うタスクオブジェクト
 	 */
 	template <typename Type, typename StartUpTask = TaskBase<>>
-	class TaskManager : public SingletonBase<TaskManager<Type, StartUpTask>>
+	class TaskManager final : public SingletonBase<TaskManager<Type, StartUpTask>>
 	{
 	public:
 		friend SingletonBase<TaskManager<Type, StartUpTask>>;

@@ -26,7 +26,10 @@ namespace Lib
 {
 	namespace Debugger
 	{
-		/*** メモリリークをチェックする */
+		/**
+		 * メモリリークをチェック.
+		 * 関数呼び出し後に発生したメモリリークを検出して詳細を出力する
+		 */
 		void CheckMemoryLeak();
 
 		/**
@@ -36,18 +39,18 @@ namespace Lib
 		void OutputDebugLog(TCHAR* _pStr, ...);
 
 		/**
-		 * ファイルを開く(ファイルがなければ作成する)
+		 * ログファイルを開く(ファイルがなければ作成する)
 		 * @param[in] _pFilePath 開くファイルのパス
 		 */
 		void OpenLogFile(TCHAR* _pFilePath);
 
 		/**
-		 * デバッグ情報をファイルに書き込む
+		 * デバッグ情報をログファイルに書き込む
 		 * @param[in] _pStr 書き込む文字列
 		 */
 		void WriteLogFile(TCHAR* _pStr, ...);
 
-		/*** ファイルを閉じる */
+		/*** ログファイルを閉じる */
 		void CloseLogFile();
 
 		/*** スタックフレーム情報を出力する */

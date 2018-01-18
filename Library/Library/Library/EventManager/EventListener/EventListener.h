@@ -21,23 +21,23 @@ namespace Lib
 	{
 	public:
 		/*** 受信関数オブジェクト */
-		using ReciveFunc = std::function<void(EventBase*)>;
+		using ReceiveFunc = std::function<void(EventBase*)>;
 
 		/**
 		 * コンストラクタ
-		 * @param[in] _pFunc 設定する関数ポインタオブジェクト
+		 * @param[in] _pFunc 設定するイベント受信関数オブジェクト
 		 */
-		EventListener(ReciveFunc* _pFunc);
+		EventListener(ReceiveFunc* _pFunc);
 
 		/*** デストラクタ */
 		~EventListener();
 
 		/**
 		 * イベントメッセージを受け取る関数
-		 * @param[in] _pEvent イベントメッセージ
+		 * @param[in] _pEvent 受け取るイベントメッセージ
 		 */
-		void EventMessage(EventBase* _pEvent);
-
+		void ReceiveEvent(EventBase* _pEvent);
+		
 		/**
 		 * EventListenerのIDを取得する関数
 		 * @return EventListenerのID
@@ -48,12 +48,12 @@ namespace Lib
 		 * イベントの通知を受け取る関数を設定
 		 * @param[in] _pFunc 設定する関数ポインタオブジェクト
 		 */
-		void SetReceiveFunc(ReciveFunc* _pFunc) { m_pReceiveFunc = _pFunc; }
+		void SetReceiveFunc(ReceiveFunc* _pFunc) { m_pReceiveFunc = _pFunc; }
 
 	private:
 		static unsigned int	m_EventListenerCount;	//!< リスナーオブジェクトの作成数.
 		unsigned int		m_EventListenerID;		//!< リスナオブジェクトのユニークID.
-		ReciveFunc*			m_pReceiveFunc;			//!< 受信関数ポインタオブジェクト.
+		ReceiveFunc*		m_pReceiveFunc;			//!< 受信関数ポインタオブジェクト.
 
 	};
 }

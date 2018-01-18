@@ -31,8 +31,9 @@ namespace Lib
 	{
 #ifdef _DEBUG
 		m_ConsoleWindow.Finalize();
-		MyAssert(!m_pEventListeners.empty(), "登録されたイベントリスナが残っています");
 #endif // _DEBUG
+
+		MyAssert(!m_pEventListenerGroups.empty(), "登録されたイベントリスナが残っています");
 	}
 
 
@@ -41,16 +42,17 @@ namespace Lib
 	//----------------------------------------------------------------------
 	void EventManager::AddEventListener(EventListener* _pEventListener, LPCTSTR _groupName)
 	{
-		m_pEventListeners[_groupName].push_back(_pEventListener);
+		m_pEventListenerGroups[_groupName].push_back(_pEventListener);
 	}
 
 	void EventManager::RemoveEventListener(EventListener* _pEventListener, LPCTSTR _groupName)
 	{
-		auto EventListener = m_pEventListeners[_groupName];
+		// グループ内からリスナを削除する.
+		auto GroupListeners = m_pEventListenerGroups[_groupName];
 
-		EventListener.erase(
-			std::remove(EventListener.begin(), EventListener.end(), _pEventListener),
-			EventListener.end());
+		GroupListeners.erase(
+			std::remove(GroupListeners.begin(), GroupListeners.end(), _pEventListener),
+			GroupListeners.end());
 	}
 
 	void EventManager::SendEventMessage(EventBase* _pEvent, LPCTSTR _groupName)
@@ -62,15 +64,15 @@ namespace Lib
 			Debugger::TypeToString(_pEvent),
 			_pEvent->GetEventID());
 
-		auto EventListener = m_pEventListeners[_groupName];
+		auto EventListener = m_pEventListenerGroups[_groupName];
 
 		for (auto itr = EventListener.begin(); itr != EventListener.end(); itr++)
 		{
-			(*itr)->EventMessage(_pEvent);
+			(*itr)->ReceiveEvent(_pEvent);
 			m_ConsoleWindow.Print("EventListenerID - %d\n", (*itr)->GetEventListenerID());
 		}
 #else // _DEBUG
-		auto EventListener = m_pEventListeners[_groupName];
+		auto EventListener = m_pEventListenerGroups[_groupName];
 
 		for (auto itr = EventListener.begin(); itr != EventListener.end(); itr++)
 		{

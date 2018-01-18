@@ -74,8 +74,8 @@ namespace Lib
 		void OutputStackFrame()
 		{
 			// 現在のプロセスの擬似ハンドルを取得して初期化.
-			HANDLE Process = GetCurrentProcess();	
-			SymInitialize(Process, nullptr, TRUE);
+			HANDLE ProcessHandle = GetCurrentProcess();	
+			SymInitialize(ProcessHandle, nullptr, TRUE);
 
 			// スタック情報をキャプチャ.
 			void* pStack[g_StackMax];
@@ -91,20 +91,20 @@ namespace Lib
 			{
 				// シンボル情報取得.
 				SymFromAddr(
-					Process, 
+					ProcessHandle,
 					reinterpret_cast<DWORD64>(pStack[i]), 
 					nullptr, 
 					pSymbol);
 
-				OutputDebugLog("Frame  : %i\n", Frames - i - 1);		// フレーム番号.
-				OutputDebugLog("Name   : %s\n", pSymbol->Name);			// フレーム名.
-				OutputDebugLog("Addres : 0x%0X\n", pSymbol->Address);	// フレームアドレス.
-				OutputDebugLog("Size   : %lu\n\n", pSymbol->Size);		// フレームサイズ.
+				OutputDebugLog("Frame  : %i\n",		Frames - i - 1	);	// フレーム番号.
+				OutputDebugLog("Name   : %s\n",		pSymbol->Name	);	// フレーム名.
+				OutputDebugLog("Addres : 0x%0X\n",	pSymbol->Address);	// フレームアドレス.
+				OutputDebugLog("Size   : %lu\n\n",	pSymbol->Size	);	// フレームサイズ.
 			}
 
 			free(pSymbol);
 
-			SymCleanup(Process); // プロセスの解放.
+			SymCleanup(ProcessHandle); // プロセスの解放.
 		}
 
 #else // _DEBUG

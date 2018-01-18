@@ -1,6 +1,6 @@
 ﻿/**
  * @file	EventManager.h
- * @brief	イベント管理基底クラス定義
+ * @brief	イベント管理クラス定義
  * @author	morimoto
  */
 #ifndef LIB_EVENTMANAGER_H
@@ -21,28 +21,28 @@ namespace Lib
 	class EventBase;
 	class EventListener;
 
-	/*** イベント管理基底クラス */
-	class EventManager : public SingletonBase<EventManager>
+	/*** イベント管理クラス */
+	class EventManager final : public SingletonBase<EventManager>
 	{
 	public:
 		friend SingletonBase<EventManager>;
 
 		/**
-		 * EventListenerを追加する
-		 * @param[in] _pEventListener 追加するEventListener
-		 * @param[in] _groupName EvetListenerを追加するグループの名前
+		 * EventListenerをグループに追加する
+		 * @param[in] _pEventListener 追加するイベントリスナ
+		 * @param[in] _groupName イベントリスナを追加するグループの名前
 		 */
 		void AddEventListener(EventListener* _pEventListener, LPCTSTR _groupName);
 
 		/**
-		 * EventListenerを削除する
-		 * @param[in] _pEventListener 削除するEventListener
-		 * @param[in] _groupName EvetListenerを削除するグループの名前
+		 * EventListenerをグループから削除する
+		 * @param[in] _pEventListener 削除するイベントリスナ
+		 * @param[in] _groupName イベントリスナを削除するグループの名前
 		 */
 		void RemoveEventListener(EventListener* _pEventListener, LPCTSTR _groupName);
 
 		/**
-		 * イベントを通知する
+		 * イベントをグループに通知する
 		 * @param[in] _pEvent 通知するイベント
 		 * @param[in] _groupName イベントを通知するグループ名
 		 */
@@ -65,12 +65,11 @@ namespace Lib
 		/*** デストラクタ */
 		virtual ~EventManager();
 
-
 		std::map<
 			LPCTSTR, 
 			std::vector<EventListener*>,
 			CompareStr> 
-			m_pEventListeners;	//!< イベントリスナを格納するコンテナ.
+			m_pEventListenerGroups;	//!< イベントリスナを格納するコンテナ.
 
 #ifdef _DEBUG
 		Debugger::ConsoleWindow		m_ConsoleWindow;	//!< デバッグ情報を出力するウィンドウ.

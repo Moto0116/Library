@@ -43,7 +43,7 @@ namespace Lib
 		//----------------------------------------------------------------------
 		// Public Functions
 		//----------------------------------------------------------------------
-		bool ConsoleWindow::Initialize(LPCTSTR _name)
+		bool ConsoleWindow::Initialize(LPCTSTR _windowName)
 		{
 #ifdef _DEBUG
 			// パイプの作成.
@@ -70,7 +70,7 @@ namespace Lib
 			StartUpInfo.dwFlags |= STARTF_USESTDHANDLES;
 			TCHAR Program[] = TEXT("Library\\Debugger\\DebugConsoleWindow.exe");
 			TCHAR Args[64];
-			sprintf_s(Args, "%s", _name);
+			sprintf_s(Args, "%s", _windowName);
 			for (int i = 0; i < _countof(Args); i++)
 			{
 				if (Args[i] == ' ')	Args[i] = '-';	// スペースがあると別引数と認識されるので-に置き換え.

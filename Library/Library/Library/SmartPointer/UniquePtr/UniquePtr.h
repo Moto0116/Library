@@ -22,7 +22,7 @@ namespace Lib
 	template <
 		typename Type,
 		typename ReleaseFunc = DefaultDelete<Type>>
-	class UniquePtr
+	class UniquePtr final
 	{
 	public:
 		template <typename Type2, typename ReleaseFunc2>

@@ -17,7 +17,7 @@ namespace Lib
 	class SceneBase;
 
 	/*** シーン管理クラス */
-	class SceneManager
+	class SceneManager final
 	{
 	public:
 		/*** コンストラクタ */
@@ -37,7 +37,7 @@ namespace Lib
 
 		/**
 		 * シーンを更新する
-		 * @return シーン動作が終了したらtrue そうでなければfalse
+		 * @return シーンの管理が終了したらtrue そうでなければfalse
 		 */
 		bool Update();
 

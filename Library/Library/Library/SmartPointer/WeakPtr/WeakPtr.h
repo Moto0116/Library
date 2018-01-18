@@ -19,7 +19,7 @@ namespace Lib
 	 * @tparam Type 管理させるポインタの型
 	 */
 	template <typename Type>
-	class WeakPtr
+	class WeakPtr final
 	{
 	public:
 		template <typename Type2>

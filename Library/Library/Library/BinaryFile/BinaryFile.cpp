@@ -17,23 +17,24 @@ namespace Lib
 	//----------------------------------------------------------------------
 	// Constructor	Destructor
 	//----------------------------------------------------------------------
-	BinaryFile::BinaryFile() :
+	BinaryFile::BinaryFile(TCHAR* _pFileName) :
 		m_pBinary(nullptr),
 		m_BinarySize(0)
 	{
+		bool Result = LoadFile(_pFileName);
+		MyAssert(Result == false, "ファイルの読み込みに失敗しました");
 	}
 
 	BinaryFile::~BinaryFile()
 	{
-		MyAssert(m_pBinary != nullptr, "バイナリデータが解放されていません");
-		Destroy();
+		UnLoadFile();
 	}
 
 
 	//----------------------------------------------------------------------
-	// Public Functions
+	// Private Functions
 	//----------------------------------------------------------------------
-	bool BinaryFile::Read(TCHAR* _pFileName)
+	bool BinaryFile::LoadFile(TCHAR* _pFileName)
 	{
 		MyAssert(m_pBinary != nullptr, "既にファイルが読み込まれています");
 
@@ -64,7 +65,7 @@ namespace Lib
 		DWORD ReadSize;
 		if (!ReadFile(FileHandle, m_pBinary, m_BinarySize, &ReadSize, nullptr))
 		{
-			OutputErrorLog("ファイルの読み込みに失敗しました");
+			OutputErrorLog("ファイルの読み込み処理に失敗しました");
 			CloseHandle(FileHandle);
 			return false;
 		}
@@ -74,7 +75,7 @@ namespace Lib
 		return true;
 	}
 
-	void BinaryFile::Destroy()
+	void BinaryFile::UnLoadFile()
 	{
 		if (m_pBinary != nullptr)
 		{

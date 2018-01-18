@@ -60,25 +60,32 @@ namespace Lib
 	//----------------------------------------------------------------------
 	// Public Functions
 	//----------------------------------------------------------------------
-	bool Window::Initialize(LPCTSTR _pWindowName, int _windowWidth, int _windowHeight, DWORD _style, HWND _hWndParent)
+	bool Window::Initialize(
+		LPCTSTR _pWindowName,
+		int _windowWidth,
+		int _windowHeight,
+		DWORD _style,
+		HWND _hWndParent)
 	{
 		m_hWndParent = _hWndParent;
-	
+
+		// ウィンドウの設定.
 		WNDCLASSEX  WndClass;
-		WndClass.cbSize = sizeof(WndClass);
-		WndClass.style = CS_HREDRAW | CS_VREDRAW;
-		WndClass.lpfnWndProc = WindowProc;
-		WndClass.cbClsExtra = 0;
-		WndClass.cbWndExtra = 0;
-		WndClass.hInstance = GetModuleHandle(nullptr);
-		WndClass.hIcon = LoadIcon(nullptr, IDI_APPLICATION);
-		WndClass.hCursor = LoadCursor(nullptr, IDC_ARROW);
-		WndClass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
-		WndClass.lpszMenuName = nullptr;
-		WndClass.lpszClassName = _pWindowName;
-		WndClass.hIconSm = LoadIcon(nullptr, IDI_APPLICATION);
+		WndClass.cbSize			= sizeof(WndClass);
+		WndClass.style			= CS_HREDRAW | CS_VREDRAW;
+		WndClass.lpfnWndProc	= WindowProc;
+		WndClass.cbClsExtra		= 0;
+		WndClass.cbWndExtra		= 0;
+		WndClass.hInstance		= GetModuleHandle(nullptr);
+		WndClass.hIcon			= LoadIcon(nullptr, IDI_APPLICATION);
+		WndClass.hCursor		= LoadCursor(nullptr, IDC_ARROW);
+		WndClass.hbrBackground	= (HBRUSH)GetStockObject(BLACK_BRUSH);
+		WndClass.lpszMenuName	= nullptr;
+		WndClass.lpszClassName	= _pWindowName;
+		WndClass.hIconSm		= LoadIcon(nullptr, IDI_APPLICATION);
 		RegisterClassEx(&WndClass);
 	
+		// ウィンドウの生成.
 		m_hWnd = CreateWindow(
 			_pWindowName,
 			_pWindowName,

@@ -20,7 +20,7 @@
 namespace Lib
 {
 	/*** 境界タグクラス */
-	class BoundaryTag
+	class BoundaryTag final
 	{
 	public:
 		/*** コンストラクタ */
@@ -112,7 +112,7 @@ namespace Lib
 	};
 
 	/*** TLSFメモリアロケータクラス */
-	class TlsfAllocator
+	class TlsfAllocator final
 	{
 	public:
 		/*** コンストラクタ */

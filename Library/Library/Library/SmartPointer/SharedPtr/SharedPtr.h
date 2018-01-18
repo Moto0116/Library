@@ -25,7 +25,7 @@ namespace Lib
 	template <
 		typename Type,
 		typename ReleaseFunc = DefaultDelete<Type>>
-	class SharedPtr
+	class SharedPtr final
 	{
 	public:
 		template <typename Type2, typename ReleaseFunc2>
