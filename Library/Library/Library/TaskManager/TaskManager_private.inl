@@ -1,6 +1,6 @@
 ﻿/**
  * @file	TaskManager_private.inl
- * @brief	タスク管理の基底クラステンプレート実装
+ * @brief	タスク管理クラス実装
  * @author	morimoto
  */
 #ifndef LIB_TASKMANAGER_PRIVATE_H
@@ -12,16 +12,16 @@ namespace Lib
 	//----------------------------------------------------------------------
 	// Constructor	Destructor
 	//----------------------------------------------------------------------
-	template <typename Type, typename StartUpTask>
-	inline TaskManager<Type, StartUpTask>::TaskManager()
+	template <typename Task, typename StartUpTask>
+	inline TaskManager<Task, StartUpTask>::TaskManager()
 	{
 #ifdef _DEBUG
-		m_ConsoleWindow.Initialize(Debugger::TypeToString<Type>());
+		m_ConsoleWindow.Initialize(Debugger::TypeToString<Task>());
 #endif // _DEBUG
 	}
 
-	template <typename Type, typename StartUpTask>
-	inline TaskManager<Type, StartUpTask>::~TaskManager()
+	template <typename Task, typename StartUpTask>
+	inline TaskManager<Task, StartUpTask>::~TaskManager()
 	{
 #ifdef _DEBUG
 		m_ConsoleWindow.Finalize();
@@ -34,8 +34,8 @@ namespace Lib
 	//----------------------------------------------------------------------
 	// Public Functions
 	//----------------------------------------------------------------------
-	template <typename Type, typename StartUpTask>
-	inline void TaskManager<Type, StartUpTask>::Run()
+	template <typename Task, typename StartUpTask>
+	inline void TaskManager<Task, StartUpTask>::Run()
 	{
 #ifdef _DEBUG
 
@@ -61,10 +61,10 @@ namespace Lib
 
 
 		m_ConsoleWindow.Print("\n--------------------%s--------------------\n",
-			Debugger::TypeToString<Type>());
+			Debugger::TypeToString<Task>());
 
 		// 実行タスクの処理.
-		m_pTaskList.sort(Type::TaskCmp());
+		m_pTaskList.sort(Task::TaskCmp());
 		for (auto itr = m_pTaskList.begin(); itr != m_pTaskList.end(); itr++)
 		{
 			// タスクの作業時間計測.
@@ -94,7 +94,7 @@ namespace Lib
 		}
 
 		// 実行タスクの処理.
-		m_pTaskList.sort(Type::TaskCmp());
+		m_pTaskList.sort(Task::TaskCmp());
 		for (auto itr = m_pTaskList.begin(); itr != m_pTaskList.end(); itr++)
 		{
 			// タスクの作業時間計測.
@@ -104,26 +104,26 @@ namespace Lib
 #endif // !_DEBUG
 	}
 
-	template <typename Type, typename StartUpTask>
-	inline void TaskManager<Type, StartUpTask>::AddTask(Type* _pTask)
+	template <typename Task, typename StartUpTask>
+	inline void TaskManager<Task, StartUpTask>::AddTask(Task* _pTask)
 	{
 		m_pTaskList.push_back(_pTask);
 	}
 
-	template <typename Type, typename StartUpTask>
-	inline void TaskManager<Type, StartUpTask>::RemoveTask(Type* _pTask)
+	template <typename Task, typename StartUpTask>
+	inline void TaskManager<Task, StartUpTask>::RemoveTask(Task* _pTask)
 	{
 		m_pTaskList.remove(_pTask);
 	}
 
-	template <typename Type, typename StartUpTask>
-	inline void TaskManager<Type, StartUpTask>::AddStartUpTask(StartUpTask* _pStartUpTask)
+	template <typename Task, typename StartUpTask>
+	inline void TaskManager<Task, StartUpTask>::AddStartUpTask(StartUpTask* _pStartUpTask)
 	{
 		m_pStartUpTaskList.push_back(_pStartUpTask);
 	}
 
-	template <typename Type, typename StartUpTask>
-	inline void TaskManager<Type, StartUpTask>::RemoveStartUpTask(StartUpTask* _pStartUpTask)
+	template <typename Task, typename StartUpTask>
+	inline void TaskManager<Task, StartUpTask>::RemoveStartUpTask(StartUpTask* _pStartUpTask)
 	{
 		m_pStartUpTaskList.remove(_pStartUpTask);
 	}

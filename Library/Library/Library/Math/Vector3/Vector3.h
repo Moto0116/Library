@@ -9,9 +9,7 @@
 
 namespace Lib
 {
-	/**
-	 * 3次元ベクタ構造体
-	 */
+	/*** 3次元ベクタ構造体 */
 	struct VECTOR3
 	{
 	public:

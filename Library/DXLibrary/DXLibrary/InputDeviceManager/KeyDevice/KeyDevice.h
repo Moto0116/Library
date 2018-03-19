@@ -64,7 +64,7 @@ namespace Lib
 
 		/**
 		 * キーの状態を更新する
-		 * @param[in] 更新したいキーのDIK
+		 * @param[in] _dik 更新したいキーのDIK
 		 */
 		void KeyCheck(int _dik);
 

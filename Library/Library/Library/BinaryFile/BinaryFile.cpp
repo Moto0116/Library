@@ -17,12 +17,10 @@ namespace Lib
 	//----------------------------------------------------------------------
 	// Constructor	Destructor
 	//----------------------------------------------------------------------
-	BinaryFile::BinaryFile(TCHAR* _pFileName) :
+	BinaryFile::BinaryFile() :
 		m_pBinary(nullptr),
 		m_BinarySize(0)
 	{
-		bool Result = LoadFile(_pFileName);
-		MyAssert(Result == false, "ファイルの読み込みに失敗しました");
 	}
 
 	BinaryFile::~BinaryFile()
@@ -32,9 +30,9 @@ namespace Lib
 
 
 	//----------------------------------------------------------------------
-	// Private Functions
+	// Public Functions
 	//----------------------------------------------------------------------
-	bool BinaryFile::LoadFile(TCHAR* _pFileName)
+	bool BinaryFile::LoadFromFile(TCHAR* _pFileName)
 	{
 		MyAssert(m_pBinary != nullptr, "既にファイルが読み込まれています");
 

@@ -289,6 +289,8 @@
     <ClCompile Include="Library\ObjectBase\ObjectBase.cpp">
       <Filter>Library\ObjectManagerBase\ObjectBase</Filter>
     </ClCompile>
+    <ClCompile Include="Library\ArchiveManager\ArchiveManager.cpp" />
+    <ClCompile Include="Library\ArchiveManager\ArchiveFile\ArchiveFile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Debugger\Debugger.h">
@@ -387,6 +389,8 @@
     <ClInclude Include="Library\Hash\Hash.h">
       <Filter>Library\Hash</Filter>
     </ClInclude>
+    <ClInclude Include="Library\ArchiveManager\ArchiveManager.h" />
+    <ClInclude Include="Library\ArchiveManager\ArchiveFile\ArchiveFile.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\SingletonBase\SingletonBase_private.inl">

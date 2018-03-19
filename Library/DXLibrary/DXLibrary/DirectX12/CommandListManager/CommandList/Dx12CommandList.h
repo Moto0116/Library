@@ -23,6 +23,7 @@ namespace Lib
 		public:
 			/**
 			 * コンストラクタ
+			 * @param[in] _pDevice グラフィックデバイス
 			 * @param[in] _type コマンドの種類
 			 * @return 成功したらtrue 失敗したらfalse
 			 */

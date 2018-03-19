@@ -43,7 +43,7 @@ namespace Lib
 
 			/**
 			 * コマンドキューの作成
-			 * @param[out] _pindex 作成したコマンドキューのインデックス
+			 * @param[out] _pIndex 作成したコマンドキューのインデックス
 			 * @param[in] _type 作成するコマンドキューの種類
 			 * @param[in] _priority コマンドキューの優先度
 			 * @return 成功したらtrue 失敗したらfalse

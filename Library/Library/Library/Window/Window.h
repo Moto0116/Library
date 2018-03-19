@@ -30,15 +30,13 @@ namespace Lib
 		 * @param[in] _windowWidth ウィンドウの幅
 		 * @param[in] _windowHeight ウィンドウの高さ
 		 * @param[in] _style ウィンドウのスタイル
-		 * @param[in] _hWndParent 親ウィンドウのハンドル
 		 * @return 作成に成功したらtrue 失敗したらfalse
 		 */
 		bool Initialize(
 			LPCTSTR _pWindowName,
 			int _windowWidth, 
 			int _windowHeight,
-			DWORD _style, 
-			HWND _hWndParent = nullptr);
+			DWORD _style);
 	
 		/*** 終了処理(ウィンドウの破棄) */
 		void Finalize();
@@ -57,7 +55,6 @@ namespace Lib
 	
 	private:
 		HWND	m_hWnd;			//!< ウィンドウハンドル.
-		HWND	m_hWndParent;	//!< 親ウィンドウハンドル.
 		MSG		m_WindowMsg;	//!< ウィンドウメッセージ構造体.
 
 	};

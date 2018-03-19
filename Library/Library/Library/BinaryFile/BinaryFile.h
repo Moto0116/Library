@@ -11,6 +11,8 @@
 //----------------------------------------------------------------------
 #include <Windows.h>
 
+#include "Define\Define.h"
+
 
 namespace Lib
 {
@@ -18,14 +20,21 @@ namespace Lib
 	class BinaryFile
 	{
 	public:
-		/**
-		 * コンストラクタ 
-		 * @param[in] _pFileName 読み込むファイル名
-		 */
-		BinaryFile(TCHAR* _pFileName);
+		/*** コンストラクタ */
+		BinaryFile();
 
 		/*** デストラクタ */
 		~BinaryFile();
+
+		/**
+		 * ファイルからデータを読み込む
+		 * @param[in] _pFileName 読み込むファイル名
+		 * @return 成功したらtrue 失敗したらfalse
+		 */
+		bool LoadFromFile(TCHAR* _pFileName);
+
+		/*** データを解放 */
+		void UnLoadFile();
 
 		/**
 		 * バイナリデータの取得
@@ -40,18 +49,10 @@ namespace Lib
 		size_t GetBinarySize() const { return m_BinarySize; }
 
 	private:
-		/**
-		 * ファイルを読み込む
-		 * @param[in] _pFileName 読み込むファイル名
-		 * @return 成功したらtrue 失敗したらfalse
-		 */
-		bool LoadFile(TCHAR* _pFileName);
-
-		/*** ファイルを解放 */
-		void UnLoadFile();
-
 		void*	m_pBinary;		//!< バイナリの生データ.
 		size_t	m_BinarySize;	//!< バイナリデータサイズ.
+
+		DISALLOW_COPY_AND_ASSIGN(BinaryFile);
 
 	};
 }

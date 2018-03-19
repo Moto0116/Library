@@ -91,31 +91,29 @@ namespace Lib
 
 		/**
 		 * GamePadのボタンの状態を取得する
-		 * @param[in] id チェックするボタン
-		 * @param[in] pad チェックするパッド
+		 * @param[in] _buttonId チェックするボタン
+		 * @param[in] _pad チェックするパッド
 		 */
 		PADSTATE GetButtonState(XINPUT_ID _buttonId, XINPUTPAD _pad);
 
 		/**
 		 * Lスティックの状態を取得する関数
-		 * @param[in] id チェックするスティック
-		 * @param[in] pad チェックするパッド
+		 * @param[in] _analogId チェックするスティック
+		 * @param[in] _pad チェックするパッド
 		 * @return スティックの状態
 		 */
 		bool GetLAnalogState(ANALOGPAD _analogId, XINPUTPAD _pad);
 
 		/**
 		 * Rスティックの状態を取得する関数
-		 * @param[in] id チェックするスティック
-		 * @param[in] pad チェックするパッド
+		 * @param[in] _analogId チェックするスティック
+		 * @param[in] _pad チェックするパッド
 		 * @return スティックの状態
 		 */
 		bool GetRAnalogState(ANALOGPAD _analogId, XINPUTPAD _pad);
 
 	private:
-		/**
-		 * コントローラの状態構造体
-		 */
+		/*** コントローラの状態構造体 */
 		struct CONTROLER_STATE
 		{
 			XINPUT_STATE		State;		//!< ボタンなどの状態.

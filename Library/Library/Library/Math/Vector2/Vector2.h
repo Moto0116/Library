@@ -9,9 +9,7 @@
 
 namespace Lib
 {
-	/**
-	 * 2次元ベクタ構造体
-	 */
+	/*** 2次元ベクタ構造体 */
 	struct VECTOR2
 	{
 	public:

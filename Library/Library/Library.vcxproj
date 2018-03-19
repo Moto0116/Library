@@ -117,6 +117,8 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Library\ArchiveManager\ArchiveFile\ArchiveFile.h" />
+    <ClInclude Include="Library\ArchiveManager\ArchiveManager.h" />
     <ClInclude Include="Library\Factory\Factory.h" />
     <ClInclude Include="Library\Debugger\ConsoleWindow\ConsoleWindow.h" />
     <ClInclude Include="Library\Debugger\DebugTimer\DebugTimer.h" />
@@ -162,6 +164,8 @@
     <None Include="Library\TaskManager\TaskManager_private.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Library\ArchiveManager\ArchiveFile\ArchiveFile.cpp" />
+    <ClCompile Include="Library\ArchiveManager\ArchiveManager.cpp" />
     <ClCompile Include="Library\Debugger\ConsoleWindow\ConsoleWindow.cpp" />
     <ClCompile Include="Library\BinaryFile\BinaryFile.cpp" />
     <ClCompile Include="Library\EventManager\EventBase\EventBase.cpp" />

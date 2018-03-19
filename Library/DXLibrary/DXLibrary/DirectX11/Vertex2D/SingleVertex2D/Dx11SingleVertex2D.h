@@ -87,7 +87,7 @@ namespace Lib
 			 * 定数バッファにデータを書き込む
 			 * @param[in] _pDrawPos 描画位置
 			 * @param[in] _pScale 2Dオブジェクトのスケーリング値
-			 * @param[in] _angle 2Dオブジェクトの回転値(X,Y,Zの順で回転が行われる)
+			 * @param[in] _pAngle 2Dオブジェクトの回転値(X,Y,Zの順で回転が行われる)
 			 * @return 書き込みに成功したらtrue 失敗したらfalse
 			 */
 			bool WriteConstantBuffer(

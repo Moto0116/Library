@@ -1,5 +1,5 @@
 ﻿/**
- * @file	Math.cpp
+ * @file	Math.h
  * @brief	算術系関数定義
  * @author	morimoto
  */

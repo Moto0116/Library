@@ -26,6 +26,7 @@ namespace Lib
 		public:
 			/**
 			 * コンストラクタ
+			 * @param[in] _pDevice グラフィックデバイス
 			 * @param[in] _type 作成するコマンドキューの種類
 			 * @param[in] _priority コマンドキューの優先度
 			 */

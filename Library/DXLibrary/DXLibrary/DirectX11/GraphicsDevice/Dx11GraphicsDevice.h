@@ -70,7 +70,7 @@ namespace Lib
 
 			/**
 			 * 深度ステンシルの割り当て
-			 * @param[in] _pRenderTarget 割り当てる深度ステンシル
+			 * @param[in] _pDepthStencilView 設定する深度ステンシルビュー
 			 * @param[in] _stage 深度ステンシルを割り当てるステージ
 			 * @return 割り当てに成功したらtrue 失敗したらfalse
 			 */

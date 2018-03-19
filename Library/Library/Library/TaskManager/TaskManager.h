@@ -1,6 +1,6 @@
 ﻿/**
  * @file	TaskManager.h
- * @brief	タスク管理の基底クラス定義
+ * @brief	タスク管理クラス定義
  * @author	morimoto
  */
 #ifndef LIB_TASKMANAGER_H
@@ -20,15 +20,15 @@
 namespace Lib
 {
 	/**
-	 * タスク管理の基底クラス
-	 * @tparam Type 管理するタスクオブジェクト
-	 * @tparam StartUpTask Typeタスク実行前に処理を行うタスクオブジェクト
+	 * タスク管理クラス
+	 * @tparam Task 管理するタスクオブジェクト
+	 * @tparam StartUpTask Task実行前に処理を行うタスクオブジェクト
 	 */
-	template <typename Type, typename StartUpTask = TaskBase<>>
-	class TaskManager final : public SingletonBase<TaskManager<Type, StartUpTask>>
+	template <typename Task, typename StartUpTask = TaskBase<>>
+	class TaskManager final : public SingletonBase<TaskManager<Task, StartUpTask>>
 	{
 	public:
-		friend SingletonBase<TaskManager<Type, StartUpTask>>;
+		friend SingletonBase<TaskManager<Task, StartUpTask>>;
 	
 		/*** タスクの実行 */
 		void Run();
@@ -37,13 +37,13 @@ namespace Lib
 		 * タスクの追加
 		 * @param[in] _pTask 追加するタスク
 		 */
-		void AddTask(Type* _pTask);
+		void AddTask(Task* _pTask);
 
 		/**
 		 * タスクの削除
 		 * @param[in] _pTask 削除するタスク
 		 */
-		void RemoveTask(Type* _pTask);
+		void RemoveTask(Task* _pTask);
 	
 		/**
 		 * 開始タスクの追加
@@ -65,7 +65,7 @@ namespace Lib
 		virtual ~TaskManager();
 
 		std::list<StartUpTask*>	m_pStartUpTaskList;	//!< 起動タスクオブジェクトを管理するコンテナ.
-		std::list<Type*>		m_pTaskList;		//!< タスクオブジェクトを管理するコンテナ.
+		std::list<Task*>		m_pTaskList;		//!< タスクオブジェクトを管理するコンテナ.
 
 #ifdef _DEBUG
 		Debugger::ConsoleWindow		m_ConsoleWindow;	//!< デバッグ情報を出力するウィンドウ.

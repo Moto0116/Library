@@ -1,4 +1,9 @@
-﻿#ifndef LIB_TYPETRAITS_H
+﻿/**
+ * @file	TypeTraits.h
+ * @brief	型特性関連定義
+ * @author	morimoto
+ */
+#ifndef LIB_TYPETRAITS_H
 #define LIB_TYPETRAITS_H
 
 

@@ -9,9 +9,7 @@
 
 namespace Lib
 {
-	/**
-	 * 4次元ベクタ構造体
-	 */
+	/*** 4次元ベクタ構造体 */
 	struct VECTOR4
 	{
 	public:

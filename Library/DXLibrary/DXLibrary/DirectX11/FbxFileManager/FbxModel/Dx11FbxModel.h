@@ -185,7 +185,7 @@ namespace Lib
 
 			/**
 			 * 定数バッファへの書き込み関数
-			 * @param[in] 定数バッファに書き込むデータを持つメッシュ
+			 * @param[in] _meshNum 定数バッファに書き込むデータを持つメッシュ
 			 */
 			void WriteConstantBuffer(int _meshNum = 0);
 

@@ -59,7 +59,10 @@ namespace Lib
 		 * @param[in] _IsPlayDebugLog ログファイルを再生するかの指定
 		 * @return 成功したらtrue 失敗したらfalse
 		 */
-		bool CreateDevice(INPUTDEVICE_TYPE _deviceType, bool _isDebug = false, bool _IsPlayDebugLog = false);
+		bool CreateDevice(
+			INPUTDEVICE_TYPE _deviceType, 
+			bool _isDebug = false,
+			bool _IsPlayDebugLog = false);
 
 		/**
 		 * デバイスの破棄
@@ -73,12 +76,15 @@ namespace Lib
 		/*** MouseDeviceの状態を更新する */
 		void MouseUpdate();
 
-		/*** GamePadの状態を更新する */
+		/**
+		 * GamePadの状態を更新する 
+		 * @param[in] _pad 更新するパッドのID
+		 */
 		void GamePadUpdate(GamePad::XINPUTPAD _pad);
 
 		/**
 		 * キーの状態を更新する
-		 * @param[in] 更新したいキーのDIK
+		 * @param[in] _dik 更新したいキーのDIK
 		 */
 		void KeyCheck(int _dik);
 
@@ -86,7 +92,7 @@ namespace Lib
 		 * 指定のボタンの状態を更新する
 		 * @param[in] _pad チェックするGamePad
 		 * @param[in] _buttonId チェックするボタン
-		 * @param[in] _xinputButton 更新するXINPUT_GAMEPADのボタン
+		 * @param[in] _button 更新するXINPUT_GAMEPADのボタン
 		 */
 		void CheckButton(GamePad::XINPUTPAD _pad, GamePad::XINPUT_ID _buttonId, WORD _button);
 
@@ -104,23 +110,23 @@ namespace Lib
 		
 		/**
 		 * GamePadのボタンの状態を取得する
-		 * @param[in] id チェックするボタン
-		 * @param[in] pad チェックするGamePad
+		 * @param[in] _buttonId チェックするボタン
+		 * @param[in] _pad チェックするGamePad
 		 */
 		GamePad::PADSTATE GetButtonState(GamePad::XINPUT_ID _buttonId, GamePad::XINPUTPAD _pad);
 
 		/**
 		 * Lスティックの状態を取得する関数
-		 * @param[in] id チェックするスティック
-		 * @param[in] pad チェックするGamePad
+		 * @param[in] _analogId チェックするスティック
+		 * @param[in] _pad チェックするGamePad
 		 * @return スティックの状態
 		 */
 		bool GetLAnalogState(GamePad::ANALOGPAD _analogId, GamePad::XINPUTPAD _pad);
 
 		/**
 		 * Rスティックの状態を取得する関数
-		 * @param[in] id チェックするスティック
-		 * @param[in] pad チェックするGamePad
+		 * @param[in] _analogId チェックするスティック
+		 * @param[in] _pad チェックするGamePad
 		 * @return スティックの状態
 		 */
 		bool GetRAnalogState(GamePad::ANALOGPAD _analogId, GamePad::XINPUTPAD _pad);
@@ -135,6 +141,7 @@ namespace Lib
 		/**
 		 * ゲームパッドの生成
 		 * @param[in] _isDebug デバッグ機能を使用するかの指定
+		 * @param[in] _IsPlayDebugLog ログファイルを再生するかの指定
 		 * @return 成功したらtrue 失敗したらfalse
 		 */
 		bool CreateGamePad(bool _isDebug, bool _IsPlayDebugLog);
@@ -142,6 +149,7 @@ namespace Lib
 		/**
 		 * キーデバイスの生成
 		 * @param[in] _isDebug デバッグ機能を使用するかの指定
+		 * @param[in] _IsPlayDebugLog ログファイルを再生するかの指定
 		 * @return 成功したらtrue 失敗したらfalse
 		 */
 		bool CreateKeyDevice(bool _isDebug, bool _IsPlayDebugLog);
@@ -149,6 +157,7 @@ namespace Lib
 		/**
 		 * マウスデバイスの生成
 		 * @param[in] _isDebug デバッグ機能を使用するかの指定
+		 * @param[in] _IsPlayDebugLog ログファイルを再生するかの指定
 		 * @return 成功したらtrue 失敗したらfalse
 		 */
 		bool CreateMouseDevice(bool _isDebug, bool _IsPlayDebugLog);

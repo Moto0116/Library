@@ -76,7 +76,7 @@ namespace Lib
 
 		for (auto itr = EventListener.begin(); itr != EventListener.end(); itr++)
 		{
-			(*itr)->EventMessage(_pEvent);
+			(*itr)->ReceiveEvent(_pEvent);
 		}
 #endif // !_DEBUG	
 	}

@@ -9,9 +9,7 @@
 
 namespace Lib
 {
-	/**
-	 * 行列構造体
-	 */
+	/*** 行列構造体 */
 	struct MATRIX
 	{
 		// Constructor コンストラクタ.
