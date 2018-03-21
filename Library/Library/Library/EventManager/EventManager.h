@@ -53,7 +53,7 @@ namespace Lib
 		struct CompareStr
 		{
 		public:
-			bool operator()(LPCTSTR _str1, LPCTSTR _str2)
+			bool operator()(LPCTSTR _str1, LPCTSTR _str2) const
 			{
 				return strcmp(_str1, _str2) < 0;
 			}
@@ -66,9 +66,9 @@ namespace Lib
 		virtual ~EventManager();
 
 		std::map<
-			LPCTSTR, 
+			LPCTSTR,
 			std::vector<EventListener*>,
-			CompareStr> 
+			CompareStr>
 			m_pEventListenerGroups;	//!< イベントリスナを格納するコンテナ.
 
 #ifdef _DEBUG

@@ -20,9 +20,9 @@ namespace Lib
 	//----------------------------------------------------------------------
 	float Vector3Dot(const VECTOR3* _pIn1, const VECTOR3* _pIn2)
 	{
-		return 
-			((_pIn1->x) * (_pIn2->x) + 
-			 (_pIn1->y) * (_pIn2->y) + 
+		return
+			((_pIn1->x) * (_pIn2->x) +
+			 (_pIn1->y) * (_pIn2->y) +
 			 (_pIn1->z) * (_pIn2->z));
 	}
 
@@ -37,7 +37,7 @@ namespace Lib
 
 	VECTOR3 Vector3Normalize(VECTOR3* _pOut)
 	{
-		float Len = 1.f / sqrt(_pOut->x * _pOut->x + _pOut->y * _pOut->y + _pOut->z * _pOut->z);
+		float Len = 1.f / static_cast<float>(sqrt(_pOut->x * _pOut->x + _pOut->y * _pOut->y + _pOut->z * _pOut->z));
 		_pOut->x *= Len;
 		_pOut->y *= Len;
 		_pOut->z *= Len;
@@ -47,51 +47,51 @@ namespace Lib
 
 	float VectorLength(const VECTOR2* _pIn)
 	{
-		return 
-			sqrt(
-			pow(_pIn->x, 2) + 
-			pow(_pIn->y, 2));
+		return
+			static_cast<float>(sqrt(
+			pow(_pIn->x, 2) +
+			pow(_pIn->y, 2)));
 	}
 
 	float VectorLength(const VECTOR3* _pIn)
 	{
 		return
-			sqrt(
+			static_cast<float>(sqrt(
 			pow(_pIn->x, 2) +
-			pow(_pIn->y, 2) + 
-			pow(_pIn->z, 2));
+			pow(_pIn->y, 2) +
+			pow(_pIn->z, 2)));
 	}
 
 	float VectorDistance(const VECTOR2* _pIn1, const VECTOR2* _pIn2)
 	{
-		return 
-			sqrt(
+		return
+			static_cast<float>(sqrt(
 			pow(_pIn2->x - _pIn1->x, 2) +
-			pow(_pIn2->y - _pIn1->y, 2));
+			pow(_pIn2->y - _pIn1->y, 2)));
 	}
 
 	float VectorDistance(const VECTOR3* _pIn1, const VECTOR3* _pIn2)
 	{
-		return 
-			sqrt(
-			pow(_pIn2->x - _pIn1->x, 2) + 
-			pow(_pIn2->y - _pIn1->y, 2) + 
-			pow(_pIn2->z - _pIn1->z, 2));
+		return
+			static_cast<float>(sqrt(
+			pow(_pIn2->x - _pIn1->x, 2) +
+			pow(_pIn2->y - _pIn1->y, 2) +
+			pow(_pIn2->z - _pIn1->z, 2)));
 	}
 
 	float VectorRadian(const VECTOR2* _pIn1, const VECTOR2* _pIn2)
 	{
-		return atan2(
+		return static_cast<float>(atan2(
 			_pIn2->y - _pIn1->y,
-			_pIn2->x - _pIn1->x);
+			_pIn2->x - _pIn1->x));
 	}
 
 	float VectorDegree(const VECTOR2* _pIn1, const VECTOR2* _pIn2)
 	{
 		return ToDegree(
-			atan2(
+			static_cast<float>(atan2(
 			_pIn2->y - _pIn1->y,
-			_pIn2->x - _pIn1->x));
+			_pIn2->x - _pIn1->x)));
 	}
 
 
@@ -145,20 +145,20 @@ namespace Lib
 	MATRIX MatrixRotationX(MATRIX* _pMat, float _angle)
 	{
 		_pMat->_11 = 1.f;
-		_pMat->_12 = 0.f; 
+		_pMat->_12 = 0.f;
 		_pMat->_13 = 0.f;
 		_pMat->_14 = 0.f;
-		_pMat->_21 = 0.f; 
-		_pMat->_22 = cos(ToRadian(_angle)); 
-		_pMat->_23 = sin(ToRadian(_angle)); 
+		_pMat->_21 = 0.f;
+		_pMat->_22 = static_cast<float>(cos(ToRadian(_angle)));
+		_pMat->_23 = static_cast<float>(sin(ToRadian(_angle)));
 		_pMat->_24 = 0.f;
-		_pMat->_31 = 0.f; 
-		_pMat->_32 = -sin(ToRadian(_angle)); 
-		_pMat->_33 = cos(ToRadian(_angle)); 
+		_pMat->_31 = 0.f;
+		_pMat->_32 = static_cast<float>(-sin(ToRadian(_angle)));
+		_pMat->_33 = static_cast<float>(cos(ToRadian(_angle)));
 		_pMat->_34 = 0.f;
-		_pMat->_41 = 0.f; 
+		_pMat->_41 = 0.f;
 		_pMat->_42 = 0.f;
-		_pMat->_43 = 0.f; 
+		_pMat->_43 = 0.f;
 		_pMat->_44 = 1.f;
 
 		return *_pMat;
@@ -166,21 +166,21 @@ namespace Lib
 
 	MATRIX MatrixRotationY(MATRIX* _pMat, float _angle)
 	{
-		_pMat->_11 = cos(ToRadian(_angle));
+		_pMat->_11 = static_cast<float>(cos(ToRadian(_angle)));
 		_pMat->_12 = 0.f;
-		_pMat->_13 = -sin(ToRadian(_angle));
+		_pMat->_13 = static_cast<float>(-sin(ToRadian(_angle)));
 		_pMat->_14 = 0.f;
-		_pMat->_21 = 0.f; 
-		_pMat->_22 = 1.f; 
-		_pMat->_23 = 0.f; 
+		_pMat->_21 = 0.f;
+		_pMat->_22 = 1.f;
+		_pMat->_23 = 0.f;
 		_pMat->_24 = 0.f;
-		_pMat->_31 = sin(ToRadian(_angle));
-		_pMat->_32 = 0.f; 
-		_pMat->_33 = cos(ToRadian(_angle));
+		_pMat->_31 = static_cast<float>(sin(ToRadian(_angle)));
+		_pMat->_32 = 0.f;
+		_pMat->_33 = static_cast<float>(cos(ToRadian(_angle)));
 		_pMat->_34 = 0.f;
-		_pMat->_41 = 0.f; 
-		_pMat->_42 = 0.f; 
-		_pMat->_43 = 0.f; 
+		_pMat->_41 = 0.f;
+		_pMat->_42 = 0.f;
+		_pMat->_43 = 0.f;
 		_pMat->_44 = 1.f;
 
 		return *_pMat;
@@ -188,12 +188,12 @@ namespace Lib
 
 	MATRIX MatrixRotationZ(MATRIX* _pMat, float _angle)
 	{
-		_pMat->_11 = cos(ToRadian(_angle));
-		_pMat->_12 = sin(ToRadian(_angle));
+		_pMat->_11 = static_cast<float>(cos(ToRadian(_angle)));
+		_pMat->_12 = static_cast<float>(sin(ToRadian(_angle)));
 		_pMat->_13 = 0.f;
 		_pMat->_14 = 0.f;
-		_pMat->_21 = -sin(ToRadian(_angle));
-		_pMat->_22 = cos(ToRadian(_angle));
+		_pMat->_21 = static_cast<float>(-sin(ToRadian(_angle)));
+		_pMat->_22 = static_cast<float>(cos(ToRadian(_angle)));
 		_pMat->_23 = 0.f;
 		_pMat->_24 = 0.f;
 		_pMat->_31 = 0.f;
@@ -236,7 +236,7 @@ namespace Lib
 
 	MATRIX MatrixPerspectiveFovLH(MATRIX* _pMat, float _fovY, float _aspect, float _zNear, float _zFar)
 	{
-		float h = 1 / tan(_fovY / 2);
+		float h = 1 / static_cast<float>(tan(_fovY / 2));
 		float w = h / _aspect;
 
 		_pMat->_11 = w;
